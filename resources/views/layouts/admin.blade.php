@@ -8,6 +8,7 @@
     <title>Admin</title>
     @vite(['resources/css/output.css', 'resources/js/app.js'])
     @yield('file-header')
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body class="bg-slate-50">
