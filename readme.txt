@@ -9,3 +9,6 @@ always run scripts below before developing, there should be atleast 3 terminal r
 php artisan serve
 npm run dev
 npm run watch:tailwind
+
+Optional:
+use chrome extention name "Responsive Viewer" to see responsive pages.
