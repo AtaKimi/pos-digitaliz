@@ -202,7 +202,7 @@
                         </div>
                         <div>
                             <h5
-                                class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 leading-none font-bold mb-2">
+                                class="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 leading-none font-bold mb-2">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 8 9" fill="none">
                                     <circle cx="3.72346" cy="4.63392" r="3.65119" fill="#04CE00"/>
