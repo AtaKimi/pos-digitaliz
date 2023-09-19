@@ -24,6 +24,9 @@ Route::get('/', function () {
 // Routes for admin
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin', 'index')->name('admin-index');
+    Route::get('/admin/detail', function () {
+        return view('admin.detail');
+    })->name('admin-index');
 });
 
 
