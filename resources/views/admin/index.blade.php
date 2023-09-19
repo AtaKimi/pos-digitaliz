@@ -136,7 +136,7 @@
                     <div class="grid gap-4 ">
                         <div>
                             <h5
-                                class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none text-sm font-normal mb-2">
+                                class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none text-xs font-normal mb-2">
                                 Aktifitas
                             </h5>
                             <p class="text-gray-900 dark:text-white leading-none text-xl font-bold">Total Tenant</p>
@@ -146,7 +146,7 @@
                     <div>
                         <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
                             data-dropdown-placement="bottom" type="button"
-                            class="px-3 py-2 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Monthly
+                            class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Monthly
                             <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -154,11 +154,11 @@
                             </svg></button>
                         <div id="lastDaysdropdown"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            <ul class="py-2 text-xs text-gray-500 dark:text-gray-200"
                                 aria-labelledby="dropdownDefaultButton">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Daily</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Weekly</a>
                                 </li>
                                 <li>
                                     <a href="#"
@@ -166,18 +166,9 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yearly</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Anually</a>
                                 </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Half
-                                        Year</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Quarter
-                                        Year</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -191,72 +182,56 @@
 
             {{-- chart 2 --}}
             <div class="bg-white rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-2/3">
-                <div class="flex justify-between mb-5">
+                <div class="flex justify-between mb-5 items-center">
                     <div class="grid gap-7 grid-cols-2 items-center">
                         <div>
                             <h5
-                                class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
+                                class="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
                                 Total Pendapatan Service
                             </h5>
-                            <p class="text-gray-900 dark:text-white text-2xl leading-none font-bold">RP.250.000.000</p>
+                            <p class="text-gray-900 dark:text-white text-xl leading-none font-bold">RP.250.000.000</p>
                         </div>
                         <div>
                             <h5
-                                class="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 leading-none font-bold mb-2">
+                                class="inline-flex items-center font-semibold leading-none mb-2">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 8 9" fill="none">
                                     <circle cx="3.72346" cy="4.63392" r="3.65119" fill="#04CE00"/>
                                     <path d="M4.54271 4.24486L4.44473 4.34283C3.92048 4.86709 3.39617 5.3914 2.87181 5.91575C2.76573 6.02183 2.6404 6.04506 2.51522 5.98713C2.39463 5.93043 2.32845 5.82665 2.34602 5.70116C2.36181 5.6105 2.40459 5.52671 2.46876 5.46074C2.97574 4.94458 3.4893 4.435 4.00087 3.92342L4.09777 3.82652C4.06651 3.82118 4.03498 3.8175 4.00332 3.81552C3.7982 3.8146 3.59293 3.81659 3.38796 3.81399C3.22564 3.81215 3.11361 3.70042 3.11147 3.54513C3.10933 3.37578 3.21097 3.26222 3.38078 3.26115C3.85256 3.25809 4.32409 3.25774 4.79536 3.26008C4.98596 3.26115 5.09325 3.36417 5.09677 3.55262C5.10543 4.02043 5.11057 4.48829 5.1122 4.9562C5.11282 5.12769 5.00124 5.22856 4.83082 5.22719C4.67003 5.22566 4.56426 5.12234 4.55937 4.95574C4.55417 4.75796 4.55371 4.56002 4.55081 4.36209C4.55019 4.33091 4.54622 4.30034 4.54271 4.24486Z" fill="white"/>
                                   </svg>
 
-                                  <span class="text-lime-500 mr-1">
+                                  <span class="text-lime-500 text-xs mr-1">
                                     1.3%
                                   </span>
+                                  <span class="text-xs text-gray-500 dark:text-gray-400">
                                   VS LAST YEAR
+                                  </span>
 
 
 
                             </h5>
                         </div>
                     </div>
-                    <div>
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
-                            data-dropdown-placement="bottom" type="button"
-                            class="px-3 py-2 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Last
-                            week <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg></button>
-                        <div id="lastDaysdropdown"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                        7 days</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                        30 days</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                        90 days</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="flex items-center border justify-between rounded-2xl p-1 gap-0 h-15">
+
+                        </button>
+                        <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2 dark:text-white dark:focus:ring-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                                <path d="M6.8914 11.0022C6.8914 10.7141 7.12492 10.4806 7.41298 10.4806H10.5425C10.8305 10.4806 11.0641 10.7141 11.0641 11.0022C11.0641 11.2902 10.8305 11.5238 10.5425 11.5238H7.41298C7.12492 11.5238 6.8914 11.2902 6.8914 11.0022Z" fill="#2E2E2E"/>
+                                <path d="M4.80508 7.87269C4.80508 7.58463 5.0386 7.35111 5.32666 7.35111H12.6288C12.9169 7.35111 13.1504 7.58463 13.1504 7.87269C13.1504 8.16075 12.9169 8.39427 12.6288 8.39427H5.32666C5.0386 8.39427 4.80508 8.16075 4.80508 7.87269Z" fill="#2E2E2E"/>
+                                <path d="M2.71875 4.7432C2.71875 4.45514 2.95227 4.22162 3.24033 4.22162H14.7151C15.0032 4.22162 15.2367 4.45514 15.2367 4.7432C15.2367 5.03126 15.0032 5.26478 14.7151 5.26478H3.24033C2.95227 5.26478 2.71875 5.03126 2.71875 4.7432Z" fill="#2E2E2E"/>
+                                </svg>
+                        </button>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="23" viewBox="0 0 1 23" fill="none">
+                            <path d="M0.336914 22.0762V0.712219" stroke="black" stroke-width="0.667625"/>
+                            </svg>
+
+
+                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Weekly</button>
+                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Monthly</button>
+                        <button type="button" class="text-white  dark:bg-gray-900  bg-gray-900 hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Anually</button>
+
                     </div>
                 </div>
                 <div id="area-chart"></div>
@@ -265,37 +240,43 @@
         {{-- charts end --}}
 
         {{-- table --}}
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="relative overflow-x-auto shadow-md rounded-xl bg-white">
             <div class="flex p-5 justify-between items-center">
                 <h1 class="text-xl text-gray-900 font-bold">
                     Daftar Tagihan Terbaru
                 </h1>
-                <div class="pb-4 bg-white dark:bg-gray-900">
+                <div class="pb-4 dark:bg-gray-900">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-400 dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
+                            class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 dark:bg-gray-700 placeholder-gray-400 dark:text-white "
+                            placeholder="Search">
                     </div>
                 </div>
             </div>
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs border-b text-gray-700 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Product name
+                            No
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tenant
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            User
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Color
+                                Jumlah
                                 <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -305,7 +286,7 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Category
+                                Date
                                 <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -313,79 +294,245 @@
                                     </svg></a>
                             </div>
                         </th>
+
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Price
-                                <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                    </svg></a>
-                            </div>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Edit</span>
+                            Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            1
+                        </td>
+                        <th scope="row" class="px-6 py-4">
+                            <p class="text-xs font-normal">#12345</p>
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Forger Coffe
+                            </h1>
+                        </th>
+                        <th scope="row" class="px-6 py-4 gap-2 flex items-center">
+                            <img class="rounded-full w-10 h-10"
+                                src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                            <div>
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Anya Forger
+                                    </h1>
+                                    <p class="text-xs font-normal">anyaforger@gmail.com</p>
+
+                            </div>
+
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            Rp.90.000,00
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            14/09/2023, 10.00 AM
                         </td>
                         <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <button class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z" fill="#FDC55E"/>
+                                    <path d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z" fill="#FDC55E"/>
+                                    </svg>
+                            </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
+                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <th scope="row" class="px-6 py-4">
+                            <p class="text-xs font-normal">#12345</p>
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Forger Coffe
+                            </h1>
+                        </th>
+                        <th scope="row" class="px-6 py-4 gap-2 flex items-center">
+                            <img class="rounded-full w-10 h-10"
+                                src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                            <div>
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Anya Forger
+                                    </h1>
+                                    <p class="text-xs font-normal">anyaforger@gmail.com</p>
+
+                            </div>
+
                         </th>
                         <td class="px-6 py-4">
-                            White
+                            Rp.90.000,00
                         </td>
                         <td class="px-6 py-4">
-                            Laptop PC
+                            14/09/2023, 10.00 AM
                         </td>
                         <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <button class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z" fill="#FDC55E"/>
+                                    <path d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z" fill="#FDC55E"/>
+                                    </svg>
+                            </a>
                         </td>
                     </tr>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
+                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <th scope="row" class="px-6 py-4">
+                            <p class="text-xs font-normal">#12345</p>
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Forger Coffe
+                            </h1>
+                        </th>
+                        <th scope="row" class="px-6 py-4 gap-2 flex items-center">
+                            <img class="rounded-full w-10 h-10"
+                                src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                            <div>
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Anya Forger
+                                    </h1>
+                                    <p class="text-xs font-normal">anyaforger@gmail.com</p>
+
+                            </div>
+
                         </th>
                         <td class="px-6 py-4">
-                            Black
+                            Rp.90.000,00
                         </td>
                         <td class="px-6 py-4">
-                            Accessories
+                            14/09/2023, 10.00 AM
                         </td>
                         <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <button class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z" fill="#FDC55E"/>
+                                    <path d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z" fill="#FDC55E"/>
+                                    </svg>
+                            </a>
                         </td>
                     </tr>
+                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <th scope="row" class="px-6 py-4">
+                            <p class="text-xs font-normal">#12345</p>
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Forger Coffe
+                            </h1>
+                        </th>
+                        <th scope="row" class="px-6 py-4 gap-2 flex items-center">
+                            <img class="rounded-full w-10 h-10"
+                                src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                            <div>
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Anya Forger
+                                    </h1>
+                                    <p class="text-xs font-normal">anyaforger@gmail.com</p>
+
+                            </div>
+
+                        </th>
+                        <td class="px-6 py-4">
+                            Rp.90.000,00
+                        </td>
+                        <td class="px-6 py-4">
+                            14/09/2023, 10.00 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z" fill="#FDC55E"/>
+                                    <path d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z" fill="#FDC55E"/>
+                                    </svg>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                        <th scope="row" class="px-6 py-4">
+                            <p class="text-xs font-normal">#12345</p>
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Forger Coffe
+                            </h1>
+                        </th>
+                        <th scope="row" class="px-6 py-4 gap-2 flex items-center">
+                            <img class="rounded-full w-10 h-10"
+                                src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                            <div>
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Anya Forger
+                                    </h1>
+                                    <p class="text-xs font-normal">anyaforger@gmail.com</p>
+
+                            </div>
+
+                        </th>
+                        <td class="px-6 py-4">
+                            Rp.90.000,00
+                        </td>
+                        <td class="px-6 py-4">
+                            14/09/2023, 10.00 AM
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                    <path d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z" fill="#FDC55E"/>
+                                    <path d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z" fill="#FDC55E"/>
+                                    </svg>
+                            </a>
+                        </td>
+                    </tr>
+                    
+
+
                 </tbody>
             </table>
+
+            <div class="relative">
+                <p class="absolute left-5 bottom-1.5 text-xs">
+                    Menampilkan : 1-10 dari 100 hasil
+                </p>
+                <nav aria-label="Page navigation example"  class="flex justify-center my-5">
+                    <ul class="inline-flex gap-1.5 -space-x-px text-xs">
+
+                      <li>
+                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white hover:text-gray-900 dark:text-gray-400  dark:hover:text-white">Prev</a>
+                      </li>
+
+                      <li>
+                        <a href="#" aria-current="page" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-300  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                      </li>
+                      <li>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                      </li>
+                      <li>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
+                      </li>
+
+                      <li>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
+                      </li>
+                      <li>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">10</a>
+                      </li>
+                      <li>
+                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white hover:text-gray-900 dark:text-gray-400  dark:hover:text-white">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+            </div>
+
+            </div>
+
+
+
+
         </div>
+
 
         {{-- end table --}}
 
@@ -402,31 +549,31 @@
                         color: "#1A56DB",
                         data: [{
                                 x: "JUN",
-                                y: 5
+                                y: 8
                             },
                             {
                                 x: "JUL",
-                                y: 10
+                                y: 4
                             },
                             {
-                                x: "AUG",
-                                y: 15
+                                x: "AGU",
+                                y: 9
                             },
                             {
                                 x: "SEP",
-                                y: 20
+                                y:6
                             },
                             {
-                                x: "OCT",
-                                y: 25
+                                x: "OKT",
+                                y: 10
                             },
                             {
                                 x: "NOV",
-                                y: 30
+                                y: 3
                             },
                             {
                                 x: "DES",
-                                y: 35
+                                y: 7
                             },
                         ],
                     },
@@ -434,7 +581,7 @@
                 ],
                 chart: {
                     type: "bar",
-                    height: "250px",
+                    height: "200px",
                     fontFamily: "Inter, sans-serif",
                     toolbar: {
                         show: false,
@@ -445,7 +592,7 @@
                         horizontal: false,
                         columnWidth: "70%",
                         borderRadiusApplication: "end",
-                        borderRadius: 8,
+                        borderRadius: 3,
                     },
                 },
                 tooltip: {
@@ -468,7 +615,7 @@
                 },
                 stroke: {
                     show: true,
-                    width: 0,
+                    width: 7,
                     colors: ["transparent"],
                 },
                 grid: {
@@ -522,7 +669,7 @@
     window.addEventListener("load", function() {
       let options = {
         chart: {
-          height: "75%",
+          height: "70%",
           type: "area",
           fontFamily: "Inter, sans-serif",
           dropShadow: {
@@ -551,7 +698,7 @@
           enabled: false,
         },
         stroke: {
-          width: 6,
+          width: 3,
         },
         grid: {
           show: true,
@@ -564,13 +711,13 @@
         },
         series: [
           {
-            name: "New users",
-            data: [6500, 6418, 6456, 6526, 6356, 6456],
+            name: "Services",
+            data: [17, 18, 16, 17, 20, 18, 19, 18, 19, 18, 17, 16, 20],
             color: "#1A56DB",
           },
         ],
         xaxis: {
-          categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+          categories: ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV', 'DES',],
           labels: {
             show: true,
           },
