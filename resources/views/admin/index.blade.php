@@ -5,10 +5,10 @@
 
 
         {{-- header --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg bg-white mb-5">
+        <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
             <div class="p-4">
                 <div class="flex items-center">
-                    <div class="mr-4 bg-yellow-50 rounded-xl p-4">
+                    <div class="mr-4 bg-orange-100 rounded-xl p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 36 36" fill="none">
                             <path
                                 d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
@@ -28,9 +28,9 @@
         <div class="flex flex-col md:flex-row gap-5 mb-5">
 
             {{-- card 1 --}}
-            <div class="rounded-xl overflow-hidden shadow-lg w-full relative bg-white">
+            <div class="rounded-xl overflow-hidden shadow-lg w-full relative bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-yellow-50  rounded-full p-1 mb-3 w-fit">
+                    <div class="flex gap-2 items-center bg-orange-100  rounded-full p-1 mb-3 w-fit">
                         <span class="bg-yellow-400 rounded-full p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
                                 fill="none">
@@ -62,9 +62,9 @@
             </div>
 
             {{-- card 2 --}}
-            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white">
+            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-green-50  rounded-full p-1 mb-3 w-fit">
+                    <div class="flex gap-2 items-center bg-green-100  rounded-full p-1 mb-3 w-fit">
                         <span class="bg-green-400 rounded-full p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 22"
                                 fill="none">
@@ -95,9 +95,10 @@
                 </div>
             </div>
 
-            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white">
+            {{-- card 3 --}}
+            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-red-50  rounded-full p-1 mb-3 w-fit">
+                    <div class="flex gap-2 items-center bg-red-100  rounded-full p-1 mb-3 w-fit">
                         <span class="bg-red-400 rounded-full p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"
                                 fill="none">
@@ -131,7 +132,7 @@
         {{-- charts --}}
         <div class="flex flex-col md:flex-row gap-5 mb-5 ">
             {{-- chart 1 --}}
-            <div class="bg-white rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-1/3 ">
+            <div class="bg-white-50 rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-1/3 ">
                 <div class="flex justify-between mb-5 items-center">
                     <div class="grid gap-4 ">
                         <div>
@@ -139,34 +140,34 @@
                                 class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none text-xs font-normal mb-2">
                                 Aktifitas
                             </h5>
-                            <p class="text-gray-900 dark:text-white leading-none text-xl font-bold">Total Tenant</p>
+                            <p class="text-gray-900 dark:text-white-50 leading-none text-xl font-bold">Total Tenant</p>
                         </div>
 
                     </div>
                     <div>
                         <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
                             data-dropdown-placement="bottom" type="button"
-                            class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Monthly
+                            class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white-50 dark:hover:bg-gray-700">Monthly
                             <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg></button>
                         <div id="lastDaysdropdown"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-xs text-gray-500 dark:text-gray-200"
                                 aria-labelledby="dropdownDefaultButton">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Weekly</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Weekly</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Monthly</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Monthly</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Anually</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Anually</a>
                                 </li>
 
                             </ul>
@@ -181,29 +182,29 @@
             </div>
 
             {{-- chart 2 --}}
-            <div class="bg-white rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-2/3">
-                <div class="flex justify-between mb-5 items-center">
-                    <div class="grid gap-7 grid-cols-2 items-center">
+            <div class="bg-white-50 rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-2/3">
+                <div class="flex flex-col md:flex-row justify-between gap-7 mb-5 items-center">
+                    <div class="flex flex-col md:flex-row gap-7 items-center">
                         <div>
                             <h5
                                 class="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
                                 Total Pendapatan Service
                             </h5>
-                            <p class="text-gray-900 dark:text-white text-xl leading-none font-bold">RP.250.000.000</p>
+                            <p class="text-gray-900 dark:text-white-50 text-xl leading-none font-bold">RP.250.000.000</p>
                         </div>
                         <div>
                             <h5
                                 class="inline-flex items-center font-semibold leading-none mb-2">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 8 9" fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 9" fill="none">
                                     <circle cx="3.72346" cy="4.63392" r="3.65119" fill="#04CE00"/>
                                     <path d="M4.54271 4.24486L4.44473 4.34283C3.92048 4.86709 3.39617 5.3914 2.87181 5.91575C2.76573 6.02183 2.6404 6.04506 2.51522 5.98713C2.39463 5.93043 2.32845 5.82665 2.34602 5.70116C2.36181 5.6105 2.40459 5.52671 2.46876 5.46074C2.97574 4.94458 3.4893 4.435 4.00087 3.92342L4.09777 3.82652C4.06651 3.82118 4.03498 3.8175 4.00332 3.81552C3.7982 3.8146 3.59293 3.81659 3.38796 3.81399C3.22564 3.81215 3.11361 3.70042 3.11147 3.54513C3.10933 3.37578 3.21097 3.26222 3.38078 3.26115C3.85256 3.25809 4.32409 3.25774 4.79536 3.26008C4.98596 3.26115 5.09325 3.36417 5.09677 3.55262C5.10543 4.02043 5.11057 4.48829 5.1122 4.9562C5.11282 5.12769 5.00124 5.22856 4.83082 5.22719C4.67003 5.22566 4.56426 5.12234 4.55937 4.95574C4.55417 4.75796 4.55371 4.56002 4.55081 4.36209C4.55019 4.33091 4.54622 4.30034 4.54271 4.24486Z" fill="white"/>
                                   </svg>
 
-                                  <span class="text-lime-500 text-xs mr-1">
+                                  <span class=" text-green-600 text-[10px] mr-1">
                                     1.3%
                                   </span>
-                                  <span class="text-xs text-gray-500 dark:text-gray-400">
+                                  <span class="text-[10px] text-gray-500 dark:text-gray-400">
                                   VS LAST YEAR
                                   </span>
 
@@ -215,7 +216,7 @@
                     <div class="flex items-center border justify-between rounded-2xl p-1 gap-0 h-15">
 
                         </button>
-                        <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2 dark:text-white dark:focus:ring-gray-800">
+                        <button type="button" class="text-gray-900  hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white-50 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2 dark:text-white-50 dark:focus:ring-gray-800">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
                                 <path d="M6.8914 11.0022C6.8914 10.7141 7.12492 10.4806 7.41298 10.4806H10.5425C10.8305 10.4806 11.0641 10.7141 11.0641 11.0022C11.0641 11.2902 10.8305 11.5238 10.5425 11.5238H7.41298C7.12492 11.5238 6.8914 11.2902 6.8914 11.0022Z" fill="#2E2E2E"/>
                                 <path d="M4.80508 7.87269C4.80508 7.58463 5.0386 7.35111 5.32666 7.35111H12.6288C12.9169 7.35111 13.1504 7.58463 13.1504 7.87269C13.1504 8.16075 12.9169 8.39427 12.6288 8.39427H5.32666C5.0386 8.39427 4.80508 8.16075 4.80508 7.87269Z" fill="#2E2E2E"/>
@@ -228,9 +229,9 @@
                             </svg>
 
 
-                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Weekly</button>
-                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Monthly</button>
-                        <button type="button" class="text-white  dark:bg-gray-900  bg-gray-900 hover:bg-gray-900 hover:text-white   rounded-xl text-xs font-medium  text-center p-2 dark:text-white">Anually</button>
+                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Weekly</button>
+                        <button type="button" class="text-gray-900  dark:bg-gray-900  bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Monthly</button>
+                        <button type="button" class="text-white-50  dark:bg-gray-900  bg-gray-900 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Anually</button>
 
                     </div>
                 </div>
@@ -240,8 +241,8 @@
         {{-- charts end --}}
 
         {{-- table --}}
-        <div class="relative overflow-x-auto shadow-md rounded-xl bg-white">
-            <div class="flex p-5 justify-between items-center">
+        <div class="relative overflow-x-auto shadow-md rounded-xl bg-white-50">
+            <div class="flex flex-wrap gap-5 p-5 justify-between items-center">
                 <h1 class="text-xl text-gray-900 font-bold">
                     Daftar Tagihan Terbaru
                 </h1>
@@ -256,7 +257,7 @@
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 dark:bg-gray-700 placeholder-gray-400 dark:text-white "
+                            class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 dark:bg-gray-700 placeholder-gray-400 dark:text-white-50 "
                             placeholder="Search">
                     </div>
                 </div>
@@ -275,7 +276,7 @@
                             User
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
+                            <div class="flex items-center justify-between">
                                 Jumlah
                                 <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -285,7 +286,7 @@
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
+                            <div class="flex items-center justify-between">
                                 Date
                                 <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -301,13 +302,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
                             1
                         </td>
                         <th scope="row" class="px-6 py-4">
                             <p class="text-xs font-normal">#12345</p>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                             Forger Coffe
                             </h1>
                         </th>
@@ -315,7 +316,7 @@
                             <img class="rounded-full w-10 h-10"
                                 src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                             <div>
-                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                                     Anya Forger
                                     </h1>
                                     <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -338,13 +339,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
                             2
                         </td>
                         <th scope="row" class="px-6 py-4">
                             <p class="text-xs font-normal">#12345</p>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                             Forger Coffe
                             </h1>
                         </th>
@@ -352,7 +353,7 @@
                             <img class="rounded-full w-10 h-10"
                                 src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                             <div>
-                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                                     Anya Forger
                                     </h1>
                                     <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -375,13 +376,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
-                            2
+                            3
                         </td>
                         <th scope="row" class="px-6 py-4">
                             <p class="text-xs font-normal">#12345</p>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                             Forger Coffe
                             </h1>
                         </th>
@@ -389,7 +390,7 @@
                             <img class="rounded-full w-10 h-10"
                                 src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                             <div>
-                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                                     Anya Forger
                                     </h1>
                                     <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -412,13 +413,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
-                            2
+                            4
                         </td>
                         <th scope="row" class="px-6 py-4">
                             <p class="text-xs font-normal">#12345</p>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                             Forger Coffe
                             </h1>
                         </th>
@@ -426,7 +427,7 @@
                             <img class="rounded-full w-10 h-10"
                                 src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                             <div>
-                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                                     Anya Forger
                                     </h1>
                                     <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -449,13 +450,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
-                            2
+                            5
                         </td>
                         <th scope="row" class="px-6 py-4">
                             <p class="text-xs font-normal">#12345</p>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                             Forger Coffe
                             </h1>
                         </th>
@@ -463,7 +464,7 @@
                             <img class="rounded-full w-10 h-10"
                                 src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                             <div>
-                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
                                     Anya Forger
                                     </h1>
                                     <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -486,44 +487,45 @@
                             </a>
                         </td>
                     </tr>
-                    
+
 
 
                 </tbody>
             </table>
 
             <div class="relative">
-                <p class="absolute left-5 bottom-1.5 text-xs">
-                    Menampilkan : 1-10 dari 100 hasil
-                </p>
+
                 <nav aria-label="Page navigation example"  class="flex justify-center my-5">
                     <ul class="inline-flex gap-1.5 -space-x-px text-xs">
 
                       <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white hover:text-gray-900 dark:text-gray-400  dark:hover:text-white">Prev</a>
+                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Prev</a>
                       </li>
 
                       <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-300  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                        <a href="#" aria-current="page" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-400  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">1</a>
                       </li>
                       <li>
-                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">2</a>
                       </li>
                       <li>
-                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">3</a>
                       </li>
 
                       <li>
-                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">...</a>
                       </li>
                       <li>
-                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">10</a>
+                        <a href="#" class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">10</a>
                       </li>
                       <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white hover:text-gray-900 dark:text-gray-400  dark:hover:text-white">Next</a>
+                        <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Next</a>
                       </li>
                     </ul>
                   </nav>
+                  <p class="md:absolute left-5 bottom-1.5 text-xs flex justify-center">
+                    Menampilkan : 1-10 dari 100 hasil
+                </p>
             </div>
 
             </div>
@@ -592,7 +594,7 @@
                         horizontal: false,
                         columnWidth: "70%",
                         borderRadiusApplication: "end",
-                        borderRadius: 3,
+                        borderRadius: 4,
                     },
                 },
                 tooltip: {
