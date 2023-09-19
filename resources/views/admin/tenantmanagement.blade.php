@@ -145,7 +145,7 @@
                         </div>
                     </td>
                     <td class="py-5">
-                        <p class="w-30 bg-red-100 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center">Belum lunas</p>
+                        <p class="w-30 bg-red-100 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center">Belum bayar</p>
                     </td>
                     <td class="py-5">
                         <label class="relative inline-flex items-center mr-2 cursor-pointer">
@@ -228,28 +228,28 @@
         <!-- Buttons -->
         <div class="flex ml-10">
             <!-- Previous Button -->
-            <a href="#" class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500  rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <a href="#" class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               Prev
             </a>
             <ul class="inline-flex -space-x-px text-xs">
                 <li>
-                  <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-300 border border-grey-200 hover:bg-yellow-300 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">1</a>
+                  <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-300 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">1</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-yellow-300 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">2</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">2</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-yellow-300 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">3</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">3</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white hover:bg-yellow-300 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">...</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">...</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-yellow-300 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">10</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">10</a>
                 </li>
               </ul>
             <!-- Next Button -->
-            <a href="#" class="flex items-center justify-center px-3 h-8 ml-3 text-xs font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <a href="#" class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               Next
             </a>
           </div>
