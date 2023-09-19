@@ -23,7 +23,7 @@
           </div>
         </div>
           {{-- card 1 --}}
-          <div class="flex flex-wrap gap-10 mb-5">
+          <div class="flex w-1/2 flex-wrap gap-10 mb-5">
             <div class="max-w-sm w-full lg:max-w-full lg:flex"> 
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg')" title="Woman holding a mug">
                 </div>
