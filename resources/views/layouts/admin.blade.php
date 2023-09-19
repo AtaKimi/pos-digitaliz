@@ -10,10 +10,10 @@
     @yield('file-header')
 </head>
 
-<body class="bg-red-50">
+<body class="bg-white-400">
     <div class="bg-warning-300 h-80 w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
-        <div class="col-span-1 bg-white rounded-3xl mr-10" style="height: 900px">
+        <div class="col-span-1 bg-white-50 rounded-3xl mr-10" style="height: 900px">
             <div class="flex justify-center mb-2 pt-3">
                 <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
             </div>
