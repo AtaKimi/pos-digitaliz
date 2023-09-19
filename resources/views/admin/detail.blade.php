@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="">
-        <div class="flex bg-white justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8">
+        <div class="flex bg-white justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
             <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
-                class="fill-yellow-300 bg-yellow-100 w-20 p-5 rounded-lg ">
+                class="fill-yellow-500 bg-yellow-200 w-20 p-5 rounded-lg ">
                 <path
                     d="M7.0625 10.3438C7.0625 9.7397 7.55219 9.25001 8.15625 9.25001H21.2812C21.8853 9.25001 22.375 9.7397 22.375 10.3438C22.375 10.9478 21.8853 11.4375 21.2812 11.4375H8.15625C7.55219 11.4375 7.0625 10.9478 7.0625 10.3438Z" />
                 <path
@@ -35,8 +35,8 @@
             </div>
         </div>
         <div class="grid grid-cols-3 gap-9 mb-8">
-            <div class="flex flex-col gap-2 bg-white p-5 py-7 px-8 rounded-2xl shadow-md">
-                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-100 rounded-3xl gap-2">
+            <div class="flex flex-col gap-2 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
+                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-200 rounded-3xl gap-2">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="35" height="35" rx="17.5" fill="#FDC55E" />
@@ -55,13 +55,13 @@
                                 d="M4.75905 6.00979C4.15169 6.80391 3.57074 7.56466 2.98922 8.32578C2.49146 8.97567 1.9937 9.62456 1.49593 10.2725C1.33311 10.4835 1.13668 10.5488 0.915275 10.4637C0.693866 10.3786 0.562055 10.1735 0.513236 9.88364C0.46614 9.60169 0.548558 9.37035 0.69961 9.17126C1.38997 8.27041 2.07975 7.36932 2.76896 6.46797C3.27993 5.80108 3.79129 5.13457 4.30303 4.46843C4.58359 4.10474 4.90838 4.10287 5.1878 4.4628C5.57605 4.96272 5.96173 5.46639 6.34481 5.9738C6.38817 6.03079 6.41545 6.1084 6.44618 6.16839L9.67283 1.95185C9.62688 1.9481 9.58266 1.94173 9.53815 1.94135C9.16483 1.94135 8.7915 1.94623 8.41818 1.93835C8.1715 1.93348 7.9857 1.77713 7.88433 1.48431C7.78756 1.2046 7.81972 0.933149 7.97048 0.694689C8.02457 0.606309 8.09347 0.535329 8.17189 0.487224C8.25031 0.439119 8.33615 0.415174 8.42278 0.417236C9.31645 0.414611 10.2124 0.412362 11.1072 0.418361C11.4452 0.42061 11.6954 0.755804 11.6965 1.19635C11.6994 2.35866 11.6994 3.52096 11.6965 4.68327C11.6965 5.12494 11.4315 5.47064 11.1104 5.46689C10.7894 5.46314 10.5418 5.13319 10.5361 4.69039C10.5306 4.21572 10.5346 3.74068 10.5346 3.26563V3.06879L10.4824 3.02455C10.4499 3.09136 10.4136 3.1549 10.3738 3.21464C9.23126 4.70914 8.08784 6.20251 6.94356 7.69476C6.64577 8.08282 6.32385 8.08357 6.0272 7.69814C5.63761 7.19172 5.24868 6.68368 4.86043 6.17402C4.82711 6.13015 4.80041 6.07616 4.75905 6.00979Z"
                                 fill="#04CE00" />
                         </svg>
-                        <p class="text-green-400">10%</p>
+                        <p class="text-green-600">10%</p>
                         <p>vs last year</p>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md ">
-                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-100 rounded-3xl gap-2">
+            <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
+                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-200 rounded-3xl gap-2">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="35" height="35" rx="17.5" fill="#29CB6A" />
@@ -76,8 +76,8 @@
                     <h4 class="text-2xl font-semibold">Rp.25.000.000</h4>
                 </div>
             </div>
-            <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md ">
-                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-100 rounded-3xl gap-2">
+            <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
+                <div class="flex items-center py-2 pl-3 pr-4 w-fit bg-yellow-200 rounded-3xl gap-2">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="35" height="35" rx="17.5" fill="#EF4444" />
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white w-full p-8 rounded-3xl shadow-md mb-8">
+        <div class="bg-white w-full p-8 rounded-3xl shadow-md mb-8 bg-white-50">
             <div class="flex items-center gap-2 mb-5">
                 <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -158,7 +158,8 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white w-full rounded-3xl shadow-md mb-8">
+
+        <div class="bg-white w-full rounded-3xl shadow-md mb-8 bg-white-50">
             <div class="flex items-center justify-between p-8">
                 <h4 class="text-lg font-semibold">Daftar Tagihan</h4>
                 <div class="flex gap-4">
@@ -178,13 +179,14 @@
                                 placeholder="Search" required>
                         </div>
                     </form>
-                    <button class="flex items-center p-3 bg-yellow-300 rounded-lg">
+                    <button class="flex items-center p-3 bg-yellow-500 rounded-lg gap-2" data-modal-target="modal-bill"
+                        data-modal-toggle="modal-bill">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 4.5V13.5M13.5 9H4.5" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        <p class="text-white text-sm font-semibold">Tagihan Baru</p>
+                        <p class="text-sm font-semibold text-white-50">Tagihan Baru</p>
                     </button>
                 </div>
             </div>
@@ -235,7 +237,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-200"></div>
+                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
+                                        data-modal-toggle="modal-transaction"></div>
                                 </div>
                             </td>
                         </tr>
@@ -252,7 +255,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-200"></div>
+                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
+                                        data-modal-toggle="modal-transaction"></div>
                                 </div>
                             </td>
                         </tr>
@@ -269,7 +273,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-200"></div>
+                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
+                                        data-modal-toggle="modal-transaction"></div>
                                 </div>
                             </td>
                         </tr>
@@ -286,7 +291,7 @@
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-yellow-300 text-white border border-gray-300 rounded-lg ">1</a>
+                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-yellow-500 text-white border border-gray-300 rounded-lg ">1</a>
                             </li>
                             <li>
                                 <a href="#"
@@ -303,7 +308,7 @@
             </div>
         </div>
 
-        <div class="bg-white w-full p-8 rounded-3xl shadow-md mb-8">
+        <div class="bg-white w-full p-8 rounded-3xl shadow-md mb-8 bg-white-50">
             <div class="flex items-center justify-between">
                 <h4 class="text-lg font-semibold">Waiter List</h4>
                 <div class="flex gap-4">
@@ -363,7 +368,7 @@
                                 +6281234567890
                             </td>
                             <td class=" py-4">
-                                <p class="text-center text-green-500 font-semibold bg-green-50 rounded-full py-1 px-10">
+                                <p class="text-center font-semibold ont-semibold bg-green-200 rounded-full py-1 px-10">
                                     Verified</p>
                             </td>
                         </tr>
@@ -385,7 +390,7 @@
                                 +6281234567890
                             </td>
                             <td class=" py-4">
-                                <p class="text-center text-green-500 font-semibold bg-green-50 rounded-full py-1 px-10">
+                                <p class="text-center text-green-800 font-semibold bg-green-200 rounded-full py-1 px-10">
                                     Verified</p>
                             </td>
                         </tr>
@@ -407,7 +412,7 @@
                                 +6281234567890
                             </td>
                             <td class=" py-4">
-                                <p class="text-center text-red-700 font-semibold bg-red-50 rounded-full py-1 px-10">
+                                <p class="text-center text-red-700 font-semibold bg-red-200 rounded-full py-1 px-10">
                                     Unverified</p>
                             </td>
                         </tr>
@@ -423,7 +428,7 @@
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-yellow-300 text-white border border-gray-300 rounded-lg ">1</a>
+                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-yellow-500 text-white border border-gray-300 rounded-lg ">1</a>
                             </li>
                             <li>
                                 <a href="#"
@@ -440,6 +445,98 @@
             </div>
         </div>
 
-    </div>
+
+        {{-- MODAL TRANSACTION --}}
+
+        <div id="modal-transaction" tabindex="-1"
+            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div
+                    class="flex flex-col relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    <div class="flex justify-between mb-8 items-center">
+                        <div class=""></div>
+                        <p class="font-bold text-2xl">Bukti Transfer</p>
+                        <p class="text-2xl font-bold" data-modal-target="modal-transaction"
+                            data-modal-toggle="modal-transaction">X</p>
+                    </div>
+                    <div class="self-cewnter bg-yellow-500 w-full h-full"></div>
+                </div>
+            </div>
+        </div>
+
+        {{-- MODAL TAGIHAN --}}
+
+        <div id="modal-bill" tabindex="-1"
+            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div
+                    class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    <div class="flex justify-between  items-center">
+                        <div class=""></div>
+                        <p class="font-bold text-2xl">Tangihan</p>
+                        <p class="text-2xl font-bold" data-modal-target="modal-bill" data-modal-toggle="modal-bill">X</p>
+                    </div>
+                    <div class="">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Total Transfer</label>
+                        <input type="email" id="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Rp" required>
+                    </div>
+                    {{-- <div class="relative">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Waktu Transfer</label>
+                        <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+                        <input datepicker type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Select date">
+                    </div> --}}
+                    <div class="relative">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Waktu Transfer</label>
+                        <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
+
+                        </div>
+                        <div class="flex items-center border rounded-lg relative">
+                            <svg class="absolute left-2 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                            <input datepicker type="text"
+                                class=" text-gray-900 text-sm rounded-lg border-0 block w-full pl-10 p-2.5"
+                                placeholder="Select date">
+                        </div>
+                    </div>
+                    <label for="">Bukti Transfer</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="dropzone-file"
+                            class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                </svg>
+
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" />
+                        </label>
+                    </div>
+                    <button type="button"
+                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3 dark:focus:ring-yellow-900">Save</button>
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
 @endsection
