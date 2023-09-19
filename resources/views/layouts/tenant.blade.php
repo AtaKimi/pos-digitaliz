@@ -36,7 +36,7 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant/order' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="{{route('tenant-order')}}">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
