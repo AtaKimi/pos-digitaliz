@@ -1502,6 +1502,10 @@ html {
   width: 16rem;
 }
 
+.w-96{
+  width: 24rem;
+}
+
 .w-\[130px\]{
   width: 130px;
 }
@@ -1513,6 +1517,26 @@ html {
 
 .w-full{
   width: 100%;
+}
+
+.w-\[\]{
+  width: ;
+}
+
+.w-\[500px\]{
+  width: 500px;
+}
+
+.w-\[600px\]{
+  width: 600px;
+}
+
+.w-\[550\]{
+  width: 550;
+}
+
+.w-\[550px\]{
+  width: 550px;
 }
 
 .flex-1{
@@ -1643,6 +1667,10 @@ html {
 
 .gap-2{
   gap: 0.5rem;
+}
+
+.gap-3{
+  gap: 0.75rem;
 }
 
 .gap-5{
@@ -2398,6 +2426,10 @@ html {
 }
 
 @media (min-width: 640px){
+  .sm\:flex{
+    display: flex;
+  }
+
   .sm\:rounded-lg{
     border-radius: 0.5rem;
   }

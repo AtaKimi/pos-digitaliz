@@ -23,53 +23,151 @@
             </div>
             </div>
             {{-- card 1 --}}
-            <div class="flex flex-col bg-white-50 w-1/2 flex-wrap rounded-lg">
-               <div class="flex gap-x-6 p-6 ">
-                <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg" alt="" class="w-[130px] h-[130px] rounded-lg">
-                <div class="text-gray-500">
-                    <div class="flex justify-between">
-                        <p class="text-2xl font-bold text-black mb-2">Sate Padang</p>
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg></button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Earnings</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Sign out</a>
-                            </li>
-                            </ul>
-                        </div>
-
+            <div class="sm:flex flex-wrap gap-3">
+                <div class="flex flex-col bg-white-50 flex-wrap rounded-lg w-[550px]">
+                    <div class="flex gap-x-6 p-6 ">
+                     <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg" alt="" class="w-[130px] h-[130px] rounded-lg">
+                     <div class="text-gray-500">
+                         <div class="flex justify-between">
+                             <p class="text-2xl font-bold text-black mb-2">Sate Padang</p>
+                             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                             </svg></button>
+                             <!-- Dropdown menu -->
+                             <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Dashboard</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Settings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Earnings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Sign out</a>
+                                 </li>
+                                 </ul>
+                             </div>
+     
+                         </div>
+                         <p> <span class="text-base font-bold">Category : </span> Daging</p>
+                         <p class="text-justify"><span class="text-base font-bold">Description :</span> Sate Padang, Hidangan Sumatra Barat, daging tusuk dengan kuah gulai, lontong, telur, emping, terkenal di Indonesia.</p>
+                     </div>
                     </div>
-                    <p> <span class="text-base font-bold">Category : </span> Daging</p>
-                    <p class="text-justify"><span class="text-base font-bold">Description :</span> Sate Padang, Hidangan Sumatra Barat, daging tusuk dengan kuah gulai, lontong, telur, emping, terkenal di Indonesia.</p>
-                </div>
-               </div>
-               <div class="flex-row flex justify-between pb-5 px-5">
-                <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                      <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-                    </svg>
-                    Buy now
-                  </button>
-                <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                      <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-                    </svg>
-                    Buy now
-                  </button>
-               </div>
-            </div>  
+                    <div class="flex-row flex justify-between pb-5 px-5">
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                    </div>
+                 </div>
+                 
+                 <div class="flex flex-col bg-white-50 flex-wrap rounded-lg  w-[550px]">
+                    <div class="flex gap-x-6 p-6 ">
+                     <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg" alt="" class="w-[130px] h-[130px] rounded-lg">
+                     <div class="text-gray-500">
+                         <div class="flex justify-between">
+                             <p class="text-2xl font-bold text-black mb-2">Sate Padang</p>
+                             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                             </svg></button>
+                             <!-- Dropdown menu -->
+                             <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Dashboard</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Settings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Earnings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Sign out</a>
+                                 </li>
+                                 </ul>
+                             </div>
+     
+                         </div>
+                         <p> <span class="text-base font-bold">Category : </span> Daging</p>
+                         <p class="text-justify"><span class="text-base font-bold">Description :</span> Sate Padang, Hidangan Sumatra Barat, daging tusuk dengan kuah gulai, lontong, telur, emping, terkenal di Indonesia.</p>
+                     </div>
+                    </div>
+                    <div class="flex-row flex justify-between pb-5 px-5">
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                    </div>
+                 </div>
+                 <div class="flex flex-col bg-white-50 flex-wrap rounded-lg  w-[550px]">
+                    <div class="flex gap-x-6 p-6 ">
+                     <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg" alt="" class="w-[130px] h-[130px] rounded-lg">
+                     <div class="text-gray-500">
+                         <div class="flex justify-between">
+                             <p class="text-2xl font-bold text-black mb-2">Sate Padang</p>
+                             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                             </svg></button>
+                             <!-- Dropdown menu -->
+                             <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Dashboard</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Settings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Earnings</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Sign out</a>
+                                 </li>
+                                 </ul>
+                             </div>
+     
+                         </div>
+                         <p> <span class="text-base font-bold">Category : </span> Daging</p>
+                         <p class="text-justify"><span class="text-base font-bold">Description :</span> Sate Padang, Hidangan Sumatra Barat, daging tusuk dengan kuah gulai, lontong, telur, emping, terkenal di Indonesia.</p>
+                     </div>
+                    </div>
+                    <div class="flex-row flex justify-between pb-5 px-5">
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                     <button type="button" class="w-full justify-center text-white-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                         <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                           <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                         </svg>
+                         Buy now
+                       </button>
+                    </div>
+                 </div>
+            </div>
+
         </div>
     </div>
 @endsection
