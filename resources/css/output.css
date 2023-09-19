@@ -1758,6 +1758,11 @@ html {
   border-color: rgb(227 160 8 / var(--tw-border-opacity));
 }
 
+.bg-\[\#FFE8BF\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 232 191 / var(--tw-bg-opacity));
+}
+
 .bg-bgGray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
