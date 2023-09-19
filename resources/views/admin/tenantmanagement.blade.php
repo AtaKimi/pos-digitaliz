@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white mb-5">
+    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
         <div class="p-4">
             <div class="flex items-center">
                 <div class="mr-4 bg-yellow-50 rounded-xl p-5">
@@ -32,7 +32,7 @@
   </div>
     
   
-<div class="p-6 bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="p-6 bg-white-50 border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between pb-6">
         <div>
             <p class="text-lg font-semibold text-gray-700">Tenant List</p>
@@ -70,7 +70,7 @@
                 </tr>
             </thead>
             <tbody class="">
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
+                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
                     <th scope="row" class="font-normal text-gray-900 whitespace-nowrap dark:text-white py-5">
                         1
                     </th>
@@ -101,7 +101,7 @@
                     <td class="py-5">
                         <label class="relative inline-flex items-center mr-2 cursor-pointer">
                             <input type="checkbox" value="" class="sr-only peer" checked>
-                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
+                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
                         </label>
                     </td>
                     <td class="py-5">
@@ -119,7 +119,7 @@
                     </td>
                 </tr>
                 
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
+                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
                     <th scope="row" class="font-normal text-gray-900 whitespace-nowrap dark:text-white py-5">
                         2
                     </th>
@@ -145,12 +145,12 @@
                         </div>
                     </td>
                     <td class="py-5">
-                        <p class="w-30 bg-red-100 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center">Belum bayar</p>
+                        <p class="w-30 bg-red-200 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center">Belum bayar</p>
                     </td>
                     <td class="py-5">
                         <label class="relative inline-flex items-center mr-2 cursor-pointer">
                             <input type="checkbox" value="" class="sr-only peer" checked>
-                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
+                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
                         </label>
                     </td>
                     <td class="py-5">
@@ -168,7 +168,7 @@
                     </td>
                 </tr>
 
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
+                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-center">
                     <th scope="row" class="font-normal text-gray-900 whitespace-nowrap dark:text-white py-5">
                         3
                     </th>
@@ -188,7 +188,7 @@
                             <div>
                                 <!-- Title di sini -->
                                 <p class="text-left font-medium">Anya Forger</p>
-                                <!-- Subtitle di sini -->
+                                <!-- email di sini -->
                                 <p class="text-gray-500 text-xs">anyacomel@gmail.com</p>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                     <td class="py-5">
                         <label class="relative inline-flex items-center mr-2 cursor-pointer">
                             <input type="checkbox" value="" class="sr-only peer" checked>
-                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
+                            <div class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500"></div>
                         </label>
                     </td>
                     <td class="py-5">
@@ -233,19 +233,19 @@
             </a>
             <ul class="inline-flex -space-x-px text-xs">
                 <li>
-                  <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-300 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">1</a>
+                  <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-500 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">1</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">2</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">2</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">3</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">3</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">...</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">...</a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">10</a>
+                    <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-xl">10</a>
                 </li>
               </ul>
             <!-- Next Button -->
