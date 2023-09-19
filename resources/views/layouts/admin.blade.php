@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin</title>
-    @vite(['resources/css/output.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('file-header')
 </head>
 
-<body class="bg-slate-50">
+<body class="bg-red-50">
     <div class="bg-amber-200 h-80 w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
         <div class="col-span-1 bg-white rounded-3xl mr-10" style="height: 900px">
