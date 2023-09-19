@@ -10,10 +10,10 @@
     @yield('file-header')
 </head>
 
-<body class="bg-red-50">
+<body class="bg-white-300" style="background-co">
     <div class="bg-warning-300 h-80 w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
-        <div class="col-span-1 bg-white rounded-3xl mr-10" style="height: 900px">
+        <div class="col-span-1 bg-white-50 rounded-3xl mr-10" style="height: 900px">
             <div class="flex justify-center mb-2 pt-3">
                 <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
             </div>
@@ -21,7 +21,7 @@
             <div class="px-4 py-2">
                 <p class="text-gray-400 text-xs font-semibold">PAGES</p>
             </div>
-            <div class="flex px-5 py-4 mx-5 bg-yellow rounded-xl align-middle w-64">
+            <div class="flex px-5 py-4 mx-5 bg-yellow-500 rounded-xl align-middle w-64">
                 <div class="my-auto mr-5">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

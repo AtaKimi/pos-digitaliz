@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- Header --}}
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white mb-5">
+    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
       <div class="p-4">
           <div class="flex items-center">
             <div class="mr-4 bg-red-50 rounded-xl p-5">
@@ -25,7 +25,7 @@
       {{-- card --}}
       <div class="flex flex-col md:flex-row gap-10 mb-5">
         {{-- card 1 --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg w-full relative bg-white">
+        <div class="rounded-2xl overflow-hidden shadow-lg w-full relative bg-white-50">
           <div class="p-4">
               <div class="flex gap-2 items-center bg-yellow-50  rounded-full p-1 mb-3 w-fit">
                 <span class="bg-yellow-400 rounded-full p-1">
@@ -53,7 +53,7 @@
         </div>
 
         {{-- card 2 --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white">
+        <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white-50">
             <div class="p-4">
                 <div class="flex gap-2 items-center bg-green-50  rounded-full p-1 mb-3 w-fit">
                   <span class="bg-green-400 rounded-full p-1">
@@ -79,7 +79,7 @@
         </div>
 
         {{-- card 3 --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white">
+        <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white-50">
           <div class="p-4">
               <div class="flex gap-2 items-center bg-red-50  rounded-full p-1 mb-3 w-fit" >
                 <span class="bg-red-400 rounded-full p-1">
@@ -104,7 +104,7 @@
       
       {{-- Chart Start --}}
       <div class="grid grid-cols-2 gap-10 mt-10">
-        <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800">
+        <div class="w-full bg-white-50 rounded-lg shadow dark:bg-gray-800">
           <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
             <div>
               <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">$12,423</h5>
@@ -134,7 +134,7 @@
                 </svg>
               </button>
               <!-- Dropdown menu -->
-              <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <div id="lastDaysdropdown" class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                     <li>
                       <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
@@ -165,7 +165,7 @@
           </div>
         </div>
         
-        <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+        <div class="w-full bg-white-50 rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
           <div class="flex justify-between border-gray-200 border-b dark:border-gray-700 pb-3">
             <dl>
               <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Profit</dt>
@@ -208,7 +208,7 @@
                   </svg>
                 </button>
                 <!-- Dropdown menu -->
-                <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <div id="lastDaysdropdown" class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                       <li>
                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
@@ -248,7 +248,7 @@
       {{-- Chart End --}}
 
       {{-- Table Order Start --}}
-      <div class="relative mt-10 overflow-x-auto shadow-md sm:rounded-lg bg-white">
+      <div class="relative mt-10 overflow-x-auto shadow-md sm:rounded-lg bg-white-50">
         <h3 class="p-6 font-bold">Order list</h3>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -268,7 +268,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         AF-001
                     </th>
@@ -287,7 +287,7 @@
                       </a>
                     </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         AF-002
                     </th>
@@ -306,7 +306,7 @@
                       </a>
                     </td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="bg-white-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         AF-003
                     </th>

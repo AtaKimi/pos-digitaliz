@@ -4,7 +4,7 @@
 
     {{-- Header --}}
     <div class="pb-4">
-      <div class="rounded-2xl overflow-hidden shadow-lg bg-white mb-5">
+      <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
         <div class="p-4">
             <div class="flex items-center">
               <div class="mr-4 bg-red-50 rounded-xl p-5">
@@ -27,7 +27,7 @@
             <div class="max-w-sm w-full lg:max-w-full lg:flex"> 
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg')" title="Woman holding a mug">
                 </div>
-                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white-50 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                   <div class="mb-8">
                     <p class="text-sm text-gray-600 flex items-center">
                       <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
