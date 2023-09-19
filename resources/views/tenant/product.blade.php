@@ -24,7 +24,7 @@
         </div>
           {{-- card 1 --}}
           <div class="flex flex-wrap gap-10 mb-5">
-            <div class="max-w-sm w-full lg:max-w-full lg:flex">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex"> 
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg')" title="Woman holding a mug">
                 </div>
                 <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
