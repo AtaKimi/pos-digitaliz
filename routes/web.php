@@ -25,8 +25,8 @@ Route::get('/', function () {
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin', 'index')->name('admin-index');
     Route::get('/admin/tenant-management', 'tenantManagement')->name('admin-tenant-management');
-    Route::get('/admin/detail', function () {
-        return view('admin.detail');
+    Route::get('/admin/tenant-detail', function () {
+        return view('admin.tenant-detail');
     })->name('admin-detail');
 });
 
@@ -34,12 +34,14 @@ Route::controller(AdminController::class)->group(function () {
 // Routes for tenant
 Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant', 'index')->name('tenant-index');
-    Route::get('/tenant/product', function () {
-        return view('tenant.product');
-    })->name('tenant-product');
     Route::get('/tenant/order', function () {
         return view('tenant.order');
     })->name('tenant-order');
+    Route::get('/tenant/order/detail/', 'tenantOrderDetail')->name('tenant-index');
+    Route::get('/tenant/product', function () {
+        return view('tenant-product');
+    })->name('tenant-product');
+
 });
 
 

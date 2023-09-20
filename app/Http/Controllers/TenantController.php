@@ -15,6 +15,11 @@ class TenantController extends Controller
         return view('tenant.index');
     }
 
+    public function tenantOrderDetail()
+    {
+        return view('tenant.order-detail');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
