@@ -14,7 +14,7 @@
 </svg>
               </div>
               <div>
-                <!-- Title dic sini -->
+                <!-- Title di sini -->
                 <p class="font-bold text-xl text-gray-900">Order</p>
                 <!-- Subtitle di sini -->
                 <p class="text-gray-600">Akses melihat pesanan pelanggan sesuai nomor meja</p>
