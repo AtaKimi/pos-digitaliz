@@ -10,13 +10,13 @@
     @yield('file-header')
 </head>
 
-<body class="bg-white-300" style="height: 1500px">
+<body class="bg-white-300">
     <div class="bg-red-500 h-80 w-full p-8 flex" >
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
         <aside id="separator-sidebar"
-            class="fixed top-0 left-0 z-40 w-fit h-screen transition-transform -translate-x-full lg:translate-x-0 m-8"
+            class="fixed top-0 left-0 z-40 w-fit p-8 h-screen transition-transform -translate-x-full lg:translate-x-0"
             aria-label="Sidebar">
-            <div class="col-span-1 bg-white-50 rounded-3xl mr-10" style="height: 900px">
+            <div class="col-span-1 bg-white-50 rounded-3xl h-full mr-10">
                 <div class="flex justify-center mb-2 pt-3">
                     <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
                 </div>
