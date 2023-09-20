@@ -30,6 +30,9 @@ Route::controller(AdminController::class)->group(function () {
 // Routes for tenant
 Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant', 'index')->name('tenant-index');
+    Route::get('/tenant/product', function () {
+        return view('tenant.product');
+    })->name('tenant-product');
     Route::get('/tenant/order', function () {
         return view('tenant.order');
     })->name('tenant-order');

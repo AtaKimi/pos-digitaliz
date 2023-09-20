@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tenant</title>
+    <title>Admin</title>
     @vite(['resources/css/output.css', 'resources/js/app.js'])
     @yield('file-header')
 </head>
 
-<body class="bg-bgGray-100">
-    <div class="bg-primaryRed-100 h-[280px] w-full p-8 flex">
+<body class="bg-grey-200">
+    <div class="bg-red-500 h-[280px] w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
-        <div class="col-span-1 bg-white rounded-3xl mr-10" style="height: 900px">
+        <div class="col-span-1 bg-white-50 rounded-3xl mr-10" style="height: 900px">
             <div class="flex justify-center mb-2 pt-3">
                 <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
             </div>
@@ -21,7 +21,7 @@
             <div class="px-4 py-2">
                 <p class="text-gray-400 text-xs font-semibold">PAGES</p>
             </div>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant-index' ? 'bg-primaryRed-100 text-white' : '' }}"  href="{{ route('tenant-index') }}">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant-index' ? 'bg-red-500 text-white' : '' }}"  href="{{ route('tenant-index') }}">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -47,7 +47,7 @@
                     <span class="nav-link-text ms-1">Order</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant-product' ? 'bg-red-500 text-white my-5' : '' }}"  href="{{ route('tenant-product') }}">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@
                     <span class="nav-link-text ms-1">Product</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-red-500 text-white my-5' : '' }}"  href="#">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +68,7 @@
                     <span class="nav-link-text ms-1">Category</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-red-500 text-white my-5' : '' }}"  href="#">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@
                     <span class="nav-link-text ms-1">Desk</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-red-500 text-white my-5' : '' }}"  href="#">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@
                     <span class="nav-link-text ms-1">Service Payment</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-red-500 text-white my-5' : '' }}"  href="#">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +107,7 @@
                     <span class="nav-link-text ms-1">Waiters</span>
                 </div>
             </a>
-            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-primaryRed-100 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-primaryRed-100 text-white my-5' : '' }}"  href="#">
+            <a class="flex p-5 mx-5 bg-amber-400 nav-link rounded-xl align-middle w-64 hover:bg-red-500 hover:my-2 hover:text-white {{ Route::currentRouteName() == 'tenant' ? 'bg-red-500 text-white my-5' : '' }}"  href="#">
                 <div class="flex items-center">
                     <div class="my-auto mr-5">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +157,7 @@
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdown"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                 aria-labelledby="dropdownDefaultButton">
                                 <li>
@@ -193,7 +193,5 @@
 
     </div>
 
-    @yield('file-footer')
-</body>
 
 </html>
