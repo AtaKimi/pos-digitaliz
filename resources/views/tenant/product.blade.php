@@ -29,8 +29,8 @@
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row mx-2 my-2 h-full">
-            <div class="w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 px-5 mr-3">
+        <div class="flex flex-col md:flex-row mx-5 my-2 h-full">
+            <div class="w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 px-5 mr-5">
                 <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-4">Add Images</label>
                 <div class="flex items-center justify-center w-full">
                     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-60 border-2 border-blue-400 border-dashed rounded-lg cursor-pointer bg-gray-100 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-end mx-5">
+        <div class="flex justify-end mx-2 my-5">
             <button type="button"
                 class="text-red-500 bg-white border border-red-400 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Back</button>
             <button type="button"
