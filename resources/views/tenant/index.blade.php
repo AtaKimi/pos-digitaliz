@@ -2,9 +2,10 @@
 
 @section('content')
 
-    {{-- Header --}}
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5 ">
-      <div class="p-4">
+    <div class="pb-10">
+      {{-- Header --}}
+      <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+        <div class="p-4">
           <div class="flex items-center">
             <div class="mr-4 bg-red-50 rounded-xl p-5">
               <!-- Icon di sini -->
@@ -245,6 +246,36 @@
                 </tr>
             </tbody>
         </table>
+          <div class="flex justify-center py-4">
+            <span class="text-sm text-gray-700 dark:text-gray-400 py-2 me-3">
+              Showing <span class="font-semibold text-gray-900 dark:text-white">1</span> to <span class="font-semibold text-gray-900 dark:text-white">10</span> of <span class="font-semibold text-gray-900 dark:text-white">100</span> Entries
+          </span>
+            <nav aria-label="Page navigation example">
+              <ul class="inline-flex -space-x-px text-base h-10">
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                </li>
+                <li>
+                  <a href="#" aria-current="page" class="flex items-center justify-center px-4 h-10 text-white-100 border border-gray-300 bg-red-500 hover:bg-red-600 hover:text-white-50 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
       </div>  
       {{-- Table Order End --}}
     </div>
