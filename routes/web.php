@@ -31,7 +31,7 @@ Route::controller(AdminController::class)->group(function () {
 });
 
 
-// Routes for tenant
+// Routes ford tenant
 Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant', 'index')->name('tenant-index');
     Route::get('/tenant/product', function () {
