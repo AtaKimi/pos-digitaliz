@@ -1473,10 +1473,6 @@ html {
   margin-right: 1.5rem;
 }
 
-.ms-1{
-  margin-inline-start: 0.25rem;
-}
-
 .mt-1{
   margin-top: 0.25rem;
 }
@@ -1595,10 +1591,6 @@ html {
 
 .h-\[130px\]{
   height: 130px;
-}
-
-.h-\[280px\]{
-  height: 280px;
 }
 
 .h-\[500px\]{
@@ -2135,11 +2127,6 @@ html {
 .bg-green-500{
   --tw-bg-opacity: 1;
   background-color: rgb(67 244 138 / var(--tw-bg-opacity));
-}
-
-.bg-grey-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(221 217 217 / var(--tw-bg-opacity));
 }
 
 .bg-orange-100{
@@ -2782,11 +2769,6 @@ html {
 .after\:content-\[\'\'\]::after{
   --tw-content: '';
   content: var(--tw-content);
-}
-
-.hover\:my-2:hover{
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .hover\:border-gray-200:hover{
