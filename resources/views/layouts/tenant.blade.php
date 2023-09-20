@@ -140,78 +140,7 @@
 
         <div class="w-full lg:ml-80">
             {{-- -------------------------------- nav bar start ----------------------------------------------- --}}
-            <nav class="flex justify-between w-full mb-8">
-                <div class="flex items-center">
-                    <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
-                    aria-controls="separator-sidebar" type="button"
-                    class=" p-2 mt-2 mr-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                    <span class="sr-only">Open sidebar</span>
-                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path clip-rule="evenodd" fill-rule="evenodd"
-                            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                        </path>
-                    </svg>
-                </button>
-                <div class="sm:block hidden">
-                    <p class="text-sm">Pages / Dashboard</p>
-                    <p class="text-lg font-semibold">Dashboard</p>
-                </div>
-                </div>
-                <div class="flex align-middle">
-                    <div class="mr-5 w-5 h-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21"
-                            fill="none">
-                            <path
-                                d="M11.7558 1.81298C11.2398 0.0623389 8.76017 0.0623395 8.24417 1.81298L8.11904 2.23754C7.78934 3.35613 6.51169 3.88534 5.4876 3.32752L5.09891 3.1158C3.49615 2.24277 1.74277 3.99616 2.6158 5.59891L2.82752 5.9876C3.38534 7.01169 2.85612 8.28934 1.73754 8.61904L1.31298 8.74417C-0.437661 9.26017 -0.437661 11.7398 1.31298 12.2558L1.73754 12.381C2.85613 12.7107 3.38534 13.9883 2.82752 15.0124L2.6158 15.4011C1.74277 17.0038 3.49615 18.7572 5.09891 17.8842L5.4876 17.6725C6.51169 17.1147 7.78934 17.6439 8.11904 18.7625L8.24417 19.187C8.76017 20.9377 11.2398 20.9377 11.7558 19.187L11.881 18.7625C12.2107 17.6439 13.4883 17.1147 14.5124 17.6725L14.9011 17.8842C16.5038 18.7572 18.2572 17.0038 17.3842 15.4011L17.1725 15.0124C16.6147 13.9883 17.1439 12.7107 18.2625 12.381L18.687 12.2558C20.4377 11.7398 20.4377 9.26017 18.687 8.74417L18.2625 8.61904C17.1439 8.28934 16.6147 7.01169 17.1725 5.9876L17.3842 5.59891C18.2572 3.99615 16.5038 2.24277 14.9011 3.1158L14.5124 3.32752C13.4883 3.88534 12.2107 3.35612 11.881 2.23754L11.7558 1.81298ZM10 14.161C7.97808 14.161 6.33898 12.5219 6.33898 10.5C6.33898 8.47808 7.97808 6.83898 10 6.83898C12.0219 6.83898 13.661 8.47808 13.661 10.5C13.661 12.5219 12.0219 14.161 10 14.161Z"
-                                fill="#ffffff" />
-                        </svg></div>
-                    <div class="mr-5 w-5 h-5"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-                        <path d="M10.5 20C11.8807 20 13 18.8807 13 17.5H8C8 18.8807 9.11929 20 10.5 20Z" fill="white"/>
-                        <path d="M11.7439 1.37379C11.748 1.33307 11.75 1.29177 11.75 1.25C11.75 0.559644 11.1904 0 10.5 0C9.80964 0 9.25 0.559644 9.25 1.25C9.25 1.29178 9.25205 1.33308 9.25605 1.3738C6.40025 1.95056 4.25003 4.47417 4.25003 7.5C4.25003 8.87201 3.625 15 1.75 16.25H19.25C17.375 15 16.75 8.87201 16.75 7.5C16.75 4.47415 14.5998 1.95053 11.7439 1.37379Z" fill="white"/>
-                      </svg></div>
-                    <div class="mr-5 ">
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="flex focus:ring-4 focus:outline-none focus:ring-blue-300 text-white-50" type="button">
-                            <img class="rounded-full w-6 h-6"
-                            src="{{ asset('assets/img/anya-profile.png') }}" alt="">
-                            <span
-                                class="mr-2 text-sm font-medium mx-2.5">Anya Forger
-                            </span>
-                            <svg
-                                class="w-2.5 h-2.5 my-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown"
-                            class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Earnings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Sign
-                                        out</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+            @include('includes.navbar')
             {{-- -------------------------------- nav bar end ----------------------------------------------- --}}
 
             {{-- -------------------------------- Contentr start ----------------------------------------------- --}}
