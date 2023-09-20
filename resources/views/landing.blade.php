@@ -93,7 +93,7 @@
 
     {{-- scroll to top button --}}
     <a href="#navbar"
-        class="fixed bottom-4 right-4 p-1 md:p-3 z-20 bg-red-500 text-white-50 rounded-xl shadow hover:bg-white-50 hover:text-gray-900">
+        class="fixed bottom-4 right-4 p-1 md:p-3 z-50 bg-red-500 text-white-50 rounded-xl shadow hover:bg-white-50 hover:text-gray-900">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
             class="w-6 h-6 inline-block align-text-bottom">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
@@ -349,7 +349,7 @@
     {{-- our team end --}}
 
     {{-- pricing --}}
-    <div id="pricing" class="bg-no-repeat bg-cover flex flex-col md:flex-row gap-10 px-20 py-28 bg-[url('/public/assets/img/pricing.jpg')]">
+    <div id="pricing" class="bg-no-repeat bg-cover flex flex-col md:flex-row gap-10 md:p-20 p-5 bg-[url('/public/assets/img/pricing.jpg')]">
       <div class="text-red-600">
         <h6 class="text-2xl tracking-widest font-medium mb-6">
           Gabung sekarang
@@ -373,7 +373,7 @@
     </span>
 
       </div>
-      <div class="bg-white-100 p-10 rounded-3xl">
+      {{-- <div class="bg-white-100 p-10 rounded-3xl">
         <h3 class="text-red-600 mb-2 text-[32px] font-medium">3 Bulan</h3>
         <p class="text-lg mb-9">
           Berlangganan bersama kami dengan paket 3 bulan. Bertempat di Wetland
@@ -393,11 +393,125 @@
             Hubungi kami
           </button>
         </div>
-      </div>
+      </div> --}}
+
+      {{-- carousel test --}}
+
+<div id="indicators-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-[450px] overflow-hidden rounded-2xl">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <div class="bg-white-100 p-10 rounded-2xl">
+                <h3 class="text-red-600 mb-2 text-[32px] font-medium">3 Bulan</h3>
+                <p class="text-lg mb-9">
+                  Berlangganan bersama kami dengan paket 3 bulan. Bertempat di Wetland
+                  Square Banjarmasin.
+                </p>
+                <h2 class="text-[46px] font-semibold">Rp. 499.000</h2>
+                <h4 class="text-2xl text-gray-600 leading-6 mb-9">Per outlet</h4>
+                <div class="flex flex-row gap-5">
+                  <button
+                    class="px-8 py-2 w-full bg-red-500 font-medium rounded-xl text-white-100 tracking-wide"
+                  >
+                    Pilih paket
+                  </button>
+                  <button
+                    class="px-6 py-2 w-full border-2 border-red-500 font-medium rounded-xl text-red-500 tracking-wide"
+                  >
+                    Hubungi kami
+                  </button>
+                </div>
+              </div>
+            </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="bg-white-100 p-10 rounded-2xl">
+                <h3 class="text-red-600 mb-2 text-[32px] font-medium">6 Bulan</h3>
+                <p class="text-lg mb-9">
+                  Berlangganan bersama kami dengan paket 6 bulan. Bertempat di Wetland
+                  Square Banjarmasin.
+                </p>
+                <h2 class="text-[46px] font-semibold">Rp. 899.000</h2>
+                <h4 class="text-2xl text-gray-600 leading-6 mb-9">Per outlet</h4>
+                <div class="flex flex-row gap-5">
+                  <button
+                    class="px-8 py-2 w-full bg-red-500 font-medium rounded-xl text-white-100 tracking-wide"
+                  >
+                    Pilih paket
+                  </button>
+                  <button
+                    class="px-6 py-2 w-full border-2 border-red-500 font-medium rounded-xl text-red-500 tracking-wide"
+                  >
+                    Hubungi kami
+                  </button>
+                </div>
+              </div>
+            </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="bg-white-100 p-10 rounded-2xl">
+                <h3 class="text-red-600 mb-2 text-[32px] font-medium">1 Tahun</h3>
+                <p class="text-lg mb-9">
+                  Berlangganan bersama kami dengan paket 1 Tahun. Bertempat di Wetland
+                  Square Banjarmasin.
+                </p>
+                <h2 class="text-[46px] font-semibold">Rp. 1.299.000</h2>
+                <h4 class="text-2xl text-gray-600 leading-6 mb-9">Per outlet</h4>
+                <div class="flex flex-row gap-5">
+                  <button
+                    class="px-8 py-2 w-full bg-red-500 font-medium rounded-xl text-white-100 tracking-wide"
+                  >
+                    Pilih paket
+                  </button>
+                  <button
+                    class="px-6 py-2 w-full border-2 border-red-500 font-medium rounded-xl text-red-500 tracking-wide"
+                  >
+                    Hubungi kami
+                  </button>
+                </div>
+              </div>
+            </div>
+
+    </div>
+    <!-- Slider indicators -->
+    {{-- <div id="slider-indicators" class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+        <button type="button" class="w-3 h-3 rounded-full bg-red-500" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0 bg-red-500"></button>
+        <button type="button" class="w-3 h-3 rounded-full border-2 border-white-100" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full border-2 border-white-100" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+    </div> --}}
+    <!-- Slider controls -->
+    {{-- <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button> --}}
+</div>
+<div id="slider-indicators" class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+    <button type="button" class="w-3 h-3 rounded-full bg-red-500" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0 bg-red-500"></button>
+    <button type="button" class="w-3 h-3 rounded-full border-2 border-white-100" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+    <button type="button" class="w-3 h-3 rounded-full border-2 border-white-100" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+</div>
+
+
+
+      {{-- carousel end --}}
 
     </div>
     {{-- pricing end --}}
 @endsection
 
 @section('file-footer')
+
 @endsection
