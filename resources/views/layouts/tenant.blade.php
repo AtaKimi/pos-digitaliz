@@ -10,7 +10,7 @@
     @yield('file-header')
 </head>
 
-<body class="bg-white-300" style="height: 1500px">
+<body class="bg-white-300">
     <div class="bg-red-500 h-80 w-full p-8 flex" >
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
         <aside id="separator-sidebar"
