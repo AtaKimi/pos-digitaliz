@@ -30,7 +30,6 @@ Route::controller(AdminController::class)->group(function () {
     })->name('admin-detail');
 });
 
-
 // Routes for tenant
 Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant', 'index')->name('tenant-index');
@@ -40,6 +39,7 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/order', function () {
         return view('tenant.order');
     })->name('tenant-order');
+    Route::get('/category', 'category')->name('tenant-category');
 });
 
 

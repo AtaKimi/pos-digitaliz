@@ -309,7 +309,7 @@
         </div>
 
         <div class="bg-white w-full p-8 rounded-3xl shadow-md mb-8 bg-white-50">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between p-8">
                 <h4 class="text-lg font-semibold">Waiter List</h4>
                 <div class="flex gap-4">
                     <form>
@@ -434,7 +434,10 @@
                                 <a href="#"
                                     class="flex items-center justify-center px-4 h-10 leading-tight  bg-white border border-gray-300 rounded-lg ">2</a>
                             </li>
-
+                            <li>
+                                <a href="#"
+                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-white border border-gray-300 rounded-lg ">3</a>
+                            </li>
                             <li>
                                 <a href="#"
                                     class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border-none rounded-lg rounded-r-lg ">Next</a>
@@ -476,13 +479,11 @@
                         <p class="font-bold text-2xl">Tangihan</p>
                         <p class="text-2xl font-bold" data-modal-target="modal-bill" data-modal-toggle="modal-bill">X</p>
                     </div>
-                    <div class="">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Total Transfer</label>
-                        <input type="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Rp" required>
-                    </div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Total Transfer</label>
+                    <input type="email" id="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Rp" required>
                     {{-- <div class="relative">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Waktu Transfer</label>
@@ -501,7 +502,6 @@
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Waktu Transfer</label>
                         <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
-
                         </div>
                         <div class="flex items-center border rounded-lg relative">
                             <svg class="absolute left-2 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -532,7 +532,6 @@
                     </div>
                     <button type="button"
                         class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3 dark:focus:ring-yellow-900">Save</button>
-
                 </div>
             </div>
         </div>
