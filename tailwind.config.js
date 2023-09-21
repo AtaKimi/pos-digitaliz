@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-
 module.exports = {
     content: [
         "./resources/**/*.blade.php",
@@ -69,7 +68,7 @@ module.exports = {
                     800: "#854958",
                     900: "#6E2C43",
                 },
-                'red': {
+                red: {
                     100: "#FFEDED",
                     200: "#FFC4C4",
                     300: "#FF9B9C",
@@ -80,7 +79,7 @@ module.exports = {
                     800: "#7B0E0F",
                     900: "#520505",
                 },
-                'pink': {
+                pink: {
                     200: "#FEF2F2",
                     300: "#E4D5D5",
                     400: "#CBB9B9",
@@ -90,7 +89,7 @@ module.exports = {
                     800: "#655454",
                     900: "#4C3D3D",
                 },
-                'grey': {
+                grey: {
                     100: "#F1F1F1",
                     200: "#DDD9D9",
                     300: "#C8C2C2",
@@ -101,7 +100,7 @@ module.exports = {
                     800: "#625757",
                     900: "#4E4444",
                 },
-                'green': {
+                green: {
                     200: "#ECFFF4",
                     300: "#B5FFD2",
                     400: "#7DFFB1",
@@ -111,7 +110,7 @@ module.exports = {
                     800: "#077935",
                     900: "#005120",
                 },
-                'yellow': {
+                yellow: {
                     200: "#FFF9EF",
                     300: "#FFE8BF",
                     400: "#FFD78F",
@@ -124,8 +123,6 @@ module.exports = {
             },
         },
         colors: {
-         
-
             // ...
         },
     },

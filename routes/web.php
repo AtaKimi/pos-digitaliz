@@ -22,18 +22,26 @@ Route::get('/', function () {
 
 
 // Routes for admin
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin', 'index')->name('admin-index');
-    Route::get('/admin/detail', function () {
-        return view('admin.detail');
-    })->name('admin-index');
+
+
+Route::prefix('admin')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/', 'index')->name('admin-index');
+        Route::get('/detail-tenant', 'detailTenant')->name('admin-detail-tenant');
+    });
 });
+
+Route::prefix('tenant')->group(function () {
+    Route::controller(TenantController::class)->group(function () {
+        Route::get('/', 'index')->name('tenant-index');
+        Route::get('/category', 'category')->name('tenant-category');
+    });
+});
+
+
 
 
 // Routes for tenant
-Route::controller(TenantController::class)->group(function () {
-    Route::get('/tenant', 'index')->name('tenant-index');
-});
 
 
 // Routes for waiter
