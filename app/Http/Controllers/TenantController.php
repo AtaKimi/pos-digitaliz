@@ -12,7 +12,7 @@ class TenantController extends Controller
      */
     public function index()
     {
-        return view('tenant.product');
+        return view('tenant.waiters-list');
     }
 
     public function category()
