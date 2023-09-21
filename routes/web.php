@@ -36,10 +36,10 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/order', function () {
         return view('tenant.order');
     })->name('tenant-order');
-    Route::get('/category', 'category')->name('tenant-category');
+    Route::get('/tenant/category', 'category')->name('tenant-category');
     Route::get('/tenant/order/detail/', 'tenantOrderDetail')->name('tenant-index');
     Route::get('/tenant/product', function () {
-        return view('tenant-product');
+        return view('tenant.product');
     })->name('tenant-product');
 
 });
