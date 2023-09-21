@@ -20,7 +20,7 @@
 
     <div class="w-full bg-white-200 rounded-xl p-8 mb-8">
         <p class="font-semibold text-gray-900 mb-5">Add Product</p>
-        <div class="flex justify-between gap-6 mb-6">
+        <div class="flex flex-col md:flex-row justify-between gap-6 mb-6">
             <div class="flex flex-col gap-4 border border-gray-400 bg-white-50 rounded-xl p-8 w-full">
                 <p class="font-semibold text-gray-600">Add Images</p>
                 <div class="flex items-center justify-center w-full">
