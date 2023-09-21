@@ -41,7 +41,7 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/product', function () {
         return view('tenant.product');
     })->name('tenant-product');
-
+    Route::get('/tenant/service-payment', 'servicePayment')->name('tenant-payment');
 });
 
 
