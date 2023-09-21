@@ -36,6 +36,9 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/order', function () {
         return view('tenant.order');
     })->name('tenant-order');
+    Route::get('/tenant/desk', function () {
+        return view('tenant.desk');
+    })->name('tenant-desk');
 });
 
 
