@@ -1,7 +1,7 @@
 @extends('layouts.tenant')
 
 @section('content')
-<div class="">
+    <div class="">
         <div class="flex bg-white justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
             <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
                 class="fill-yellow-500 bg-yellow-200 w-20 p-5 rounded-lg ">
@@ -287,7 +287,4 @@
         </div>
 
     </div>
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
 @endsection
