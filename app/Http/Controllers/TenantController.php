@@ -24,6 +24,10 @@ class TenantController extends Controller
     {
         return view('tenant.order-detail');
     }
+    public function servicePayment()
+    {
+        return view('tenant.service-payment');
+    }
 
     public function formProduct()
     {
