@@ -252,7 +252,7 @@
                     <div class="flex grid-cols-2 gap-3">
                         <button
                             class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                        <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
+                        <button class="py-2 w-full bg-red-600 text-white-50 rounded-lg font-bold">Konfirmasi</button>
                     </div>
                 </div>
             </div>
