@@ -2,11 +2,16 @@
 
 module.exports = {
     content: [
-      "./resources/views/**/*.blade.php",
-      "./resources/**/*.blade.php",
-      "./resources/**/*.js",
-      "./resources/**/*.vue",
-      "./node_modules/flowbite/**/*.js",
+        "./resources/views/**/*.blade.php",
+        "./resources/views/admin/**/*.blade.php",
+        "./resources/views/includes/**/*.blade.php",
+        "./resources/views/layouts/**/*.blade.php",
+        "./resources/views/tenant/**/*.blade.php",
+        "./resources/views/waiter/**/*.blade.php",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js",
     ],
     theme: {
         extend: {
@@ -45,8 +50,9 @@ module.exports = {
                     800: "#670909",
                     900: "#450303",
                 },
+                // Tambahkan definisi warna "info" di sini
                 info: {
-                    50: "##EBF3FF",
+                    50: "#EBF3FF",
                     100: "#C0D8FF",
                     200: "#94BDFF",
                     300: "#69A2FF",
@@ -122,9 +128,6 @@ module.exports = {
                     900: "#5A400F",
                 },
             },
-        },
-        colors: {
-            // ...
         },
     },
     plugins: [
