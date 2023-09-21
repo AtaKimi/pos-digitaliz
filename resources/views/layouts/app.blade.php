@@ -6,6 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>POS Digitaliz</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+          anchorLinks.forEach(function (link) {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              const targetId = link.getAttribute("href");
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            });
+          });
+        });
+      </script>
     @yield('file-header')
 </head>
 <body>

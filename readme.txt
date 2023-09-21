@@ -5,7 +5,7 @@ npm i
 php artisan key:generate
 php artisan migrate --seed
 
-always run scripts below before developing, there should be atleast 3 terminal running for each script below 
+always run scripts below before developing, there should be atleast 3 terminal running for each script below
 php artisan serve
 npm run dev
 npm run watch:tailwind

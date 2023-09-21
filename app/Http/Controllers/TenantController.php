@@ -12,7 +12,17 @@ class TenantController extends Controller
      */
     public function index()
     {
-        return view('tenant.waiters_list');
+        return view('tenant.product');
+    }
+
+    public function category()
+    {
+        return view('tenant.category');
+    }
+    
+    public function tenantOrderDetail()
+    {
+        return view('tenant.order-detail');
     }
 
     /**
