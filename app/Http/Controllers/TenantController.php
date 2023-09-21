@@ -25,6 +25,11 @@ class TenantController extends Controller
         return view('tenant.order-detail');
     }
 
+    public function formProduct()
+    {
+        return view('tenant.form-product');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
