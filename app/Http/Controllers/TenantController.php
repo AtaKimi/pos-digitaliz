@@ -15,6 +15,25 @@ class TenantController extends Controller
         return view('tenant.index');
     }
 
+    public function category()
+    {
+        return view('tenant.category');
+    }
+    
+    public function tenantOrderDetail()
+    {
+        return view('tenant.order-detail');
+    }
+    public function servicePayment()
+    {
+        return view('tenant.service-payment');
+    }
+
+    public function formProduct()
+    {
+        return view('tenant.form-product');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

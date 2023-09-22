@@ -81,65 +81,8 @@
 
         <div class="w-full">
             {{-- -------------------------------- nav bar start ----------------------------------------------- --}}
-            <nav class="flex justify-between w-full mb-8">
-                <div>
-                    <p class="text-sm">Pages / Dashboard</p>
-                    <p class="text-lg font-semibold">Dashboard</p>
-                </div>
-                <div class="flex align-middle">
-                    <div class="mr-5 w-5 h-5 my-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21"
-                            fill="none">
-                            <path
-                                d="M11.7558 1.81298C11.2398 0.0623389 8.76017 0.0623395 8.24417 1.81298L8.11904 2.23754C7.78934 3.35613 6.51169 3.88534 5.4876 3.32752L5.09891 3.1158C3.49615 2.24277 1.74277 3.99616 2.6158 5.59891L2.82752 5.9876C3.38534 7.01169 2.85612 8.28934 1.73754 8.61904L1.31298 8.74417C-0.437661 9.26017 -0.437661 11.7398 1.31298 12.2558L1.73754 12.381C2.85613 12.7107 3.38534 13.9883 2.82752 15.0124L2.6158 15.4011C1.74277 17.0038 3.49615 18.7572 5.09891 17.8842L5.4876 17.6725C6.51169 17.1147 7.78934 17.6439 8.11904 18.7625L8.24417 19.187C8.76017 20.9377 11.2398 20.9377 11.7558 19.187L11.881 18.7625C12.2107 17.6439 13.4883 17.1147 14.5124 17.6725L14.9011 17.8842C16.5038 18.7572 18.2572 17.0038 17.3842 15.4011L17.1725 15.0124C16.6147 13.9883 17.1439 12.7107 18.2625 12.381L18.687 12.2558C20.4377 11.7398 20.4377 9.26017 18.687 8.74417L18.2625 8.61904C17.1439 8.28934 16.6147 7.01169 17.1725 5.9876L17.3842 5.59891C18.2572 3.99615 16.5038 2.24277 14.9011 3.1158L14.5124 3.32752C13.4883 3.88534 12.2107 3.35612 11.881 2.23754L11.7558 1.81298ZM10 14.161C7.97808 14.161 6.33898 12.5219 6.33898 10.5C6.33898 8.47808 7.97808 6.83898 10 6.83898C12.0219 6.83898 13.661 8.47808 13.661 10.5C13.661 12.5219 12.0219 14.161 10 14.161Z"
-                                fill="#101010" />
-                        </svg></div>
-                    <div class="mr-5 w-5 h-5 my-auto"><svg xmlns="http://www.w3.org/2000/svg" class="my-auto"
-                            width="20" height="21" viewBox="0 0 20 21" fill="none">
-                            <path d="M10 20.5C11.3807 20.5 12.5 19.3807 12.5 18H7.5C7.5 19.3807 8.61929 20.5 10 20.5Z"
-                                fill="#101010" />
-                            <path
-                                d="M11.2439 1.87379C11.248 1.83307 11.25 1.79177 11.25 1.75C11.25 1.05964 10.6904 0.5 10 0.5C9.30964 0.5 8.75 1.05964 8.75 1.75C8.75 1.79178 8.75205 1.83308 8.75605 1.8738C5.90025 2.45056 3.75003 4.97417 3.75003 8C3.75003 9.37201 3.125 15.5 1.25 16.75H18.75C16.875 15.5 16.25 9.37201 16.25 8C16.25 4.97415 14.0998 2.45053 11.2439 1.87379Z"
-                                fill="#101010" />
-                        </svg></div>
-                    <div class="mr-5 ">
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="flex align-middle focus:ring-4 focus:outline-none focus:ring-blue-300 "
-                            type="button"><span class="my-auto mr-2 font-medium">Anya
-                                Forger</span><img class="rounded-full w-10 h-10"
-                                src="{{ asset('assets/img/anya-profile.png') }}" alt=""> <svg
-                                class="w-2.5 h-2.5 ml-2.5 my-auto" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg></button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                        out</a>
-                                </li>
-                            </ul>
-                        </div>
+            @include('includes.navbar')
 
-                    </div>
-                </div>
-            </nav>
             {{-- -------------------------------- nav bar end ----------------------------------------------- --}}
 
             {{-- -------------------------------- Contentr start ----------------------------------------------- --}}
