@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,11 +42,16 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/product', function () {
         return view('tenant.product');
     })->name('tenant-product');
-
+    Route::get('/tenant/service-payment', 'servicePayment')->name('tenant-payment');
+    Route::get('/tenant/product/form', 'formProduct')->name('tenant-form-product');
 });
 
 
 // Routes for waiter
 Route::controller(WaiterController::class)->group(function () {
     Route::get('/waiter', 'index')->name('waiter-index');
+});
+
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/costumer', 'index')->name('customer-index');
 });

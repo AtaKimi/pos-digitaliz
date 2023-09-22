@@ -183,7 +183,7 @@
             </div>
         </div>
         <div class="flex justify-end">
-            <button class="flex bg-grey-200 py-2 px-3 rounded-xl items-center">
+            <button class="flex bg-grey-200 py-3 px-4 rounded-xl items-center">
                 <p class="text-sm  text-gray-700 mr-2">Next Order</p>
                 <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -217,8 +217,9 @@
         </div>
         <div class="flex justify-between items-center mb-5">
             <h1 class="font-bold text-lg">Services</h1>
-            <button class="flex bg-yellow-500 py-2 px-3 rounded-xl items-center">
-                <p class="text-sm  text-white-50 mr-2">Next Order</p>
+            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                class="flex bg-yellow-500 py-3 px-4 rounded-xl items-center">
+                <p class="text-sm  text-white-50 mr-2">Cetak Struck</p>
                 <svg width="14" height="15" viewBox="0 0 14 15" class="fill-white-50"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -228,10 +229,10 @@
         </div>
 
         <div class="relative overflow-x-auto ">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-700">
+                <thead class="text-sm text-gray-700 uppercase bg-gray-50 font-bold border-black border-b">
                     <tr>
-                        <th scope="col" class="px-10 py-6">
+                        <th scope="col" class="px-10 py-6 w-full">
                             Nama
                         </th>
                         <th scope="col" class="px-10 py-6">
@@ -246,68 +247,167 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr class="bg-white border-b font-semibold">
+                        <td class="px-6 py-6">
                             Nasi Padang
-                        </th>
-                        <td class="px-10 py-6">
+                        </td>
+                        <td class="px-6 py-6">
                             1
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
                     </tr>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr class="bg-white border-b font-semibold">
+                        <td class="px-6 py-6">
                             Nasi Padang
-                        </th>
-                        <td class="px-10 py-6">
+                        </td>
+                        <td class="px-6 py-6">
                             1
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
                     </tr>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr class="bg-white border-b font-semibold">
+                        <td class="px-6 py-6">
                             Nasi Padang
-                        </th>
-                        <td class="px-10 py-6">
+                        </td>
+                        <td class="px-6 py-6">
                             1
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
                     </tr>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr class=" font-semibold">
+                        <td class="px-6 py-6">
                             Nasi Padang
-                        </th>
-                        <td class="px-10 py-6">
+                        </td>
+                        <td class="px-6 py-6">
                             1
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
                         </td>
-                        <td class="px-10 py-6">
+                        <td class="px-6 py-6">
                             Rp.20.000.00
+                        </td>
+                    </tr>
+                    <tr class=" font-semibold">
+                        <td class="px-6 py-4" colspan="2">
+
+                        </td>
+                        <td class="px-6 py-4">
+                            Subtotal
+                        </td>
+                        <td class="px-6 py-4">
+                            Rp.80.000.00
+                        </td>
+                    </tr>
+                    <tr class=" font-semibold">
+                        <td class="px-6 py-4" colspan="2">
+
+                        </td>
+                        <td class="px-6 py-4">
+                            Tax (10%)
+                        </td>
+                        <td class="px-6 py-4">
+                            Rp.8.000.00
+                        </td>
+                    </tr>
+                    <tr class=" font-semibold">
+                        <td class="px-6 py-4" colspan="2">
+
+                        </td>
+                        <td class="px-6 py-4">
+                            Service Change
+                        </td>
+                        <td class="px-6 py-4">
+                            Rp.8.000.00
+                        </td>
+                    </tr>
+                    <tr class=" font-semibold">
+                        <td class="px-6 py-4" colspan="2">
+
+                        </td>
+                        <td class="px-6 py-4 bg-gray-300 rounded-s-full">
+                            Total
+                        </td>
+                        <td class="px-6 py-4  bg-gray-300 rounded-e-full">
+                            Rp.96.000.00
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="flex justify-end">
+                <div class="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main modal -->
+    <div id="defaultModal" tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden mx-auto w-fit p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white-50 rounded-lg shadow p-10">
+                <!-- Modal header -->
+                <div class="relative mb-8 rounded-t">
+                    <div class="flex justify-center">
+                        <h3 class="text-xl text-center font-bold text-gray-900">
+                            Cetak Struck
+                        </h3>
+                    </div>
+                    <button type="button"
+                        class="top-0 right-0 absolute text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="defaultModal">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <div class="flex items-center flex-col gap-4"><svg width="100" height="100"
+                            viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="100" rx="50" fill="#FC5F5F" />
+                            <path
+                                d="M42.5 32.5C39.7386 32.5 37.5 34.7386 37.5 37.5V40H62.5V37.5C62.5 34.7386 60.2614 32.5 57.5 32.5H42.5Z"
+                                fill="white" />
+                            <path
+                                d="M57.5 52.5H42.5C41.1193 52.5 40 53.6193 40 55V62.5C40 63.8807 41.1193 65 42.5 65H57.5C58.8807 65 60 63.8807 60 62.5V55C60 53.6193 58.8807 52.5 57.5 52.5Z"
+                                fill="white" />
+                            <path
+                                d="M30 47.5C30 44.7386 32.2386 42.5 35 42.5H65C67.7614 42.5 70 44.7386 70 47.5V55C70 57.7614 67.7614 60 65 60H62.5V55C62.5 52.2386 60.2614 50 57.5 50H42.5C39.7386 50 37.5 52.2386 37.5 55V60H35C32.2386 60 30 57.7614 30 55V47.5ZM36.25 50C36.9404 50 37.5 49.4404 37.5 48.75C37.5 48.0596 36.9404 47.5 36.25 47.5C35.5596 47.5 35 48.0596 35 48.75C35 49.4404 35.5596 50 36.25 50Z"
+                                fill="white" />
+                        </svg>
+                        <p class="text-gray-400">Apakah anda yakin untuk mencetak struck ini?</p>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center justify-center p-6 space-x-2 rounded-b">
+                    <button data-modal-hide="defaultModal" type="button"
+                        class="text-white  focus:ring-4 focus:outline-none font-semibold rounded-lg text-lg px-12 py-4 text-center  mr-4">
+                        Batalkan</button>
+                    <button data-modal-hide="defaultModal" type="button"
+                        class="rounded-lg text-lg font-semibold px-12 py-4 bg-red-500 text-white-50">Cetak</button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
