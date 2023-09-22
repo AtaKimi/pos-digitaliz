@@ -35,6 +35,7 @@ Route::prefix('tenant')->group(function () {
     Route::controller(TenantController::class)->group(function () {
         Route::get('/', 'index')->name('tenant-index');
         Route::get('/category', 'category')->name('tenant-category');
+        Route::get('/setting', 'setting')->name('tenant-setting');
     });
 });
 

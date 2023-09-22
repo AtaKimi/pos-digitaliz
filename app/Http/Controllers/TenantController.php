@@ -20,6 +20,11 @@ class TenantController extends Controller
         return view('tenant.category');
     }
 
+    public function setting()
+    {
+        return view('tenant.setting');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
