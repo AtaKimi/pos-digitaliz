@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('waiters', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->string('name');
+            $table->string('price');
+            $table->string('description');
+            $table->enum('status', ['in_stock', 'disabled', 'soldout'])->default('in_stock');
             $table->bigInteger('tenant_id');
+            $table->bigInteger('category_id');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('waiters');
+        Schema::dropIfExists('products');
     }
 };

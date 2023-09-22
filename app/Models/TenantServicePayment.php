@@ -5,21 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Waiter extends Model
+class TenantServicePayment extends Model
 {
     use HasFactory;
     protected $fillable =
     [
-        'user_id',
         'tenant_id',
+        'user_id',
+        'transfer_at',
+        'total',
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
     public function tenant()
     {
-        return $this->hasOne(Tenant::class);
+        return $this->belongsTo(Tenant::class);
     }
 }
