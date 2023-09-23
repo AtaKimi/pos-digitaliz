@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('tenant_id');
             $table->bigInteger('product_id');
-            $table->bigIncrements('desk_id');
+            $table->bigInteger('desk_id');
             $table->integer('quantity');
             $table->timestamps();
         });
