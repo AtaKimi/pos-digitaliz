@@ -2473,6 +2473,10 @@ html {
   fill: #FDC55E;
 }
 
+.fill-black-400{
+  fill: #020313;
+}
+
 .p-1{
   padding: 0.25rem;
 }

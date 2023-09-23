@@ -49,21 +49,24 @@ Route::prefix('tenant')->group(function () {
     });
 
     Route::controller(OrderController::class)->group(function () {
-        Route::get('/order/', 'index')->name('tenant-order-index');
-        Route::get('/order/detail/', 'show')->name('tenant-order-show');
+        Route::get('/order', 'index')->name('tenant-order-index');
+        Route::get('/order/detail', 'show')->name('tenant-order-show');
     });
 
     Route::controller(ProductController::class)->group(function () {
-        Route::get('/product/', 'index')->name('tenant-product-index');
-        Route::get('/product/create/', 'create')->name('tenant-product-create');
+        Route::get('/product', 'index')->name('tenant-product-index');
+        Route::get('/product/create', 'create')->name('tenant-product-create');
     });
 
     Route::controller(TenantServicePaymentController::class)->group(function () {
-        Route::get('/service-payment/', 'index')->name('tenant-service-payment-index');
+        Route::get('/service-payment', 'index')->name('tenant-service-payment-index');
     });
 
     Route::controller(DeskController::class)->group(function () {
-        Route::get('/desk/', 'index')->name('tenant-desk-index');
+        Route::get('/desk', 'index')->name('tenant-desk-index');
+    });
+    Route::controller(WaiterController::class)->group(function () {
+        Route::get('/waiter', 'indexTenant')->name('tenant-waiter-index');
     });
 });
 
@@ -71,7 +74,7 @@ Route::prefix('tenant')->group(function () {
 
 Route::prefix('waiter')->group(function(){
     Route::controller(WaiterController::class)->group(function () {
-        Route::get('/', 'index')->name('waiter-index');
+        // Route::get('/', 'index')->name('waiter-index');
     });
 });
 
