@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,4 +50,8 @@ Route::controller(TenantController::class)->group(function () {
 // Routes for waiter
 Route::controller(WaiterController::class)->group(function () {
     Route::get('/waiter', 'index')->name('waiter-index');
+});
+
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/costumer', 'index')->name('customer-index');
 });
