@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tenant_service_payments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
-            $table->bigInteger('user_id')->foreign('user_id')->references('id')->on('users');
-            $table->date('transfer_at');
+            $table->foreignId('tenant_id')->constrained('tenants');
+            $table->foreignId('user_id')->constrained('users');
+            $table->date('tIdransfer_at');
             $table->integer('total');
             $table->softDeletes();
             $table->timestamps();
