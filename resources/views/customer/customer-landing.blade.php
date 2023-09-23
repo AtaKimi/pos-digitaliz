@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+
 @endsection
 
 @section('file-footer')

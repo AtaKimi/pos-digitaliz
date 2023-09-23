@@ -10,9 +10,11 @@
     @yield('file-header')
 </head>
 
-<body class="aspect-[9/16]">
-    @yield('content')
-
+{{-- <body class="mx-auto w-[375px]"> --}}
+<body class="w-[375px] mx-auto">
+    <div class="overflow-y-scroll h-screen">
+        @yield('content')
+    </div>
     @yield('file-footer')
 </body>
 

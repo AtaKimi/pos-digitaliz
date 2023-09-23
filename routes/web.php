@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
 use Illuminate\Support\Facades\Route;
@@ -49,4 +50,9 @@ Route::controller(TenantController::class)->group(function () {
 // Routes for waiter
 Route::controller(WaiterController::class)->group(function () {
     Route::get('/waiter', 'index')->name('waiter-index');
+});
+
+// Routes for customer
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/customer', 'index')->name('customer-index');
 });
