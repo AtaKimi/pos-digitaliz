@@ -34,6 +34,15 @@ class TenantController extends Controller
         return view('tenant.form-product');
     }
 
+    public function setting()
+    {
+        return view('tenant.setting');
+    }
+    public function waiter()
+    {
+        return view('tenant.waiters');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

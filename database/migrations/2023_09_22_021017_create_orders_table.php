@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
-            $table->bigInteger('desk_id')->foreign('desk_id')->references('id')->on('desks');
+            $table->foreignId('tenant_id')->constrained('tenants');
+            $table->foreignId('desk_id')->constrained('desks');
             $table->string('status');
             $table->integer('total');
             $table->boolean('is_paid')->default(false);

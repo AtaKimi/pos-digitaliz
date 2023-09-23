@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
+            $table->foreignId('tenant_id')->constrained('tenants');
             $table->integer('percentage');
             $table->softDeletes();
             $table->timestamps();
