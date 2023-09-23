@@ -56,6 +56,9 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/service-payment', 'servicePayment')->name('tenant-payment');
     Route::get('/tenant/product/form', 'formProduct')->name('tenant-form-product');
     Route::get('/tenant/setting', 'setting')->name('tenant-setting');
+    Route::get('/tenant/desk', function () {
+        return view('tenant.desk');
+    })->name('tenant-desk');
 });
 
 
