@@ -59,6 +59,7 @@ Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant/desk', function () {
         return view('tenant.desk');
     })->name('tenant-desk');
+    route::get('/tenant/waiter', 'waiter')->name('tenant-waiter');
 });
 
 

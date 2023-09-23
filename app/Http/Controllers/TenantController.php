@@ -40,7 +40,7 @@ class TenantController extends Controller
     }
     public function waiter()
     {
-        return view('tenant.waiters');
+        return view('tenant.waiters-list');
     }
 
     /**

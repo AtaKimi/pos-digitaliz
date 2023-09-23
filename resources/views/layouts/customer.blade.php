@@ -5,7 +5,7 @@
     <head>
         @include('includes.header')
     </head>
-<body class="">
+<body class="bg-slate-200">
     <div class="w-[375px] bg-white-50 mx-auto">
         <div class="h-[179px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom">
             <nav class="flex justify-between pt-8">
