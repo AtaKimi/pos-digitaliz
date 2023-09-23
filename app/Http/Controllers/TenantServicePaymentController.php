@@ -12,7 +12,7 @@ class TenantServicePaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view('tenant.service-payment');
     }
 
     /**

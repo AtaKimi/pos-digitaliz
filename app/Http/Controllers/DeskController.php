@@ -12,7 +12,7 @@ class DeskController extends Controller
      */
     public function index()
     {
-        //
+        return view('tenant.desk');
     }
 
     /**
