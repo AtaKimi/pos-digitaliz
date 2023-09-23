@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('price');
             $table->string('description');
             $table->enum('status', ['in_stock', 'disabled', 'soldout'])->default('in_stock');
-            $table->bigInteger('tenant_id');
-            $table->bigInteger('category_id');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
+            $table->bigInteger('category_id')->foreign('category_id')->references('id')->on('categories');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

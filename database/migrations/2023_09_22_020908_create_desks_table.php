@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('desks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
             $table->string('name');
             $table->string('qrcode');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

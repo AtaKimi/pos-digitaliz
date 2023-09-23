@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
             $table->integer('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

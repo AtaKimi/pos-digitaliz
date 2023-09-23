@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id');
-            $table->bigInteger('desk_id');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
+            $table->bigInteger('desk_id')->foreign('desk_id')->references('id')->on('desks');
             $table->string('status');
             $table->integer('total');
             $table->boolean('is_paid')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
