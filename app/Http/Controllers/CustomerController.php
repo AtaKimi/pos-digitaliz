@@ -11,7 +11,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customer.splash-screen');
+        return view('customer.customer-landing');
     }
 
     /**
