@@ -11,7 +11,7 @@
                 </path>
             </svg>
         </button>
-        <div class="sm:block hidden">
+        <div class="sm:block hidden @if (request()->routeIs('tenant-*')) text-white-50 @endif">
             <p class="text-sm">Pages / Dashboard</p>
             <p class="text-lg font-semibold">Dashboard</p>
         </div>
