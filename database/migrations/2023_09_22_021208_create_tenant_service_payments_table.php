@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('tenant_service_payments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tenant_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
+            $table->bigInteger('user_id')->foreign('user_id')->references('id')->on('users');
             $table->date('transfer_at');
             $table->integer('total');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

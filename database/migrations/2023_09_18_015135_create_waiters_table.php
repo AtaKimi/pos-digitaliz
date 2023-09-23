@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('waiters', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('tenant_id');
+            $table->bigInteger('user_id')->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('tenant_id')->foreign('tenant_id')->references('id')->on('tenants');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

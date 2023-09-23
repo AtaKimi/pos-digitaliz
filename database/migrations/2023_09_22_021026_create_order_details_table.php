@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('order_id')->foreign('order_id')->references('id')->on('orders');
+            $table->bigInteger('product_id')->foreign('product_id')->references('id')->on('products');
             $table->string('modelable_id');
             $table->string('modelable_type');
             $table->json('metadata');
             $table->integer('price');
             $table->integer('quantity');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
