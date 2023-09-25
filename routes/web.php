@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
@@ -126,3 +127,8 @@ Route::prefix('costumer')->group(function(){
 //         return view('tenant.desk');
 //     })->name('tenant-desk');
 // });
+
+// Routes for customer
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/customer', 'index')->name('customer-index');
+});
