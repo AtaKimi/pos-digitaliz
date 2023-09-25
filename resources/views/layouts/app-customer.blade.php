@@ -10,9 +10,10 @@
     @yield('file-header')
 </head>
 
-<body>
-    @yield('content')
-
+<body class="w-[375px] mx-auto">
+    <div class="overflow-y-scroll h-screen">
+        @yield('content')
+    </div>
     @yield('file-footer')
 </body>
 
