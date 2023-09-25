@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained('tenants');
             $table->integer('price');
+            $table->integer('serviceable_id')->nullable()->default(null);
+            $table->string('serviceable_type')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
         });

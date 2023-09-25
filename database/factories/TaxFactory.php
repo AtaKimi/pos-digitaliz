@@ -17,8 +17,7 @@ class TaxFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => fake()->numberBetween(1, 11),
-            'percentage' => fake()-> numberBetween(5, 15),
+            'percentage' => fake()-> numberBetween(5, 15) / 100,
         ];
     }
 }

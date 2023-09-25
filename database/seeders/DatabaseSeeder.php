@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Enums\ProductStatusEnum;
+use App\Models\Tax;
 use App\Models\OrderDetail;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use App\Enums\ProductStatusEnum;
+use Database\Factories\TaxFactory;
 
 
 class DatabaseSeeder extends Seeder
@@ -24,13 +26,17 @@ class DatabaseSeeder extends Seeder
 
         // user with id from 4 - 14 is tenant
         for ($i = 4; $i <= 14; $i++) {
-            \App\Models\Tenant::factory()->create([
+            $tenant = \App\Models\Tenant::factory()->create([
                 'code' => Str::random(5) . "TN" . fake()->numerify('####'),
                 'name' => fake()->company(),
                 'address' => fake()->address(),
                 'description' => fake()->paragraph(5),
-                'user_id' => $i
+                'user_id' => $i,
+                'is_tax' => fake()->boolean(),
             ]);
+            $tenant->taxes()->save(\App\Models\Tax::factory()->create());
+            $tenant->services()->save(\App\Models\Service::factory()->create());
+
         }
 
         // user with id from 15 - 35 is waiters, the tenant which is belong is random from 1 - 11 
@@ -45,7 +51,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Category::factory(70)->create();
 
-         \App\Models\Desk::factory(100)->create();
+        \App\Models\Desk::factory(100)->create();
 
         \App\Models\Product::factory(100)->sequence(
             ['status' => 'in_stock'],
@@ -57,25 +63,25 @@ class DatabaseSeeder extends Seeder
             \App\Models\Cart::factory()->state(['desk_id' => $i])->create();
         }
 
-
-        for ($i = 1; $i <= 11; $i++) {
-            \App\Models\Service::factory()->state(['tenant_id' => $i])->create();
-        }
-        \App\Models\Tax::factory(6)->create();
-
-        for ($i=0; $i < 100; $i++) { 
+        for ($i = 0; $i < 1; $i++) {
             $order = \App\Models\Order::factory()->state(
                 ['is_paid' => fake()->boolean()]
             )->create();
 
-            for ($o=0; $o < fake()->numberBetween(1, 7); $o++) { 
-                \App\Models\OrderDetail::factory()->state(
-                    ['product_id' => fake()->numberBetween(1, 100)],
-                )->for($order)->create();
+            for ($o = 0; $o < fake()->numberBetween(1, 7); $o++) {
+                \App\Models\OrderDetail::factory()->for($order)->create();
             }
-            
+
             $order->getPrice();
         }
+
+        // for ($i = 1; $i <= 11; $i++) {
+        //     \App\Models\Service::factory()->state(['tenant_id' => $i])->create();
+        // }
+
+
+        
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

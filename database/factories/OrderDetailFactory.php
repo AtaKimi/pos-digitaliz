@@ -17,8 +17,7 @@ class OrderDetailFactory extends Factory
     public function definition(): array
     {
         return [
-            'modelable_id' => fake()->numerify('#########'),
-            'modelable_type' => fake()->numerify('#########'),
+            'product_id' => fake()->numberBetween(1, 100),
             'metadata' => json_encode(['random' => 1]),
             'quantity' => fake()->numberBetween(1, 4),
         ];

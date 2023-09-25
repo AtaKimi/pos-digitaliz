@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('product_id')->constrained('products');
-            $table->string('modelable_id');
-            $table->string('modelable_type');
             $table->json('metadata');
             $table->integer('price')->default(0);
             $table->integer('quantity');
