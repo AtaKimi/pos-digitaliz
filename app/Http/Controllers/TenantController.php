@@ -12,7 +12,7 @@ class TenantController extends Controller
      */
     public function index()
     {
-        return view('tenant.waiters-list');
+        return view('tenant.index');
     }
 
     public function category()
@@ -32,6 +32,15 @@ class TenantController extends Controller
     public function formProduct()
     {
         return view('tenant.form-product');
+    }
+
+    public function setting()
+    {
+        return view('tenant.setting');
+    }
+    public function waiter()
+    {
+        return view('tenant.waiters-list');
     }
 
     /**
