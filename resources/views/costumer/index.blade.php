@@ -1,7 +1,5 @@
-@extends('layouts.customer')
+@extends('layouts.customer', ['judul' => 'Find Your Favorite Food'])
 
 @section('content')
-    <div>
-        <h1 class="break-all">Find Your Favorite Food</h1>
-    </div>
+    <div>asaisasj</div>
 @endsection
