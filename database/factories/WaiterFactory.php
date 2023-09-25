@@ -17,7 +17,10 @@ class WaiterFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //user_id for to became a waiter
+            'user_id' => fake()->numberBetween(1, 10),
+            //tenant_id to choice where does the waiter should belong
+            'tenant_id' => fake()->numberBetween(1, 10),
         ];
     }
 }

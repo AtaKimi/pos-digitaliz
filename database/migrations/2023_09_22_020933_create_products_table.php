@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('description');
             $table->enum('status', ['in_stock', 'disabled', 'soldout'])->default('in_stock');
-            $table->foreignId('tenant_id')->constrained('tenants');
+            // $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('category_id')->constrained('categories');
             $table->softDeletes();
             $table->timestamps();

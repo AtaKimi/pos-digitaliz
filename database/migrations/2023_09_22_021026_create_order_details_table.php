@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('modelable_id');
             $table->string('modelable_type');
             $table->json('metadata');
-            $table->integer('price');
+            $table->integer('price')->default(0);
             $table->integer('quantity');
             $table->softDeletes();
             $table->timestamps();

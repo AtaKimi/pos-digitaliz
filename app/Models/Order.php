@@ -29,4 +29,11 @@ class Order extends Model
     {
         return $this->hasMany(OrderDetail::class);
     }
+
+    public function getPrice() {
+        foreach ($this->orderDetail as $order_detail) {
+            $this->total = $this->total + $order_detail->price;
+        }
+        $this->save();
+  }
 }
