@@ -130,15 +130,10 @@ module.exports = {
             },
         },
     },
-    corePlugins: {
-        aspectRatio: false,
-    },
     plugins: [
         require("flowbite/plugin")({
             charts: true,
         }),
-        require("@tailwindcss/aspect-ratio"),
-
         // ... other plugins
     ],
 };

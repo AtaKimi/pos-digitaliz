@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('waiters', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('name');
+            $table->string('price');
+            $table->string('description');
+            $table->enum('status', ['in_stock', 'disabled', 'soldout'])->default('in_stock');
             $table->foreignId('tenant_id')->constrained('tenants');
+            $table->foreignId('category_id')->constrained('categories');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('waiters');
+        Schema::dropIfExists('products');
     }
 };

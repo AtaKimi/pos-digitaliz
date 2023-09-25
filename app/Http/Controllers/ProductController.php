@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Waiter;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class WaiterController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function indexTenant()
+    public function index()
     {
-        return view('tenant.waiter');
+        return view('tenant.product');
     }
 
     /**
@@ -20,7 +20,7 @@ class WaiterController extends Controller
      */
     public function create()
     {
-        //
+        return view('tenant.form-product');
     }
 
     /**
@@ -34,15 +34,15 @@ class WaiterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Waiter $waiter)
+    public function show(Product $product)
     {
-        //
+        // 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Waiter $waiter)
+    public function edit(Product $product)
     {
         //
     }
@@ -50,7 +50,7 @@ class WaiterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Waiter $waiter)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -58,7 +58,7 @@ class WaiterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Waiter $waiter)
+    public function destroy(Product $product)
     {
         //
     }

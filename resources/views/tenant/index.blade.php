@@ -104,7 +104,7 @@
 
       
       {{-- Chart Start --}}
-      <div class="grid grid-cols-2 gap-10 mt-10">
+      <div class="flex flex-wrap lg:flex-nowrap gap-10 mt-10">
         <div class="w-full bg-white-50 rounded-lg shadow dark:bg-gray-800">
           <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
             <div>

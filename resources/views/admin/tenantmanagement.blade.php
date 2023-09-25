@@ -138,7 +138,7 @@
                             <label class="relative inline-flex cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked>
                                 <div
-                                    class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
+                                    class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
                                 </div>
                             </label>
                         </td>
@@ -206,7 +206,7 @@
                             <label class="relative inline-flex cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked>
                                 <div
-                                    class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
+                                    class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
                                 </div>
                             </label>
                         </td>
@@ -274,7 +274,7 @@
                             <label class="relative inline-flex cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" checked>
                                 <div
-                                    class="w-14 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
+                                    class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-500">
                                 </div>
                             </label>
                         </td>

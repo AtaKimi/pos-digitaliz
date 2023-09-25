@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Waiter;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class WaiterController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function indexTenant()
+    public function index()
     {
-        return view('tenant.waiter');
+        return view('tenant.category');
     }
 
     /**
@@ -34,7 +34,7 @@ class WaiterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Waiter $waiter)
+    public function show(Category $category)
     {
         //
     }
@@ -42,7 +42,7 @@ class WaiterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Waiter $waiter)
+    public function edit(Category $category)
     {
         //
     }
@@ -50,7 +50,7 @@ class WaiterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Waiter $waiter)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -58,7 +58,7 @@ class WaiterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Waiter $waiter)
+    public function destroy(Category $category)
     {
         //
     }
