@@ -61,4 +61,9 @@ class CustomerController extends Controller
     {
         //
     }
+
+    public function menuList()
+    {
+        return view('costumer.menu');
+    }
 }

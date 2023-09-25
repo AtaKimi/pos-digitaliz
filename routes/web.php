@@ -82,6 +82,9 @@ Route::prefix('costumer')->group(function(){
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
     });
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/menu', 'menuList')->name('customer-menu');
+    });
 });
 
 
