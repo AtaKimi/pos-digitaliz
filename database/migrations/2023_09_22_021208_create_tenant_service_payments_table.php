@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('user_id')->constrained('users');
-            $table->date('tIdransfer_at');
+            $table->date('transfer_at');
             $table->integer('total');
             $table->softDeletes();
             $table->timestamps();
