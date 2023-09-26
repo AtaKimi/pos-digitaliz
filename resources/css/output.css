@@ -1327,6 +1327,10 @@ html {
   top: 1rem;
 }
 
+.-z-0{
+  z-index: 0;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -1347,12 +1351,28 @@ html {
   z-index: 50;
 }
 
+.-z-10{
+  z-index: -10;
+}
+
+.z-0{
+  z-index: 0;
+}
+
 .col-span-1{
   grid-column: span 1 / span 1;
 }
 
 .col-span-2{
   grid-column: span 2 / span 2;
+}
+
+.row-span-1{
+  grid-row: span 1 / span 1;
+}
+
+.row-span-3{
+  grid-row: span 3 / span 3;
 }
 
 .float-right{
@@ -1668,6 +1688,10 @@ html {
   height: 500px;
 }
 
+.h-\[74px\]{
+  height: 74px;
+}
+
 .h-\[calc\(100\%-1rem\)\]{
   height: calc(100% - 1rem);
 }
@@ -1785,6 +1809,10 @@ html {
   width: 550px;
 }
 
+.w-\[74px\]{
+  width: 74px;
+}
+
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
@@ -1894,6 +1922,10 @@ html {
 
 .grid-cols-7{
   grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-rows-4{
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -2046,6 +2078,10 @@ html {
 
 .overflow-x-hidden{
   overflow-x: hidden;
+}
+
+.overflow-y-scroll{
+  overflow-y: scroll;
 }
 
 .whitespace-nowrap{
@@ -2362,6 +2398,11 @@ html {
   background-color: rgb(163 28 29 / var(--tw-bg-opacity));
 }
 
+.bg-slate-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
 .bg-transparent{
   background-color: transparent;
 }
@@ -2416,11 +2457,6 @@ html {
   background-color: rgb(253 197 94 / var(--tw-bg-opacity));
 }
 
-.bg-slate-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }
@@ -2461,6 +2497,10 @@ html {
   background-repeat: no-repeat;
 }
 
+.fill-black-400{
+  fill: #020313;
+}
+
 .fill-gray-500{
   fill: #6B7280;
 }
@@ -2471,10 +2511,6 @@ html {
 
 .fill-yellow-500{
   fill: #FDC55E;
-}
-
-.fill-black-400{
-  fill: #020313;
 }
 
 .p-1{
@@ -2937,6 +2973,11 @@ html {
 .text-yellow-700{
   --tw-text-opacity: 1;
   color: rgb(171 127 46 / var(--tw-text-opacity));
+}
+
+.text-gray-800{
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
 .underline{
