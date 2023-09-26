@@ -76,7 +76,7 @@ Route::prefix('tenant')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->group(function(){
+Route::prefix('waiter')->group(function () {
     Route::controller(WaiterController::class)->group(function () {
         // Route::get('/', 'index')->name('waiter-index');
     });
@@ -84,7 +84,7 @@ Route::prefix('waiter')->group(function(){
 
 // Routes for Customer
 
-Route::prefix('customer')->group(function(){
+Route::prefix('customer')->group(function () {
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
     });
