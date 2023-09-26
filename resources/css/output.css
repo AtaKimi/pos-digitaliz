@@ -1417,6 +1417,11 @@ html {
   margin-bottom: 1.25rem;
 }
 
+.my-\[5px\]{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .my-auto{
   margin-top: auto;
   margin-bottom: auto;
@@ -2882,6 +2887,10 @@ html {
 
 .pl-3\.5{
   padding-left: 0.875rem;
+}
+
+.pl-8{
+  padding-left: 2rem;
 }
 
 .pr-4{
