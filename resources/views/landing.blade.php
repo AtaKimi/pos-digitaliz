@@ -826,7 +826,7 @@
             <div class="w-full">
                 <h1 class="text-xl md:text-3xl font-bold mb-7">Kontak Kami</h1>
                 <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-3 gap-3">
+                    <div class="flex items-center gap-3">
                         <svg width="35" height="34" viewBox="0 0 35 34" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd"

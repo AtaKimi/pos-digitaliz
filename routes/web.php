@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Routes for landing page
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return view('landing');
 });
@@ -78,9 +82,14 @@ Route::prefix('waiter')->group(function(){
     });
 });
 
-Route::prefix('costumer')->group(function(){
+// Routes for Customer
+
+Route::prefix('customer')->group(function(){
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
+    });
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/menu', 'menu')->name('customer-menu');
     });
 });
 
