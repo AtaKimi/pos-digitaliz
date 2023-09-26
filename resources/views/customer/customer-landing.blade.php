@@ -36,10 +36,10 @@
                     </span>
                 </div>
                 <div id="accordion-flush" data-accordion="collapse"
-                    data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    data-inactive-classes="text-gray-500 dark:text-gray-400">
+                    data-active-classes="bg-white text-gray-900"
+                    data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-1">
-                        <button type="button" class="flex items-center gap-3 dark:text-gray-400"
+                        <button type="button" class="flex items-center gap-3"
                             data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
                             aria-controls="accordion-flush-body-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-1" width="10" height="10"
@@ -66,7 +66,7 @@
                         </button>
                     </h2>
                     <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                        <div class="py-2 px-6 dark:border-gray-700">
+                        <div class="py-2 px-6">
                             <ul class="list-none space-y-2 ml-0.5">
                                 <li>
                                     <span class="">Senin</span>,<span> 08:00 - 23:00</span>

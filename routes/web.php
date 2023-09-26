@@ -1,17 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeskController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
-use App\Http\Controllers\DeskController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TenantServicePaymentController;
-use App\Models\Order;
-use App\Models\TenantServicePayment;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +22,20 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Routes for landing page
+
 Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Routes for admin
 Route::controller(AdminController::class)->group(function () {
@@ -72,13 +80,13 @@ Route::prefix('tenant')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->group(function(){
+Route::prefix('waiter')->group(function () {
     Route::controller(WaiterController::class)->group(function () {
         // Route::get('/', 'index')->name('waiter-index');
     });
 });
 
-Route::prefix('costumer')->group(function(){
+Route::prefix('costumer')->group(function () {
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
     });
@@ -126,3 +134,5 @@ Route::prefix('costumer')->group(function(){
 //         return view('tenant.desk');
 //     })->name('tenant-desk');
 // });
+
+require __DIR__.'/auth.php';
