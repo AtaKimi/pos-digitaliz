@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tax extends Model
 {
@@ -13,6 +15,11 @@ class Tax extends Model
         'tenant_id',
         'percentage',
     ];
+
+    public function order(): MorphOne
+    {
+        return $this->morphOne(Order::class, 'modelable');
+    }
 
     public function tenant()
     {

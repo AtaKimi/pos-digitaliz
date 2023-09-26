@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained('tenants');
+            // $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('desk_id')->constrained('desks');
-            $table->string('status');
-            $table->integer('total');
+            $table->enum('status', ['pending', 'cooking', 'serving', 'done', 'canceled'])->default('pending');
+            $table->integer('total')->default(0);
             $table->boolean('is_paid')->default(false);
             $table->softDeletes();
             $table->timestamps();
