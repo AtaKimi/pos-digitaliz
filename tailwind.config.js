@@ -4,7 +4,9 @@ module.exports = {
     content: [
         "./resources/views/**/*.blade.php",
         "./resources/views/admin/**/*.blade.php",
+        "./resources/views/costumer/**/*.blade.php",
         "./resources/views/includes/**/*.blade.php",
+        "./resources/views/customer/*.blade.php",
         "./resources/views/layouts/**/*.blade.php",
         "./resources/views/tenant/**/*.blade.php",
         "./resources/views/waiter/**/*.blade.php",
@@ -129,6 +131,9 @@ module.exports = {
                     900: "#5A400F",
                 },
             },
+            boxShadow: {
+                'card': '0px 4px 8px 0px rgba(0, 0, 0, 0.10)',
+              }
         },
     },
     plugins: [
