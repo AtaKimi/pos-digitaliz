@@ -1751,6 +1751,10 @@ html {
   height: 100vh;
 }
 
+.h-96{
+  height: 24rem;
+}
+
 .max-h-full{
   max-height: 100%;
 }
@@ -1898,6 +1902,14 @@ html {
 
 .w-full{
   width: 100%;
+}
+
+.w-screen{
+  width: 100vw;
+}
+
+.w-\[700px\]{
+  width: 700px;
 }
 
 .min-w-0{
@@ -2739,6 +2751,19 @@ html {
   background-color: rgb(253 197 94 / var(--tw-bg-opacity));
 }
 
+.bg-\[\]{
+  background-color: ;
+}
+
+.bg-\[asset\(\'assets\/img\/login-hero\.png\'\)\]{
+  background-color: asset('assets/img/login-hero.png');
+}
+
+.bg-black-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 3 19 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }
@@ -2827,6 +2852,11 @@ html {
   fill: #FDC55E;
 }
 
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-1{
   padding: 0.25rem;
 }
@@ -2878,11 +2908,6 @@ html {
   padding-right: 3rem;
 }
 
-.px-16{
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -2911,11 +2936,6 @@ html {
 .px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.px-7{
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
 }
 
 .px-8{
@@ -3097,6 +3117,10 @@ html {
 
 .pt-8{
   padding-top: 2rem;
+}
+
+.pt-12{
+  padding-top: 3rem;
 }
 
 .text-left{
@@ -4421,6 +4445,10 @@ html {
     height: auto;
   }
 
+  .md\:h-full{
+    height: 100%;
+  }
+
   .md\:w-1\/2{
     width: 50%;
   }
@@ -4455,6 +4483,18 @@ html {
 
   .md\:w-auto{
     width: auto;
+  }
+
+  .md\:w-\[700px\]{
+    width: 700px;
+  }
+
+  .md\:w-\[600px\]{
+    width: 600px;
+  }
+
+  .md\:w-\[1000px\]{
+    width: 1000px;
   }
 
   .md\:grid-cols-2{
@@ -4736,6 +4776,16 @@ html {
   .lg\:px-12{
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .lg\:px-16{
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .lg\:px-7{
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
   }
 
   .lg\:px-8{
