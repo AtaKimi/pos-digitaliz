@@ -63,7 +63,8 @@
         <div class="flex flex-col gap-y-3 mb-3">
             <h3 class="p-3">Makanan</h3>
             <div class="shadow-card rounded-[12px] flex items-center gap-x-[16px] p-3">
-                <img class="min-w-[74px] h-[74px] rounded-[12px]"
+                <img 
+                    class="min-w-[74px] h-[74px] rounded-[12px]"
                     src="https://s3-alpha-sig.figma.com/img/e418/c50d/fd26836e69d0061a803ad948ef56bc26?Expires=1696809600&Signature=HO0ii2Dpx4EcZrBx6aN52a-dM1V1Qn~IIPYC4eZRBAFQT2yGIEPMte8j~UZxyd2KqZsAihZbqhk7C~5XLoO149TpVzkwiBbwrAYWf1NLCtj2UU1N8n~pMFrnMyPIn201U2CsI5XktAT6IMydZmTwRG9wwCqKIDJK1ppvMlZVbgp2UEyJILXIVJebLPyom8CDNGtyinO7cTVsCYhuLo8Dkl7a~Dc6zrEgczJu~Dfb4kLZFibZtWg2K6cE5ueNjBANvFmR9viqpaewhFo8QNX18NNjZhkaLL884TuHYcKoQ84koPP-VTKQPd1bJ38WNHLBB78gjoGrhZAMh94hpU8V4Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                     alt="Makanan" />
                 <div class="flex justify-between items-center w-full">
@@ -72,7 +73,7 @@
                         <p class="text-[12px] text-grey-600 mb-[12px]">Nasi, Ayam (dada/paha)</p>
                         <p class="text-yellow-500 font-[700]">Rp. 32.500</p>
                     </div>
-                    <button
+                    <button id="open-modal-btn"
                         class="w-fit h-fit px-[12px] py-[6px] text-[10px] bg-[#FDC55E] text-[#FFF] rounded-[6px]">Tambah</button>
                 </div>
             </div>
@@ -139,4 +140,14 @@
         </div>
     </div>
     {{-- END OF Menu List --}}
+
+    {{-- MODAL --}}
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 z-99 "></div>
+
+    <div id="modal" class="fixed bottom-0 justify-center max-w z-50 ">
+        <div class="modal-content bg-white rounded shadow-lg w-[375px] h-[70vh]">
+            <span id="close-modal-btn" class=" cursor-pointer">&times;</span>
+            <p>This is your modal contentasdasdasdasdasdasdasdasdsdfdsfsdfsdfsdf.</p>
+        </div>
+    </div>
 @endsection
