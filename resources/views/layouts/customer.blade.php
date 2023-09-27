@@ -56,5 +56,6 @@
         </div>
         @yield('content')
     </div>
+    <script src="../../js/customer-menu.js"></script>
 </body>
 </html>
