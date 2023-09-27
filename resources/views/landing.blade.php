@@ -58,10 +58,10 @@
                 </button>
             </form>
                 @else
-                    <button type="button"
+                    <a href="{{route('register')}}"
                         class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
                         Get started
-                    </button>
+                    </a>
                 @endif
                 <button data-collapse-toggle="navbar-default" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
