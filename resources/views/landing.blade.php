@@ -41,7 +41,7 @@
 
 @section('content')
     {{-- navbar --}}
-    <nav class="bg-transparent absolute md:static dark:bg-gray-900 w-full z-20 top-0 left-0">
+    <nav class="bg-transparent absolute md:static w-full z-20 top-0 left-0">
         <div id="navbar" class="max-w-full flex flex-wrap items-center justify-between mx-auto lg:mx-20 p-4">
             <a href="#hero">
                 <img src="./assets/img/logo_pos.png" class="h-11 hidden md:block" alt="POS Logo" />
@@ -49,12 +49,22 @@
             </a>
             <div class="flex md:order-2 items-center gap-4 xl:gap-8">
                 <a href="#start" class=" text-red-500 font-semibold rounded hidden md:block" aria-current="page">Masuk</a>
-                <button type="button"
-                    class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                    Get started
+                @if (Auth::user())
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <button type="submit" 
+                    class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                    Logout
                 </button>
+            </form>
+                @else
+                    <a href="{{route('register')}}"
+                        class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                        Get started
+                    </a>
+                @endif
                 <button data-collapse-toggle="navbar-default" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                     aria-controls="navbar-default" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="31" height="21" viewBox="0 0 31 21"
@@ -67,7 +77,7 @@
             <div class="ml-2 lg:ml-10 xl:ml-20 flex-grow items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
                 id="navbar-default">
                 <ul
-                    class="flex flex-col lg:gap-2 p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white-50 md:bg-white-100 md:flex-row md:space-x-4 lg:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    class="flex flex-col lg:gap-2 p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white-50 md:bg-white-100 md:flex-row md:space-x-4 lg:space-x-8 md:mt-0 md:border-0 md:dark:bg-gray-900">
                     <li>
                         <a href="#hero"
                             class="block py-2 pl-3 pr-4 text-white-50 bg-red-700 rounded md:bg-transparent md:text-red-500 md:p-0 underline underline-offset-8"
@@ -75,28 +85,28 @@
                     </li>
                     <li>
                         <a href="#about"
-                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">About</a>
                     </li>
                     <li>
                         <a href="#pricing"
-                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Pricing</a>
                     </li>
                     <li>
                         <a href="#team"
-                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">Our
+                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Our
                             Team</a>
                     </li>
                     <li>
                         <a href="#testimonial"
-                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">Support</a>
+                            class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Support</a>
                     </li>
                     <li>
                         <a href="#start"
-                            class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">Masuk</a>
+                            class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Masuk</a>
                     </li>
                     <li>
                         <a href="#start"
-                            class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 dark:text-white-50 dark:hover:bg-gray-700 dark:hover:text-white-50 md:dark:hover:bg-transparent dark:border-gray-700">Get
+                            class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Get
                             Started</a>
                     </li>
                 </ul>
@@ -826,7 +836,7 @@
             <div class="w-full">
                 <h1 class="text-xl md:text-3xl font-bold mb-7">Kontak Kami</h1>
                 <div class="flex flex-col gap-4">
-                    <div class="flex items-center gap-3 gap-3">
+                    <div class="flex items-center gap-3">
                         <svg width="35" height="34" viewBox="0 0 35 34" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd"

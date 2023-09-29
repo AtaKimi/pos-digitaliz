@@ -10,9 +10,9 @@ class WaiterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexTenant()
     {
-        return view('waiter.index');
+        return view('tenant.waiter');
     }
 
     /**

@@ -1,10 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeskController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WaiterController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TenantServicePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +23,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Routes for landing page
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Routes for admin
 Route::controller(AdminController::class)->group(function () {
@@ -31,28 +50,98 @@ Route::controller(AdminController::class)->group(function () {
     })->name('admin-detail');
 });
 
-// Routes for tenant
-Route::controller(TenantController::class)->group(function () {
-    Route::get('/tenant', 'index')->name('tenant-index');
-    Route::get('/tenant/order', function () {
-        return view('tenant.order');
-    })->name('tenant-order');
-    Route::get('/tenant/category', 'category')->name('tenant-category');
-    Route::get('/tenant/order/detail/', 'tenantOrderDetail')->name('tenant-index');
-    Route::get('/tenant/product', function () {
-        return view('tenant.product');
-    })->name('tenant-product');
-    Route::get('/tenant/service-payment', 'servicePayment')->name('tenant-payment');
-    Route::get('/tenant/product/form', 'formProduct')->name('tenant-form-product');
-});
+Route::prefix('tenant')->group(function () {
+    Route::controller(TenantController::class)->group(function () {
+        Route::get('/', 'index')->name('tenant-index');
+        Route::get('/setting', 'setting')->name('tenant-setting');
+    });
 
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category', 'index')->name('tenant-category-index');
+    });
+
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('/order', 'index')->name('tenant-order-index');
+        Route::get('/order/detail', 'show')->name('tenant-order-show');
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/product', 'index')->name('tenant-product-index');
+        Route::get('/product/create', 'create')->name('tenant-product-create');
+    });
+
+    Route::controller(TenantServicePaymentController::class)->group(function () {
+        Route::get('/service-payment', 'index')->name('tenant-service-payment-index');
+    });
+
+    Route::controller(DeskController::class)->group(function () {
+        Route::get('/desk', 'index')->name('tenant-desk-index');
+    });
+    Route::controller(WaiterController::class)->group(function () {
+        Route::get('/waiter', 'indexTenant')->name('tenant-waiter-index');
+    });
+});
 
 // Routes for waiter
-Route::controller(WaiterController::class)->group(function () {
-    Route::get('/waiter', 'index')->name('waiter-index');
+
+Route::prefix('waiter')->group(function () {
+    Route::controller(WaiterController::class)->group(function () {
+        // Route::get('/', 'index')->name('waiter-index');
+    });
 });
 
-// Routes for customer
-Route::controller(CustomerController::class)->group(function () {
-    Route::get('/customer', 'index')->name('customer-index');
+// Routes for Customer
+
+Route::prefix('customer')->group(function () {
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/', 'index')->name('customer-index');
+    });
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/menu', 'menu')->name('customer-menu');
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Routes for tenant
+// Route::controller(TenantController::class)->group(function () {
+//     Route::get('/tenant', 'index')->name('tenant-index');
+//     Route::get('/tenant/order', function () {
+//         return view('tenant.order');
+//     })->name('tenant-order');
+//     Route::get('/tenant/category', 'category')->name('tenant-category');
+//     Route::get('/tenant/order/detail/', 'tenantOrderDetail')->name('tenant-index');
+//     Route::get('/tenant/product', function () {
+//         return view('tenant.product');
+//     })->name('tenant-product');
+//     Route::get('/tenant/service-payment', 'servicePayment')->name('tenant-payment');
+//     Route::get('/tenant/product/form', 'formProduct')->name('tenant-form-product');
+//     Route::get('/tenant/setting', 'setting')->name('tenant-setting');
+//     Route::get('/tenant/desk', function () {
+//         return view('tenant.desk');
+//     })->name('tenant-desk');
+// });
+
+require __DIR__.'/auth.php';

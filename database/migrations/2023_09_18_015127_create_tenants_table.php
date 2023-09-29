@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('name');
+            $table->string('address');
+            $table->longText('description');
+            $table->boolean('is_tax')->default(true);
+            $table->boolean('is_active')->default(false);
+            $table->foreignId('user_id')->unique()->constrained('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

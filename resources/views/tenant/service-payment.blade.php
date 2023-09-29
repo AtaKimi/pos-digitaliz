@@ -8,10 +8,16 @@
                 <div class="mr-4 bg-red-50 rounded-xl p-5">
                     <!-- Icon di sini -->
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.125 7.0625C32.3331 7.0625 33.3125 8.04188 33.3125 9.25V26.75C33.3125 27.9581 32.3331 28.9375 31.125 28.9375H4.875C3.66688 28.9375 2.6875 27.9581 2.6875 26.75V9.25C2.6875 8.04188 3.66688 7.0625 4.875 7.0625H31.125ZM4.875 4.875C2.45875 4.875 0.5 6.83375 0.5 9.25V26.75C0.5 29.1662 2.45875 31.125 4.875 31.125H31.125C33.5412 31.125 35.5 29.1662 35.5 26.75V9.25C35.5 6.83375 33.5412 4.875 31.125 4.875H4.875Z" fill="#F54748"/>
-                        <path d="M4.875 12.5312C4.875 11.9272 5.36469 11.4375 5.96875 11.4375H10.3438C10.9478 11.4375 11.4375 11.9272 11.4375 12.5312V14.7188C11.4375 15.3228 10.9478 15.8125 10.3438 15.8125H5.96875C5.36469 15.8125 4.875 15.3228 4.875 14.7188V12.5312Z" fill="#F54748"/>
-                        <path d="M4.875 19.0938C4.875 18.4897 5.36469 18 5.96875 18H16.9062C17.5103 18 18 18.4897 18 19.0938C18 19.6978 17.5103 20.1875 16.9062 20.1875H5.96875C5.36469 20.1875 4.875 19.6978 4.875 19.0938ZM4.875 23.4688C4.875 22.8647 5.36469 22.375 5.96875 22.375H8.15625C8.76031 22.375 9.25 22.8647 9.25 23.4688C9.25 24.0728 8.76031 24.5625 8.15625 24.5625H5.96875C5.36469 24.5625 4.875 24.0728 4.875 23.4688ZM11.4375 23.4688C11.4375 22.8647 11.9272 22.375 12.5312 22.375H14.7188C15.3228 22.375 15.8125 22.8647 15.8125 23.4688C15.8125 24.0728 15.3228 24.5625 14.7188 24.5625H12.5312C11.9272 24.5625 11.4375 24.0728 11.4375 23.4688ZM18 23.4688C18 22.8647 18.4897 22.375 19.0938 22.375H21.2812C21.8853 22.375 22.375 22.8647 22.375 23.4688C22.375 24.0728 21.8853 24.5625 21.2812 24.5625H19.0938C18.4897 24.5625 18 24.0728 18 23.4688ZM24.5625 23.4688C24.5625 22.8647 25.0522 22.375 25.6562 22.375H27.8438C28.4478 22.375 28.9375 22.8647 28.9375 23.4688C28.9375 24.0728 28.4478 24.5625 27.8438 24.5625H25.6562C25.0522 24.5625 24.5625 24.0728 24.5625 23.4688Z" fill="#F54748"/>
-                    </svg>                        
+                        <path
+                            d="M31.125 7.0625C32.3331 7.0625 33.3125 8.04188 33.3125 9.25V26.75C33.3125 27.9581 32.3331 28.9375 31.125 28.9375H4.875C3.66688 28.9375 2.6875 27.9581 2.6875 26.75V9.25C2.6875 8.04188 3.66688 7.0625 4.875 7.0625H31.125ZM4.875 4.875C2.45875 4.875 0.5 6.83375 0.5 9.25V26.75C0.5 29.1662 2.45875 31.125 4.875 31.125H31.125C33.5412 31.125 35.5 29.1662 35.5 26.75V9.25C35.5 6.83375 33.5412 4.875 31.125 4.875H4.875Z"
+                            fill="#F54748" />
+                        <path
+                            d="M4.875 12.5312C4.875 11.9272 5.36469 11.4375 5.96875 11.4375H10.3438C10.9478 11.4375 11.4375 11.9272 11.4375 12.5312V14.7188C11.4375 15.3228 10.9478 15.8125 10.3438 15.8125H5.96875C5.36469 15.8125 4.875 15.3228 4.875 14.7188V12.5312Z"
+                            fill="#F54748" />
+                        <path
+                            d="M4.875 19.0938C4.875 18.4897 5.36469 18 5.96875 18H16.9062C17.5103 18 18 18.4897 18 19.0938C18 19.6978 17.5103 20.1875 16.9062 20.1875H5.96875C5.36469 20.1875 4.875 19.6978 4.875 19.0938ZM4.875 23.4688C4.875 22.8647 5.36469 22.375 5.96875 22.375H8.15625C8.76031 22.375 9.25 22.8647 9.25 23.4688C9.25 24.0728 8.76031 24.5625 8.15625 24.5625H5.96875C5.36469 24.5625 4.875 24.0728 4.875 23.4688ZM11.4375 23.4688C11.4375 22.8647 11.9272 22.375 12.5312 22.375H14.7188C15.3228 22.375 15.8125 22.8647 15.8125 23.4688C15.8125 24.0728 15.3228 24.5625 14.7188 24.5625H12.5312C11.9272 24.5625 11.4375 24.0728 11.4375 23.4688ZM18 23.4688C18 22.8647 18.4897 22.375 19.0938 22.375H21.2812C21.8853 22.375 22.375 22.8647 22.375 23.4688C22.375 24.0728 21.8853 24.5625 21.2812 24.5625H19.0938C18.4897 24.5625 18 24.0728 18 23.4688ZM24.5625 23.4688C24.5625 22.8647 25.0522 22.375 25.6562 22.375H27.8438C28.4478 22.375 28.9375 22.8647 28.9375 23.4688C28.9375 24.0728 28.4478 24.5625 27.8438 24.5625H25.6562C25.0522 24.5625 24.5625 24.0728 24.5625 23.4688Z"
+                            fill="#F54748" />
+                    </svg>
                 </div>
                 <div>
                     <!-- Title di sini -->
@@ -30,13 +36,13 @@
             <div class="flex gap-4">
                 <form>
                     <label for="default-search"
-                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <input type="search" id="default-search"
@@ -48,8 +54,8 @@
         </div>
 
         <div class="relative overflow-x-auto sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No
@@ -81,8 +87,7 @@
                 </thead>
                 <tbody>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             1
                         </th>
                         <td class="px-6 py-4">
@@ -99,8 +104,7 @@
                         </td>
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             2
                         </th>
                         <td class="px-6 py-4">
@@ -117,8 +121,7 @@
                         </td>
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             2
                         </th>
                         <td class="px-6 py-4">
@@ -165,17 +168,45 @@
     </div>
 
     {{-- MODAL TRANSACTION --}}
-    <div id="modal-transaction" tabindex="-1"
-    class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-md max-h-full">
-            <div class="flex flex-col relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
-                <div class="flex justify-between mb-8 items-center">
-                    <div class=""></div>
-                    <p class="font-bold text-2xl">Bukti Transfer</p>
-                    <p class="text-2xl font-bold" data-modal-target="modal-transaction"
-                        data-modal-toggle="modal-transaction">X</p>
+    <!-- Modal -->
+    <div data-te-modal-init data-te-backdrop="false"
+        class="static left-0 top-0 z-[1055] block h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+        id="exampleModalComponents" tabindex="-1" aria-labelledby="exampleModalComponentsLabel" aria-hidden="true">
+        <div data-te-modal-dialog-ref
+            class="pointer-events-none relative w-auto opacity-100 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]">
+            <div
+                class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                <div
+                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+                        id="exampleModalComponentsLabel">
+                        Modal title
+                    </h5>
+                    <button type="button"
+                        class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                        data-te-modal-dismiss aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-                <div class="self-cewnter bg-yellow-500 w-full h-full"></div>
+                <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                    Modal body text goes here.
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <button type="button"
+                        class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                        data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                        Close
+                    </button>
+                    <button type="button"
+                        class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                        data-te-ripple-init data-te-ripple-color="light">
+                        Save changes
+                    </button>
+                </div>
             </div>
         </div>
     </div>

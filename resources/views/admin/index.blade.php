@@ -128,42 +128,42 @@
     {{-- charts --}}
     <div class="flex flex-col md:flex-row gap-5 mb-5 ">
         {{-- chart 1 --}}
-        <div class="bg-white-50 rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-1/3 ">
+        <div class="bg-white-50 rounded-xl shadow p-4 md:p-6 md:w-1/3 ">
             <div class="flex justify-between mb-5 items-center">
                 <div class="grid gap-4 ">
                     <div>
                         <h5
-                            class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none text-xs font-normal mb-2">
+                            class="inline-flex items-center text-gray-500 leading-none text-xs font-normal mb-2">
                             Aktifitas
                         </h5>
-                        <p class="text-gray-900 dark:text-white-50 leading-none text-xl font-bold">Total Tenant</p>
+                        <p class="text-gray-900 leading-none text-xl font-bold">Total Tenant</p>
                     </div>
 
                 </div>
                 <div>
                     <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
                         data-dropdown-placement="bottom" type="button"
-                        class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white-50 dark:hover:bg-gray-700">Monthly
+                        class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">Monthly
                         <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="lastDaysdropdown"
-                        class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-xs text-gray-500 dark:text-gray-200"
+                        class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-xs text-gray-500"
                             aria-labelledby="dropdownDefaultButton">
                             <li>
                                 <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Weekly</a>
+                                    class="block px-4 py-2 hover:bg-gray-100">Weekly</a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Monthly</a>
+                                    class="block px-4 py-2 hover:bg-gray-100">Monthly</a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white-50">Anually</a>
+                                    class="block px-4 py-2 hover:bg-gray-100">Anually</a>
                             </li>
 
                         </ul>
@@ -178,15 +178,15 @@
         </div>
 
         {{-- chart 2 --}}
-        <div class="bg-white-50 rounded-xl shadow dark:bg-gray-800 p-4 md:p-6 md:w-2/3">
+        <div class="bg-white-50 rounded-xl shadow p-4 md:p-6 md:w-2/3">
             <div class="flex flex-col md:flex-row justify-between gap-7 mb-5 items-center">
                 <div class="flex flex-col md:flex-row gap-7 items-center">
                     <div>
                         <h5
-                            class="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
+                            class="inline-flex items-center text-xs text-gray-500 leading-none font-normal mb-2">
                             Total Pendapatan Service
                         </h5>
-                        <p class="text-gray-900 dark:text-white-50 text-xl leading-none font-bold">RP.250.000.000</p>
+                        <p class="text-gray-900 text-xl leading-none font-bold">RP.250.000.000</p>
                     </div>
                     <div>
                         <h5 class="inline-flex items-center font-semibold leading-none mb-2">
@@ -202,7 +202,7 @@
                             <span class=" text-green-600 text-[10px] mr-1">
                                 1.3%
                             </span>
-                            <span class="text-[10px] text-gray-500 dark:text-gray-400">
+                            <span class="text-[10px] text-gray-500">
                                 VS LAST YEAR
                             </span>
 
@@ -215,7 +215,7 @@
 
                     </button>
                     <button type="button"
-                        class="text-gray-900  hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white-50 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2 dark:text-white-50 dark:focus:ring-gray-800">
+                        class="text-gray-900  hover:border-gray-200 bg-white-50 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
                             <path
                                 d="M6.8914 11.0022C6.8914 10.7141 7.12492 10.4806 7.41298 10.4806H10.5425C10.8305 10.4806 11.0641 10.7141 11.0641 11.0022C11.0641 11.2902 10.8305 11.5238 10.5425 11.5238H7.41298C7.12492 11.5238 6.8914 11.2902 6.8914 11.0022Z"
@@ -235,11 +235,11 @@
 
 
                     <button type="button"
-                        class="text-gray-900  dark:bg-gray-900  bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Weekly</button>
+                        class="text-gray-900   bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Weekly</button>
                     <button type="button"
-                        class="text-gray-900  dark:bg-gray-900  bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Monthly</button>
+                        class="text-gray-900   bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Monthly</button>
                     <button type="button"
-                        class="text-white-50  dark:bg-gray-900  bg-gray-900 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2 dark:text-white-50">Anually</button>
+                        class="text-white-50   bg-gray-900 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Anually</button>
 
                 </div>
             </div>
@@ -254,25 +254,25 @@
             <h1 class="text-xl text-gray-900 font-bold">
                 Daftar Tagihan Terbaru
             </h1>
-            <div class="pb-4 dark:bg-gray-900">
+            <div class="pb-4">
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative mt-1">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-400 dark:text-gray-400" aria-hidden="true"
+                        <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
                     <input type="text" id="table-search"
-                        class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 dark:bg-gray-700 placeholder-gray-400 dark:text-white-50 "
+                        class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 placeholder-gray-400 "
                         placeholder="Search">
                 </div>
             </div>
         </div>
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs border-b text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs border-b text-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         No
@@ -310,20 +310,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
                         1
                     </td>
                     <th scope="row" class="px-6 py-4">
                         <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
                             Forger Coffe
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                         <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                 Anya Forger
                             </h1>
                             <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -351,20 +351,20 @@
                             </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
                         2
                     </td>
                     <th scope="row" class="px-6 py-4">
                         <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
                             Forger Coffe
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                         <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                 Anya Forger
                             </h1>
                             <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -393,20 +393,20 @@
                             </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
                         3
                     </td>
                     <th scope="row" class="px-6 py-4">
                         <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
                             Forger Coffe
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                         <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                 Anya Forger
                             </h1>
                             <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -435,20 +435,20 @@
                             </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
                         4
                     </td>
                     <th scope="row" class="px-6 py-4">
                         <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
                             Forger Coffe
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                         <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                 Anya Forger
                             </h1>
                             <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -477,20 +477,20 @@
                             </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
                         5
                     </td>
                     <th scope="row" class="px-6 py-4">
                         <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
                             Forger Coffe
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
                         <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
                         <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap dark:text-white-50">
+                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                 Anya Forger
                             </h1>
                             <p class="text-xs font-normal">anyaforger@gmail.com</p>
@@ -532,33 +532,33 @@
 
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Prev</a>
+                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Prev</a>
                     </li>
 
                     <li>
                         <a href="#" aria-current="page"
-                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-400  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">1</a>
+                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-400  hover:bg-gray-100 hover:text-gray-700">1</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">2</a>
+                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">3</a>
+                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
                     </li>
 
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">...</a>
+                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 ">...</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">10</a>
+                            class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">10</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Next</a>
+                            class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -680,7 +680,7 @@
                         show: true,
                         style: {
                             fontFamily: "Inter, sans-serif",
-                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                            cssClass: 'text-xs font-normal fill-gray-500'
                         }
                     },
                     axisBorder: {

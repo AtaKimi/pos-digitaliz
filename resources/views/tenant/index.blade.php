@@ -104,15 +104,15 @@
 
       
       {{-- Chart Start --}}
-      <div class="grid grid-cols-2 gap-10 mt-10">
-        <div class="w-full bg-white-50 rounded-lg shadow dark:bg-gray-800">
+      <div class="flex flex-wrap lg:flex-nowrap gap-10 mt-10">
+        <div class="w-full bg-white-50 rounded-lg shadow">
           <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
             <div>
-              <p class="text-base font-normal text-gray-500 dark:text-gray-400">Statistik</p>
-              <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Total Pendapatan Order</h5>
+              <p class="text-base font-normal text-gray-500">Statistik</p>
+              <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">Total Pendapatan Order</h5>
             </div>
             <div
-              class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+              class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center">
               23%
               <svg class="w-3 h-3 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
@@ -120,18 +120,18 @@
             </div>
           </div>
           <div id="labels-chart" class="px-2.5"></div>
-          <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
+          <div class="grid grid-cols-1 items-center border-gray-200 border-t justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
           </div>
         </div>
         
-        <div class="w-full bg-white-50 rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-          <div class="flex justify-between border-gray-200 border-b dark:border-gray-700 pb-3">
+        <div class="w-full bg-white-50 rounded-lg shadow p-4 md:p-6">
+          <div class="flex justify-between border-gray-200 border-b pb-3">
             <dl>
-              <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Statistik</dt>
-              <dd class="leading-none text-xl font-bold text-gray-900 dark:text-white">Total Product by Category</dd>
+              <dt class="text-base font-normal text-gray-500 pb-1">Statistik</dt>
+              <dd class="leading-none text-xl font-bold text-gray-900">Total Product by Category</dd>
             </dl>
             <div>
-              <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+              <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md">
                 <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
                 </svg>
@@ -141,7 +141,7 @@
           </div>
 
           <div id="bar-chart"></div>
-            <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+            <div class="grid grid-cols-1 items-center border-gray-200 border-t justify-between">
             </div>
         </div>
       </div>
@@ -153,24 +153,24 @@
           <h1 class="text-xl text-gray-900 font-bold">
               Order List
           </h1>
-          <div class="pb-4 dark:bg-gray-900">
+          <div class="pb-4">
               <label for="table-search" class="sr-only">Search</label>
                   <div class="relative mt-1">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                          <svg class="w-4 h-4 text-gray-400 dark:text-gray-400" aria-hidden="true"
+                          <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                           </svg>
                       </div>
                       <input type="text" id="table-search"
-                          class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 dark:bg-gray-700 placeholder-gray-400 dark:text-white-50 "
+                          class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 placeholder-gray-400 "
                           placeholder="Search">
                   </div>
               </div>
           </div>
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         UID
@@ -187,8 +187,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         AF-001
                     </th>
                     <td class="px-6 py-4">
@@ -198,7 +198,7 @@
                         Rp 5.000.000
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16.8037 8.49976C16.8037 8.49976 13.8037 2.99976 8.80371 2.99976C3.80371 2.99976 0.803711 8.49976 0.803711 8.49976C0.803711 8.49976 3.80371 13.9998 8.80371 13.9998C13.8037 13.9998 16.8037 8.49976 16.8037 8.49976ZM1.97641 8.49976C2.03334 8.41297 2.09825 8.31653 2.17098 8.21217C2.50587 7.73169 3.00002 7.09266 3.63582 6.45686C4.92474 5.16794 6.68433 3.99976 8.80371 3.99976C10.9231 3.99976 12.6827 5.16794 13.9716 6.45686C14.6074 7.09266 15.1016 7.73169 15.4364 8.21217C15.5092 8.31653 15.5741 8.41297 15.631 8.49976C15.5741 8.58654 15.5092 8.68298 15.4364 8.78734C15.1016 9.26783 14.6074 9.90685 13.9716 10.5427C12.6827 11.8316 10.9231 12.9998 8.80371 12.9998C6.68433 12.9998 4.92474 11.8316 3.63582 10.5427C3.00002 9.90685 2.50587 9.26783 2.17098 8.78734C2.09825 8.68298 2.03334 8.58654 1.97641 8.49976Z" fill="#FDC55E"/>
                           <path d="M8.80371 5.99976C7.423 5.99976 6.30371 7.11904 6.30371 8.49976C6.30371 9.88047 7.423 10.9998 8.80371 10.9998C10.1844 10.9998 11.3037 9.88047 11.3037 8.49976C11.3037 7.11904 10.1844 5.99976 8.80371 5.99976ZM5.30371 8.49976C5.30371 6.56676 6.87072 4.99976 8.80371 4.99976C10.7367 4.99976 12.3037 6.56676 12.3037 8.49976C12.3037 10.4328 10.7367 11.9998 8.80371 11.9998C6.87072 11.9998 5.30371 10.4328 5.30371 8.49976Z" fill="#FDC55E"/>
@@ -206,8 +206,8 @@
                       </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white-50 border-b hover:bg-gray-50">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         AF-002
                     </th>
                     <td class="px-6 py-4">
@@ -217,7 +217,7 @@
                         Rp 5.000.000
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16.8037 8.49976C16.8037 8.49976 13.8037 2.99976 8.80371 2.99976C3.80371 2.99976 0.803711 8.49976 0.803711 8.49976C0.803711 8.49976 3.80371 13.9998 8.80371 13.9998C13.8037 13.9998 16.8037 8.49976 16.8037 8.49976ZM1.97641 8.49976C2.03334 8.41297 2.09825 8.31653 2.17098 8.21217C2.50587 7.73169 3.00002 7.09266 3.63582 6.45686C4.92474 5.16794 6.68433 3.99976 8.80371 3.99976C10.9231 3.99976 12.6827 5.16794 13.9716 6.45686C14.6074 7.09266 15.1016 7.73169 15.4364 8.21217C15.5092 8.31653 15.5741 8.41297 15.631 8.49976C15.5741 8.58654 15.5092 8.68298 15.4364 8.78734C15.1016 9.26783 14.6074 9.90685 13.9716 10.5427C12.6827 11.8316 10.9231 12.9998 8.80371 12.9998C6.68433 12.9998 4.92474 11.8316 3.63582 10.5427C3.00002 9.90685 2.50587 9.26783 2.17098 8.78734C2.09825 8.68298 2.03334 8.58654 1.97641 8.49976Z" fill="#FDC55E"/>
                           <path d="M8.80371 5.99976C7.423 5.99976 6.30371 7.11904 6.30371 8.49976C6.30371 9.88047 7.423 10.9998 8.80371 10.9998C10.1844 10.9998 11.3037 9.88047 11.3037 8.49976C11.3037 7.11904 10.1844 5.99976 8.80371 5.99976ZM5.30371 8.49976C5.30371 6.56676 6.87072 4.99976 8.80371 4.99976C10.7367 4.99976 12.3037 6.56676 12.3037 8.49976C12.3037 10.4328 10.7367 11.9998 8.80371 11.9998C6.87072 11.9998 5.30371 10.4328 5.30371 8.49976Z" fill="#FDC55E"/>
@@ -225,8 +225,8 @@
                       </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white-50 hover:bg-gray-50">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         AF-003
                     </th>
                     <td class="px-6 py-4">
@@ -236,7 +236,7 @@
                         Rp 5.000.000
                     </td>
                     <td class="px-6 py-4">
-                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                      <a href="#" class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16.8037 8.49976C16.8037 8.49976 13.8037 2.99976 8.80371 2.99976C3.80371 2.99976 0.803711 8.49976 0.803711 8.49976C0.803711 8.49976 3.80371 13.9998 8.80371 13.9998C13.8037 13.9998 16.8037 8.49976 16.8037 8.49976ZM1.97641 8.49976C2.03334 8.41297 2.09825 8.31653 2.17098 8.21217C2.50587 7.73169 3.00002 7.09266 3.63582 6.45686C4.92474 5.16794 6.68433 3.99976 8.80371 3.99976C10.9231 3.99976 12.6827 5.16794 13.9716 6.45686C14.6074 7.09266 15.1016 7.73169 15.4364 8.21217C15.5092 8.31653 15.5741 8.41297 15.631 8.49976C15.5741 8.58654 15.5092 8.68298 15.4364 8.78734C15.1016 9.26783 14.6074 9.90685 13.9716 10.5427C12.6827 11.8316 10.9231 12.9998 8.80371 12.9998C6.68433 12.9998 4.92474 11.8316 3.63582 10.5427C3.00002 9.90685 2.50587 9.26783 2.17098 8.78734C2.09825 8.68298 2.03334 8.58654 1.97641 8.49976Z" fill="#FDC55E"/>
                           <path d="M8.80371 5.99976C7.423 5.99976 6.30371 7.11904 6.30371 8.49976C6.30371 9.88047 7.423 10.9998 8.80371 10.9998C10.1844 10.9998 11.3037 9.88047 11.3037 8.49976C11.3037 7.11904 10.1844 5.99976 8.80371 5.99976ZM5.30371 8.49976C5.30371 6.56676 6.87072 4.99976 8.80371 4.99976C10.7367 4.99976 12.3037 6.56676 12.3037 8.49976C12.3037 10.4328 10.7367 11.9998 8.80371 11.9998C6.87072 11.9998 5.30371 10.4328 5.30371 8.49976Z" fill="#FDC55E"/>
@@ -253,33 +253,33 @@
 
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Prev</a>
+                          class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Prev</a>
                   </li>
 
                   <li>
                       <a href="#" aria-current="page"
-                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-white-100 bg-red-500  hover:bg-red-600 hover:text-white-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">1</a>
+                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-white-100 bg-red-500  hover:bg-red-600 hover:text-white-100">1</a>
                   </li>
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">2</a>
+                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
                   </li>
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">3</a>
+                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
                   </li>
 
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">...</a>
+                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 ">...</a>
                   </li>
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white-50">10</a>
+                          class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">10</a>
                   </li>
                   <li>
                       <a href="#"
-                          class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 dark:text-gray-400  dark:hover:text-white-50">Next</a>
+                          class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Next</a>
                   </li>
               </ul>
           </nav>
