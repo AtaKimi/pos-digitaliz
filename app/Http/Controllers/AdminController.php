@@ -13,16 +13,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $tenants = Tenant::latest()->paginate(11);
+        $tenantCounter = Tenant::all()->count();
+        return view('admin.index', compact('tenants', 'tenantCounter'));
     }
     public function tenantManagement()
     {
-        return view('admin.tenantmanagement');
+        $tenants = Tenant::latest()->paginate(11);
+        return view('admin.tenantmanagement', compact('tenants'));
     }
 
     public function detailTenant(Tenant $tenant)
     {
-        return view('admin.detail-tenant');
+        return view('admin.tenant-detail');
     }
 
     /**

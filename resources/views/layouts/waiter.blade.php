@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     @yield('file-header')
 </head>
-<body>
+<body class="bg-white-50">
     @yield('content')
 
     @yield('file-footer')

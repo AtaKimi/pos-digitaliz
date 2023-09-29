@@ -86,7 +86,7 @@ Route::prefix('tenant')->group(function () {
 
 Route::prefix('waiter')->group(function () {
     Route::controller(WaiterController::class)->group(function () {
-        // Route::get('/', 'index')->name('waiter-index');
+        Route::get('/', 'indexWaiter')->name('waiter-index');
     });
 });
 

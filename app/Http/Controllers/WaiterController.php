@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Waiter;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class WaiterController extends Controller
@@ -13,6 +13,17 @@ class WaiterController extends Controller
     public function indexTenant()
     {
         return view('tenant.waiter');
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexWaiter()
+    {
+
+        $orders = Order::latest()->paginate(5);
+
+        return view('waiter.index', compact('orders'));
     }
 
     /**

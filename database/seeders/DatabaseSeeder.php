@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 // user id 4 - 14 is tenant
                 // user id 15 - 35 is waiter
                 UserPermissionSeeder::class,
-                OrdersOrderDetailSeeder::class,
+                // OrdersOrderDetailSeeder::class,
                 TenantProfileImageSeeder::class,
                 ProductImageSeeder::class,
             ]
