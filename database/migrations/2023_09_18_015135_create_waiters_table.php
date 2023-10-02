@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('waiters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->unique()->constrained('users');
             $table->foreignId('tenant_id')->constrained('tenants');
             $table->softDeletes();
             $table->timestamps();

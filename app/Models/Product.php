@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,6 +18,11 @@ class Product extends Model
         'category_id',
         'tenant_id',
     ];
+
+    public function modelable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     public function tenant()
     {

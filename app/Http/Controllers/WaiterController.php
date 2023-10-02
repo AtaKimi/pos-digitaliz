@@ -12,7 +12,7 @@ class WaiterController extends Controller
      */
     public function indexTenant()
     {
-        return view('tenant.waiter');
+        return view('waiter.order-detail');
     }
 
     /**
