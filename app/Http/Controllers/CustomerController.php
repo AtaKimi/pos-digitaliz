@@ -14,6 +14,11 @@ class CustomerController extends Controller
         return view('customer.customer-landing');
     }
 
+    public function cart()
+    {
+        return view('costumer.cart');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

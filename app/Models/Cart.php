@@ -10,14 +10,18 @@ class Cart extends Model
     use HasFactory;
     protected $fillable =
     [
-        'tenant_id',
         'product_id',
+        'desk_id',
         'quantity',
     ];
 
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
+    }
+    public function desk()
+    {
+        return $this->belongsTo(Desk::class);
     }
     // public function product()
     // {

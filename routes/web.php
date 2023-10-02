@@ -72,15 +72,22 @@ Route::prefix('tenant')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->group(function(){
+Route::prefix('waiter')->group(function () {
     Route::controller(WaiterController::class)->group(function () {
-        // Route::get('/', 'index')->name('waiter-index');
+        Route::get('/', 'indexWaiter')->name('waiter-index');
     });
 });
 
-Route::prefix('costumer')->group(function(){
+Route::prefix('waiter/detail')->group(function () {
+    Route::controller(WaiterController::class)->group(function () {
+        Route::get('/', 'indexTenant')->name('waiter-index');
+    });
+});
+
+Route::prefix('costumer')->group(function () {
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
+        Route::get('/cart', 'cart')->name('customer-cart');
     });
 });
 
