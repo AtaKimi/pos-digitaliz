@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <p class="font-bold text-xl text-gray-900">Dashboard</p>
-                    <p class="text-gray-600 text-xs hidden md:block">Akses menu dan informasi penting lainnya disini</p>
+                    <p class="text-gray-600 hidden md:block">Akses menu dan informasi penting lainnya disini</p>
                 </div>
             </div>
         </div>
