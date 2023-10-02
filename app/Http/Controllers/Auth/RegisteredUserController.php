@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -34,7 +35,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone_number' => ['required', 'numeric', 'min:10'],
             'tenant_name' => ['required', 'string', 'max:255'],
@@ -57,8 +58,11 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
         ]);
 
-        Auth::login($user);
+        $role = $user->assignRole('tenant');
+        //left the error alone if it's error on hasPermissionTo() as it's a function that is form spatie laravel permission
 
-        return redirect(RouteServiceProvider::HOME);
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('login')->with('message', 'Check your email inbox to verify your account first!');
     }
 }
