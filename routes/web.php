@@ -88,19 +88,16 @@ Route::middleware('auth')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
+Route::prefix('waiter')->group(function(){
     Route::controller(WaiterController::class)->group(function () {
         Route::get('/', 'indexWaiter')->name('waiter-index');
     });
 });
 
-// Routes for Customer
-
-Route::prefix('customer')->group(function () {
+Route::prefix('costumer')->group(function(){
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
-    });
-    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/cart', 'cart')->name('customer-cart');
         Route::get('/menu', 'menu')->name('customer-menu');
     });
 });

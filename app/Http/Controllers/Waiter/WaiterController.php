@@ -17,6 +17,11 @@ class WaiterController extends Controller
         return view('tenant.waiter');
     }
 
+    public function indexWaiter()
+    {
+        return view('waiter.index');
+    }
+
     /**
      * Display a listing of the resource.
      */
