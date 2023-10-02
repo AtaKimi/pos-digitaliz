@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
                 // OrdersOrderDetailSeeder::class,
                 TenantProfileImageSeeder::class,
                 ProductImageSeeder::class,
+                TenantServicePaymentSeeder::class,
             ]
         );
 

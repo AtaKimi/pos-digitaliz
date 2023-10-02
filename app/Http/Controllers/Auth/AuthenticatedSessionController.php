@@ -29,6 +29,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+
+        //left the error alone if it's error on hasPermissionTo() as it's a function that is form spatie laravel permission
+        if ($user->hasPermissionTo('waiter-access')) {
+            return redirect()->route('waiter-index');
+        } else  if ($user->hasPermissionTo('admin-access')) {
+            return redirect()->route('admin-index');
+        } else if ($user->hasPermissionTo('waiter-access')) {
+            return redirect()->route('waiter-index');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
