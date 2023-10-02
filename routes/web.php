@@ -88,7 +88,7 @@ Route::middleware('auth')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->group(function(){
+Route::prefix('waiter')->middleware('can:waiter-access')->group(function(){
     Route::controller(WaiterController::class)->group(function () {
         Route::get('/', 'indexWaiter')->name('waiter-index');
     });
