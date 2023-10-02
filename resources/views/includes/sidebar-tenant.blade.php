@@ -9,7 +9,8 @@
                 <div class="px-4 py-2">
                     <p class="text-gray-400 text-xs font-semibold">PAGES</p>
                 </div>
-                <a href="{{ route('tenant-index') }}">
+                {{-- <a href="{{ route('tenant-index') }}"> --}}
+                    <a href="">
                     <div
                         class="flex px-5 py-4 mx-5  @if (request()->route()->named('tenant-index')) bg-red-500 text-white-50 @endif rounded-xl align-middle w-64">
                         <div class="my-auto mr-5">
@@ -37,7 +38,8 @@
                         <p class="my-auto text-lg">Order</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-product-index') }}">
+                {{-- <a href="{{ route('tenant-product-index') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-product-*')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="16" height="16" viewBox="0 0 16 16" class="@if (request()->routeIs('tenant-product-*')) fill-white-50 @endif"
@@ -49,7 +51,8 @@
                         <p class="my-auto text-lg">Product</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-category-index') }}">
+                {{-- <a href="{{ route('tenant-category-index') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-category-*')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="@if (request()->routeIs('tenant-category-*')) fill-white-50 @endif"
@@ -63,7 +66,8 @@
                         <p class="my-auto text-lg">Category</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-desk-index') }}">
+                {{-- <a href="{{ route('tenant-desk-index') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-desk-*')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="16" height="15" viewBox="0 0 16 15" class="@if (request()->routeIs('tenant-desk-*')) fill-white-50 @endif"
@@ -81,7 +85,8 @@
                         <p class="my-auto text-lg">Desk</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-service-payment-index') }}">
+                {{-- <a href="{{ route('tenant-service-payment-index') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-service-payment-*')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="18" height="18" viewBox="0 0 18 18" class="@if (request()->routeIs('tenant-service-payment-*')) fill-white-50 @endif"
@@ -98,7 +103,8 @@
                         <p class="my-auto text-lg">Service Payment</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-waiter-index') }}">
+                {{-- <a href="{{ route('tenant-waiter-index') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-waiter-*')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="18" height="16" viewBox="0 0 18 16" class="@if (request()->routeIs('tenant-waiter-*')) fill-white-50 @endif"
@@ -118,7 +124,8 @@
                         <p class="my-auto text-lg">Waiter</p>
                     </div>
                 </a>
-                <a href="{{ route('tenant-setting') }}">
+                {{-- <a href="{{ route('tenant-setting') }}"> --}}
+                    <a href="">
                     <div class="flex px-5 py-4 mx-5 rounded-xl align-middle @if (request()->routeIs('tenant-setting')) bg-red-500 text-white-50 @endif">
                         <div class="my-auto mr-5">
                             <svg width="18" height="18" viewBox="0 0 18 18" class="@if (request()->routeIs('tenant-setting')) fill-white-50 @endif"
