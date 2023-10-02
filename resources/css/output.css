@@ -2428,6 +2428,11 @@ html {
   background-color: rgb(221 217 217 / var(--tw-bg-opacity));
 }
 
+.bg-grey-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(200 194 194 / var(--tw-bg-opacity));
+}
+
 .bg-orange-100{
   --tw-bg-opacity: 1;
   background-color: rgb(254 236 220 / var(--tw-bg-opacity));
@@ -2530,6 +2535,11 @@ html {
 .bg-yellow-500{
   --tw-bg-opacity: 1;
   background-color: rgb(253 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-grey-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(159 149 149 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
