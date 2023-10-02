@@ -69,4 +69,9 @@ class Tenant extends Model implements HasMedia
     {
         return $this->morphMany(service::class, 'serviceable');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

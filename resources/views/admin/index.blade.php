@@ -2,14 +2,12 @@
 
 @section('content')
 <div class="pb-5">
-
-
     {{-- header --}}
     <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
         <div class="p-4">
             <div class="flex items-center">
-                <div class="mr-4 bg-orange-100 rounded-xl p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 36 36" fill="none">
+                <div class="mr-4 bg-yellow-50 rounded-xl p-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                         <path
                             d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
                             fill="#FDC55E" />
@@ -17,7 +15,7 @@
                 </div>
                 <div>
                     <p class="font-bold text-xl text-gray-900">Dashboard</p>
-                    <p class="text-gray-600 text-xs hidden md:block">Akses menu dan informasi penting lainnya disini</p>
+                    <p class="text-gray-600 hidden md:block">Akses menu dan informasi penting lainnya disini</p>
                 </div>
             </div>
         </div>
@@ -40,7 +38,8 @@
                     <span class="text-black text-xs font-semibold mr-2">Total Tenant</span>
                 </div>
                 <div>
-                    <p class="font-bold text-xl text-gray-900 mb-2">100</p>
+                    <p class="font-bold text-xl text-gray-900 mb-2">{{ $tenantCounter }}
+                </p>
                     <div class="flex items-center gap-1">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -250,13 +249,13 @@
 
     {{-- table --}}
     <div class="relative overflow-x-auto shadow-md rounded-xl bg-white-50">
-        <div class="flex flex-wrap gap-5 p-5 justify-between items-center">
+        <div class="flex flex-wrap gap-5 p-5 justify-between">
             <h1 class="text-xl text-gray-900 font-bold">
                 Daftar Tagihan Terbaru
             </h1>
             <div class="pb-4">
                 <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
+                <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -310,26 +309,25 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($tenants as $tenant )
                 <tr class="bg-white-50 border-b hover:bg-gray-50">
                     <td class="px-6 py-4">
-                        1
+                        {{ $loop->iteration}}
                     </td>
                     <th scope="row" class="px-6 py-4">
-                        <p class="text-xs font-normal">#12345</p>
+                        <p class="text-xs font-normal">#{{ $tenant->code }}</p>
                         <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                            Forger Coffe
+                            {{ $tenant->name }}
                         </h1>
                     </th>
                     <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                        <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
+                        <img class="rounded-full w-10 h-10" src="{{ $tenant->user->getFirstMediaUrl('default') }}" alt="">
                         <div>
                             <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                Anya Forger
+                                {{ $tenant->user->name }}
                             </h1>
-                            <p class="text-xs font-normal">anyaforger@gmail.com</p>
-
+                            <p class="text-xs font-normal">{{ $tenant->user->email }}</p>
                         </div>
-
                     </th>
                     <td class="px-6 py-4">
                         Rp.90.000,00
@@ -338,7 +336,7 @@
                         14/09/2023, 10.00 AM
                     </td>
                     <td class="px-6 py-4">
-                        <button class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
+                        <a type="button" href="{{ route('admin-detail', $tenant) }}" class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
                                 fill="none">
                                 <path
@@ -348,177 +346,16 @@
                                     d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z"
                                     fill="#FDC55E" />
                             </svg>
-                            </a>
+                        </a>
                     </td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50">
-                    <td class="px-6 py-4">
-                        2
-                    </td>
-                    <th scope="row" class="px-6 py-4">
-                        <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                            Forger Coffe
-                        </h1>
-                    </th>
-                    <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                        <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
-                        <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                Anya Forger
-                            </h1>
-                            <p class="text-xs font-normal">anyaforger@gmail.com</p>
-
-                        </div>
-
-                    </th>
-                    <td class="px-6 py-4">
-                        Rp.90.000,00
-                    </td>
-                    <td class="px-6 py-4">
-                        14/09/2023, 10.00 AM
-                    </td>
-                    <td class="px-6 py-4">
-                        <button
-                            class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
-                                fill="none">
-                                <path
-                                    d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z"
-                                    fill="#FDC55E" />
-                                <path
-                                    d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z"
-                                    fill="#FDC55E" />
-                            </svg>
-                            </a>
-                    </td>
+                @empty
+                <tr>
+                    <td colspan="55" class="text-center py-5">tidak ada data</td>
                 </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50">
-                    <td class="px-6 py-4">
-                        3
-                    </td>
-                    <th scope="row" class="px-6 py-4">
-                        <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                            Forger Coffe
-                        </h1>
-                    </th>
-                    <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                        <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
-                        <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                Anya Forger
-                            </h1>
-                            <p class="text-xs font-normal">anyaforger@gmail.com</p>
+                @endforelse
 
-                        </div>
 
-                    </th>
-                    <td class="px-6 py-4">
-                        Rp.90.000,00
-                    </td>
-                    <td class="px-6 py-4">
-                        14/09/2023, 10.00 AM
-                    </td>
-                    <td class="px-6 py-4">
-                        <button
-                            class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
-                                fill="none">
-                                <path
-                                    d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z"
-                                    fill="#FDC55E" />
-                                <path
-                                    d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z"
-                                    fill="#FDC55E" />
-                            </svg>
-                            </a>
-                    </td>
-                </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50">
-                    <td class="px-6 py-4">
-                        4
-                    </td>
-                    <th scope="row" class="px-6 py-4">
-                        <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                            Forger Coffe
-                        </h1>
-                    </th>
-                    <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                        <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
-                        <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                Anya Forger
-                            </h1>
-                            <p class="text-xs font-normal">anyaforger@gmail.com</p>
-
-                        </div>
-
-                    </th>
-                    <td class="px-6 py-4">
-                        Rp.90.000,00
-                    </td>
-                    <td class="px-6 py-4">
-                        14/09/2023, 10.00 AM
-                    </td>
-                    <td class="px-6 py-4">
-                        <button
-                            class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
-                                fill="none">
-                                <path
-                                    d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z"
-                                    fill="#FDC55E" />
-                                <path
-                                    d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z"
-                                    fill="#FDC55E" />
-                            </svg>
-                            </a>
-                    </td>
-                </tr>
-                <tr class="bg-white-50 border-b hover:bg-gray-50">
-                    <td class="px-6 py-4">
-                        5
-                    </td>
-                    <th scope="row" class="px-6 py-4">
-                        <p class="text-xs font-normal">#12345</p>
-                        <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                            Forger Coffe
-                        </h1>
-                    </th>
-                    <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                        <img class="rounded-full w-10 h-10" src="{{ asset('assets/img/anya-profile.png') }}" alt="">
-                        <div>
-                            <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                Anya Forger
-                            </h1>
-                            <p class="text-xs font-normal">anyaforger@gmail.com</p>
-
-                        </div>
-
-                    </th>
-                    <td class="px-6 py-4">
-                        Rp.90.000,00
-                    </td>
-                    <td class="px-6 py-4">
-                        14/09/2023, 10.00 AM
-                    </td>
-                    <td class="px-6 py-4">
-                        <button
-                            class="p-2 rounded-lg border hover:bg-yellow-50                                                                              border-yellow-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
-                                fill="none">
-                                <path
-                                    d="M16.4063 8.8988C16.4063 8.8988 13.4063 3.3988 8.40625 3.3988C3.40625 3.3988 0.40625 8.8988 0.40625 8.8988C0.40625 8.8988 3.40625 14.3988 8.40625 14.3988C13.4063 14.3988 16.4063 8.8988 16.4063 8.8988ZM1.57895 8.8988C1.63588 8.81201 1.70079 8.71558 1.77352 8.61122C2.10841 8.13073 2.60256 7.49171 3.23836 6.85591C4.52728 5.56699 6.28687 4.3988 8.40625 4.3988C10.5256 4.3988 12.2852 5.56699 13.5741 6.85591C14.2099 7.49171 14.7041 8.13073 15.039 8.61122C15.1117 8.71558 15.1766 8.81201 15.2336 8.8988C15.1766 8.98559 15.1117 9.08203 15.039 9.18639C14.7041 9.66687 14.2099 10.3059 13.5741 10.9417C12.2852 12.2306 10.5256 13.3988 8.40625 13.3988C6.28687 13.3988 4.52728 12.2306 3.23836 10.9417C2.60256 10.3059 2.10841 9.66687 1.77352 9.18639C1.70079 9.08203 1.63588 8.98559 1.57895 8.8988Z"
-                                    fill="#FDC55E" />
-                                <path
-                                    d="M8.40625 6.3988C7.02554 6.3988 5.90625 7.51809 5.90625 8.8988C5.90625 10.2795 7.02554 11.3988 8.40625 11.3988C9.78696 11.3988 10.9063 10.2795 10.9063 8.8988C10.9063 7.51809 9.78696 6.3988 8.40625 6.3988ZM4.90625 8.8988C4.90625 6.96581 6.47325 5.3988 8.40625 5.3988C10.3392 5.3988 11.9063 6.96581 11.9063 8.8988C11.9063 10.8318 10.3392 12.3988 8.40625 12.3988C6.47325 12.3988 4.90625 10.8318 4.90625 8.8988Z"
-                                    fill="#FDC55E" />
-                            </svg>
-                            </a>
-                    </td>
-                </tr>
 
 
 
@@ -568,12 +405,6 @@
         </div>
 
     </div>
-
-
-
-
-</div>
-
 
 {{-- end table --}}
 

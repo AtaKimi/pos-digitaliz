@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DeskController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\TenantController;
-use App\Http\Controllers\WaiterController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Tenant\DeskController;
+use App\Http\Controllers\Tenant\OrderController;
+use App\Http\Controllers\Tenant\TenantController;
+use App\Http\Controllers\Waiter\WaiterController;
+use App\Http\Controllers\Tenant\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Tenant\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TenantServicePaymentController;
 /*
@@ -52,8 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('can:tenant-access')->group(function () {
         Route::prefix('tenant')->group(function () {
             Route::controller(TenantController::class)->group(function () {
-                Route::get('/', 'index')->name('tenant-index');
-                Route::get('/setting', 'setting')->name('tenant-setting');
+                Route::get('{tenant}/', 'index')->name('tenant-index');
+                Route::get('{tenant}/setting', 'setting')->name('tenant-setting');
             });
 
             Route::controller(CategoryController::class)->group(function () {
@@ -87,19 +87,16 @@ Route::middleware('auth')->group(function () {
 
 // Routes for waiter
 
-Route::prefix('waiter')->group(function () {
+Route::prefix('waiter')->middleware('can:waiter-access')->group(function(){
     Route::controller(WaiterController::class)->group(function () {
-        // Route::get('/', 'index')->name('waiter-index');
+        Route::get('/', 'indexWaiter')->name('waiter-index');
     });
 });
 
-// Routes for Customer
-
-Route::prefix('customer')->group(function () {
+Route::prefix('costumer')->group(function(){
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
-    });
-    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/cart', 'cart')->name('customer-cart');
         Route::get('/menu', 'menu')->name('customer-menu');
     });
 });
