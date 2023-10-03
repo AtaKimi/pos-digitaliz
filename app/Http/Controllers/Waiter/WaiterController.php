@@ -17,10 +17,6 @@ class WaiterController extends Controller
         return view('tenant.waiter');
     }
 
-    public function indexWaiter()
-    {
-        return view('waiter.index');
-    }
 
     /**
      * Display a listing of the resource.
@@ -28,7 +24,7 @@ class WaiterController extends Controller
     public function indexWaiter()
     {
 
-        $orders = Order::latest()->paginate(5);
+        $orders = Order::latest()->paginate(10);
 
         return view('waiter.index', compact('orders'));
     }
