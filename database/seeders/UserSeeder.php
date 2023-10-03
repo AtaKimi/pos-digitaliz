@@ -16,7 +16,66 @@ class UserSeeder extends Seeder
         // user with id from 1 - 3 is admin
         // user with id from 4 - 14 is tenant
         // user with id from 15 - 35 is waiters
-        \App\Models\User::factory(35)->create();
+
+        // user id 1 is super admin 
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'super admin',
+                'email' => 'super-admin@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('1234'), // password
+                'remember_token' => Str::random(10),
+                'phone_number' => fake()->numerify('+62 ####-####-####'),
+            ],
+        );
+
+        //user id 2 is admin
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'admin',
+                'email' => 'admin@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('1234'), // password
+                'remember_token' => Str::random(10),
+                'phone_number' => fake()->numerify('+62 ####-####-####'),
+            ],
+        );
+
+
+        // user id 3 is admin
+        \App\Models\User::factory(1)->create();
+
+
+        // user id 4 is tenant
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'tenant',
+                'email' => 'tenant@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('1234'), // password
+                'remember_token' => Str::random(10),
+                'phone_number' => fake()->numerify('+62 ####-####-####'),
+            ],
+        );
+
+        // user id 5 - 14 is admin
+        \App\Models\User::factory(10)->create();
+
+        // user id 15 is tenant
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'tenant',
+                'email' => 'waiter@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('1234'), // password
+                'remember_token' => Str::random(10),
+                'phone_number' => fake()->numerify('+62 ####-####-####'),
+            ],
+        );
+
+        // user id 16 - 35 is waiter
+        \App\Models\User::factory(20)->create();
+
 
         // user with id from 4 - 14 is tenant
         for ($i = 4; $i <= 14; $i++) {

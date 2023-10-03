@@ -14,6 +14,10 @@ class CustomerController extends Controller
         return view('customer.customer-landing');
     }
 
+    public function menu()
+    {
+        return view('customer.menu');
+    }
     public function cart()
     {
         return view('costumer.cart');
@@ -65,5 +69,10 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function menuList()
+    {
+        return view('costumer.menu');
     }
 }

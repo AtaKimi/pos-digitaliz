@@ -165,10 +165,10 @@
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -192,8 +192,8 @@
             </div>
 
             <div class="relative overflow-x-auto sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 No
@@ -224,9 +224,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 1
                             </th>
                             <td class="px-6 py-4">
@@ -242,9 +242,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 2
                             </th>
                             <td class="px-6 py-4">
@@ -260,9 +260,9 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 2
                             </th>
                             <td class="px-6 py-4">
@@ -314,10 +314,10 @@
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -332,8 +332,8 @@
             </div>
 
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class=" py-3">
                                 No
@@ -350,11 +350,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <td class=" py-4">
                                 1
                             </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
                                         class="w-8 h-8 rounded-full">
@@ -372,11 +372,11 @@
                                     Verified</p>
                             </td>
                         </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <td class=" py-4">
                                 1
                             </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
                                         class="w-8 h-8 rounded-full">
@@ -394,11 +394,11 @@
                                     Verified</p>
                             </td>
                         </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <td class=" py-4">
                                 1
                             </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
                                         class="w-8 h-8 rounded-full">
@@ -455,7 +455,7 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div
-                    class="flex flex-col relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
                     <div class="flex justify-between mb-8 items-center">
                         <div class=""></div>
                         <p class="font-bold text-2xl">Bukti Transfer</p>
@@ -473,38 +473,38 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div
-                    class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
                     <div class="flex justify-between  items-center">
                         <div class=""></div>
                         <p class="font-bold text-2xl">Tangihan</p>
                         <p class="text-2xl font-bold" data-modal-target="modal-bill" data-modal-toggle="modal-bill">X</p>
                     </div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                         Total Transfer</label>
                     <input type="email" id="email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Rp" required>
                     {{-- <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                             Waktu Transfer</label>
                         <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                             </svg>
                         </div>
                         <input datepicker type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                             placeholder="Select date">
                     </div> --}}
                     <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                             Waktu Transfer</label>
                         <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
                         </div>
                         <div class="flex items-center border rounded-lg relative">
-                            <svg class="absolute left-2 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="absolute left-2 w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
@@ -531,7 +531,7 @@
                         </label>
                     </div>
                     <button type="button"
-                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3 dark:focus:ring-yellow-900">Save</button>
+                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3">Save</button>
                 </div>
             </div>
         </div>

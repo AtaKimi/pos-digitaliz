@@ -176,7 +176,7 @@
                 </div>
 
             </div>
-            <div class="w-4/5 rounded-full h-2.5 px-12">
+            <div class="w-4/5 rounded-full h-2.5 ps-12 pr-16">
                 <div class="bg-gray-200 rounded-full h-2.5">
                     <div class="bg-blue-300 h-2.5 rounded-full" style="width: 33.33%"></div>
                 </div>
@@ -371,7 +371,7 @@
                         </h3>
                     </div>
                     <button type="button"
-                        class="top-0 right-0 absolute text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="top-0 right-0 absolute text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
                         data-modal-hide="defaultModal">
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">

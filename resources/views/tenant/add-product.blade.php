@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="p-2 bg-white-50 border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-2 bg-white-50 border border-gray-200 rounded-3xl shadow">
         <div class="flex items-center justify-between py-5 px-3">
             <div>
                 <p class="text-lg font-semibold text-gray-700">Add Product</p>
@@ -30,16 +30,16 @@
         </div>
 
         <div class="flex flex-col md:flex-row mx-5 my-2 h-full">
-            <div class="w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 px-5 mr-5">
-                <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-4">Add Images</label>
+            <div class="w-full border border-gray-200 rounded-lg shadow p-4 px-5 mr-5">
+                <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 pt-4">Add Images</label>
                 <div class="flex items-center justify-center w-full">
-                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-60 border-2 border-blue-400 border-dashed rounded-lg cursor-pointer bg-gray-100 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-60 border-2 border-blue-400 border-dashed rounded-lg cursor-pointer bg-gray-100 hover:bg-gray-100">
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.00585938 12.125C0.00585938 7.84479 3.47565 4.375 7.75586 4.375H54.2559C58.5361 4.375 62.0059 7.84479 62.0059 12.125V50.875C62.0059 55.1552 58.5361 58.625 54.2559 58.625H7.75586C3.47565 58.625 0.00585938 55.1552 0.00585938 50.875V12.125ZM3.88086 47V50.875C3.88086 53.0151 5.61576 54.75 7.75586 54.75H54.2559C56.396 54.75 58.1309 53.0151 58.1309 50.875V37.3125L43.4973 29.767C42.7514 29.3941 41.8505 29.5403 41.2608 30.13L26.884 44.5068L16.5806 37.6379C15.8121 37.1256 14.7889 37.2269 14.1358 37.88L3.88086 47ZM23.2559 21.8125C23.2559 18.6023 20.6535 16 17.4434 16C14.2332 16 11.6309 18.6023 11.6309 21.8125C11.6309 25.0227 14.2332 27.625 17.4434 27.625C20.6535 27.625 23.2559 25.0227 23.2559 21.8125Z" fill="#B4ABAB"/>
                             </svg>
                                                             
-                            <span class="text-xs text-gray-500 dark:text-gray-400">
+                            <span class="text-xs text-gray-500">
                                 Drop your files here. <span class="text-xs text-blue-500">Browse</span></span>
                         </div>
                         <input id="dropzone-file" type="file" class="hidden" />
@@ -84,22 +84,22 @@
                     </div>
                 </div>
                 <div class="flex justify-end">
-                    <button type="button" class="text-red-500 font-medium rounded-lg text-md px-2 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Cancel</button>
+                    <button type="button" class="text-red-500 font-medium rounded-lg text-md px-2 py-2.5 text-center mb-2">Cancel</button>
                 </div>
                 
             </div>
 
-            <div class="w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
+            <div class="w-full border border-gray-200 rounded-lg shadow p-5">
                 <div>
-                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-3">Product Name</label>
+                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 pt-3">Product Name</label>
                     <input type="text" id="first_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Input name" required>
                 </div>
                 <div>
-                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-2">Choose Category</label>
+                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 pt-2">Choose Category</label>
                     <select id="countries"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option selected>Select a category</option>
                         <option value="satu">Category 1</option>
                         <option value="dua">Category 2</option>
@@ -108,29 +108,29 @@
                     </select>
                 </div>
                 <div>
-                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-2">Price</label>
+                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 pt-2">Price</label>
                     <div class="flex">
                         <span
-                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-white-50 border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 rounded-l-lg">
+                            class="inline-flex items-center px-3 text-sm text-gray-900 bg-white-50 border border-r-0 border-gray-300 rounded-l-lg">
                             Rp
                         </span>
                         <input type="text" id="website-admin"
-                            class="rounded-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-r-lg">
+                            class="rounded-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  rounded-r-lg">
                     </div>
                 </div>
                 <div>
-                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 dark:text-white pt-2">Description</label>
+                    <label for="first_name" class="block mb-2 text-md font-semibold text-gray-900 pt-2">Description</label>
                     <textarea id="message" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Input Description"></textarea>
                 </div>
             </div>
         </div>
         <div class="flex justify-end mx-2 my-5">
             <button type="button"
-                class="text-red-500 bg-white border border-red-400 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Back</button>
+                class="text-red-500 bg-white border border-red-400 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Back</button>
             <button type="button"
-                class="focus:outline-none text-white-50 bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Publish
+                class="focus:outline-none text-white-50 bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Publish
                 Product</button>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Policies\TenantPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -68,5 +69,10 @@ class Tenant extends Model implements HasMedia
     public function services(): MorphMany
     {
         return $this->morphMany(service::class, 'serviceable');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
