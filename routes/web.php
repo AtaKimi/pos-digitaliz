@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
             Route::controller(AdminTenantController::class)->group(function () {
                 Route::prefix('tenant')->group(function () {
                     Route::get('/', 'index')->name('admin-tenant-index');
-                    Route::get('detail', 'show')->name('admin-tenant-show');
+                    Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
                 });
             });
         });

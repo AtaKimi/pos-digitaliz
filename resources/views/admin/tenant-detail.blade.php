@@ -73,7 +73,7 @@
                     <p class="font-semibold">Tagihan yang Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp.25.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{$tenant->total_payment}}</h4>
                 </div>
             </div>
             <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
@@ -117,11 +117,11 @@
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama Tenant</p>
-                        <p class="font-semibold">WETLAND SQUARE</p>
+                        <p class="font-semibold">{{ $tenant->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Status Tenant</p>
-                        <p class="font-semibold">AKTIF</p>
+                        <p class="font-semibold">{{ $tenant->is_active ? 'AKTIF' : 'BELUM AKTIF' }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Produk</p>
@@ -131,29 +131,29 @@
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Code Tenant</p>
-                        <p class="font-semibold">#12345</p>
+                        <p class="font-semibold">#{{ $tenant->code }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama User Tenant</p>
-                        <p class="font-semibold">ANYA FORGER</p>
+                        <p class="font-semibold">{{ $tenant->user->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Kategori </p>
-                        <p class="font-semibold">6</p>
+                        <p class="font-semibold">{{ $tenant->categories->count() }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Alamat Tenant</p>
-                        <p class="font-semibold">JL. A. YANI 3,4 BANJARMASIN SELATAN</p>
+                        <p class="font-semibold">{{ $tenant->address }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Emai User Tenant</p>
-                        <p class="font-semibold">anyaforger@gmail.com</p>
+                        <p class="font-semibold">{{ $tenant->user->email }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Deskripsi</p>
-                        <p class="font-semibold">TENANT KAMI MENYEDIAKAN BERBAGAI MACAM KOPI KELAS DUNIA</p>
+                        <p class="font-semibold">{{ $tenant->description }}</p>
                     </div>
                 </div>
             </div>

@@ -130,13 +130,19 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <p
-                                    class="w-30 bg-red-200 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full text-center">
-                                    Belum bayar</p>
+                                @if ($tenant->payment_status === 'Sudah bayar')
+                                    <p class="w-30 bg-green-200 text-green-800 text-xs font-medium mr-2 py-0.5 rounded-full text-center">
+                                        {{ $tenant->payment_status }}
+                                    </p>
+                                @else
+                                    <p class="w-30 bg-red-200 text-red-800 text-xs font-medium mr-2 py-0.5 rounded-full text-center">
+                                        {{ $tenant->payment_status }}
+                                    </p>
+                                @endif
                             </td>
                             <td class="px-6 py-4">
                                 <label class="relative inline-flex cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <input type="checkbox" value="" class="sr-only peer" {{$tenant->is_active ? '' : 'checked'}}>
                                     <div
                                         class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500">
                                     </div>
@@ -174,6 +180,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{-- {{$tenants->links()}} --}}
             <nav class="flex items-center pt-4 py-2 px-2" aria-label="Table navigation">
                 <p class="text-xs text-gray-700 mr-20">
                     Menampilkan: <span class="font-semibold text-gray-900">1</span> - <span
