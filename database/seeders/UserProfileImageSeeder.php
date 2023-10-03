@@ -17,7 +17,6 @@ class UserProfileImageSeeder extends Seeder
 
         if(Storage::disk('media_user_profile')->exists('')){
             $directories = Storage::disk('media_user_profile')->allDirectories();
-
             for ($i=0; $i < count($directories); $i++) { 
                 Storage::disk('media_user_profile')->deleteDirectory($directories[$i]);
             }

@@ -1,47 +1,49 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.auth')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+    <div class="flex gap-8 items-center h-screen md:h-full p-8">
+        <div class="w-full object-cover hidden md:block ">
+            <img src="{{ asset('assets/img/login-hero.png') }}" class=" w-full h-full" alt="Login Hero">
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="lg:px-16 w-full md:w-[1000px] flex items-center h-full">
+            <div class="lg:px-7 flex flex-col items-center">
+                <img src="{{ asset('assets/img/logo.svg') }}" width="120px" height="110px" alt="Login Hero">
+                <div class="py-6">
+                    <h1 class="font-bold text-3xl">Sign In</h1>
+                    <p class="text-base font-medium py-6">Enter your email and password for login</p>
+                    <form action="{{ route('login') }}" method="post">
+                    @csrf
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-bold text-gray-900 ">
+                                Email</label>
+                            <input type="email" id="email" name="email"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-4 px-5"
+                                placeholder="Input your email here..." required>
+                                @error('email')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block mb-2 font-bold text-gray-900 ">
+                                Password</label>
+                            <input type="password" id="password" name="password"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-4 px-5"
+                                placeholder="Input your password here..." required>
+                                @error('password')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+                        </div>
+                        <div class="mb-6">
+                            <img src="{{ asset('assets/img/captcha-contoh.png') }}" alt="">
+                        </div>
+                        <div class="mb-6">
+                            <button class="flex w-full justify-center items-center p-3 bg-red-500 rounded-lg gap-2">
+                                <p class="text-sm font-semibold text-white-50">Sign In</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

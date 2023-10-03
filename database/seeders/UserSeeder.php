@@ -16,7 +16,18 @@ class UserSeeder extends Seeder
         // user with id from 1 - 3 is admin
         // user with id from 4 - 14 is tenant
         // user with id from 15 - 35 is waiters
-        \App\Models\User::factory(35)->create();
+        \App\Models\User::factory()->create(
+            [
+                'name' => fake()->name(),
+                'email' => 'test@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('12341234'), // password
+                'remember_token' => Str::random(10),
+                'phone_number' => fake()->numerify('+62 ####-####-####'),
+            ],
+        );
+
+        \App\Models\User::factory(34)->create();
 
         // user with id from 4 - 14 is tenant
         for ($i = 4; $i <= 14; $i++) {
