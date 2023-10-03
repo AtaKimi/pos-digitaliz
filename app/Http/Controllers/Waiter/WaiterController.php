@@ -13,7 +13,20 @@ class WaiterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexTenant()
+    {
+        return view('waiter.order-detail');
+    }
+
+    // public function indexWaiter()
+    // {
+    //     return view('waiter.index');
+    // }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexWaiter()
     {
 
         $orders = Order::latest()->paginate(5);
