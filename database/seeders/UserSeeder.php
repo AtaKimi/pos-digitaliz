@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
             ],
         );
 
-        // user id 5 - 14 is tenant
+        // user id 5 - 14 is admin
         \App\Models\User::factory(10)->create();
 
         // user id 15 is tenant

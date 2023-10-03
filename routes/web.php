@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tenant\DeskController;
 use App\Http\Controllers\Tenant\OrderController;
 use App\Http\Controllers\Tenant\TenantController;
-use App\Http\Controllers\Waiter\WaiterController;
+use App\Http\Controllers\Tenant\WaiterController;
 use App\Http\Controllers\Tenant\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Tenant\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TenantServicePaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
             })->name('admin-detail');
         });
     });
+    
     Route::middleware('can:tenant-access')->group(function () {
         Route::prefix('tenant')->group(function () {
             Route::controller(TenantController::class)->group(function () {
@@ -57,33 +59,32 @@ Route::middleware('auth')->group(function () {
             });
 
             Route::controller(CategoryController::class)->group(function () {
-                Route::get('/category', 'index')->name('tenant-category-index');
+                Route::get('{tenant}/category', 'index')->name('tenant-category-index');
             });
 
             Route::controller(OrderController::class)->group(function () {
-                Route::get('/order', 'index')->name('tenant-order-index');
-                Route::get('/order/detail', 'show')->name('tenant-order-show');
+                Route::get('{tenant}/order', 'index')->name('tenant-order-index');
+                Route::get('{tenant}/order/detail', 'show')->name('tenant-order-show');
             });
 
             Route::controller(ProductController::class)->group(function () {
-                Route::get('/product', 'index')->name('tenant-product-index');
-                Route::get('/product/create', 'create')->name('tenant-product-create');
+                Route::get('{tenant}/product', 'index')->name('tenant-product-index');
+                Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
             });
 
             Route::controller(TenantServicePaymentController::class)->group(function () {
-                Route::get('/service-payment', 'index')->name('tenant-service-payment-index');
+                Route::get('{tenant}/service-payment', 'index')->name('tenant-service-payment-index');
             });
 
             Route::controller(DeskController::class)->group(function () {
-                Route::get('/desk', 'index')->name('tenant-desk-index');
+                Route::get('{tenant}/desk', 'index')->name('tenant-desk-index');
             });
             Route::controller(WaiterController::class)->group(function () {
-                Route::get('/waiter', 'indexTenant')->name('tenant-waiter-index');
+                Route::get('{tenant}/waiter', 'index')->name('tenant-waiter-index');
             });
         });
     });
 });
-
 
 // Routes for waiter
 

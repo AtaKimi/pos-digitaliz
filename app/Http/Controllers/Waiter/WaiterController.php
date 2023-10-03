@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Waiter;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Waiter;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 
 class WaiterController extends Controller
 {
