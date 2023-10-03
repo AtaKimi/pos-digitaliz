@@ -2,13 +2,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         @include('includes.header')
     </head>
 <body class="bg-slate-200">
     <div class="w-[375px] bg-white-50 mx-auto">
-        <div class="h-[179px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom">
+        <div class="h-fit bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom mb-7">
             <nav class="flex justify-between pt-5">
                 <div>
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,9 +53,46 @@
                     </svg>                        
                 </div>
             </nav>
-            <div class="text-3xl font-semibold pt-5 w-56 mx-5">{{ $judul }}</div>
+            <div class="text-3xl font-semibold pt-5 w-full px-5 ">@yield('judul')</div>
         </div>
         @yield('content')
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        // MODAL LOGIC
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modal-content");
+        const menulist = document.getElementById("menulist");
+        const overlay = document.getElementById("overlay");
+        const openModalBtn = document.getElementById("open-modal-btn");
+        const closeModalBtn = document.getElementById("close-modal-btn");
+
+        function openModal() {
+            modal.classList.remove("hidden");
+            setTimeout(() => {
+                modal.classList.remove("translate-y-[100%]");
+                modal.classList.add("translate-y-0")
+            }, 100);
+
+            overlay.classList.remove("hidden");
+        }
+
+        function closeModal() {
+            modal.classList.add("hidden");
+            overlay.classList.add("hidden");
+            modal.classList.remove("translate-y-0")
+            modal.classList.add("translate-y-[100%]");
+        }
+
+        openModalBtn.addEventListener("click", openModal);
+        closeModalBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", closeModal);
+
+        // BUTTON LOGIC
+    </script>
 </body>
+
 </html>

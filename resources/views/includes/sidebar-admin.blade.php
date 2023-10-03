@@ -25,9 +25,9 @@
                 <p class="my-auto text-lg">Dashboard</p>
             </div>
         </a>
-        <a href="{{ route('admin-tenant-management') }}">
+        <a href="{{ route('admin-tenant-index') }}">
             <div
-                class="flex px-5 py-4 mx-5 @if (request()->route()->named('admin-tenant-management')) bg-yellow-500 @endif rounded-xl align-middle">
+                class="flex px-5 py-4 mx-5 @if (request()->route()->named('admin-tenant-index')) bg-yellow-500 @endif rounded-xl align-middle">
                 <div class="my-auto mr-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                         fill="none">
