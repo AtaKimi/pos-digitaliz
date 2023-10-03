@@ -14,15 +14,13 @@ class CustomerController extends Controller
         return view('customer.customer-landing');
     }
 
-<<<<<<< HEAD
     public function menu()
     {
         return view('customer.menu');
-=======
+    }
     public function cart()
     {
         return view('costumer.cart');
->>>>>>> 88c1377cdcae7d6c22169e602f340678a7ffca29
     }
 
     /**

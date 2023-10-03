@@ -14,13 +14,13 @@ class WaiterController extends Controller
      */
     public function indexTenant()
     {
-        return view('tenant.waiter');
+        return view('waiter.order-detail');
     }
 
-    public function indexWaiter()
-    {
-        return view('waiter.index');
-    }
+    // public function indexWaiter()
+    // {
+    //     return view('waiter.index');
+    // }
 
     /**
      * Display a listing of the resource.
