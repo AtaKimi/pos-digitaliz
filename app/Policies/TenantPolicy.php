@@ -18,4 +18,12 @@ class TenantPolicy
             : Response::deny();
         ;
     }
+
+    public function accessTenantWaiter(User $user, Tenant $tenant): Response
+    {
+        return $user->waiter->tenant_id === $tenant->id
+            ? Response::allow('success', 201)
+            : Response::deny();
+        ;
+    }
 }

@@ -1,5 +1,10 @@
 @extends('layouts.customer')
 
+@section('judul')
+    <p class="text-ellipsis">Temukan makanan favorit Anda!
+    </p>
+@endsection
+
 @section('file-header')
     <style>
         /* Hide scrollbar for Chrome, Safari and Opera */
@@ -184,10 +189,11 @@
                 </div>
             </div>
 
-             {{-- DESCRIPTION --}}
+            {{-- DESCRIPTION --}}
             <div class="flex flex-col my-7 gap-y-2">
                 <p class="text-xl font-[600]">Ayam Lalapan</p>
-                <p class="text-gray-600 text-sm">Ayam dengan sayuran kangkung ditabur dengan sambal yang merusak tampilan.</p>
+                <p class="text-gray-600 text-sm">Ayam dengan sayuran kangkung ditabur dengan sambal yang merusak tampilan.
+                </p>
                 <p class="self-end text-xl font-[700]">Rp32.500</p>
             </div>
 
