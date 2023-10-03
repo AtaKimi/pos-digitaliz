@@ -1,28 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Tenant;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('customer.customer-landing');
-    }
-
-<<<<<<< HEAD
-    public function menu()
-    {
-        return view('customer.menu');
-=======
-    public function cart()
-    {
-        return view('costumer.cart');
->>>>>>> 88c1377cdcae7d6c22169e602f340678a7ffca29
+        return view('tenant.product');
     }
 
     /**
@@ -30,7 +20,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('tenant.form-product');
     }
 
     /**
@@ -44,7 +34,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
         //
     }
@@ -52,7 +42,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
         //
     }
@@ -60,7 +50,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -68,13 +58,8 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
         //
-    }
-
-    public function menuList()
-    {
-        return view('costumer.menu');
     }
 }

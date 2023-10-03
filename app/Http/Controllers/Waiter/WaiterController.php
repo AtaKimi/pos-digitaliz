@@ -1,28 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Waiter;
 
+use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+
+class WaiterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexTenant()
     {
-        return view('customer.customer-landing');
+        return view('tenant.waiter');
     }
 
-<<<<<<< HEAD
-    public function menu()
+    public function indexWaiter()
     {
-        return view('customer.menu');
-=======
-    public function cart()
+        return view('waiter.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexWaiter()
     {
-        return view('costumer.cart');
->>>>>>> 88c1377cdcae7d6c22169e602f340678a7ffca29
+
+        $orders = Order::latest()->paginate(5);
+
+        return view('waiter.index', compact('orders'));
     }
 
     /**
@@ -44,7 +52,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Waiter $waiter)
     {
         //
     }
@@ -52,7 +60,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Waiter $waiter)
     {
         //
     }
@@ -60,7 +68,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Waiter $waiter)
     {
         //
     }
@@ -68,13 +76,8 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Waiter $waiter)
     {
         //
-    }
-
-    public function menuList()
-    {
-        return view('costumer.menu');
     }
 }

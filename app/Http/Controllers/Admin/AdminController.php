@@ -1,28 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('customer.customer-landing');
+        $tenants = Tenant::latest()->paginate(11);
+        $tenantCounter = Tenant::all()->count();
+        return view('admin.index', compact('tenants', 'tenantCounter'));
+    }
+    public function tenantManagement()
+    {
+        $tenants = Tenant::latest()->paginate(11);
+        return view('admin.tenantmanagement', compact('tenants'));
     }
 
-<<<<<<< HEAD
-    public function menu()
+    public function detailTenant(Tenant $tenant)
     {
-        return view('customer.menu');
-=======
-    public function cart()
-    {
-        return view('costumer.cart');
->>>>>>> 88c1377cdcae7d6c22169e602f340678a7ffca29
+        return view('admin.tenant-detail');
     }
 
     /**
@@ -44,7 +48,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         //
     }
@@ -52,7 +56,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
         //
     }
@@ -60,7 +64,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
     }
@@ -68,13 +72,8 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         //
-    }
-
-    public function menuList()
-    {
-        return view('costumer.menu');
     }
 }

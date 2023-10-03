@@ -48,17 +48,19 @@
                 <img src="./assets/img/logo_pos_white.png" class="h-11 block md:hidden" alt="POS Logo" />
             </a>
             <div class="flex md:order-2 items-center gap-4 xl:gap-8">
-                <a href="#start" class=" text-red-500 font-semibold rounded hidden md:block" aria-current="page">Masuk</a>
                 @if (Auth::user())
-                <form action="{{route('logout')}}" method="post">
-                    @csrf
-                    <button type="submit" 
-                    class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
-                    Logout
-                </button>
-            </form>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit"
+                            class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                            Logout
+                        </button>
+                    </form>
                 @else
-                    <a href="{{route('register')}}"
+                    <a href="{{ route('login') }}" class=" text-red-500 font-semibold rounded hidden md:block"
+                        aria-current="page">Masuk</a>
+
+                    <a href="{{ route('register') }}"
                         class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
                         Get started
                     </a>

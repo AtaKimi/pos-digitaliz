@@ -1,28 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Tenant;
+use App\Http\Controllers\Controller;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('customer.customer-landing');
-    }
-
-<<<<<<< HEAD
-    public function menu()
-    {
-        return view('customer.menu');
-=======
-    public function cart()
-    {
-        return view('costumer.cart');
->>>>>>> 88c1377cdcae7d6c22169e602f340678a7ffca29
+        //
     }
 
     /**
@@ -44,7 +34,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(OrderDetail $orderDetail)
     {
         //
     }
@@ -52,7 +42,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(OrderDetail $orderDetail)
     {
         //
     }
@@ -60,7 +50,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, OrderDetail $orderDetail)
     {
         //
     }
@@ -68,13 +58,8 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(OrderDetail $orderDetail)
     {
         //
-    }
-
-    public function menuList()
-    {
-        return view('costumer.menu');
     }
 }
