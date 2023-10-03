@@ -74,31 +74,38 @@
             </div>
             @yield('content')
         </div>
-
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
         <script>
             // MODAL LOGIC
             const modal = document.getElementById("modal");
+            const modalContent = document.getElementById("modal-content");
+            const menulist = document.getElementById("menulist");
             const overlay = document.getElementById("overlay");
             const openModalBtn = document.getElementById("open-modal-btn");
             const closeModalBtn = document.getElementById("close-modal-btn");
 
             function openModal() {
                 modal.classList.remove("hidden");
-                overlay.classList.remove("hidden");
-            }
+                setTimeout(() => {
+                    modal.classList.remove("translate-y-[100%]");
+                    modal.classList.add("translate-y-0")
+                }, 100);
 
-            function openModalFlex() {
-                modal.classList.add("flex")
+                overlay.classList.remove("hidden");
             }
 
             function closeModal() {
                 modal.classList.add("hidden");
                 overlay.classList.add("hidden");
+                modal.classList.remove("translate-y-0")
+                modal.classList.add("translate-y-[100%]");
             }
 
             openModalBtn.addEventListener("click", openModal);
             closeModalBtn.addEventListener("click", closeModal);
-            openModalBtn.addEventListener("click", openModalFlex);
             overlay.addEventListener("click", closeModal);
 
             // BUTTON LOGIC
