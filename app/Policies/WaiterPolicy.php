@@ -22,7 +22,7 @@ class WaiterPolicy
 
     public function accessTenantWaiter(User $user, Tenant $tenant): Response
     {
-        return $user->id === $tenant->user_id
+        return $user->waiter->id === $tenant->user_id
             ? Response::allow('success', 201)
             : Response::deny();
         ;

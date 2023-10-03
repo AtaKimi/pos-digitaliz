@@ -1,7 +1,11 @@
 @extends('layouts.customer')
 
+@section('judul')
+    Order Details
+@endsection
+
 @section('content')
-    <div class="grid grid-rows-4 p-3">
+    <div class="grid grid-rows-4 px-3">
         <div class="row-span-3">
             @for ($i = 0; $i < 5; $i++)
                 <div class="flex justify-between gap-1 p-3 border-2 rounded-xl shadow-md mb-3">
@@ -30,7 +34,7 @@
                 </div>
             @endfor
         </div>
-        <div class="w-full row-span-1 relative">
+        <div class="w-full row-span-1 relative h-fit">
             <img src="/assets/img/bg-cart.png" class="absolute top-0 right-0 left-0 -z-0">
             <div style="position: absolute; top: 0; left: 0;"
                 class="grid grid-cols-2 justify-between w-full p-5 text-white-50">
@@ -53,7 +57,5 @@
                 </button>
             </div>
         </div>
-
-
     </div>
 @endsection

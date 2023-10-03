@@ -3,82 +3,36 @@
 namespace App\Http\Controllers\Waiter;
 
 use App\Models\Order;
+use App\Models\Tenant;
 use App\Models\Waiter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Tenant;
+use Illuminate\Support\Facades\Gate;
 
 class WaiterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function indexTenant()
+    public function __construct()
     {
-        return view('waiter.order-detail');
+        $this->middleware('can:accessTenantWaiter,tenant');
     }
 
-    // public function indexWaiter()
-    // {
-    //     return view('waiter.index');
-    // }
-
     /**
      * Display a listing of the resource.
      */
-    public function indexWaiter()
+    public function index(Tenant $tenant)
     {
-
+        // $response = Gate::allows('accessTenantWaiter', $tenant);
+        // dd($response);
         $orders = Order::latest()->paginate(5);
 
         return view('waiter.index', compact('orders'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create()
+    public function show(Tenant $tenant)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Waiter $waiter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Waiter $waiter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Waiter $waiter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Waiter $waiter)
-    {
-        //
+        return view('waiter.order-detail');
     }
 }
