@@ -336,7 +336,7 @@
                         14/09/2023, 10.00 AM
                     </td>
                     <td class="px-6 py-4">
-                        <a type="button" href="{{ route('admin-detail', $tenant) }}" class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
+                        <a type="button" href="{{ route('admin-tenant-show', $tenant) }}" class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
                                 fill="none">
                                 <path

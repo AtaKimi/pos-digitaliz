@@ -1,5 +1,5 @@
 <!-- resources/views/layouts/app.blade.php -->
- 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,8 +7,8 @@
     </head>
 <body class="bg-slate-200">
     <div class="w-[375px] bg-white-50 mx-auto">
-        <div class="h-[179px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom">
-            <nav class="flex justify-between pt-8">
+        <div class="h-fit bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom mb-7">
+            <nav class="flex justify-between pt-5">
                 <div>
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_165_50351)">
@@ -53,9 +53,9 @@
                     </svg>                        
                 </div>
             </nav>
+            <div class="text-3xl font-semibold pt-5 w-full px-5 ">@yield('judul')</div>
         </div>
         @yield('content')
     </div>
-    <script src="../../js/customer-menu.js"></script>
 </body>
 </html>

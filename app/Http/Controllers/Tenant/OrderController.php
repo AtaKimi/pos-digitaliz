@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,tenant');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Tenant $tenant)
     {
         return view('tenant.order');
     }
@@ -34,7 +39,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Tenant $tenant)
     {
         return view('tenant.order-detail');
     }

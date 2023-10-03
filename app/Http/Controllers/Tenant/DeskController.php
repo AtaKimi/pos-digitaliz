@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\Http\Controllers\Controller;
 use App\Models\Desk;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DeskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,tenant');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Tenant $tenant)
     {
         return view('tenant.desk');
     }

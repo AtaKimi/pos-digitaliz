@@ -176,7 +176,7 @@
                 </div>
 
             </div>
-            <div class="w-4/5 rounded-full h-2.5 px-12">
+            <div class="w-4/5 rounded-full h-2.5 ps-12 pr-16">
                 <div class="bg-gray-200 rounded-full h-2.5">
                     <div class="bg-blue-300 h-2.5 rounded-full" style="width: 33.33%"></div>
                 </div>

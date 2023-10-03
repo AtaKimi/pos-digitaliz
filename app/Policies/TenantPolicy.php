@@ -11,59 +11,19 @@ class TenantPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user, Tenant $tenant): Response
+    public function viewAny(User $user, Tenant $tenant ): Response
     {
         return $tenant->user_id === $user->id
-            ? Response::allow()
+            ? Response::allow('success', 201)
             : Response::deny();
         ;
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, Tenant $tenant): bool
+    public function accessTenantWaiter(User $user, Tenant $tenant): Response
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, Tenant $tenant): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, Tenant $tenant): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Tenant $tenant): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Tenant $tenant): bool
-    {
-        //
+        return $user->waiter->tenant_id === $tenant->id
+            ? Response::allow('success', 201)
+            : Response::deny();
+        ;
     }
 }
