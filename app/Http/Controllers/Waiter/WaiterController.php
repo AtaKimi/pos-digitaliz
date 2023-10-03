@@ -2,30 +2,18 @@
 
 namespace App\Http\Controllers\Waiter;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Waiter;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 
 class WaiterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function indexTenant()
-    {
-        return view('tenant.waiter');
-    }
-
-    public function indexWaiter()
-    {
-        return view('waiter.index');
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function indexWaiter()
+    public function index()
     {
 
         $orders = Order::latest()->paginate(5);

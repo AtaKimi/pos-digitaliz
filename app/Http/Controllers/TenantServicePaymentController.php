@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenant;
 use App\Models\TenantServicePayment;
 use Illuminate\Http\Request;
 
 class TenantServicePaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,tenant');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Tenant $tenant)
     {
         return view('tenant.service-payment');
     }

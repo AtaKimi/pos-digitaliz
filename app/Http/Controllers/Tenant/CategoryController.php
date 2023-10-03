@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,tenant');
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Tenant $tenant)
     {
         return view('tenant.category');
     }

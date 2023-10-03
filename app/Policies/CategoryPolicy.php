@@ -6,16 +6,15 @@ use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class TenantPolicy
+class CategoryPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user, Tenant $tenant ): Response
+    public function viewAny(User $user, Tenant $tenant): Response
     {
-        return $tenant->user_id === $user->id
+        return $user->id === $tenant->user_id
             ? Response::allow('success', 201)
-            : Response::deny();
-        ;
+            : Response::deny();;
     }
 }

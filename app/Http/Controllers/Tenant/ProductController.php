@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,tenant');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Tenant $tenant)
     {
         return view('tenant.product');
     }
