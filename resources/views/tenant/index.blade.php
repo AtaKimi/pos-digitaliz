@@ -216,22 +216,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($desks as $desk)
+                    @forelse ($orders as $order)
                         <tr class="bg-white-50 border-b hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $desk->id }}
+                                {{ $order->id }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $desk->name }}
+                                {{ $order->desk->name }}
                             </td>
                             <td class="px-6 py-4">
-                                @php
+                                {{-- @php
                                     $totalPayment = 0;
                                     foreach ($desk->order as $payment) {
                                         $totalPayment += $payment['total'];
                                     }
-                                @endphp
-                                Rp.{{ number_format($totalPayment, 2, ',', '.') }}
+                                @endphp --}}
+                                Rp.{{ number_format($order->total, 2, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
