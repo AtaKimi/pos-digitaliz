@@ -97,6 +97,7 @@ Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
     Route::controller(WaiterWaiterController::class)->group(function () {
         Route::get('{tenant}/', 'index')->name('waiter-index');
         Route::get('{tenant}/detail-order', 'show')->name('waiter-show');
+        Route::get('{tenant}/profile', 'profile')->name('waiter-profile');
     });
 });
 
