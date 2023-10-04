@@ -25,18 +25,26 @@ class TenantController extends Controller
     }
 
     public function show ($id) {
-        $tenants = Tenant::findOrFail(3);
+        $tenants = Tenant::findOrFail($id);
+        $waiters = $tenants->waiter;
+
+        //Calculate total payment per month
+        $paymentPerMonth = $tenants->tenant_service_payment->groupBy(function ($payment) {
+            return Carbon::parse($payment->transfer_at)->format('Y-m');
+        })->map(function ($payments) {
+            return $payments->sum('total');
+        });
 
         // Calculate the total payment for the tenant
         $totalPayment = $tenants->tenant_service_payment->sum('total');
-
         // Format the total payment as "Rp 460.000"
         $formatTotalPayment = 'Rp ' . number_format($totalPayment, 0, ',', '.');
-
         // Assign the formatted total payment to the total_payment attribute
         $tenants->total_payment = $formatTotalPayment;
         return view('admin.tenant-detail', [
-            'tenant' => $tenants
+            'tenants' => $tenants,
+            'waiters' => $waiters,
+            'paymentPerMonth' => $paymentPerMonth,
         ]);
     }
 }
