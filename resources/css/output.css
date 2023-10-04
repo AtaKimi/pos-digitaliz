@@ -1635,10 +1635,6 @@ html {
   margin-top: 1.5rem;
 }
 
-.mb-0{
-  margin-bottom: 0px;
-}
-
 .box-content{
   box-sizing: content-box;
 }
@@ -1749,10 +1745,6 @@ html {
 
 .h-\[130px\]{
   height: 130px;
-}
-
-.h-\[179px\]{
-  height: 179px;
 }
 
 .h-\[270px\]{
@@ -1878,10 +1870,6 @@ html {
 
 .w-5{
   width: 1.25rem;
-}
-
-.w-56{
-  width: 14rem;
 }
 
 .w-6{
@@ -4265,11 +4253,6 @@ html {
 :is(.dark .dark\:bg-red-600){
   --tw-bg-opacity: 1;
   background-color: rgb(204 47 48 / var(--tw-bg-opacity));
-}
-
-:is(.dark .dark\:bg-gray-900){
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 :is(.dark .dark\:bg-opacity-80){

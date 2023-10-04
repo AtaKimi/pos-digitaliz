@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Waiter;
 
 class WaiterController extends Controller
 {
@@ -17,6 +18,7 @@ class WaiterController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.waiter');
+        $waiters = Waiter::where('tenant_id', $tenant->id)->get();
+        return view('tenant.waiter', compact('waiters'));
     }
 }

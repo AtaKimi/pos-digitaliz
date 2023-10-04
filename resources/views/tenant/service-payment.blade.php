@@ -35,12 +35,11 @@
             <h4 class="text-lg font-semibold">Daftar Tagihan</h4>
             <div class="flex gap-4">
                 <form>
-                    <label for="default-search"
-                        class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
@@ -86,57 +85,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            2
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            2
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
-                            </div>
-                        </td>
-                    </tr>
+                    @forelse ($services as $service)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $service->id }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $service->created_at }}
+                            </td>
+                            <td class="px-6 py-4">
+                                Rp.{{ number_format($service->price, 2, ',', '.') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
+                                        data-modal-toggle="modal-transaction"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <p>Tidak ada data</p>
+                    @endforelse
+
                 </tbody>
             </table>
 
