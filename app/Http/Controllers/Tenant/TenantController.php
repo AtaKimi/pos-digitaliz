@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Desk;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,7 +26,10 @@ class TenantController extends Controller
         //     return view('tenant.index');
         // }
 
-        return view('tenant.index');
+        $desks = Desk::where('tenant_id', $tenant->id)->latest()->paginate(10);
+        
+        // $order = Order::where('desk_id', $desks->id)
+        return view('tenant.index', compact('desks'));
     }
 
     public function setting(Tenant $tenant)

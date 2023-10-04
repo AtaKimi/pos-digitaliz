@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Tenant;
+use App\Models\TenantServicePayment;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -16,7 +17,8 @@ class AdminController extends Controller
     {
         $tenants = Tenant::latest()->paginate(11);
         $tenantCounter = Tenant::all()->count();
-        return view('admin.index', compact('tenants', 'tenantCounter'));
+        $tenatServicePaymentTotal = TenantServicePayment::all()->sum('total');
+        return view('admin.index', compact('tenants', 'tenantCounter', 'tenatServicePaymentTotal'));
     }
     public function tenantManagement()
     {
