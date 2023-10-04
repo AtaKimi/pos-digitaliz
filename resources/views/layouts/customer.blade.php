@@ -8,7 +8,7 @@
     </head>
 
     <body class="bg-slate-200">
-        <div class="w-[375px] bg-white-50 mx-auto">
+        <div class="w-[375px] bg-white-50 mx-auto flex flex-col">
             <div class="h-[179px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom">
                 <nav class="flex justify-between pt-8">
                     <div>
@@ -74,10 +74,7 @@
             </div>
             @yield('content')
         </div>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
+
         <script>
             // MODAL LOGIC
             const modal = document.getElementById("modal");
@@ -98,10 +95,12 @@
             }
 
             function closeModal() {
-                modal.classList.add("hidden");
-                overlay.classList.add("hidden");
                 modal.classList.remove("translate-y-0")
                 modal.classList.add("translate-y-[100%]");
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    overlay.classList.add("hidden");
+                }, 300);
             }
 
             openModalBtn.addEventListener("click", openModal);
@@ -109,6 +108,64 @@
             overlay.addEventListener("click", closeModal);
 
             // BUTTON LOGIC
+            const buttons = document.getElementById('buttons').getElementsByTagName("button");
+            const count = document.getElementById('count');
+            const updateVisibility = () => {
+                if (parseInt(count.textContent) < 1) {
+                    buttons[0].classList.remove('fade-out');
+                    buttons[0].classList.add('fade-in');
+                    buttons[0].classList.remove('hidden');
+                    buttons[1].classList.remove('flex');
+                    buttons[2].classList.remove('flex');
+                    buttons[1].classList.add('hidden');
+                    buttons[2].classList.add('hidden');
+                    document.getElementById('count').classList.add('hidden');
+                    document.getElementById('order-detail').classList.add('translate-y-[200px]');
+                    document.getElementById('order-detail').classList.remove('translate-y-0');
+                    setTimeout(() => {
+                        document.getElementById('order-detail').classList.add('hidden');
+                        document.getElementById('order-detail').classList.remove('flex');
+                    }, 300);
+                } else if (parseInt(count.textContent) > 0) {
+                    document.getElementById('order-detail').classList.remove('hidden');
+                    document.getElementById('order-detail').classList.add('flex');
+                    buttons[0].classList.add('hidden');
+                    buttons[1].classList.add('flex');
+                    buttons[2].classList.add('flex');
+                    buttons[1].classList.remove('hidden');
+                    buttons[2].classList.remove('hidden');
+                    document.getElementById('count').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('order-detail').classList.add('translate-y-0');
+                        document.getElementById('order-detail').classList.remove('translate-y-[200px]');
+                    }, 100);
+
+                }
+            }
+
+            // WHEN THE "TAMBAH" BUTTON CLICKED
+            buttons[0].addEventListener('click', () => {
+                buttons[0].classList.add('fade-out');
+                ++count.innerText;
+                setTimeout(() => {
+                    updateVisibility();
+                    buttons[1].classList.add('fade-in');
+                    buttons[2].classList.add('fade-in');
+                }, 500);
+            })
+
+            // WHEN THE '+' BUTTON CLICKED
+            buttons[1].addEventListener('click', () => {
+                ++count.innerText;
+            })
+
+            // WHEN THE '-' BUTTON CLICKED
+            buttons[2].addEventListener('click', () => {
+                --count.innerText;
+                setTimeout(() => {
+                    updateVisibility();
+                }, 500);
+            })
         </script>
     </body>
 
