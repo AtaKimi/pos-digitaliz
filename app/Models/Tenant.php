@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Policies\TenantPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Tenant extends Model
+class Tenant extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
     protected $fillable = [
         'code',
         'name',
@@ -66,5 +69,10 @@ class Tenant extends Model
     public function services(): MorphMany
     {
         return $this->morphMany(service::class, 'serviceable');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

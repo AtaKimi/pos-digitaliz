@@ -73,7 +73,7 @@
                     <p class="font-semibold">Tagihan yang Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp.25.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{$tenants->total_payment}}</h4>
                 </div>
             </div>
             <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
@@ -117,11 +117,11 @@
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama Tenant</p>
-                        <p class="font-semibold">WETLAND SQUARE</p>
+                        <p class="font-semibold">{{ $tenants->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Status Tenant</p>
-                        <p class="font-semibold">AKTIF</p>
+                        <p class="font-semibold">{{ $tenants->is_active ? 'AKTIF' : 'BELUM AKTIF' }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Produk</p>
@@ -131,29 +131,29 @@
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Code Tenant</p>
-                        <p class="font-semibold">#12345</p>
+                        <p class="font-semibold">#{{ $tenants->code }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama User Tenant</p>
-                        <p class="font-semibold">ANYA FORGER</p>
+                        <p class="font-semibold">{{ $tenants->user->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Kategori </p>
-                        <p class="font-semibold">6</p>
+                        <p class="font-semibold">{{ $tenants->categories->count() }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Alamat Tenant</p>
-                        <p class="font-semibold">JL. A. YANI 3,4 BANJARMASIN SELATAN</p>
+                        <p class="font-semibold">{{ $tenants->address }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Emai User Tenant</p>
-                        <p class="font-semibold">anyaforger@gmail.com</p>
+                        <p class="font-semibold">{{ $tenants->user->email }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Deskripsi</p>
-                        <p class="font-semibold">TENANT KAMI MENYEDIAKAN BERBAGAI MACAM KOPI KELAS DUNIA</p>
+                        <p class="font-semibold">{{ $tenants->description }}</p>
                     </div>
                 </div>
             </div>
@@ -165,10 +165,10 @@
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -192,8 +192,8 @@
             </div>
 
             <div class="relative overflow-x-auto sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 No
@@ -224,60 +224,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                1
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                2
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                2
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
+                        @forelse ($paymentPerMonth as $month => $paymentAmount)
+                            <tr class="bg-white border-b">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    {{ $loop->iteration }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $month }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. {{ number_format($paymentAmount, 2, ',', '.') }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
+                                            data-modal-toggle="modal-transaction"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center font-bold text-lg">
+                                    Tidak ada data
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
 
@@ -314,10 +286,10 @@
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -332,8 +304,8 @@
             </div>
 
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class=" py-3">
                                 No
@@ -350,72 +322,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
+                        @forelse ($waiters as $item)
+                            <tr class="bg-white border-b">
+                                <td class=" py-4">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <div class="flex items-center gap-2">
+                                        <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex flex-col">
+                                            <p class="font-semibold">{{ $item->user->name }}</p>
+                                            <p class="text-gray-400">{{ $item->user->email }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center font-semibold ont-semibold bg-green-200 rounded-full py-1 px-10">
-                                    Verified</p>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center text-green-800 font-semibold bg-green-200 rounded-full py-1 px-10">
-                                    Verified</p>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center text-red-700 font-semibold bg-red-200 rounded-full py-1 px-10">
-                                    Unverified</p>
-                            </td>
-                        </tr>
+                                </td>
+                                <td class=" py-4">
+                                    {{ $item->user->phone_number }}
+                                </td>
+                                <td class=" py-4">
+                                    @if ($item->user->email_verified_at)
+                                        <p class="text-center font-semibold bg-green-200 rounded-full py-1 px-10">
+                                            Verified
+                                        </p>
+                                    @else
+                                        <p class="text-center text-red-700 font-semibold bg-red-200 rounded-full py-1 px-10">
+                                            Not Verified
+                                        </p>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center font-bold text-lg">
+                                    Tidak ada data
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="grid grid-cols-3 items-center px-6 pt-3">
@@ -452,7 +395,7 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div
-                    class="flex flex-col relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
                     <div class="flex justify-between mb-8 items-center">
                         <div class=""></div>
                         <p class="font-bold text-2xl">Bukti Transfer</p>
@@ -470,41 +413,41 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div
-                    class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow dark:bg-gray-700 p-10 w-[500px] h-[500px]">
+                    class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
                     <div class="flex justify-between  items-center">
                         <div class=""></div>
                         <p class="font-bold text-2xl">Tangihan</p>
                         <p class="text-2xl font-bold" data-modal-target="modal-bill" data-modal-toggle="modal-bill">X</p>
                     </div>
                     <div class="">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                             Total Transfer</label>
                         <input type="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Rp" required>
                     </div>
                     {{-- <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                             Waktu Transfer</label>
                         <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                             </svg>
                         </div>
                         <input datepicker type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                             placeholder="Select date">
                     </div> --}}
                     <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
                             Waktu Transfer</label>
                         <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
 
                         </div>
                         <div class="flex items-center border rounded-lg relative">
-                            <svg class="absolute left-2 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="absolute left-2 w-4 h-4 text-gray-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
@@ -531,7 +474,7 @@
                         </label>
                     </div>
                     <button type="button"
-                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3 dark:focus:ring-yellow-900">Save</button>
+                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3">Save</button>
 
                 </div>
             </div>

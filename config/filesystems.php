@@ -56,6 +56,32 @@ return [
             'throw' => false,
         ],
 
+        'media' => [
+            'driver' => 'local',
+            'root'   => public_path('media'),
+            'url'    => env('APP_URL').'/media',
+        ],
+        'media_user_profile' => [
+            'driver' => 'local',
+            'root'   => public_path('media/user_profile'),
+            'url'    => env('APP_URL').'/media/user_profile',
+        ],
+        'media_tenant_profile' => [
+            'driver' => 'local',
+            'root'   => public_path('media/tenant_profile'),
+            'url'    => env('APP_URL').'/media/tenant_profile',
+        ],
+        'media_product_image' => [
+            'driver' => 'local',
+            'root'   => public_path('media/product_img'),
+            'url'    => env('APP_URL').'/media/product_img',
+        ],
+        'media_payment_image' => [
+            'driver' => 'local',
+            'root'   => public_path('media/payment_image'),
+            'url'    => env('APP_URL').'/media/payment_image',
+        ],
+
     ],
 
     /*

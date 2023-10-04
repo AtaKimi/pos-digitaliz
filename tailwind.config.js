@@ -10,6 +10,7 @@ module.exports = {
         "./resources/views/layouts/**/*.blade.php",
         "./resources/views/tenant/**/*.blade.php",
         "./resources/views/waiter/**/*.blade.php",
+        "./resources/views/auth/**/*.blade.php",
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",

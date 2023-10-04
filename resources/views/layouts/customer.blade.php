@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         @include('includes.header')
     </head>
@@ -84,15 +83,15 @@
             const openModalBtn = document.getElementById("open-modal-btn");
             const closeModalBtn = document.getElementById("close-modal-btn");
 
-            function openModal() {
-                modal.classList.remove("hidden");
-                setTimeout(() => {
-                    modal.classList.remove("translate-y-[100%]");
-                    modal.classList.add("translate-y-0")
-                }, 100);
+        function openModal() {
+            modal.classList.remove("hidden");
+            setTimeout(() => {
+                modal.classList.remove("translate-y-[100%]");
+                modal.classList.add("translate-y-0")
+            }, 100);
 
-                overlay.classList.remove("hidden");
-            }
+            overlay.classList.remove("hidden");
+        }
 
             function closeModal() {
                 modal.classList.remove("translate-y-0")
@@ -103,9 +102,9 @@
                 }, 300);
             }
 
-            openModalBtn.addEventListener("click", openModal);
-            closeModalBtn.addEventListener("click", closeModal);
-            overlay.addEventListener("click", closeModal);
+        openModalBtn.addEventListener("click", openModal);
+        closeModalBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", closeModal);
 
             // BUTTON LOGIC
             const buttons = document.getElementById('buttons').getElementsByTagName("button");

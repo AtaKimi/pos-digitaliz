@@ -1,5 +1,10 @@
 @extends('layouts.customer')
 
+@section('judul')
+    <p class="text-ellipsis">Temukan makanan favorit Anda!
+    </p>
+@endsection
+
 @section('file-header')
     <style>
         /* Hide scrollbar for Chrome, Safari and Opera */

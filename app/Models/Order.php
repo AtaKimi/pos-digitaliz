@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
     protected $fillable =
     [
-        'tenant_id',
+        // 'tenant_id',
         'desk_id',
         'total',
         'status',
@@ -21,6 +21,8 @@ class Order extends Model
     {
         return $this->belongsTo(Desk::class);
     }
+
+    
 
     public function orderDetail()
     {

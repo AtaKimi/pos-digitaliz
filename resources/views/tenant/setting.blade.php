@@ -28,7 +28,7 @@
                     <label for="dropzone-file"
                         class="flex flex-col items-center justify-center w-full border-2 border-red-500 rounded-lg cursor-pointer p-2">
                         <div class="flex flex-col items-center justify-center">
-                            <p class="text-sm text-red-500 dark:text-gray-400"><span class="font-semibold">Upload new
+                            <p class="text-sm text-red-500"><span class="font-semibold">Upload new
                                     photo</p>
                         </div>
                         <input id="dropzone-file" type="file" class="hidden" />
@@ -39,39 +39,39 @@
             <form action="#" class="border-2 rounded-2xl p-5 mb-8">
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold dark:text-white">Nama Tenant</label>
+                        <label for="brand" class="block mb-2 font-semibold">Nama Tenant</label>
                         <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="Detective Store" required="">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold dark:text-white">User Tenant</label>
+                        <label for="price" class="block mb-2 font-semibold">User Tenant</label>
                         <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="Anya Forger" required="">
                     </div>
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold dark:text-white">Phone</label>
+                        <label for="brand" class="block mb-2 font-semibold">Phone</label>
                         <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="0813373123122" required="">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold dark:text-white">Email Address</label>
+                        <label for="price" class="block mb-2 font-semibold">Email Address</label>
                         <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="anyaforger@gmail.com" required="">
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="description" class="block mb-2 font-semibold dark:text-white">Address</label>
+                        <label for="description" class="block mb-2 font-semibold">Address</label>
                         <textarea id="description" rows="1"
-                            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="Jl Lambung Mangkurat No 29"></textarea>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="description" class="block mb-2 font-semibold dark:text-white">Deskripsi</label>
+                        <label for="description" class="block mb-2 font-semibold">Deskripsi</label>
                         <textarea id="description" rows="1"
-                            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="Detective Store is your one-stop destination for all things related to investigation and detective work."></textarea>
                     </div>
                 </div>
@@ -80,21 +80,21 @@
             <form action="#" class="border-2 rounded-2xl p-5 mb-8">
                 <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold dark:text-white">Current Password</label>
+                        <label for="brand" class="block mb-2 font-semibold">Current Password</label>
                         <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="Jl Lambung Mangkurat No 29" required="">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold dark:text-white">New Password</label>
+                        <label for="price" class="block mb-2 font-semibold">New Password</label>
                         <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="Jl Lambung Mangkurat No 29" required="">
                     </div>
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold dark:text-white">Confirm Password</label>
+                        <label for="brand" class="block mb-2 font-semibold">Confirm Password</label>
                         <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             placeholder="Jl Lambung Mangkurat No 29" required="">
                     </div>
                 </div>
