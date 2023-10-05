@@ -41,38 +41,37 @@
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Nama Tenant</label>
                         <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="Detective Store" required="">
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required value="{{ $tenant->name }}">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold">User Tenant</label>
-                        <input type="number" name="price" id="price"
+                        <label class="block mb-2 font-semibold">User Tenant</label>
+                        <input type="text" name="brand" id="brand"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="Anya Forger" required="">
+                            required value="{{ request()->user()->name }}">
                     </div>
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Phone</label>
                         <input type="text" name="brand" id="brand"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="0813373123122" required="">
+                            required value="{{ request()->user()->phone_number }}">
                     </div>
                     <div class="w-full">
                         <label for="price" class="block mb-2 font-semibold">Email Address</label>
-                        <input type="number" name="price" id="price"
+                        <input type="text" name="price" id="price"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="anyaforger@gmail.com" required="">
+                            required value="{{ request()->user()->email }}">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 font-semibold">Address</label>
-                        <textarea id="description" rows="1"
+                        <input id="description" rows="1"
                             class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                            placeholder="Jl Lambung Mangkurat No 29"></textarea>
+                            required value="{{ $tenant->address }}">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 font-semibold">Deskripsi</label>
                         <textarea id="description" rows="1"
                             class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                            placeholder="Detective Store is your one-stop destination for all things related to investigation and detective work."></textarea>
+                            placeholder="Detective Store is your one-stop destination for all things related to investigation and detective work.">{{ $tenant->description }}</textarea>
                     </div>
                 </div>
             </form>
@@ -81,21 +80,19 @@
                 <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Current Password</label>
-                        <input type="text" name="brand" id="brand"
+                        <input type="password" name="brand" id="brand"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="Jl Lambung Mangkurat No 29" required="">
+                            required="">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold">New Password</label>
-                        <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="Jl Lambung Mangkurat No 29" required="">
+                        <label class="block mb-2 font-semibold">New Password</label>
+                        <input type="password"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Confirm Password</label>
-                        <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            placeholder="Jl Lambung Mangkurat No 29" required="">
+                        <input type="password" name="brand" id="brand"
+                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
                 </div>
             </form>
