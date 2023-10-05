@@ -47,7 +47,7 @@
                     <p class="font-semibold">Total Tagihan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp. 10.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{ $formatTotalTagihan ? $formatTotalTagihan : 'Rp 0' }}</h4>
                     <div class="flex items-center gap-1">
                         <svg width="12" height="11" viewBox="0 0 12 11" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
                     <p class="font-semibold">Tagihan yang Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">{{$tenants->total_payment}}</h4>
+                    <h4 class="text-2xl font-semibold">{{$tenants->total_payment ? $tenants->total_payment : 'Rp 0'}}</h4>
                 </div>
             </div>
             <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
@@ -97,7 +97,7 @@
                     <p class="font-semibold">Tagihan Belum Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp.50.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{ $formatUnpaidPayment ? $formatUnpaidPayment : 'Rp 0' }}</h4>
                 </div>
             </div>
         </div>
@@ -224,22 +224,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($paymentPerMonth as $month => $paymentAmount)
+                        @forelse ($paymentPerMonth as $month)
                             <tr class="bg-white border-b">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     {{ $loop->iteration }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $month }}
+                                    {{ $month->transfer_at }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Rp. {{ number_format($paymentAmount, 2, ',', '.') }}
+                                    Rp. {{ number_format($month->total, 2, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                            data-modal-toggle="modal-transaction"></div>
+                                            data-modal-toggle="modal-transaction">
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -329,7 +330,7 @@
                                 </td>
                                 <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
                                     <div class="flex items-center gap-2">
-                                        <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
+                                        <img src="{{ $item->user->getFirstMediaUrl('default') }}" alt=""
                                             class="w-8 h-8 rounded-full">
                                         <div class="flex flex-col">
                                             <p class="font-semibold">{{ $item->user->name }}</p>
