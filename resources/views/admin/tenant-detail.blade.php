@@ -125,7 +125,7 @@
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Produk</p>
-                        <p class="font-semibold">AKTIF</p>
+                        <p class="font-semibold">{{ $product }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-8">

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Desk;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -29,6 +31,10 @@ class TenantController extends Controller
     public function show ($id) {
         $tenants = Tenant::findOrFail($id);
         $waiters = $tenants->waiter;
+
+        //get total product 
+        $category = Category::where('tenant_id', $id)->pluck('id');
+        $product = Product::whereIn('category_id', $category)->count();
 
         //card total tagihan
         $desk_ids = Desk::with('order')->where('tenant_id', $id)->pluck('id');
@@ -62,6 +68,7 @@ class TenantController extends Controller
         return view('admin.tenant-detail', [
             'tenants' => $tenants,
             'waiters' => $waiters,
+            'product' => $product,
             'paymentPerMonth' => $paymentPerMonth,
             'formatTotalTagihan' => $formatTotalTagihan,
             'formatUnpaidPayment' => $formatUnpaidPayment
