@@ -149,7 +149,7 @@
                                 </label>
                             </td>
                             <td class="px-6 py-4">
-                                <button type="button"
+                                <a href="{{ route('admin-tenant-show', $tenant->id) }}"
                                     class="text-yellow-500 border border-yellow-400 hover:bg-yellow-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-1">
                                     <svg width="15" height="15" viewBox="0 0 21 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +160,7 @@
                                             d="M10.2461 8C8.86538 8 7.74609 9.11929 7.74609 10.5C7.74609 11.8807 8.86538 13 10.2461 13C11.6268 13 12.7461 11.8807 12.7461 10.5C12.7461 9.11929 11.6268 8 10.2461 8ZM6.74609 10.5C6.74609 8.567 8.3131 7 10.2461 7C12.1791 7 13.7461 8.567 13.7461 10.5C13.7461 12.433 12.1791 14 10.2461 14C8.3131 14 6.74609 12.433 6.74609 10.5Z"
                                             fill="#FDC55E" />
                                     </svg>
-                                </button>
+                                </a>
                                 <button type="button"
                                     class="text-red-500 border border-red-400 hover:bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
                                     data-modal-target="popup-modal" data-modal-toggle="popup-modal">
