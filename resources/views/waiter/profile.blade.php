@@ -19,8 +19,7 @@
                     class="flex flex-col items-center justify-center w-full border-2 border-red-500 rounded-lg cursor-pointer p-2">
                     <div class="flex flex-col items-center justify-center">
                         <p class="text-sm text-red-500"><span class="font-semibold">Upload new
-                                photo</p>
-                    </div>
+                                x </div>
                     <input id="dropzone-file" type="file" class="hidden" />
                 </label>
             </div>
