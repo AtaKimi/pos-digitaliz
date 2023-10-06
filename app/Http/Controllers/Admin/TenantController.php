@@ -14,7 +14,7 @@ use Carbon\Carbon;
 class TenantController extends Controller
 {
     public function index () {
-        $tenants = Tenant::paginate(10);
+        $tenants = Tenant::paginate(5);
         $tenants->each(function ($tenant) {
             // Get payments for the current month
             $currentMonthPayments = $tenant->tenant_service_payment->filter(function ($payment) {
@@ -73,5 +73,56 @@ class TenantController extends Controller
             'formatTotalTagihan' => $formatTotalTagihan,
             'formatUnpaidPayment' => $formatUnpaidPayment
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit()
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        // Find the tenant by ID
+        $tenant = Tenant::find($id);
+        // Check if the tenant exists
+        if (!$tenant) {
+            return redirect()->back()->with('error', 'Tenant not found');
+        }
+        // Delete the tenant
+        $tenant->delete();
+        // delete related users
+        $tenant->user()->delete();
+
+        return redirect()->route('admin-tenant-index')->with('success', 'Tenant has been deleted successfully');
     }
 }

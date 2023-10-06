@@ -47,12 +47,18 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('admin-index');
 
             });
-            Route::controller(AdminTenantController::class)->group(function () {
-                Route::prefix('tenant')->group(function () {
-                    Route::get('/', 'index')->name('admin-tenant-index');
-                    Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-                });
-            });
+            // Route::controller(AdminTenantController::class)->group(function () {
+                // Route::prefix('tenant')->group(function () {
+                    Route::resource('tenant', AdminTenantController::class)->names([
+                        'index' => 'admin-tenant-index',
+                        'show' => 'admin-tenant-show',
+                        'update' => 'admin-tenant-update',
+                        'destroy' => 'admin-tenant-destroy',
+                    ]);
+                    // Route::get('/', 'index')->name('admin-tenant-index');
+                    // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
+                // });
+            // });
         });
     });
 
