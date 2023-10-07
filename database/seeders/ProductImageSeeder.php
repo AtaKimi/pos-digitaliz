@@ -22,13 +22,13 @@ class ProductImageSeeder extends Seeder
             }
         }
 
-        $tenant = Product::all();
+        $product = Product::all();
 
-        for ($i = 0; $i < count($tenant); $i++) {
+        for ($i = 0; $i < count($product); $i++) {
             for ($o = 0; $o < fake()->numberBetween(1, 4); $o++) {
                 $img_number = fake()->numberBetween(1, 100);
                 $path = "assets/img/num_1-100/" . $img_number . ".png";
-                $tenant[$i]->addMedia(public_path($path))->preservingOriginal()
+                $product[$i]->addMedia(public_path($path))->preservingOriginal()
                     ->toMediaCollection('default', 'media_product_image');
             }
         }

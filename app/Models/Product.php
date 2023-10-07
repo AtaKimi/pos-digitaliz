@@ -26,9 +26,8 @@ class Product extends Model implements HasMedia
         return $this->morphTo();
     }
 
-    public function tenant()
-    {
-        return $this->belongsTo(Tenant::class);
+    public function category()  {
+        return $this->belongsTo(Category::class);
     }
     public function orderDetail()
     {

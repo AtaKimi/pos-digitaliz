@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Tenant;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -16,4 +19,11 @@ use Illuminate\Support\Facades\Artisan;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+
+Artisan::command('zaidan', function () {
+    $tenant = Tenant::find(1);
+    $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
+    $products = Product::whereIn('category_id', $category_ids)->get();
+    $this->comment($products);
 })->purpose('Display an inspiring quote');
