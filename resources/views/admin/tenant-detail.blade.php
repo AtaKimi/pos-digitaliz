@@ -47,7 +47,7 @@
                     <p class="font-semibold">Total Tagihan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp. 10.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{ $formatTotalTagihan ? $formatTotalTagihan : 'Rp 0' }}</h4>
                     <div class="flex items-center gap-1">
                         <svg width="12" height="11" viewBox="0 0 12 11" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
                     <p class="font-semibold">Tagihan yang Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp.25.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{$tenants->total_payment ? $tenants->total_payment : 'Rp 0'}}</h4>
                 </div>
             </div>
             <div class="flex flex-col gap-6 bg-white p-5 py-7 px-8 rounded-2xl shadow-md bg-white-50">
@@ -97,7 +97,7 @@
                     <p class="font-semibold">Tagihan Belum Dibayarkan</p>
                 </div>
                 <div class="flex flex-col">
-                    <h4 class="text-2xl font-semibold">Rp.50.000.000</h4>
+                    <h4 class="text-2xl font-semibold">{{ $formatUnpaidPayment ? $formatUnpaidPayment : 'Rp 0' }}</h4>
                 </div>
             </div>
         </div>
@@ -117,43 +117,43 @@
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama Tenant</p>
-                        <p class="font-semibold">WETLAND SQUARE</p>
+                        <p class="font-semibold">{{ $tenants->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Status Tenant</p>
-                        <p class="font-semibold">AKTIF</p>
+                        <p class="font-semibold">{{ $tenants->is_active ? 'AKTIF' : 'BELUM AKTIF' }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Produk</p>
-                        <p class="font-semibold">AKTIF</p>
+                        <p class="font-semibold">{{ $product }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Code Tenant</p>
-                        <p class="font-semibold">#12345</p>
+                        <p class="font-semibold">#{{ $tenants->code }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Nama User Tenant</p>
-                        <p class="font-semibold">ANYA FORGER</p>
+                        <p class="font-semibold">{{ $tenants->user->name }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Jumlah Kategori </p>
-                        <p class="font-semibold">6</p>
+                        <p class="font-semibold">{{ $tenants->categories->count() }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Alamat Tenant</p>
-                        <p class="font-semibold">JL. A. YANI 3,4 BANJARMASIN SELATAN</p>
+                        <p class="font-semibold">{{ $tenants->address }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Emai User Tenant</p>
-                        <p class="font-semibold">anyaforger@gmail.com</p>
+                        <p class="font-semibold">{{ $tenants->user->email }}</p>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-sm">Deskripsi</p>
-                        <p class="font-semibold">TENANT KAMI MENYEDIAKAN BERBAGAI MACAM KOPI KELAS DUNIA</p>
+                        <p class="font-semibold">{{ $tenants->description }}</p>
                     </div>
                 </div>
             </div>
@@ -224,60 +224,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                1
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                2
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                2
-                            </th>
-                            <td class="px-6 py-4">
-                                14/09/2023, 10.00 AM
-                            </td>
-                            <td class="px-6 py-4">
-                                Rp. 90.000,00
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                        data-modal-toggle="modal-transaction"></div>
-                                </div>
-                            </td>
-                        </tr>
+                        @forelse ($paymentPerMonth as $month)
+                            <tr class="bg-white border-b">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    {{ $loop->iteration }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $month->transfer_at }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. {{ number_format($month->total, 2, ',', '.') }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
+                                            data-modal-toggle="modal-transaction">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center font-bold text-lg">
+                                    Tidak ada data
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
 
@@ -350,72 +323,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
+                        @forelse ($waiters as $item)
+                            <tr class="bg-white border-b">
+                                <td class=" py-4">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <div class="flex items-center gap-2">
+                                        <img src="{{ $item->user->getFirstMediaUrl('default') }}" alt=""
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex flex-col">
+                                            <p class="font-semibold">{{ $item->user->name }}</p>
+                                            <p class="text-gray-400">{{ $item->user->email }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center font-semibold ont-semibold bg-green-200 rounded-full py-1 px-10">
-                                    Verified</p>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center text-green-800 font-semibold bg-green-200 rounded-full py-1 px-10">
-                                    Verified</p>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b">
-                            <td class=" py-4">
-                                1
-                            </td>
-                            <td scope="row" class=" py-4 font-medium text-gray-900 whitespace-nowrap">
-                                <div class="flex items-center gap-2">
-                                    <img src="{{ asset('assets/img/anya-profile.png') }}" alt=""
-                                        class="w-8 h-8 rounded-full">
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Anya Forger</p>
-                                        <p class="text-gray-400">michael.mitc@example.com</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class=" py-4">
-                                +6281234567890
-                            </td>
-                            <td class=" py-4">
-                                <p class="text-center text-red-700 font-semibold bg-red-200 rounded-full py-1 px-10">
-                                    Unverified</p>
-                            </td>
-                        </tr>
+                                </td>
+                                <td class=" py-4">
+                                    {{ $item->user->phone_number }}
+                                </td>
+                                <td class=" py-4">
+                                    @if ($item->user->email_verified_at)
+                                        <p class="text-center font-semibold bg-green-200 rounded-full py-1 px-10">
+                                            Verified
+                                        </p>
+                                    @else
+                                        <p class="text-center text-red-700 font-semibold bg-red-200 rounded-full py-1 px-10">
+                                            Not Verified
+                                        </p>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center font-bold text-lg">
+                                    Tidak ada data
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="grid grid-cols-3 items-center px-6 pt-3">
