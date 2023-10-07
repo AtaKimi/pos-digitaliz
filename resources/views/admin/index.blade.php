@@ -74,7 +74,8 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Service</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($total_service_paid_all, 2, ',', '.') }}</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">
+                            Rp.{{ number_format($total_service_paid_all, 2, ',', '.') }}</p>
                         <div class="flex items-center gap-1">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -117,7 +118,8 @@
                         <span class="text-black text-xs font-semibold mr-2">Total service belum bayar</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">Rp.{{ number_format($total_service_unpaid_all, 2, ',', '.') }}</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">
+                            Rp.{{ number_format($total_service_unpaid_all, 2, ',', '.') }}</p>
 
 
                     </div>
@@ -141,31 +143,35 @@
                         </div>
 
                     </div>
-                    <div>
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
-                            data-dropdown-placement="bottom" type="button"
-                            class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">Monthly
-                            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg></button>
-                        <div id="lastDaysdropdown"
-                            class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
-                            <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Weekly</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Monthly</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Anually</a>
-                                </li>
-
-                            </ul>
+                    <form action="{{ route('admin-index') }}" method="GET">
+                        <div>
+                            <button id="dropdownDefaultButton" data-dropdown-toggle="totalTenantFilter"
+                                    data-dropdown-placement="bottom" type="button"
+                                    class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
+                                {{ $totalTenantFilter }}
+                                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <div id="totalTenantFilter"
+                                class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
+                                <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
+                                    <li>
+                                        <button type="submit" name="totalTenantFilter" value="Weekly" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Weekly</button>
+                                    </li>
+                                    <li>
+                                        <button type="submit" name="totalTenantFilter" value="Monthly" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Monthly</button>
+                                    </li>
+                                    <li>
+                                        <button type="submit" name="totalTenantFilter" value="Annually" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Annually</button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
 
 
@@ -182,7 +188,8 @@
                             <h5 class="inline-flex items-center text-xs text-gray-500 leading-none font-normal mb-2">
                                 Total Pendapatan Service
                             </h5>
-                            <p class="text-gray-900 text-xl leading-none font-bold">RP.{{ number_format($total_service_paid_all, 0, '', '.') }}</p>
+                            <p class="text-gray-900 text-xl leading-none font-bold">
+                                RP.{{ number_format($total_service_paid_all, 0, '', '.') }}</p>
                         </div>
                         <div>
                             <h5 class="inline-flex items-center font-semibold leading-none mb-2">
@@ -320,8 +327,8 @@
                                 </h1>
                             </th>
                             <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                                <img class="rounded-full w-10 h-10" src="{{ $service->user->getFirstMediaUrl('default') }}"
-                                    alt="">
+                                <img class="rounded-full w-10 h-10"
+                                    src="{{ $service->user->getFirstMediaUrl('default') }}" alt="">
                                 <div>
                                     <h1 class="font-medium text-gray-900 whitespace-nowrap">
                                         {{ $service->user->name }}
@@ -334,10 +341,10 @@
                             </td>
                             <td class="px-6 py-4">
 
-                                    <p class="whitespace-nowrap">
-                                        {{ \Carbon\Carbon::parse($service->created_at)->format('d-m-Y') }}
+                                <p class="whitespace-nowrap">
+                                    {{ \Carbon\Carbon::parse($service->created_at)->format('d-m-Y') }}
 
-                                    </p>
+                                </p>
 
                             </td>
 
@@ -421,40 +428,23 @@
     <script>
         // ApexCharts options and config
         window.addEventListener("load", function() {
+            const filledData = @json($filledData);
+            const chartData = [];
+
+            // Loop through filledData and build chartData array
+            filledData.forEach(function(data) {
+                chartData.push({
+                    x: data.month,
+                    y: data.count,
+                });
+            });
+
             const options = {
                 colors: ["#1A56DB", "#FDBA8C"],
                 series: [{
                         name: "Tenant",
                         color: "#1A56DB",
-                        data: [{
-                                x: "JUN",
-                                y: 8
-                            },
-                            {
-                                x: "JUL",
-                                y: 4
-                            },
-                            {
-                                x: "AGU",
-                                y: 9
-                            },
-                            {
-                                x: "SEP",
-                                y: 6
-                            },
-                            {
-                                x: "OKT",
-                                y: 10
-                            },
-                            {
-                                x: "NOV",
-                                y: 3
-                            },
-                            {
-                                x: "DES",
-                                y: 7
-                            },
-                        ],
+                        data: chartData,
                     },
 
                 ],
@@ -542,6 +532,68 @@
             }
         });
     </script>
+
+    {{-- <script>
+        // Function to update the chart based on the selected filter
+        function updateChart(filter) {
+            // Fetch data from the server based on the selected filter
+            // You can use AJAX or another method to fetch the updated data
+            // For simplicity, let's assume you have a function fetchDataFromServer(filter) that returns the updated data
+            const filledData = fetchDataFromServer(filter);
+
+            // Build chartData array from the fetched data
+            const chartData = filledData.map(function(data) {
+                return {
+                    x: data.month,
+                    y: data.count,
+                };
+            });
+
+            // Update the chart series data
+            const chart = ApexCharts.getChartById('column-chart');
+            chart.updateSeries([{
+                name: "Tenant",
+                color: "#1A56DB",
+                data: chartData,
+            }]);
+        }
+
+        // ApexCharts options and config
+        window.addEventListener("load", function() {
+            const filledData = @json($filledData);
+            const chartData = filledData.map(function(data) {
+                return {
+                    x: data.month,
+                    y: data.count,
+                };
+            });
+
+            const options = {
+                colors: ["#1A56DB", "#FDBA8C"],
+                series: [{
+                    name: "Tenant",
+                    color: "#1A56DB",
+                    data: chartData,
+                }],
+                // ... rest of your options ...
+            };
+
+            if (document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+                const chart = new ApexCharts(document.getElementById("column-chart"), options);
+                chart.render();
+            }
+        });
+
+        // Event listener for filter selection
+        document.querySelectorAll('#lastDaysdropdown button').forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault();
+                const selectedFilter = element.getAttribute('data-filter');
+                updateChart(selectedFilter);
+            });
+        });
+    </script> --}}
+
 
     <script>
         // ApexCharts options and config
