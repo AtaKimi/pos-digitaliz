@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Desk;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -29,17 +31,11 @@ class TenantController extends Controller
 
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
         $orders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->get();
+        $category = Category::where('tenant_id', $tenant->id)->pluck('id');
+        $totalCategory = $category->count();
+        $totalProduct = Product::whereIn('category_id', $category)->count();
 
-
-
-
-
-
-
-
-
-        // $order = Order::where('desk_id', $desks->id)
-        return view('tenant.index', compact('desks', 'orders'));
+        return view('tenant.index', compact('desks', 'orders', 'totalCategory', 'totalProduct'));
     }
 
     public function setting(Tenant $tenant)

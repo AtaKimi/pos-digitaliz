@@ -41,7 +41,8 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Order</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">Rp 5.000.000
+                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($orders->sum('total'), 2, ',', '.') }}
+
 
                         </p>
                         <div class="flex items-center gap-1">
@@ -77,7 +78,7 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Product</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">60</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalProduct }}</p>
                         <div class="flex items-center gap-1">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -118,7 +119,7 @@
                         <span class="text-black text-xs font-semibold mr-2">All Category</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">10</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalCategory }}</p>
 
 
                     </div>

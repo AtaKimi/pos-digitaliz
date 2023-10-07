@@ -39,7 +39,7 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Tenant</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $tenantCounter }}
+                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $tenant_counter }}
                         </p>
                         <div class="flex items-center gap-1">
                             <span>
@@ -74,7 +74,7 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Service</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($tenatServicePaymentTotal, 2, ',', '.') }}</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($total_service_paid_all, 2, ',', '.') }}</p>
                         <div class="flex items-center gap-1">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -117,7 +117,7 @@
                         <span class="text-black text-xs font-semibold mr-2">Total service belum bayar</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">Rp.5.000.000</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">Rp.{{ number_format($total_service_unpaid_all, 2, ',', '.') }}</p>
 
 
                     </div>
@@ -182,7 +182,7 @@
                             <h5 class="inline-flex items-center text-xs text-gray-500 leading-none font-normal mb-2">
                                 Total Pendapatan Service
                             </h5>
-                            <p class="text-gray-900 text-xl leading-none font-bold">RP.250.000.000</p>
+                            <p class="text-gray-900 text-xl leading-none font-bold">RP.{{ number_format($total_service_paid_all, 0, '', '.') }}</p>
                         </div>
                         <div>
                             <h5 class="inline-flex items-center font-semibold leading-none mb-2">
@@ -308,47 +308,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($tenants as $tenant)
+                    @forelse ($tenant_service_payments as $service)
                         <tr class="bg-white-50 border-b hover:bg-gray-50">
                             <td class="px-6 py-4">
                                 {{ $loop->iteration }}
                             </td>
                             <th scope="row" class="px-6 py-4">
-                                <p class="text-xs font-normal">#{{ $tenant->code }}</p>
+                                <p class="text-xs font-normal">#{{ $service->tenant->code }}</p>
                                 <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $tenant->name }}
+                                    {{ $service->tenant->name }}
                                 </h1>
                             </th>
                             <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                                <img class="rounded-full w-10 h-10" src="{{ $tenant->user->getFirstMediaUrl('default') }}"
+                                <img class="rounded-full w-10 h-10" src="{{ $service->user->getFirstMediaUrl('default') }}"
                                     alt="">
                                 <div>
                                     <h1 class="font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $tenant->user->name }}
+                                        {{ $service->user->name }}
                                     </h1>
-                                    <p class="text-xs font-normal">{{ $tenant->user->email }}</p>
+                                    <p class="text-xs font-normal">{{ $service->user->email }}</p>
                                 </div>
                             </th>
                             <td class="px-6 py-4">
-                                @php
-                                    $totalPayment = 0;
-                                    foreach ($tenant->tenant_service_payment as $payment) {
-                                        $totalPayment += $payment['total'];
-                                    }
-                                @endphp
-                                Rp.{{ number_format($totalPayment, 2, ',', '.') }}
+                                Rp.{{ number_format($service->total, 2, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
-                                {{-- Menampilkan created_at terbaru --}}
-                                @if ($tenant->tenant_service_payment->isNotEmpty())
-                                    {{ \Carbon\Carbon::parse(max($tenant->tenant_service_payment->pluck('created_at')->toArray()))->format('d-m-Y') }}
-                                @else
-                                    <span class="text-xs whitespace-nowrap">No Service Payments</span>
-                                @endif
+
+                                    <p class="whitespace-nowrap">
+                                        {{ \Carbon\Carbon::parse($service->created_at)->format('d-m-Y') }}
+
+                                    </p>
+
                             </td>
 
                             <td class="px-6 py-4">
-                                <a type="button" href="{{ route('admin-tenant-show', $tenant) }}"
+                                <a type="button" href="{{ route('admin-tenant-show', $service->tenant) }}"
                                     class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                         viewBox="0 0 17 17" fill="none">
