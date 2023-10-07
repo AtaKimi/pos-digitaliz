@@ -104,7 +104,20 @@ class TenantController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $tenantId = $request->input('tenant_id');
+        $isActive = $request->input('is_active');
+
+        $tenant = Tenant::find($tenantId);
+
+        if (!$tenant) {
+            return response()->json(['success' => false, 'message' => 'Tenant not found']);
+        }
+
+        $tenant->is_active = $isActive;
+        $tenant->save();
+
+        return response()->json(['success' => true, 'message' => 'Tenant status updated successfully']);
+
     }
 
     /**
