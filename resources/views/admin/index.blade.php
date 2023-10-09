@@ -146,8 +146,8 @@
                     <form action="{{ route('admin-index') }}" method="GET">
                         <div>
                             <button id="dropdownDefaultButton" data-dropdown-toggle="totalTenantFilter"
-                                    data-dropdown-placement="bottom" type="button"
-                                    class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
+                                data-dropdown-placement="bottom" type="button"
+                                class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
                                 {{ $totalTenantFilter }}
                                 <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 10 6">
@@ -159,13 +159,16 @@
                                 class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
                                 <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
                                     <li>
-                                        <button type="submit" name="totalTenantFilter" value="Weekly" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Weekly</button>
+                                        <button type="submit" name="totalTenantFilter" value="Weekly"
+                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Weekly</button>
                                     </li>
                                     <li>
-                                        <button type="submit" name="totalTenantFilter" value="Monthly" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Monthly</button>
+                                        <button type="submit" name="totalTenantFilter" value="Monthly"
+                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Monthly</button>
                                     </li>
                                     <li>
-                                        <button type="submit" name="totalTenantFilter" value="Annually" class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Annually</button>
+                                        <button type="submit" name="totalTenantFilter" value="Annually"
+                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Annually</button>
                                     </li>
                                 </ul>
                             </div>
@@ -342,7 +345,7 @@
                             <td class="px-6 py-4">
 
                                 <p class="whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($service->created_at)->format('d-m-Y') }}
+                                    {{ \Carbon\Carbon::parse($service->transfer_at)->format('d-m-Y') }}
 
                                 </p>
 
@@ -376,47 +379,10 @@
                 </tbody>
             </table>
 
-            <div class="relative">
 
-                <nav aria-label="Page navigation example" class="flex justify-center my-5">
-                    <ul class="inline-flex gap-1.5 -space-x-px text-xs">
+            {{ $tenant_service_payments->withQueryString()->links()}}
 
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Prev</a>
-                        </li>
 
-                        <li>
-                            <a href="#" aria-current="page"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-yellow-400  hover:bg-gray-100 hover:text-gray-700">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
-                        </li>
-
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 ">...</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">10</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="md:absolute left-5 bottom-1.5 text-xs flex justify-center">
-                    Menampilkan : 1-10 dari 100 hasil
-                </p>
-            </div>
 
         </div>
 
