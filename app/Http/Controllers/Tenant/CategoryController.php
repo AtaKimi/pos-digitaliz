@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function index(Tenant $tenant)
     {
         $category = Category::all();
-        return view('tenant.category', ['category' => $category ]);
+        return view('tenant.category', ['category' => $category]);
     }
 
     /**

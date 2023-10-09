@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -40,6 +41,6 @@ class TenantController extends Controller
 
     public function setting(Tenant $tenant)
     {
-        return view('tenant.setting');
+        return view('tenant.setting', compact('tenant'));
     }
 }
