@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
 
-    <nav class="flex items-center pt-4 py-2 px-2" role="navigation" aria-label="{{ __('Pagination Navigation') }}">
+    <nav class="flex place-content-center items-center pt-4 py-2 px-2" role="navigation" aria-label="{{ __('Pagination Navigation') }}">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
                 <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
@@ -22,7 +22,7 @@
                 </span>
             @endif
         </div>
-        <p class="text-xs text-gray-700 mr-20">
+        <p class="absolute left-0 text-xs text-gray-700 mr-20 px-2">
             {!! __('Menampilkan') !!}
             @if ($paginator->firstItem())
                 <span class="font-semibold text-gray-900">{{ $paginator->firstItem() }}</span>

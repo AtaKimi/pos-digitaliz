@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Tenant;
 use App\Models\TenantServicePayment;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
 {
@@ -58,7 +59,7 @@ class AdminController extends Controller
             }
         }
 
-        $all_tenants = Tenant::all();
+        $all_tenants = Tenant::onlyTrashed();
         // $service_data = $all_tenants->getService()
         $tenants = Tenant::latest()->paginate(11);
         $tenant_counter = Tenant::all()->count();
@@ -76,6 +77,7 @@ class AdminController extends Controller
         }
         $total_service_paid_all = TenantServicePayment::all()->sum('total');
         $total_service_unpaid_all = $total_service_all - $total_service_paid_all;
+        Paginator::useTailwind();
 
         // dd($$filledData);
         return view('admin.index', compact('totalTenantFilter',  'filledData',  'tenants', 'all_tenants', 'tenant_counter', 'tenant_service_payments', 'total_service_paid_all', 'total_service_unpaid_all'));

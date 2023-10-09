@@ -2187,6 +2187,10 @@ html {
   flex-wrap: wrap;
 }
 
+.place-content-center{
+  place-content: center;
+}
+
 .content-center{
   align-content: center;
 }
@@ -4055,6 +4059,26 @@ html {
 .hover\:text-white-50:hover{
   --tw-text-opacity: 1;
   color: rgb(249 249 249 / var(--tw-text-opacity));
+}
+
+.hover\:text-white-700:hover{
+  --tw-text-opacity: 1;
+  color: rgb(165 115 124 / var(--tw-text-opacity));
+}
+
+.hover\:text-white-500:hover{
+  --tw-text-opacity: 1;
+  color: rgb(197 168 170 / var(--tw-text-opacity));
+}
+
+.hover\:text-white-800:hover{
+  --tw-text-opacity: 1;
+  color: rgb(133 73 88 / var(--tw-text-opacity));
+}
+
+.hover\:text-gray-50:hover{
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
 .hover\:no-underline:hover{
