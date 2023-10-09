@@ -371,19 +371,9 @@
                             <td colspan="55" class="text-center py-5">tidak ada data</td>
                         </tr>
                     @endforelse
-
-
-
-
-
                 </tbody>
             </table>
-
-
             {{ $tenant_service_payments->withQueryString()->links()}}
-
-
-
         </div>
 
         {{-- end table --}}
