@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -35,6 +36,8 @@ class TenantController extends Controller
         $category = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $category->count();
         $totalProduct = Product::whereIn('category_id', $category)->count();
+
+        Paginator::useAdminPagination();
 
         return view('tenant.index', compact('desks', 'orders', 'totalCategory', 'totalProduct'));
     }

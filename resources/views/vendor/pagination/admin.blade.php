@@ -7,13 +7,13 @@
                     {!! __('pagination.previous') !!}
                 </span>
             @else
-                <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-white-50 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                     {!! __('pagination.previous') !!}
                 </a>
             @endif
 
             @if ($paginator->hasMorePages())
-                <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-white-50 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                     {!! __('pagination.next') !!}
                 </a>
             @else
@@ -45,7 +45,7 @@
                 </span>
             @else
                 <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="{{ __('pagination.previous') }}"
-                    class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-600 hover:text-gray-800">
+                    class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-600 hover:text-gray-500">
                     Prev
                 </a>
             @endif
@@ -66,14 +66,14 @@
                             @if ($page == $paginator->currentPage())
                                 <li>
                                     <span aria-current="page"
-                                        class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-500 border border-grey-20 hover:text-grey-700 rounded-xl">
+                                        class="flex items-center justify-center px-3 mr-1 h-8 text-white-50 bg-red-500 border border-grey-20 hover:text-white-50 rounded-xl">
                                         {{ $page }}
                                     </span>
                                 </li>
                             @else
                                 <li>
                                     <a href="{{ $url }}" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
-                                        <span class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-yellow-500 hover:text-grey-700 rounded-xl">
+                                        <span class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-red-500 hover:text-white-50 rounded-xl">
                                             {{ $page }}
                                         </span>
                                     </a>
