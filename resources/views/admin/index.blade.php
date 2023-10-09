@@ -373,7 +373,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{ $tenant_service_payments->withQueryString()->links()}}
+            {{ $tenant_service_payments->withQueryString()->links() }}
         </div>
 
         {{-- end table --}}

@@ -258,7 +258,7 @@
 
                 </tbody>
             </table>
-            {{ $orders->withQueryString()->links()}}
+            {{ $orders->withQueryString()->links() }}
         </div>
         {{-- Table Order End --}}
     </div>
