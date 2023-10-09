@@ -2187,6 +2187,10 @@ html {
   flex-wrap: wrap;
 }
 
+.place-content-center{
+  place-content: center;
+}
+
 .content-center{
   align-content: center;
 }
