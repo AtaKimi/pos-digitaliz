@@ -3,36 +3,16 @@
 @section('content')
     <div class="">
         <div class="flex bg-white justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
-            <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
-                class="fill-yellow-500 bg-yellow-200 w-20 p-5 rounded-lg ">
-                <path
-                    d="M7.0625 10.3438C7.0625 9.7397 7.55219 9.25001 8.15625 9.25001H21.2812C21.8853 9.25001 22.375 9.7397 22.375 10.3438C22.375 10.9478 21.8853 11.4375 21.2812 11.4375H8.15625C7.55219 11.4375 7.0625 10.9478 7.0625 10.3438Z" />
-                <path
-                    d="M7.0625 14.7188C7.0625 14.1147 7.55219 13.625 8.15625 13.625H21.2812C21.8853 13.625 22.375 14.1147 22.375 14.7188C22.375 15.3228 21.8853 15.8125 21.2812 15.8125H8.15625C7.55219 15.8125 7.0625 15.3228 7.0625 14.7188Z" />
-                <path
-                    d="M7.0625 19.0938C7.0625 18.4897 7.55219 18 8.15625 18H21.2812C21.8853 18 22.375 18.4897 22.375 19.0938C22.375 19.6978 21.8853 20.1875 21.2812 20.1875H8.15625C7.55219 20.1875 7.0625 19.6978 7.0625 19.0938Z" />
-                <path
-                    d="M7.0625 23.4688C7.0625 22.8647 7.55219 22.375 8.15625 22.375H21.2812C21.8853 22.375 22.375 22.8647 22.375 23.4688C22.375 24.0728 21.8853 24.5625 21.2812 24.5625H8.15625C7.55219 24.5625 7.0625 24.0728 7.0625 23.4688Z" />
-                <path
-                    d="M7.0625 27.8438C7.0625 27.2397 7.55219 26.75 8.15625 26.75H21.2812C21.8853 26.75 22.375 27.2397 22.375 27.8438C22.375 28.4478 21.8853 28.9375 21.2812 28.9375H8.15625C7.55219 28.9375 7.0625 28.4478 7.0625 27.8438Z" />
-                <path
-                    d="M25.6562 9.25001C25.0522 9.25001 24.5625 9.7397 24.5625 10.3438C24.5625 10.9478 25.0522 11.4375 25.6562 11.4375H27.8438C28.4478 11.4375 28.9375 10.9478 28.9375 10.3438C28.9375 9.7397 28.4478 9.25001 27.8438 9.25001H25.6562Z" />
-                <path
-                    d="M25.6562 13.625C25.0522 13.625 24.5625 14.1147 24.5625 14.7188C24.5625 15.3228 25.0522 15.8125 25.6562 15.8125H27.8438C28.4478 15.8125 28.9375 15.3228 28.9375 14.7188C28.9375 14.1147 28.4478 13.625 27.8438 13.625H25.6562Z" />
-                <path
-                    d="M25.6562 18C25.0522 18 24.5625 18.4897 24.5625 19.0938C24.5625 19.6978 25.0522 20.1875 25.6562 20.1875H27.8438C28.4478 20.1875 28.9375 19.6978 28.9375 19.0938C28.9375 18.4897 28.4478 18 27.8438 18H25.6562Z" />
-                <path
-                    d="M25.6562 22.375C25.0522 22.375 24.5625 22.8647 24.5625 23.4688C24.5625 24.0728 25.0522 24.5625 25.6562 24.5625H27.8438C28.4478 24.5625 28.9375 24.0728 28.9375 23.4688C28.9375 22.8647 28.4478 22.375 27.8438 22.375H25.6562Z" />
-                <path
-                    d="M25.6562 26.75C25.0522 26.75 24.5625 27.2397 24.5625 27.8438C24.5625 28.4478 25.0522 28.9375 25.6562 28.9375H27.8438C28.4478 28.9375 28.9375 28.4478 28.9375 27.8438C28.9375 27.2397 28.4478 26.75 27.8438 26.75H25.6562Z" />
-                <path
-                    d="M5.6484 1.91412C5.39979 1.66551 5.04684 1.55157 4.6998 1.60789C4.35276 1.6642 4.05395 1.88391 3.89672 2.19837L2.80297 4.38587C2.72703 4.53775 2.6875 4.70521 2.6875 4.87501V33.3125H1.59375C0.989689 33.3125 0.5 33.8022 0.5 34.4063C0.5 35.0103 0.989689 35.5 1.59375 35.5H34.4062C35.0103 35.5 35.5 35.0103 35.5 34.4063C35.5 33.8022 35.0103 33.3125 34.4062 33.3125H33.3125V4.87501C33.3125 4.70521 33.273 4.53775 33.197 4.38587L32.1033 2.19837C31.946 1.88391 31.6472 1.6642 31.3002 1.60789C30.9532 1.55157 30.6002 1.66551 30.3516 1.91412L28.9375 3.32822L27.5234 1.91412C27.0963 1.48698 26.4037 1.48698 25.9766 1.91412L24.5625 3.32822L23.1484 1.91412C22.7213 1.48698 22.0287 1.48698 21.6016 1.91412L20.1875 3.32822L18.7734 1.91412C18.3463 1.48698 17.6537 1.48698 17.2266 1.91412L15.8125 3.32822L14.3984 1.91412C13.9713 1.48698 13.2787 1.48698 12.8516 1.91412L11.4375 3.32822L10.0234 1.91412C9.59626 1.48698 8.90374 1.48698 8.4766 1.91412L7.0625 3.32822L5.6484 1.91412ZM5.17463 4.53394L6.2891 5.64841C6.71624 6.07555 7.40876 6.07555 7.8359 5.64841L9.25 4.23431L10.6641 5.64841C11.0912 6.07555 11.7838 6.07555 12.2109 5.64841L13.625 4.23431L15.0391 5.64841C15.4662 6.07555 16.1588 6.07555 16.5859 5.64841L18 4.23431L19.4141 5.64841C19.8412 6.07555 20.5338 6.07555 20.9609 5.64841L22.375 4.23431L23.7891 5.64841C24.2162 6.07555 24.9088 6.07555 25.3359 5.64841L26.75 4.23431L28.1641 5.64841C28.5912 6.07555 29.2838 6.07555 29.7109 5.64841L30.8254 4.53394L31.125 5.13321V33.3125H4.875V5.13321L5.17463 4.53394Z" />
-            </svg>
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="80" height="80" rx="16" fill="#FFEDED"/>
+                <path d="M35.3811 31.5168C35.3811 33.651 33.651 35.3811 31.5168 35.3811C29.3826 35.3811 27.6524 33.651 27.6524 31.5168C27.6524 29.3826 29.3826 27.6524 31.5168 27.6524C33.651 27.6524 35.3811 29.3826 35.3811 31.5168ZM32.8049 31.5168C32.8049 30.8054 32.2282 30.2287 31.5168 30.2287C30.8054 30.2287 30.2287 30.8054 30.2287 31.5168C30.2287 32.2282 30.8054 32.8049 31.5168 32.8049C32.2282 32.8049 32.8049 32.2282 32.8049 31.5168Z" fill="#F54748"/>
+                <path d="M25.0762 22.5H36.8902C37.5735 22.5 38.2288 22.7714 38.7119 23.2546L56.7454 41.2881C57.7515 42.2942 57.7515 43.9254 56.7454 44.9314L44.9314 56.7454C43.9254 57.7515 42.2942 57.7515 41.2881 56.7454L23.2546 38.7119C22.7714 38.2288 22.5 37.5735 22.5 36.8902V25.0762C22.5 23.6534 23.6534 22.5 25.0762 22.5ZM25.0762 36.8902L43.1098 54.9238L54.9238 43.1098L36.8902 25.0762L25.0762 25.0762L25.0762 36.8902Z" fill="#F54748"/>
+            </svg>                               
 
             <div class="flex flex-col gap-1 justify-center">
                 <h3 class="text-2xl font-bold">Category</h3>
                 <p class="text-base">Akses mengedit, menambah atau menghapus kategori resto kamu</p>
-            </div>
+            </div>  
         </div>
 
         <div class="bg-white w-full rounded-3xl shadow-md mb-8 bg-white-50">
@@ -115,6 +95,71 @@
                                 </div>
                             </td>
                         </tr>
+
+                        {{-- MODAL EDIT CATEGORY --}}
+
+                        <div id="modal-edit-category" tabindex="-1"
+                            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-full max-w-md max-h-full">
+                                <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
+                                    <div class="flex justify-between items-center">
+                                        <div class=""></div>
+                                        <p class="font-bold text-2xl">Edit Kategori</p>
+                                        <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-edit-category"
+                                            data-modal-toggle="modal-edit-category">X</p>
+                                    </div>
+                                    <form action="{{route('tenant-category-edit', $tenant)}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="flex flex-col">
+                                            <label for="email" class="block mb-2 text-sm font-medium">
+                                                Nama Kategori</label>
+                                            <input type="email" id="email"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                                placeholder="Nama Kategori" required value="{{ $category->name }}">
+                                        </div>
+                                    </form>
+
+                                    <div class="flex grid-cols-2 gap-3">
+                                        <button
+                                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" >Batalkan</button>
+                                        <button class="py-2 w-full bg-red-600 text-white-50 rounded-lg font-bold">Konfirmasi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         {{-- MODAL DELETE CATEGORY --}}
+
+                        <div id="modal-delete-category" tabindex="-1"
+                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-md max-h-full">
+                            <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
+                                <form action="{{route('tenant-category-delete', $tenant)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-2xl">Hapus Kategori</p>
+                                    <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
+                                        data-modal-toggle="modal-delete-category">X</p>
+                                </div>
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+                                    <rect width="100" height="100" rx="50" fill="#FC5F5F" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
+                                        fill="white" />
+                                </svg>
+                                <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus kategori ini?</p>
+                                <div class="flex grid-cols-2 gap-3">
+                                    <button
+                                        class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
+                                    <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold" type="submit">Hapus</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                     </tbody>
                 </table>
@@ -156,82 +201,34 @@
             <div class="relative w-full max-w-md max-h-full">
                 <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
                     <div class="flex justify-between items-center">
-                        <div class=""></div>
+                       
                         <p class="font-bold text-2xl">Tambah Kategori</p>
                         <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-add-category"
                             data-modal-toggle="modal-add-category">X</p>
                     </div>
-                    <div class="flex flex-col">
-                        <label for="email" class="block mb-2 text-sm font-medium">
-                            Nama Kategori</label>
-                        <input type="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                            placeholder="Nama Kategori" required>
-                    </div>
+                    <form action="{{route('tenant-category-store', $tenant)}}" method="POST">
+                        @csrf
+                        <div class="flex flex-col pb-4">
+                            <label for="text" class="block mb-2 text-sm font-medium">
+                                Nama Kategori</label>
+                            <input type="text" id="text" name="name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                placeholder="Nama Kategori" required>
+                        </div>
+                    
                     <div class="flex grid-cols-2 gap-3">
-                        <button
-                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                        <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
+                        <button type="reset"
+                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" data-modal-target="modal-add-category"
+                            data-modal-toggle="modal-add-category">Batalkan</button>
+                        <button type="submit" class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
 
-        {{-- MODAL ADD CATEGORY --}}
-
-        <div id="modal-edit-category" tabindex="-1"
-            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-md max-h-full">
-                <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                    <div class="flex justify-between items-center">
-                        <div class=""></div>
-                        <p class="font-bold text-2xl">Edit Kategori</p>
-                        <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-edit-category"
-                            data-modal-toggle="modal-edit-category">X</p>
-                    </div>
-                    <div class="flex flex-col">
-                        <label for="email" class="block mb-2 text-sm font-medium">
-                            Nama Kategori</label>
-                        <input type="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                            placeholder="Nama Kategori" required>
-                    </div>
-                    <div class="flex grid-cols-2 gap-3">
-                        <button
-                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                        <button class="py-2 w-full bg-red-600 text-white-50 rounded-lg font-bold">Konfirmasi</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- MODAL DELETE CATEGORY --}}
-
-        <div id="modal-delete-category" tabindex="-1"
-            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-md max-h-full">
-                <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                    <div class="flex justify-between items-center">
-                        <div class=""></div>
-                        <p class="font-bold text-2xl">Edit Kategori</p>
-                        <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
-                            data-modal-toggle="modal-delete-category">X</p>
-                    </div>
-                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-                        <rect width="100" height="100" rx="50" fill="#FC5F5F" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
-                            fill="white" />
-                    </svg>
-                    <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus kategori ini?</p>
-                    <div class="flex grid-cols-2 gap-3">
-                        <button
-                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                        <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+       
 
     </div>
 @endsection

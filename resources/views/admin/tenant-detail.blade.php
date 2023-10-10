@@ -238,12 +238,33 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
-                                        <div class="w-11 h-12 bg-yellow-400" data-modal-target="modal-transaction"
-                                            data-modal-toggle="modal-transaction">
+                                        <div class="w-11 h-12" data-modal-target="modal-transaction-{{ $month->id }}"
+                                            data-modal-toggle="modal-transaction-{{ $month->id }}">
+                                            <img src="{{ $month->getFirstMediaUrl('buktiTf') }}" alt="">
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+
+                            {{-- MODAL TRANSACTION --}}
+
+                            <div id="modal-transaction-{{ $month->id }}" tabindex="-1"
+                                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-md max-h-full">
+                                    <div
+                                        class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
+                                        <div class="flex justify-between mb-8 items-center">
+                                            <div class=""></div>
+                                            <p class="font-bold text-2xl">Bukti Transfer</p>
+                                            <p class="text-2xl font-bold" data-modal-target="modal-transaction-{{ $month->id }}"
+                                                data-modal-toggle="modal-transaction-{{ $month->id }}">X</p>
+                                        </div>
+                                        <div class="self-cewnte w-full h-full">
+                                            <img src="{{ $month->getFirstMediaUrl('buktiTf') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @empty
                             <tr>
                                 <td colspan="4" class="text-center font-bold text-lg">
@@ -390,23 +411,7 @@
         </div>
 
 
-        {{-- MODAL TRANSACTION --}}
-
-        <div id="modal-transaction" tabindex="-1"
-            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-md max-h-full">
-                <div
-                    class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
-                    <div class="flex justify-between mb-8 items-center">
-                        <div class=""></div>
-                        <p class="font-bold text-2xl">Bukti Transfer</p>
-                        <p class="text-2xl font-bold" data-modal-target="modal-transaction"
-                            data-modal-toggle="modal-transaction">X</p>
-                    </div>
-                    <div class="self-cewnter bg-yellow-500 w-full h-full"></div>
-                </div>
-            </div>
-        </div>
+        
 
         {{-- MODAL TAGIHAN --}}
 
@@ -417,65 +422,72 @@
                     class="flex flex-col gap-4 relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
                     <div class="flex justify-between  items-center">
                         <div class=""></div>
-                        <p class="font-bold text-2xl">Tangihan</p>
+                        <p class="font-bold text-2xl">Tagihan</p>
                         <p class="text-2xl font-bold" data-modal-target="modal-bill" data-modal-toggle="modal-bill">X</p>
                     </div>
-                    <div class="">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
-                            Total Transfer</label>
-                        <input type="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Rp" required>
-                    </div>
-                    {{-- <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
-                            Waktu Transfer</label>
-                        <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                            </svg>
+                    <form action="{{ route('tenant.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                                Total Transfer</label>
+                            <input type="number" id="add" name="total"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Rp" required>
                         </div>
-                        <input datepicker type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                            placeholder="Select date">
-                    </div> --}}
-                    <div class="relative">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
-                            Waktu Transfer</label>
-                        <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
-
-                        </div>
-                        <div class="flex items-center border rounded-lg relative">
-                            <svg class="absolute left-2 w-4 h-4 text-gray-500" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                            </svg>
-                            <input datepicker type="text"
-                                class=" text-gray-900 text-sm rounded-lg border-0 block w-full pl-10 p-2.5"
-                                placeholder="Select date">
-                        </div>
-                    </div>
-                    <label for="">Bukti Transfer</label>
-                    <div class="flex items-center justify-center w-full">
-                        <label for="dropzone-file"
-                            class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                <svg class="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                        {{-- <div class="relative">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                                Waktu Transfer</label>
+                            <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
+                            </div>
+                            <input datepicker type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                                placeholder="Select date">
+                        </div> --}}
+                        <div class="relative">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                                Waktu Transfer</label>
+                            <div class="absolute inset-y-2 left-0 flex items-center pl-3.5 pointer-events-none">
 
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" />
-                        </label>
-                    </div>
-                    <button type="button"
-                        class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3">Save</button>
+                            <div class="flex items-center border rounded-lg relative">
+                                <svg class="absolute left-2 w-4 h-4 text-gray-500" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                                <input datepicker type="text" type="date" name="transfer_at"
+                                    class=" text-gray-900 text-sm rounded-lg border-0 block w-full pl-10 p-2.5"
+                                    placeholder="Select date" required>
+                            </div>
+                        </div>
+                        <label for="">Bukti Transfer</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label for="dropzone-file"
+                                class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                    </svg>
+
+                                </div>
+                                <input id="dropzone-file" type="file" name="image" class="hidden" required/>
+                            </label>
+                        </div>
+                        <input type="hidden" id="tenant_id" name="tenant_id" value="{{ $tenants->id }}" required>
+                        <input type="hidden" id="tenant_id" name="user_id" value="{{ $tenants->user_id }}" required>
+                        <button type="submit" 
+                            class="focus:outline-none text-white-50 font-semibold bg-yellow-500 hover:bg-yellow-600 rounded-lg text-sm py-3 mt-3">
+                            Save
+                        </button>
+                    </form>
 
                 </div>
             </div>
