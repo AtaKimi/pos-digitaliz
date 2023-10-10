@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/product', 'index')->name('tenant-product-index');
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
                 Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
+                Route::put('{tenant}/product/{product}', 'update')->name('tenant-product-update');
                 Route::post('{tenant}/product', 'store')->name('tenant-product-store');
                 Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });

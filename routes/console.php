@@ -2,6 +2,7 @@
 
 <?php
 
+use App\Http\Resources\Tenant\ProductResource;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
@@ -30,7 +31,7 @@ Artisan::command('zaidan', function () {
     $tenant = Tenant::find(1);
     $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
     $products = Product::whereIn('category_id', $category_ids)->get();
-    $this->comment($products);
+    $test = new ProductResource($tenant);
 });
 
 Artisan::command('rholand', function () {
