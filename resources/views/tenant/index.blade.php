@@ -226,12 +226,6 @@
                                 {{ $order->desk->name }}
                             </td>
                             <td class="px-6 py-4">
-                                {{-- @php
-                                    $totalPayment = 0;
-                                    foreach ($desk->order as $payment) {
-                                        $totalPayment += $payment['total'];
-                                    }
-                                @endphp --}}
                                 Rp.{{ number_format($order->total, 2, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">

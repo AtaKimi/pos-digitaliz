@@ -37,7 +37,7 @@ class TenantController extends Controller
         $totalCategory = $category->count();
         $totalProduct = Product::whereIn('category_id', $category)->count();
 
-        // Paginator::useAdminPagination();
+        Paginator::useAdminPagination();
 
         return view('tenant.index', compact('desks', 'orders', 'totalCategory', 'totalProduct'));
     }
