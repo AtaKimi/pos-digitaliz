@@ -26,7 +26,7 @@ use App\Http\Controllers\ProfileController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are        aded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -71,6 +71,9 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantCategoryController::class)->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
+                Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
+                Route::get('{tenant}/category/edit', 'edit')->name('tenant-category-edit');
+                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-delete');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {

@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Tenant;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\TenantServicePayment;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -34,9 +35,36 @@ Artisan::command('zaidan', function () {
 });
 
 Artisan::command('rholand', function () {
-    $orders = Order::all();
-    $tenant = $orders->desk->tenantd;
-    $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $orders = Order::whereIn('desk_id', $desks)->get();
-    $this->comment($orders[]);
+    $tenant = Tenant::find(1);
+    $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');
+    $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
+    $tenant_service_total = 0;
+    foreach ($tenant_orders as $tenant_order) {
+        $service = $tenant_order->getService();
+        $tenant_service_total = $tenant_service_total + $service->price;
+    }
+    $tenantServicePaymentTotal = TenantServicePayment::where('tenant_id', 1)->sum('total');
+    $unpaid_service_total = $tenant_service_total - $tenantServicePaymentTotal;
+    $this->comment($unpaid_service_total);
+})->purpose('Display an inspiring quote');
+
+Artisan::command('rholand2', function () {
+    $tenants = Tenant::all();
+    $total_service_all = $total_service_paid_all = $total_service_unpaid_all = 0;
+    foreach ($tenants as $tenant) {
+        $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');
+        $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
+        $tenant_service_total = 0;
+        foreach ($tenant_orders as $tenant_order) {
+            $service = $tenant_order->getService();
+            $tenant_service_total = $tenant_service_total + $service->price;
+        }
+        $total_service_all = $total_service_all + $tenant_service_total;
+    }
+
+    $total_service_paid_all = TenantServicePayment::all()->sum('total');
+    $total_service_unpaid_all = $total_service_all - $total_service_paid_all;
+    $this->comment($total_service_all);
+    $this->comment($total_service_paid_all);
+    $this->comment($total_service_unpaid_all);
 })->purpose('Display an inspiring quote');

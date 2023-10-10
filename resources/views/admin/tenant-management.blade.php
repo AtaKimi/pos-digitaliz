@@ -174,10 +174,26 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
+                                {{-- <label class="relative inline-flex cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        value=""
+                                        class="sr-only toggle-checkbox"
+                                        data-tenant-id="{{ $tenant->id }}" <!-- Store tenant ID -->
+                                        {{ $tenant->is_active ? 'checked' : '' }} <!-- Check if tenant is active -->
+                                    >
+                                    <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500" id="toggleHandle">
+                                    </div>
+                                </label> --}}
                                 <label class="relative inline-flex cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" {{$tenant->is_active ? '' : 'checked'}}>
+                                    <input 
+                                        type="checkbox" 
+                                        value="" 
+                                        class="sr-only peer toggle-checkbox" 
+                                        {{$tenant->is_active ? '' : 'checked'}} 
+                                        data-tenant-id="{{ $tenant->id }}">
                                     <div
-                                        class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500">
+                                        class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500" id="toggleHandle">
                                     </div>
                                 </label>
                             </td>
@@ -252,4 +268,38 @@
         </div>
 
     </div>
+    <!-- JavaScript code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.toggle-checkbox').change(function() {
+            const tenantId = $(this).data('tenant-id');
+            const isActive = $(this).is(':checked');
+
+            // Send an AJAX request to update the is_active attribute
+            $.ajax({
+                type: 'PUT',
+                url: `tenant/${tenantId}`, // Replace with your route
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    tenant_id: tenantId,
+                    is_active: isActive ? 0 : 1,
+                },
+                success: function(response) {
+                    if (response.success) {
+                        console.log("Sukses");
+                    } else {
+                        console.log("Gagal");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle AJAX error
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+
+
 @endsection
