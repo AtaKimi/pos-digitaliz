@@ -47,12 +47,18 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('admin-index');
 
             });
-            Route::controller(AdminTenantController::class)->group(function () {
-                Route::prefix('tenant')->group(function () {
-                    Route::get('/', 'index')->name('admin-tenant-index');
-                    Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-                });
-            });
+            // Route::controller(AdminTenantController::class)->group(function () {
+                // Route::prefix('tenant')->group(function () {
+                    Route::resource('tenant', AdminTenantController::class)->names([
+                        'index' => 'admin-tenant-index',
+                        'show' => 'admin-tenant-show',
+                        'update' => 'admin-tenant-update',
+                        'destroy' => 'admin-tenant-destroy',
+                    ]);
+                    // Route::get('/', 'index')->name('admin-tenant-index');
+                    // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
+                // });
+            // });
         });
     });
 
@@ -78,6 +84,9 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantProductController::class)->group(function () {
                 Route::get('{tenant}/product', 'index')->name('tenant-product-index');
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
+                Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
+                Route::post('{tenant}/product', 'store')->name('tenant-product-store');
+                Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });
 
             Route::controller(TenantTenantSErvicePaymentController::class)->group(function () {

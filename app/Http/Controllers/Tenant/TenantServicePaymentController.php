@@ -17,6 +17,6 @@ class TenantServicePaymentController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.waiter');
+        return view('tenant.service-payment');
     }
 }

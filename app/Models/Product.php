@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, SoftDeletes;
     protected $fillable = 
     [
         'name',
@@ -26,9 +27,8 @@ class Product extends Model implements HasMedia
         return $this->morphTo();
     }
 
-    public function tenant()
-    {
-        return $this->belongsTo(Tenant::class);
+    public function category()  {
+        return $this->belongsTo(Category::class);
     }
     public function orderDetail()
     {

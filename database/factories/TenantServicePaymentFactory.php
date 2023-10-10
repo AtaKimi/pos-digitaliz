@@ -17,10 +17,10 @@ class TenantServicePaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => fake()->numberBetween(1, 11),
+            'tenant_id' => fake()->numberBetween(1, 3),
             'user_id' => fake()->numberBetween(1, 3),
             'transfer_at' => fake()->date(),
-            'total' => fake()->numberBetween(1, 20) * 10000,
+            'total' => fake()->numberBetween(1, 3) * 1000,
         ];
     }
 }

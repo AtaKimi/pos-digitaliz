@@ -72,72 +72,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white-50 border-b hover:bg-gray-50">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                1
-                            </div>
-                        </td>
-                        <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <p class="">Waiters name 1</p>
-                            </div>
-                        </th>
-                        <td class="px-4 py-4">
-                            <div class="flex items-center">
-                                <p class="text-gray-900">olivia@untitledui.com</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="flex items-center">
-                                <p class="text-gray-900 text-xs">+623523952030953235</p>
-                            </div>
-                        </td>
-                        <td class="px-8 py-4">
-                            <p class="w-full bg-green-100 text-green-800 text-xs font-semibold mr-2 py-0.5 rounded-full text-center">Verified</p>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="flex justify-center">
-                                <label class="relative inline-flex cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white-50 border-b hover:bg-gray-50">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                2
-                            </div>
-                        </td>
-                        <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <p class="">Waiters name 2</p>
-                            </div>
-                        </th>
-                        <td class="px-4 py-4">
-                            <div class="flex items-center">
-                                <p class="text-gray-900">olivia@untitledui.com</p>
-                            </div>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="flex items-center">
-                                <p class="text-gray-900 text-xs">+623523952030953235</p>
-                            </div>
-                        </td>
-                        <td class="px-8 py-4">
-                            <p class="w-full bg-red-200 text-red-800 text-xs font-semibold mr-2 py-0.5 rounded-full text-center">Unverified</p>
-                        </td>
-                        <td class="px-4 py-4">
-                            <div class="flex justify-center">
-                                <label class="relative inline-flex cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
+                    @forelse ($waiter as $item)
+                        <tr class="bg-white-50 border-b hover:bg-gray-50">
+                            <td class="w-4 p-4">
+                                <div class="flex items-center">
+                                    {{ $loop->iteration }}
+                                </div>
+                            </td>
+                            <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <p class="">{{ $item->user->name }}</p>
+                                </div>
+                            </th>
+                            <td class="px-4 py-4">
+                                <div class="flex items-center">
+                                    <p class="text-gray-900">{{ $item->user->name }}</p>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4">
+                                <div class="flex items-center">
+                                    <p class="text-gray-900 text-xs">{{ $item->user->phone_number }}</p>
+                                </div>
+                            </td>
+                            <td class="px-8 py-4">
+                                <p class="w-full {{ $item->user->email_verified_at ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800" }} text-xs font-semibold mr-2 py-0.5 rounded-full text-center">{{ $item->user->email_verified_at ? "Verified" : "Not Verified" }}</p>
+                            </td>
+                            <td class="px-4 py-4">
+                                <div class="flex justify-center">
+                                    <label class="relative inline-flex cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
             <nav class="flex items-center pt-4 py-2 px-2" aria-label="Table navigation">
@@ -247,5 +220,38 @@
           </div>
       </div>
   </div> 
+
+  <!-- JavaScript code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.toggle-checkbox').change(function() {
+                const waiterId = $(this).data('waiter-id');
+                const isActive = $(this).is(':checked');
+
+                // Send an AJAX request to update the is_active attribute
+                $.ajax({
+                    type: 'PUT',
+                    url: `waiter/${waiterId}`, // Replace with your route
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: waiterId,
+                        is_active: isActive ? 0 : 1,
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            console.log("Sukses");
+                        } else {
+                            console.log("Gagal");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle AJAX error
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
   
 @endsection
