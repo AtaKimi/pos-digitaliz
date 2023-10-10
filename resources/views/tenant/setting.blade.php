@@ -21,7 +21,7 @@
         <div class="flex flex-col bg-white-50 p-8 rounded-3xl">
             <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
                 <div class="">
-                    <img src="/assets/img/anya-profile.png" alt="" class="w-20 h-20 rounded-full">
+                    <img src="{{$tenant->user->getFirstMediaUrl('default')}}" alt="" class="w-20 h-20 rounded-full">
                 </div>
                 <div class="flex flex-col justify-center w-40 gap-2">
                     <h4 class="text-2xl">Anya Forger</h4>
