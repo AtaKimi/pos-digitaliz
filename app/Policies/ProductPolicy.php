@@ -19,4 +19,11 @@ class ProductPolicy
             ? Response::allow('success', 201)
             : Response::deny();;
     }
+
+    public function apiViewAny(User $user): Response
+    {
+        return $user->id === $user->tenant->user_id
+            ? Response::allow('success', 201)
+            : Response::deny();;
+    }
 }

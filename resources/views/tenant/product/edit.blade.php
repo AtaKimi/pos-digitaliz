@@ -18,7 +18,8 @@
         </div>
     </div>
 
-    <form action="{{ route('tenant-product-store', $tenant) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tenant-product-update', [$tenant, $product], ) }}" method="POST" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="w-full p-8 mb-8 bg-white-200 rounded-xl">
             <p class="mb-5 font-semibold text-gray-900">Add Product</p>
@@ -52,18 +53,45 @@
                                     </p>
                                 </div>
                             </div>
-                            <input id="dropzone-file" type="file" oninput="testing1()" class="hidden" multiple
+                            <input id="dropzone-file" type="file" oninput="testing1()" multiple
                                 name="images[]" />
-
                         </label>
                         @error('images')
                             <p>{{ $message }}</p>
                         @enderror
                     </div>
 
+                    <div class="flex flex-col gap-4" id="uploaded-items">
+                        @foreach ($product->getMedia('default') as $media)
+                            <div class="flex items-center justify-between p-3 border border-gray-300 bg-white-50 rounded-xl"
+                                id="media-{{$media->id}}">
+                                <input type="number" class="hidden" name="product_media[]" value="{{$media->id}}">
+                                <div class="flex items-center gap-4">
+                                    <img src="{{ $media->getUrl() }}" alt="" class="w-10 h-10 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-bold">
+                                            {{ $media->file_name }}
+                                        </p>
+                                        <p class="text-sm text-gray-500">
+                                            {{ round($media->size / 1024, 3) }} KB
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mr-5">
+                                    <button type='button' class="p-4 border rounded-lg bg-white-200" onclick="removeElement('media-{{$media->id}}')"> 
+                                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10 1.5V2.5H13.5C13.7761 2.5 14 2.72386 14 3C14 3.27614 13.7761 3.5 13.5 3.5H12.9616L12.1088 14.1595C12.0257 15.1989 11.1579 16 10.1152 16H3.88479C2.84207 16 1.97431 15.1989 1.89116 14.1595L1.0384 3.5H0.5C0.223858 3.5 0 3.27614 0 3C0 2.72386 0.223858 2.5 0.5 2.5H4V1.5C4 0.671573 4.67157 0 5.5 0H8.5C9.32843 0 10 0.671573 10 1.5ZM5 1.5V2.5H9V1.5C9 1.22386 8.77614 1 8.5 1H5.5C5.22386 1 5 1.22386 5 1.5ZM3.49999 5.0285L3.99999 13.5285C4.0162 13.8042 4.25282 14.0145 4.52849 13.9983C4.80415 13.9821 5.01448 13.7454 4.99826 13.4698L4.49826 4.96978C4.48205 4.69411 4.24543 4.48379 3.96976 4.5C3.6941 4.51622 3.48377 4.75283 3.49999 5.0285ZM10.0302 4.50086C9.75457 4.48465 9.51795 4.69497 9.50173 4.97064L9.00173 13.4706C8.98552 13.7463 9.19584 13.9829 9.47151 13.9991C9.74717 14.0154 9.98379 13.805 10 13.5294L10.5 5.02936C10.5162 4.75369 10.3059 4.51708 10.0302 4.50086ZM7 4.5C6.72386 4.5 6.5 4.72386 6.5 5V13.5C6.5 13.7761 6.72386 14 7 14C7.27615 14 7.5 13.7761 7.5 13.5V5C7.5 4.72386 7.27615 4.5 7 4.5Z"
+                                                fill="#F54748" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                     <div class="flex flex-col gap-4" id="upload-items">
-                        
-
+                       
                     </div>
                 </div>
                 <div class="w-full p-8 border border-gray-400 bg-white-50 rounded-xl">
@@ -136,8 +164,7 @@
 @endsection
 
 @section('script')
-    <script>
-        let getFiles = null
+    <script defer>
         const fileCollection = document.getElementById('dropzone-file');
         const previewContainer = document.getElementById('upload-items');
         fileCollection.addEventListener('change', getFileName);
@@ -174,7 +201,7 @@
                             </div>
                         </div>
                         <div class="mr-5">
-                            <button onclick="removeElement('` +
+                            <button type='button' class="p-4 border rounded-lg bg-white-200" onclick="removeElement('` +
                     file['name'] +
                     `')">
                                 <svg width="14" height="16" viewBox="0 0 14 16" fill="none"
