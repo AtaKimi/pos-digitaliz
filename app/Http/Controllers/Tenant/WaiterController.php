@@ -10,10 +10,10 @@ use Illuminate\Pagination\Paginator;
 
 class WaiterController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:viewAny,tenant');
-    }
+    // public function __construct()
+    // {
+    //     // $this->middleware('can:viewAny,tenant');
+    // }
     /**
      * Display a listing of the resource.
      */
@@ -26,12 +26,13 @@ class WaiterController extends Controller
         return view('tenant.waiter', compact('waiter'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, )
     {
         $waiterId = $request->input('id');
         $isActive = $request->input('is_active');
 
-        $waiter = Waiter::find($waiterId);
+        $waiter = Waiter::findOrFail($waiterId);
+        dd($waiter);
 
         if (!$waiter) {
             return response()->json(['failed' => false, 'message' => 'waiter$waiter not found']);
