@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
                 Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
                 Route::get('{tenant}/category/edit', 'edit')->name('tenant-category-edit');
-                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-delete');
+                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-destroy');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {
