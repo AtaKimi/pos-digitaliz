@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('description');
             $table->boolean('is_tax')->default(true);
             $table->boolean('is_active')->default(false);
-            $table->foreignId('user_id')->unique()->constrained('users');
+            $table->foreignId('user_id')->unique();
             $table->softDeletes();
             $table->timestamps();
         });

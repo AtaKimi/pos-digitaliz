@@ -26,7 +26,7 @@ use App\Http\Controllers\ProfileController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are        aded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -47,12 +47,18 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('admin-index');
 
             });
-            Route::controller(AdminTenantController::class)->group(function () {
-                Route::prefix('tenant')->group(function () {
-                    Route::get('/', 'index')->name('admin-tenant-index');
-                    Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-                });
-            });
+            // Route::controller(AdminTenantController::class)->group(function () {
+                // Route::prefix('tenant')->group(function () {
+                    Route::resource('tenant', AdminTenantController::class)->names([
+                        'index' => 'admin-tenant-index',
+                        'show' => 'admin-tenant-show',
+                        'update' => 'admin-tenant-update',
+                        'destroy' => 'admin-tenant-destroy',
+                    ]);
+                    // Route::get('/', 'index')->name('admin-tenant-index');
+                    // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
+                // });
+            // });
         });
     });
 
@@ -65,6 +71,9 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantCategoryController::class)->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
+                Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
+                Route::get('{tenant}/category/edit', 'edit')->name('tenant-category-edit');
+                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-delete');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {
@@ -75,6 +84,10 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantProductController::class)->group(function () {
                 Route::get('{tenant}/product', 'index')->name('tenant-product-index');
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
+                Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
+                Route::put('{tenant}/product/{product}', 'update')->name('tenant-product-update');
+                Route::post('{tenant}/product', 'store')->name('tenant-product-store');
+                Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });
 
             Route::controller(TenantTenantSErvicePaymentController::class)->group(function () {

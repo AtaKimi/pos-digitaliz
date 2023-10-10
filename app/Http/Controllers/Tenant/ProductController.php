@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Tenant;
+
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class ProductController extends Controller
 {
@@ -17,54 +22,116 @@ class ProductController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.product');
+        $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
+        $products = Product::whereIn('category_id', $category_ids)->get();
+        return view('tenant.product.index', compact('products', 'tenant'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Tenant $tenant)
     {
-        return view('tenant.form-product');
+
+        $categories = Category::where('tenant_id', $tenant->id)->get();
+        return view('tenant.product.create', compact('categories', 'tenant'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Tenant $tenant)
     {
-        //
-    }
+        $validated = request()->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|string',
+            'description' => 'required|string',
+            'images' => 'array|required',
+            'images.*' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+            'category_id' => 'required|exists:categories,id',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
+        $product = Product::create($validated);
+        $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+            $fileAdder->toMediaCollection('default');
+        });
+
+        return redirect()->route('tenant-product-index', $tenant);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Tenant $tenant, Product $product)
     {
-        //
+        $categories = Category::where('tenant_id', $tenant->id)->get();
+        return view('tenant.product.edit', compact('tenant', 'product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Tenant $tenant, Product $product)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|string',
+            'description' => 'required|string',
+            'images' => 'array',
+            'images.*' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+            'product_media' => 'array',
+            'product_media.*' => 'string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        //an existing image must exist or must be added into the product so there's atleast an image existed
+        if (array_key_exists('images', $validated) || array_key_exists('product_media', $validated)) {
+
+            $product->update(
+                [
+                    'name' => $validated['name'],
+                    'price' => $validated['price'],
+                    'description' => $validated['description'],
+                    'category_id' => $validated['name'],
+                ]
+            );
+
+            if (array_key_exists('images', $validated)) {
+                $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('default');
+                });
+            }
+
+            if (array_key_exists('product_media', $validated)) {
+                $product_medias = $product->getMedia('default');
+
+                foreach ($product_medias as $media) {
+                    if (!in_array($media->id, $validated['product_media'])) {
+                        $media->delete();
+                    }
+                }
+            }
+
+            return redirect()->route('tenant-product-index', $tenant);
+        }
+
+        dd(request());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Tenant $tenant)
     {
-        //
+        $validated = request()->validate(
+            [
+                'product_id' => 'exists:products,id',
+            ]
+        );
+
+        $product = Product::find($validated['product_id']);
+
+        $product->delete();
+        return redirect()->route('tenant-product-index', $tenant);
     }
 }

@@ -41,7 +41,8 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Order</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">Rp 5.000.000
+                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($orders->sum('total'), 2, ',', '.') }}
+
 
                         </p>
                         <div class="flex items-center gap-1">
@@ -77,7 +78,7 @@
                         <span class="text-black text-xs font-semibold mr-2">Total Product</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">60</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalProduct }}</p>
                         <div class="flex items-center gap-1">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -118,7 +119,7 @@
                         <span class="text-black text-xs font-semibold mr-2">All Category</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">10</p>
+                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalCategory }}</p>
 
 
                     </div>
@@ -257,47 +258,7 @@
 
                 </tbody>
             </table>
-            <div class="relative">
-
-                <nav aria-label="Page navigation example" class="flex justify-center my-5">
-                    <ul class="inline-flex gap-1.5 -space-x-px text-xs">
-
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Prev</a>
-                        </li>
-
-                        <li>
-                            <a href="#" aria-current="page"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-white-100 bg-red-500  hover:bg-red-600 hover:text-white-100">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
-                        </li>
-
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50  hover:bg-gray-100 hover:text-gray-700 ">...</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center rounded-lg px-3 h-8 leading-tight text-gray-500 bg-white-50 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">10</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white-50 hover:text-gray-900 ">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="md:absolute left-5 bottom-1.5 text-xs flex justify-center">
-                    Menampilkan : 1-10 dari 100 hasil
-                </p>
-            </div>
+            {{ $orders->withQueryString()->links()}}
         </div>
         {{-- Table Order End --}}
     </div>

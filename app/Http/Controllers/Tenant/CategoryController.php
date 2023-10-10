@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function index(Tenant $tenant)
     {
         $category = Category::all();
-        return view('tenant.category', ['category' => $category ]);
+        return view('tenant.category', compact('category', 'tenant'));
     }
 
     /**
@@ -34,9 +34,22 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Tenant $tenant)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $validatedData['tenant_id'] = $tenant->id;
+
+        // Simpan data ke database
+        $category = Category::create(
+            [
+                'name'  => $validatedData['name'],
+                'tenant_id' => $validatedData['tenant_id'],
+            ]
+        );
+        return redirect()->route('tenant-category-index', $tenant->id);
     }
 
     /**
@@ -52,7 +65,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('tenant.category', compact('category'));
     }
 
     /**
@@ -68,6 +82,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('tenant-category-delete', $category->id);
     }
 }

@@ -54,6 +54,39 @@
 
 
     <div class="p-2 bg-white-50 border border-gray-200 rounded-3xl shadow">
+        @if(session('success'))
+            <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <div class="ml-3 text-sm font-medium">
+                    {{ session('success') }}
+                </div>
+                <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div id="alert-border-2" class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <div class="ml-3 text-sm font-medium">
+                    {{ session('error') }}
+                </div>
+                <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-2" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+            </div>
+        @endif
         <div class="flex items-center justify-between py-3 px-2">
             <div>
                 <p class="text-lg font-semibold text-gray-700">Tenant List</p>
@@ -141,10 +174,26 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
+                                {{-- <label class="relative inline-flex cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        value=""
+                                        class="sr-only toggle-checkbox"
+                                        data-tenant-id="{{ $tenant->id }}" <!-- Store tenant ID -->
+                                        {{ $tenant->is_active ? 'checked' : '' }} <!-- Check if tenant is active -->
+                                    >
+                                    <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500" id="toggleHandle">
+                                    </div>
+                                </label> --}}
                                 <label class="relative inline-flex cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" {{$tenant->is_active ? '' : 'checked'}}>
+                                    <input 
+                                        type="checkbox" 
+                                        value="" 
+                                        class="sr-only peer toggle-checkbox" 
+                                        {{$tenant->is_active ? '' : 'checked'}} 
+                                        data-tenant-id="{{ $tenant->id }}">
                                     <div
-                                        class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500">
+                                        class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500" id="toggleHandle">
                                     </div>
                                 </label>
                             </td>
@@ -163,7 +212,7 @@
                                 </a>
                                 <button type="button"
                                     class="text-red-500 border border-red-400 hover:bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
-                                    data-modal-target="popup-modal" data-modal-toggle="popup-modal">
+                                     data-modal-toggle="delete-modal-{{ $tenant->id }}">
                                     <svg width="15" height="15" viewBox="0 0 21 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -173,6 +222,41 @@
                                 </button>
                             </td>
                         </tr>
+                        <!-- POPUP HAPUS -->
+                        <div id="delete-modal-{{ $tenant->id }}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-50 max-w-md max-h-full bg-white-50 rounded-xl">
+                                <div class="relative bg-white rounded-lg shadow">
+                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                                        data-modal-hide="delete-modal-{{ $tenant->id }}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                    </button>
+                                    <div class="p-6 text-center">
+                                        <svg width="60" height="60" viewBox="0 0 100 100" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-4 text-gray-400 w-15 h-15">
+                                            <rect width="100" height="100" rx="50" fill="#FC5F5F" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
+                                                fill="white" />
+                                        </svg>
+                                        <p class="text-lg font-semibold text-gray-900">Delete Tenant</p>
+                                        <p class="text-gray-600 mt-2">Are you sure you want to delete this tenant?</p>
+                                        <form action="{{ route('admin-tenant-destroy', $tenant->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="mt-4">
+                                                <button type="submit"
+                                                    class="bg-red-500 text-white font-medium px-4 py-2 rounded-lg hover:bg-red-600 text-white-50 me-4">Delete</button>
+                                                <button type="button"
+                                                    class="bg-gray-300 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-400"
+                                                    data-modal-hide="delete-modal-{{ $tenant->id }}">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @empty
                         <tr>
                             <td colspan="55" class="text-center py-5">tidak ada data</td>
@@ -180,83 +264,42 @@
                     @endforelse
                 </tbody>
             </table>
-            {{-- {{$tenants->links()}} --}}
-            <nav class="flex items-center pt-4 py-2 px-2" aria-label="Table navigation">
-                <p class="text-xs text-gray-700 mr-20">
-                    Menampilkan: <span class="font-semibold text-gray-900">1</span> - <span
-                        class="font-semibold text-gray-900">10</span> dari <span
-                        class="font-semibold text-gray-900">100</span> Hasil
-                </p>
-                <!-- Buttons -->
-                <div class="flex ml-10">
-                    <!-- Previous Button -->
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800">
-                        Prev
-                    </a>
-                    <ul class="inline-flex -space-x-px text-xs">
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-yellow-500 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">2</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">3</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 hover:bg-gray-100 hover:text-grey-700 rounded-xl">...</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">10</a>
-                        </li>
-                    </ul>
-                    <!-- Next Button -->
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800">
-                        Next
-                    </a>
-                </div>
-            </nav>
+            {{$tenants->links()}}
         </div>
-        <!-- POPUP HAPUS -->
-        <div id="popup-modal" tabindex="-1"
-            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-50 max-w-md max-h-full bg-white-50 rounded-xl">
-                <div class="relative bg-white rounded-lg shadow">
-                    <button type="button"
-                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
-                        data-modal-hide="popup-modal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                    <div class="p-6 text-center">
-                        <svg width="60" height="60" viewBox="0 0 100 100" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-4 text-gray-400 w-15 h-15">
-                            <rect width="100" height="100" rx="50" fill="#FC5F5F" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
-                                fill="white" />
-                        </svg>
-                        <h3 class="mb-5 text-sm font-normal text-gray-500">Apakah Anda yakin ingin
-                            menghapus tenant ini?</h3>
-                        <button data-modal-hide="popup-modal" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batalkan</button>
-                        <button data-modal-hide="popup-modal" type="button"
-                            class="text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                            Hapus
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
+    <!-- JavaScript code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.toggle-checkbox').change(function() {
+            const tenantId = $(this).data('tenant-id');
+            const isActive = $(this).is(':checked');
+
+            // Send an AJAX request to update the is_active attribute
+            $.ajax({
+                type: 'PUT',
+                url: `tenant/${tenantId}`, // Replace with your route
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    tenant_id: tenantId,
+                    is_active: isActive ? 0 : 1,
+                },
+                success: function(response) {
+                    if (response.success) {
+                        console.log("Sukses");
+                    } else {
+                        console.log("Gagal");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle AJAX error
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+
+
 @endsection
