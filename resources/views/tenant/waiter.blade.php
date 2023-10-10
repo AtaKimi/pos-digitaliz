@@ -26,6 +26,22 @@
 
     <div class="p-2 bg-white-50 border border-gray-200 rounded-3xl shadow">
         <div class="flex items-center justify-between py-5 px-2">
+            @if(session('success'))
+                <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <div class="ml-3 text-sm font-medium">
+                        {{ session('success') }}
+                    </div>
+                    <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
+                        <span class="sr-only">Dismiss</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+            @endif
             <div>
                 <p class="text-lg font-semibold text-gray-700">Waiters List</p>
             </div>
@@ -103,6 +119,7 @@
                                         <input 
                                             type="checkbox" 
                                             value="" 
+                                            id="waiter-id"
                                             class="sr-only peer toggle-checkbox" 
                                             {{$item->is_active ? '' : 'checked'}} 
                                             data-waiter-id="{{ $item->id }}">
@@ -119,39 +136,8 @@
                     @endforelse
                 </tbody>
             </table>
-            <nav class="flex items-center pt-4 py-2 px-2" aria-label="Table navigation">
-                <p class="text-xs text-gray-700 mr-20">
-                    Menampilkan: <span class="font-semibold text-gray-900">1</span> - <span class="font-semibold text-gray-900">10</span> dari <span class="font-semibold text-gray-900">100</span> Hasil
-                </p>
-                <!-- Buttons -->
-                <div class="flex ml-10">
-                    <!-- Previous Button -->
-                    <a href="#" class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800">
-                      Prev
-                    </a>
-                    <ul class="inline-flex -space-x-px text-xs">
-                        <li>
-                          <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-white-50 bg-red-500 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">2</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">3</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 hover:bg-gray-100 hover:text-grey-700 rounded-xl">...</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center justify-center px-3 mr-1 h-8 text-grey-600 bg-white-50 border border-grey-200 hover:bg-gray-100 hover:text-grey-700 rounded-xl">10</a>
-                        </li>
-                      </ul>
-                    <!-- Next Button -->
-                    <a href="#" class="flex items-center justify-center px-3 h-8 text-xs font-medium text-gray-500 hover:text-gray-800">
-                      Next
-                    </a>
-                  </div>
-            </nav>
+
+            {{ $waiter->links() }}
         </div>
 
     <!-- POPUP HAPUS -->
@@ -194,18 +180,19 @@
               <div class="px-6 py-6 lg:px-8">
                   <h3 class="mb-4 text-xl font-semibold text-center">Tambah Waiters</h3>
                   <label class="block mb-2 text-base font- uppercase">Data Waiters</label>
-                  <form class="space-y-6" action="#">
+                  <form class="space-y-6" action="{{ route('tenant-waiter-store', $tenant) }}" method="POST">
+                    @csrf
                       <div>
                           <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                          <input type="" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="Name" required>
+                          <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="Name" required>
                       </div>
                       <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                        <input type="" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="name@gmail.com" required>
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="name@gmail.com" required>
                       </div>
                       <div>
                         <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
-                        <input type="" name="number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="Phone number" required>
+                        <input type="number" name="phone_number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="Phone number" required>
                       </div>
                       <div>
                           <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
@@ -213,12 +200,12 @@
                       </div>
                       <div>
                         <label for="confirm" class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
-                        <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="password" name="password_confirmation" id="confirm" placeholder="Confirm Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                       </div>
                       <div class="flex justify-between">
                             <button data-modal-hide="popup-modal" type="button"
                                 class="bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm font-semibold px-5 py-2.5 hover:text-gray-900 focus:z-10 w-full">Batal</button>
-                                <button data-modal-hide="popup-modal" type="button"
+                                <button data-modal-hide="popup-modal" type="submit"
                                 class="text-white-50 bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-5 py-2.5 hover:text-white-100 focus:z-10 w-full">Tambahkan</button>
                       </div>
                   </form>
@@ -226,8 +213,54 @@
           </div>
       </div>
   </div> 
+  
+@endsection
 
-  <!-- JavaScript code -->
+@section('script')
+    {{-- <script defer>
+        const waiterId = document.getElementById('waiter-id');
+        const token = '{{ session('token') }}'
+        const productStatusInputs = document.querySelectorAll('#product-status-input')
+
+        function putProductId(id) {
+            waiterId.setAttribute('value', id)
+        }
+
+        async function updateStatusProduct(status, product_id, bearerToken) {
+            const response = await fetch(`http://localhost:8000/api/waiter/${waiter_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${bearerToken}`,
+                },
+                body: JSON.stringify({
+                    status,
+                }),
+            });
+
+            if (response.status === 200) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        productStatusInputs.forEach(productStatusInput => {
+            productStatusInput.addEventListener('change', async function() {
+                if (updateStatusProduct(productStatusInput.value, productStatusInput.getAttribute(
+                        'product-id'), token)) {
+                    console.log('success');
+                    alert('success');
+                } else {
+                    console.log('failed');
+                    alert('failed');
+                }
+            });
+        });
+    </script> --}}
+
+     <!-- JavaScript code -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -261,5 +294,4 @@
             });
         });
     </script>
-  
 @endsection

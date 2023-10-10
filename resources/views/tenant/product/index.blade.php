@@ -221,6 +221,7 @@
                 if (updateStatusProduct(productStatusInput.value, productStatusInput.getAttribute(
                         'product-id'), token)) {
                     console.log('success');
+                    console.log(productStatusInput);
                     alert('success');
                 } else {
                     console.log('failed');
