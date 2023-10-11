@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::find($id);
         return view('tenant.category', compact('category'));
     }
 
@@ -80,11 +80,17 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request, Tenant $tenant, Category $category)
     {
-        $category = Category::findOrFail($id);
+        // Check if the tenant exists
+        if (!$category) {
+            return redirect()->back()->with('error', 'category not found');
+        }
+        // Delete the category
         $category->delete();
+        // delete related users
+        $category->product()->delete();
 
-        return redirect()->route('tenant-category-destroy', $category->id);
+        return redirect()->route('tenant-category-index', $tenant->id)->with('success', 'Tenant has been deleted successfully');
     }
 }
