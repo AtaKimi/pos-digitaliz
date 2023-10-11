@@ -2018,6 +2018,10 @@ html {
   flex-grow: 1;
 }
 
+.grow{
+  flex-grow: 1;
+}
+
 .origin-top{
   transform-origin: top;
 }

@@ -3,10 +3,10 @@
 @section('content')
     <div class="pb-10">
         {{-- Header --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
             <div class="p-4">
                 <div class="flex items-center">
-                    <div class="mr-4 bg-red-50 rounded-xl p-5">
+                    <div class="p-5 mr-4 bg-red-50 rounded-xl">
                         <!-- Icon di sini -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <path
@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <!-- Title di sini -->
-                        <p class="font-bold text-xl text-gray-900">Dashboard</p>
+                        <p class="text-xl font-bold text-gray-900">Dashboard</p>
                         <!-- Subtitle di sini -->
                         <p class="text-gray-600">Akses menu dan informasi penting lainnya disini</p>
                     </div>
@@ -25,12 +25,12 @@
         </div>
 
         {{-- card --}}
-        <div class="flex flex-col md:flex-row gap-10 mb-5">
+        <div class="flex flex-col gap-10 mb-5 md:flex-row">
             {{-- card 1 --}}
-            <div class="rounded-2xl overflow-hidden shadow-lg w-full relative bg-white-50">
+            <div class="relative w-full overflow-hidden shadow-lg rounded-2xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-yellow-50  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-yellow-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 rounded-full bg-yellow-50 w-fit">
+                        <span class="p-1 bg-yellow-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
                                 fill="none">
                                 <path
@@ -38,10 +38,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Order</span>
+                        <span class="mr-2 text-xs font-semibold text-black">Total Pendapatan Order</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2"> Rp.{{ number_format($orders->sum('total'), 2, ',', '.') }}
+                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($orders->sum('total'), 2, ',', '.') }}
 
 
                         </p>
@@ -64,10 +64,10 @@
             </div>
 
             {{-- card 2 --}}
-            <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white-50">
+            <div class="w-full overflow-hidden shadow-lg rounded-2xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-green-50  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-green-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 rounded-full bg-green-50 w-fit">
+                        <span class="p-1 bg-green-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 22"
                                 fill="none">
                                 <path
@@ -75,10 +75,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">Total Product</span>
+                        <span class="mr-2 text-xs font-semibold text-black">Total Product</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalProduct }}</p>
+                        <p class="mb-2 text-xl font-bold text-gray-900">{{ $totalProduct }}</p>
                         <div class="flex items-center gap-1">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 12 11"
@@ -96,10 +96,10 @@
             </div>
 
             {{-- card 3 --}}
-            <div class="rounded-2xl overflow-hidden shadow-lg w-full bg-white-50">
+            <div class="w-full overflow-hidden shadow-lg rounded-2xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-red-50  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-red-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 rounded-full bg-red-50 w-fit">
+                        <span class="p-1 bg-red-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"
                                 fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -116,10 +116,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">All Category</span>
+                        <span class="mr-2 text-xs font-semibold text-black">All Category</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $totalCategory }}</p>
+                        <p class="mb-2 text-xl font-bold text-gray-900">{{ $totalCategory }}</p>
 
 
                     </div>
@@ -129,12 +129,12 @@
 
 
         {{-- Chart Start --}}
-        <div class="flex flex-wrap lg:flex-nowrap gap-10 mt-10">
-            <div class="w-full bg-white-50 rounded-lg shadow">
-                <div class="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
+        <div class="flex flex-wrap gap-10 mt-10 lg:flex-nowrap">
+            <div class="w-full rounded-lg shadow bg-white-50">
+                <div class="flex justify-between p-4 pb-0 md:p-6 md:pb-0">
                     <div>
                         <p class="text-base font-normal text-gray-500">Statistik</p>
-                        <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">Total Pendapatan Order</h5>
+                        <h5 class="pb-2 text-3xl font-bold leading-none text-gray-900">Total Pendapatan Order</h5>
                     </div>
                     <div class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center">
                         23%
@@ -147,15 +147,15 @@
                 </div>
                 <div id="labels-chart" class="px-2.5"></div>
                 <div
-                    class="grid grid-cols-1 items-center border-gray-200 border-t justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
+                    class="grid items-center justify-between grid-cols-1 p-4 pt-0 mt-5 border-t border-gray-200 md:p-6 md:pt-0">
                 </div>
             </div>
 
-            <div class="w-full bg-white-50 rounded-lg shadow p-4 md:p-6">
-                <div class="flex justify-between border-gray-200 border-b pb-3">
+            <div class="w-full p-4 rounded-lg shadow bg-white-50 md:p-6">
+                <div class="flex justify-between pb-3 border-b border-gray-200">
                     <dl>
-                        <dt class="text-base font-normal text-gray-500 pb-1">Statistik</dt>
-                        <dd class="leading-none text-xl font-bold text-gray-900">Total Product by Category</dd>
+                        <dt class="pb-1 text-base font-normal text-gray-500">Statistik</dt>
+                        <dd class="text-xl font-bold leading-none text-gray-900">Total Product by Category</dd>
                     </dl>
                     <div>
                         <span
@@ -171,7 +171,7 @@
                 </div>
 
                 <div id="bar-chart"></div>
-                <div class="grid grid-cols-1 items-center border-gray-200 border-t justify-between">
+                <div class="grid items-center justify-between grid-cols-1 border-t border-gray-200">
                 </div>
             </div>
         </div>
@@ -179,8 +179,8 @@
 
         {{-- Table Order Start --}}
         <div class="relative mt-10 overflow-x-auto shadow-md sm:rounded-lg bg-white-50">
-            <div class="flex flex-wrap gap-5 p-5 justify-between items-center">
-                <h1 class="text-xl text-gray-900 font-bold">
+            <div class="flex flex-wrap items-center justify-between gap-5 p-5">
+                <h1 class="text-xl font-bold text-gray-900">
                     Order List
                 </h1>
                 <div class="pb-4">
@@ -194,7 +194,7 @@
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 placeholder-gray-400 "
+                            class="block p-2 pl-10 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 border-none rounded-lg focus:ring-0 w-80 "
                             placeholder="Search">
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
-                        <tr class="bg-white-50 border-b hover:bg-gray-50">
+                        <tr class="border-b bg-white-50 hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $order->id }}
                             </th>
@@ -245,14 +245,14 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                            <td colspan="55" class="py-5 text-center">tidak ada data</td>
                         </tr>
                     @endforelse
 
 
                 </tbody>
             </table>
-            {{ $orders->withQueryString()->links() }}
+            {{ $orders->links('vendor.pagination.tenant')}}
         </div>
         {{-- Table Order End --}}
     </div>

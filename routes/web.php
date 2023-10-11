@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/product', 'index')->name('tenant-product-index');
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
                 Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
+                Route::put('{tenant}/product/{product}', 'update')->name('tenant-product-update');
                 Route::post('{tenant}/product', 'store')->name('tenant-product-store');
                 Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });
@@ -96,9 +97,14 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantDeskController::class)->group(function () {
                 Route::get('{tenant}/desk', 'index')->name('tenant-desk-index');
             });
-            Route::controller(TenantWaiterController::class)->group(function () {
-                Route::get('{tenant}/waiter', 'index')->name('tenant-waiter-index');
-            });
+            Route::resource('{tenant}/waiter', TenantWaiterController::class)->names([
+                'index' => 'tenant-waiter-index',
+                'store' => 'tenant-waiter-store',
+                'create' => 'tenant-waiter-create',
+                'show' => 'tenant-waiter-show',
+                'update' => 'tenant-waiter-update',
+                'destroy' => 'tenant-waiter-destroy',
+            ]);;
         });
     });
 });

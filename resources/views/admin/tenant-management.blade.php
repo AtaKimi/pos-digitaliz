@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+    <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
         <div class="p-4">
             <div class="flex items-center">
-                <div class="mr-4 bg-yellow-50 rounded-xl p-5">
+                <div class="p-5 mr-4 bg-yellow-50 rounded-xl">
                     <!-- Icon di sini -->
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -44,7 +44,7 @@
                 </div>
                 <div>
                     <!-- Title di sini -->
-                    <p class="font-bold text-xl text-gray-900">Tenant Management</p>
+                    <p class="text-xl font-bold text-gray-900">Tenant Management</p>
                     <!-- Subtitle di sini -->
                     <p class="text-gray-600">Akses mengatur pada tenant</p>
                 </div>
@@ -53,7 +53,7 @@
     </div>
 
 
-    <div class="p-2 bg-white-50 border border-gray-200 rounded-3xl shadow">
+    <div class="p-2 border border-gray-200 shadow bg-white-50 rounded-3xl">
         @if(session('success'))
             <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
                 <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -87,7 +87,7 @@
                 </button>
             </div>
         @endif
-        <div class="flex items-center justify-between py-3 px-2">
+        <div class="flex items-center justify-between px-2 py-3">
             <div>
                 <p class="text-lg font-semibold text-gray-700">Tenant List</p>
             </div>
@@ -134,7 +134,7 @@
                 </thead>
                 <tbody>
                     @forelse ($tenants as $tenant)
-                        <tr class="bg-white-50 border-b hover:bg-gray-50">
+                        <tr class="border-b bg-white-50 hover:bg-gray-50">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
                                     {{ $loop->iteration }}
@@ -144,7 +144,7 @@
                                 <div class="flex items-center">
                                     <div class="">
                                         <!-- kode di sini -->
-                                        <p class="text-gray-500 text-xs">#{{ $tenant->code }}</p>
+                                        <p class="text-xs text-gray-500">#{{ $tenant->code }}</p>
                                         <!-- nama di sini -->
                                         <p class="">{{ $tenant->name }}</p>
                                     </div>
@@ -152,7 +152,7 @@
                             </th>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
-                                    <img class="rounded-full w-10 h-10"
+                                    <img class="w-10 h-10 rounded-full"
                                         src="{{ $tenant->user->getFirstMediaUrl('default') }}" alt="">
                                     <div>
                                         <h1 class="font-medium text-gray-900 whitespace-nowrap">
@@ -174,17 +174,6 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                {{-- <label class="relative inline-flex cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        value=""
-                                        class="sr-only toggle-checkbox"
-                                        data-tenant-id="{{ $tenant->id }}" <!-- Store tenant ID -->
-                                        {{ $tenant->is_active ? 'checked' : '' }} <!-- Check if tenant is active -->
-                                    >
-                                    <div class="w-14 h-6 bg-green-600 rounded-full peer peer-checked:after:translate-x-8 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[3px] after:bg-white-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500" id="toggleHandle">
-                                    </div>
-                                </label> --}}
                                 <label class="relative inline-flex cursor-pointer">
                                     <input 
                                         type="checkbox" 
@@ -224,7 +213,7 @@
                         </tr>
                         <!-- POPUP HAPUS -->
                         <div id="delete-modal-{{ $tenant->id }}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative w-50 max-w-md max-h-full bg-white-50 rounded-xl">
+                            <div class="relative max-w-md max-h-full w-50 bg-white-50 rounded-xl">
                                 <div class="relative bg-white rounded-lg shadow">
                                     <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
                                         data-modal-hide="delete-modal-{{ $tenant->id }}">
@@ -241,15 +230,15 @@
                                                 fill="white" />
                                         </svg>
                                         <p class="text-lg font-semibold text-gray-900">Delete Tenant</p>
-                                        <p class="text-gray-600 mt-2">Are you sure you want to delete this tenant?</p>
+                                        <p class="mt-2 text-gray-600">Are you sure you want to delete this tenant?</p>
                                         <form action="{{ route('admin-tenant-destroy', $tenant->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <div class="mt-4">
                                                 <button type="submit"
-                                                    class="bg-red-500 text-white font-medium px-4 py-2 rounded-lg hover:bg-red-600 text-white-50 me-4">Delete</button>
+                                                    class="px-4 py-2 font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 text-white-50 me-4">Delete</button>
                                                 <button type="button"
-                                                    class="bg-gray-300 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-gray-400"
+                                                    class="px-4 py-2 font-medium text-gray-700 bg-gray-300 rounded-lg hover:bg-gray-400"
                                                     data-modal-hide="delete-modal-{{ $tenant->id }}">Cancel</button>
                                             </div>
                                         </form>
@@ -259,12 +248,12 @@
                         </div>
                     @empty
                         <tr>
-                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                            <td colspan="55" class="py-5 text-center">tidak ada data</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
-            {{$tenants->links()}}
+            {{$tenants->links('vendor.pagination.admin')}}
         </div>
 
     </div>

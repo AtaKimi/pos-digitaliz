@@ -3,10 +3,10 @@
 @section('content')
     <div class="pb-5">
         {{-- header --}}
-        <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
             <div class="p-4">
                 <div class="flex items-center">
-                    <div class="mr-4 bg-yellow-50 rounded-xl p-5">
+                    <div class="p-5 mr-4 bg-yellow-50 rounded-xl">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <path
                                 d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
@@ -14,8 +14,8 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900">Dashboard</p>
-                        <p class="text-gray-600 hidden md:block">Akses menu dan informasi penting lainnya disini</p>
+                        <p class="text-xl font-bold text-gray-900">Dashboard</p>
+                        <p class="hidden text-gray-600 md:block">Akses menu dan informasi penting lainnya disini</p>
                     </div>
                 </div>
             </div>
@@ -23,12 +23,12 @@
         {{-- header end --}}
 
         {{-- cards --}}
-        <div class="flex flex-col md:flex-row gap-5 mb-5">
+        <div class="flex flex-col gap-5 mb-5 md:flex-row">
             {{-- card 1 --}}
-            <div class="rounded-xl overflow-hidden shadow-lg w-full relative bg-white-50">
+            <div class="relative w-full overflow-hidden shadow-lg rounded-xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-orange-100  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-yellow-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 bg-orange-100 rounded-full w-fit">
+                        <span class="p-1 bg-yellow-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
                                 fill="none">
                                 <path
@@ -36,10 +36,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">Total Tenant</span>
+                        <span class="mr-2 text-xs font-semibold text-black">Total Tenant</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">{{ $tenant_counter }}
+                        <p class="mb-2 text-xl font-bold text-gray-900">{{ $tenant_counter }}
                         </p>
                         <div class="flex items-center gap-1">
                             <span>
@@ -60,10 +60,10 @@
             </div>
 
             {{-- card 2 --}}
-            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white-50">
+            <div class="w-full overflow-hidden shadow-lg rounded-xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-green-100  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-green-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 bg-green-100 rounded-full w-fit">
+                        <span class="p-1 bg-green-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 21 22"
                                 fill="none">
                                 <path
@@ -71,10 +71,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">Total Pendapatan Service</span>
+                        <span class="mr-2 text-xs font-semibold text-black">Total Pendapatan Service</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">
+                        <p class="mb-2 text-xl font-bold text-gray-900">
                             Rp.{{ number_format($total_service_paid_all, 2, ',', '.') }}</p>
                         <div class="flex items-center gap-1">
                             <span>
@@ -95,10 +95,10 @@
             </div>
 
             {{-- card 3 --}}
-            <div class="rounded-xl overflow-hidden shadow-lg w-full bg-white-50">
+            <div class="w-full overflow-hidden shadow-lg rounded-xl bg-white-50">
                 <div class="p-4">
-                    <div class="flex gap-2 items-center bg-red-100  rounded-full p-1 mb-3 w-fit">
-                        <span class="bg-red-400 rounded-full p-1">
+                    <div class="flex items-center gap-2 p-1 mb-3 bg-red-100 rounded-full w-fit">
+                        <span class="p-1 bg-red-400 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"
                                 fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -115,10 +115,10 @@
                                     fill="white" />
                             </svg>
                         </span>
-                        <span class="text-black text-xs font-semibold mr-2">Total service belum bayar</span>
+                        <span class="mr-2 text-xs font-semibold text-black">Total service belum bayar</span>
                     </div>
                     <div>
-                        <p class="font-bold text-xl text-gray-900 mb-2">
+                        <p class="mb-2 text-xl font-bold text-gray-900">
                             Rp.{{ number_format($total_service_unpaid_all, 2, ',', '.') }}</p>
 
 
@@ -130,16 +130,16 @@
         {{-- cards end --}}
 
         {{-- charts --}}
-        <div class="flex flex-col md:flex-row gap-5 mb-5 ">
+        <div class="flex flex-col gap-5 mb-5 md:flex-row ">
             {{-- chart 1 --}}
-            <div class="bg-white-50 rounded-xl shadow p-4 md:p-6 md:w-1/3 ">
-                <div class="flex justify-between mb-5 items-center">
+            <div class="p-4 shadow bg-white-50 rounded-xl md:p-6 md:w-1/3 ">
+                <div class="flex items-center justify-between mb-5">
                     <div class="grid gap-4 ">
                         <div>
-                            <h5 class="inline-flex items-center text-gray-500 leading-none text-xs font-normal mb-2">
+                            <h5 class="inline-flex items-center mb-2 text-xs font-normal leading-none text-gray-500">
                                 Aktifitas
                             </h5>
-                            <p class="text-gray-900 leading-none text-xl font-bold">Total Tenant</p>
+                            <p class="text-xl font-bold leading-none text-gray-900">Total Tenant</p>
                         </div>
 
                     </div>
@@ -147,7 +147,7 @@
                         <div>
                             <button id="dropdownDefaultButton" data-dropdown-toggle="totalTenantFilter"
                                 data-dropdown-placement="bottom" type="button"
-                                class="px-3 py-2 inline-flex items-center text-xs text-gray-500 focus:outline-none bg-gray-100 rounded-full  hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
+                                class="inline-flex items-center px-3 py-2 text-xs text-gray-500 bg-gray-100 rounded-full focus:outline-none hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
                                 {{ $totalTenantFilter }}
                                 <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 10 6">
@@ -156,19 +156,19 @@
                                 </svg>
                             </button>
                             <div id="totalTenantFilter"
-                                class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
+                                class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white-50 w-44">
                                 <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
                                     <li>
                                         <button type="submit" name="totalTenantFilter" value="Weekly"
-                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Weekly</button>
+                                            class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Weekly</button>
                                     </li>
                                     <li>
                                         <button type="submit" name="totalTenantFilter" value="Monthly"
-                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Monthly</button>
+                                            class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Monthly</button>
                                     </li>
                                     <li>
                                         <button type="submit" name="totalTenantFilter" value="Annually"
-                                            class="block px-4 py-2 hover:bg-gray-100 w-full text-start">Annually</button>
+                                            class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Annually</button>
                                     </li>
                                 </ul>
                             </div>
@@ -184,18 +184,18 @@
             </div>
 
             {{-- chart 2 --}}
-            <div class="bg-white-50 rounded-xl shadow p-4 md:p-6 md:w-2/3">
-                <div class="flex flex-col md:flex-row justify-between gap-7 mb-5 items-center">
-                    <div class="flex flex-col md:flex-row gap-7 items-center">
+            <div class="p-4 shadow bg-white-50 rounded-xl md:p-6 md:w-2/3">
+                <div class="flex flex-col items-center justify-between mb-5 md:flex-row gap-7">
+                    <div class="flex flex-col items-center md:flex-row gap-7">
                         <div>
-                            <h5 class="inline-flex items-center text-xs text-gray-500 leading-none font-normal mb-2">
+                            <h5 class="inline-flex items-center mb-2 text-xs font-normal leading-none text-gray-500">
                                 Total Pendapatan Service
                             </h5>
-                            <p class="text-gray-900 text-xl leading-none font-bold">
+                            <p class="text-xl font-bold leading-none text-gray-900">
                                 RP.{{ number_format($total_service_paid_all, 0, '', '.') }}</p>
                         </div>
                         <div>
-                            <h5 class="inline-flex items-center font-semibold leading-none mb-2">
+                            <h5 class="inline-flex items-center mb-2 font-semibold leading-none">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 9"
                                     fill="none">
@@ -217,11 +217,11 @@
                             </h5>
                         </div>
                     </div>
-                    <div class="flex items-center border justify-between rounded-2xl p-1 gap-0 h-15">
+                    <div class="flex items-center justify-between gap-0 p-1 border rounded-2xl h-15">
 
                         </button>
                         <button type="button"
-                            class="text-gray-900  hover:border-gray-200 bg-white-50 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-sm font-medium  text-center p-2">
+                            class="p-2 text-sm font-medium text-center text-gray-900 rounded-full hover:border-gray-200 bg-white-50 focus:ring-2 focus:outline-none focus:ring-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17"
                                 fill="none">
                                 <path
@@ -243,11 +243,11 @@
 
 
                         <button type="button"
-                            class="text-gray-900   bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Weekly</button>
+                            class="p-2 text-xs font-medium text-center text-gray-900 bg-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Weekly</button>
                         <button type="button"
-                            class="text-gray-900   bg-white-50 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Monthly</button>
+                            class="p-2 text-xs font-medium text-center text-gray-900 bg-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Monthly</button>
                         <button type="button"
-                            class="text-white-50   bg-gray-900 hover:bg-gray-900 hover:text-white-50   rounded-xl text-xs font-medium  text-center p-2">Anually</button>
+                            class="p-2 text-xs font-medium text-center bg-gray-900 text-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Anually</button>
 
                     </div>
                 </div>
@@ -257,9 +257,9 @@
         {{-- charts end --}}
 
         {{-- table --}}
-        <div class="relative overflow-x-auto shadow-md rounded-xl bg-white-50 p-5">
-            <div class="flex flex-wrap gap-5 p-5 justify-between">
-                <h1 class="text-xl text-gray-900 font-bold">
+        <div class="relative p-5 overflow-x-auto shadow-md rounded-xl bg-white-50">
+            <div class="flex flex-wrap justify-between gap-5 p-5">
+                <h1 class="text-xl font-bold text-gray-900">
                     Daftar Tagihan Terbaru
                 </h1>
                 <div class="pb-4">
@@ -273,14 +273,14 @@
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block p-2 pl-10 text-sm text-gray-900 border-none focus:ring-0 rounded-lg w-80 bg-gray-100 placeholder-gray-400 "
+                            class="block p-2 pl-10 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 border-none rounded-lg focus:ring-0 w-80 "
                             placeholder="Search">
                     </div>
                 </div>
             </div>
 
             <table class="w-full text-sm text-left text-gray-500">
-                <thead class="text-xs border-b text-gray-700">
+                <thead class="text-xs text-gray-700 border-b">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No
@@ -319,7 +319,7 @@
                 </thead>
                 <tbody>
                     @forelse ($tenant_service_payments as $service)
-                        <tr class="bg-white-50 border-b hover:bg-gray-50">
+                        <tr class="border-b bg-white-50 hover:bg-gray-50">
                             <td class="px-6 py-4">
                                 {{ $loop->iteration }}
                             </td>
@@ -329,8 +329,8 @@
                                     {{ $service->tenant->name }}
                                 </h1>
                             </th>
-                            <th scope="row" class="px-6 py-4 gap-2 flex items-center">
-                                <img class="rounded-full w-10 h-10"
+                            <th scope="row" class="flex items-center gap-2 px-6 py-4">
+                                <img class="w-10 h-10 rounded-full"
                                     src="{{ $service->user->getFirstMediaUrl('default') }}" alt="">
                                 <div>
                                     <h1 class="font-medium text-gray-900 whitespace-nowrap">
@@ -353,7 +353,7 @@
 
                             <td class="px-6 py-4">
                                 <a type="button" href="{{ route('admin-tenant-show', $service->tenant) }}"
-                                    class="p-2 rounded-lg border hover:bg-yellow-50 border-yellow-300">
+                                    class="p-2 border border-yellow-300 rounded-lg hover:bg-yellow-50">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                         viewBox="0 0 17 17" fill="none">
                                         <path
@@ -368,12 +368,12 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                            <td colspan="55" class="py-5 text-center">tidak ada data</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
-            {{ $tenant_service_payments->withQueryString()->links() }}
+            {{ $tenant_service_payments->links('vendor.pagination.admin')}}
         </div>
 
         {{-- end table --}}
