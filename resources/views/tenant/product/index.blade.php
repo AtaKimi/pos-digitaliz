@@ -73,13 +73,13 @@
             </div>
 
             {{-- card 1 --}}
-            <div class="flex-wrap gap-3 sm:flex">
+            <div class="flex-wrap gap-3 px-4 sm:flex">
                 @foreach ($products as $product)
-                    <div class="flex flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
+                    <div class="flex grow flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
                         <div class="flex p-6 gap-x-6 ">
                             <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg"
                                 alt="" class="w-[130px] h-[130px] rounded-lg">
-                            <div class="text-gray-500">
+                            <div class="text-gray-500 grow">
                                 <div class="flex justify-between mb-2">
                                     <p class="text-2xl font-bold text-black">{{ $product->name }}</p>
                                     @if ($product->status == 'soldout')
@@ -88,9 +88,11 @@
                                             class="border bg-green-200 text-green-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                         @elseif($product->status == 'in_stock')
                                             <select id="product-status-input" name="product_status"
+                                                product-id="{{ $product->id }}"
                                                 class="border bg-green-200 text-green-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                             @else
                                                 <select id="product-status-input" name="product_status"
+                                                    product-id="{{ $product->id }}"
                                                     class="border bg-gray-200 text-gray-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                     @endif
                                     <option @if ($product->status == 'soldout') selected @endif value="soldout"
@@ -197,7 +199,7 @@
         }
 
         async function updateStatusProduct(status, product_id, bearerToken) {
-            const response = await fetch(`http://localhost:8000/api/product/${product_id}/status`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/product/${product_id}/status`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -221,10 +223,8 @@
                 if (updateStatusProduct(productStatusInput.value, productStatusInput.getAttribute(
                         'product-id'), token)) {
                     console.log('success');
-                    alert('success');
                 } else {
                     console.log('failed');
-                    alert('failed');
                 }
             });
         });

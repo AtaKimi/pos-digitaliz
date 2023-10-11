@@ -100,7 +100,7 @@
                             Product Name</label>
                         <input type="text" id="product_name" name="name"
                             class="block w-full px-5 py-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Input name">
+                            placeholder="Input name" value="{{$product->name}}">
                         @error('name')
                             <p>{{ $message }}</p>
                         @enderror
@@ -110,7 +110,9 @@
                         <select id="categories" name="category_id"
                             class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}"  @if ($category->name == $product->category->name)
+                                    selected
+                                @endif>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -129,7 +131,7 @@
                             </div>
                             <input type="number" name="price"
                                 class="block w-full p-4 pl-12 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="2000">
+                                placeholder="2000" value="{{$product->price}}">
                             @error('price')
                                 <p>{{ $message }}</p>
                             @enderror
@@ -141,7 +143,7 @@
                         </label>
                         <textarea id="description" rows="6" name="description"
                             class="block p-2.5 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-                            placeholder="Input description..."></textarea>
+                            placeholder="Input description...">{{$product->description}}</textarea>
                         @error('description')
                             <p>{{ $message }}</p>
                         @enderror

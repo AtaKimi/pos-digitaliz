@@ -86,21 +86,14 @@ class ProductController extends Controller
 
         //an existing image must exist or must be added into the product so there's atleast an image existed
         if (array_key_exists('images', $validated) || array_key_exists('product_media', $validated)) {
-
             $product->update(
                 [
                     'name' => $validated['name'],
                     'price' => $validated['price'],
                     'description' => $validated['description'],
-                    'category_id' => $validated['name'],
+                    'category_id' => $validated['category_id'],
                 ]
             );
-
-            if (array_key_exists('images', $validated)) {
-                $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-                    $fileAdder->toMediaCollection('default');
-                });
-            }
 
             if (array_key_exists('product_media', $validated)) {
                 $product_medias = $product->getMedia('default');
@@ -112,10 +105,16 @@ class ProductController extends Controller
                 }
             }
 
+            if (array_key_exists('images', $validated)) {
+                $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('default');
+                });
+            }
+
             return redirect()->route('tenant-product-index', $tenant);
         }
 
-        dd(request());
+        return redirect()->route('tenant-product-edit', [$tenant, $product]);
     }
 
     /**
@@ -130,7 +129,7 @@ class ProductController extends Controller
         );
 
         $product = Product::find($validated['product_id']);
-
+        $product->clearMediaCollection('default');
         $product->delete();
         return redirect()->route('tenant-product-index', $tenant);
     }

@@ -18,6 +18,7 @@ class ProductController extends Controller
 
         $categories = Category::where('tenant_id', $tenant->id)->pluck('id');
         $products = Product::whereIn('category_id', $categories)->get();
+
         return $products;
     }
 
@@ -37,7 +38,7 @@ class ProductController extends Controller
             abort(403);
         }
         $validated = request()->validate([
-            'status' => 'in:in_stock,sold_out,disabled',
+            'status' => 'in:in_stock,soldout,disabled',
         ]);
 
         $product->update($validated);
