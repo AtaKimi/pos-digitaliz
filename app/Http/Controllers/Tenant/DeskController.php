@@ -56,7 +56,7 @@ class DeskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Desk $desk)
+    public function update(Request $request, Desk $desk, Tenant $tenant)
     {
         //
     }

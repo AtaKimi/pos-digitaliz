@@ -92,7 +92,7 @@
                         <tr class="bg-white-50 border-b hover:bg-gray-50">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
-                                    {{ $loop->iteration }}
+                                     {{ ($waiter->currentPage() - 1) * $waiter->perPage() + $loop->index + 1 }}
                                 </div>
                             </td>
                             <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">

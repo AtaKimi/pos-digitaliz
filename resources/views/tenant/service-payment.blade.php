@@ -86,128 +86,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
+                    @forelse ($payment as $item)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ ($payment->currentPage() - 1) * $payment->perPage() + $loop->index + 1 }}
+                            </th>
+                            <td class="px-6 py-4">
+                               {{ \Carbon\Carbon::parse($item->transfer_at)->format('d-m-Y') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                Rp {{ number_format($item->total, 2, ',', '.') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                 <div class="flex items-center">
+                                    <div class="w-11 h-12" data-modal-target="modal-transaction-{{ $item->id }}"
+                                        data-modal-toggle="modal-transaction-{{ $item->id }}">
+                                        <img src="{{ $item->getFirstMediaUrl('buktiTf') }}" alt="">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {{-- MODAL PAYMENT --}}
+                        <div id="modal-transaction-{{ $item->id }}" tabindex="-1"
+                            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-full max-w-md max-h-full">
+                                <div
+                                    class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
+                                    <div class="flex justify-between mb-8 items-center">
+                                        <div class=""></div>
+                                        <p class="font-bold text-2xl">Bukti Transfer</p>
+                                        <p class="text-2xl font-bold" data-modal-target="modal-transaction-{{ $item->id }}"
+                                            data-modal-toggle="modal-transaction-{{ $item->id }}">X</p>
+                                    </div>
+                                    <div class="self-cewnte w-full h-full">
+                                        <img src="{{ $item->getFirstMediaUrl('buktiTf') }}" alt="">
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            2
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            2
-                        </th>
-                        <td class="px-6 py-4">
-                            14/09/2023, 10.00 AM
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 90.000,00
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center">
-                                <div class="w-11 h-12 bg-red-400" data-modal-target="modal-transaction"
-                                    data-modal-toggle="modal-transaction"></div>
-                            </div>
-                        </td>
-                    </tr>
+                        </div>
+                    @empty
+                        <tr>
+                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
 
-            <div class="grid grid-cols-3 items-center px-6 py-3">
-                <p>Menampilkan : 1-10 dari 100 hasil</p>
-                <nav aria-label="Page navigation example" class="col-span-2">
-                    <ul class="flex gap-3">
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border-none rounded-lg ">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight  bg-red-500 text-white-50 border border-gray-300 rounded-lg ">1</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight  bg-white-50 border border-gray-300 rounded-lg ">2</a>
-                        </li>
-
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white-50 border-none rounded-lg rounded-r-lg ">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    {{-- MODAL TRANSACTION --}}
-    <!-- Modal -->
-    <div data-te-modal-init data-te-backdrop="false"
-        class="static left-0 top-0 z-[1055] block h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-        id="exampleModalComponents" tabindex="-1" aria-labelledby="exampleModalComponentsLabel" aria-hidden="true">
-        <div data-te-modal-dialog-ref
-            class="pointer-events-none relative w-auto opacity-100 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:my-7 min-[576px]:max-w-[500px]">
-            <div
-                class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
-                <div
-                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
-                        id="exampleModalComponentsLabel">
-                        Modal title
-                    </h5>
-                    <button type="button"
-                        class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                        data-te-modal-dismiss aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="relative flex-auto p-4" data-te-modal-body-ref>
-                    Modal body text goes here.
-                </div>
-                <div
-                    class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                    <button type="button"
-                        class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                        data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
-                        Close
-                    </button>
-                    <button type="button"
-                        class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                        data-te-ripple-init data-te-ripple-color="light">
-                        Save changes
-                    </button>
-                </div>
-            </div>
+            {{ $payment->links('vendor.pagination.tenant') }}
         </div>
     </div>
 @endsection
