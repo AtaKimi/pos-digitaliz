@@ -2,7 +2,9 @@
 
 <?php
 
+use App\Events\OrderCreated;
 use App\Http\Resources\Tenant\ProductResource;
+use App\Listeners\SendOrderCreatedNontification;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
@@ -10,6 +12,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\TenantServicePayment;
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -28,10 +31,12 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $tenant = Tenant::find(1);
-    $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
-    $products = Product::whereIn('category_id', $category_ids)->get();
-    $test = new ProductResource($tenant);
+    $order = \App\Models\Order::factory()->state(
+        [
+            'is_paid' => fake()->boolean(),
+        ]
+    )->create();
+    OrderCreated::dispatch($order);
 });
 
 Artisan::command('rholand', function () {
