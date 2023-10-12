@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $category = Category::all();
+        $category = Category::latest()->paginate(10);
         return view('tenant.category', compact('category', 'tenant'));
     }
 
