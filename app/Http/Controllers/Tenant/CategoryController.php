@@ -83,6 +83,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('tenant-category-delete', $category->id);
+        return redirect()->route('tenant-category-destroy', $category->id);
     }
 }

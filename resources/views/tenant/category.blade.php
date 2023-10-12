@@ -135,28 +135,28 @@
                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full">
                             <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                                <form action="{{route('tenant-category-delete', $tenant)}}" method="POST">
+                                <form action="{{route('tenant-category-destroy', $category->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                <div class="flex justify-between items-center">
-                                    <p class="font-bold text-2xl">Hapus Kategori</p>
-                                    <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
-                                        data-modal-toggle="modal-delete-category">X</p>
-                                </div>
-                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-                                    <rect width="100" height="100" rx="50" fill="#FC5F5F" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
-                                        fill="white" />
-                                </svg>
-                                <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus kategori ini?</p>
-                                <div class="flex grid-cols-2 gap-3">
-                                    <button
-                                        class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                                    <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold" type="submit">Hapus</button>
-                                </div>
-                            </form>
+                                    <div class="flex justify-between items-center">
+                                        <p class="font-bold text-2xl">Hapus Kategori</p>
+                                        <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
+                                            data-modal-toggle="modal-delete-category">X</p>
+                                    </div>
+                                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+                                        <rect width="100" height="100" rx="50" fill="#FC5F5F" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
+                                            fill="white" />
+                                    </svg>
+                                    <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus kategori ini?</p>
+                                    <div class="flex grid-cols-2 gap-3">
+                                        <button
+                                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
+                                        <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold" type="submit">Hapus</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
