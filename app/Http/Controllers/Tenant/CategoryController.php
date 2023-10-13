@@ -19,8 +19,10 @@ class CategoryController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $category = Category::all();
-        return view('tenant.category', compact('category', 'tenant'));
+       // $category1 = Category::all();
+        $categories = Category::where('tenant_id', $tenant->id)->paginate(3);
+        
+        return view('tenant.category', compact('categories', 'tenant'));
     }
 
     /**
@@ -65,16 +67,20 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $category = Category::find($id);
         return view('tenant.category', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
-    {
-        //
+    public function update(Request $request,  Tenant $tenant, Category $category)
+    {  
+        $validated = $request->validate([
+            'name'=>'required|string'
+        ]);
+        $category->update($validated);
+        
+        return redirect()->route('tenant-category-index', $tenant->id);
     }
 
     /**
@@ -82,11 +88,6 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request, Tenant $tenant, Category $category)
     {
-        // Check if the tenant exists
-        if (!$category) {
-            return redirect()->back()->with('error', 'category not found');
-        }
-        // Delete the category
         $category->delete();
         // delete related users
         $category->product()->delete();

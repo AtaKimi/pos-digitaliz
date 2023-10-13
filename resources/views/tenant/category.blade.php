@@ -64,11 +64,11 @@
                     </thead>
                     <tbody>
                     
-                    @foreach($category as $category)
+                    @foreach($categories as $category)
                         <tr class="bg-white border-b">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{$loop -> iteration}}
+                                {{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->index + 1 }}
                             </th>
                             <td class="px-6 py-4">
                                 {{ $category->name }}
@@ -105,26 +105,23 @@
                                     <div class="flex justify-between items-center">
                                         <div class=""></div>
                                         <p class="font-bold text-2xl">Edit Kategori</p>
-                                        <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-edit-category"
-                                            data-modal-toggle="modal-edit-category">X</p>
+                                        <p class="text-2xl font-bold cursor-pointer" data-modal-hide="modal-edit-category-{{$category->id}}">X</p>
                                     </div>
                                     <form action="{{route('tenant-category-edit', [$tenant->id, $category->id])}}" method="POST">
                                         @csrf
-                                        @method('PUT')
                                         <div class="flex flex-col">
-                                            <label for="email" class="block mb-2 text-sm font-medium">
+                                            <label for="text" class="block mb-2 text-sm font-medium">
                                                 Nama Kategori</label>
-                                            <input type="email" id="email"
+                                            <input type="text" id="text" name="name"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                                 placeholder="Nama Kategori" required value="{{ $category->name }}">
                                         </div>
-                                    </form>
-
                                     <div class="flex grid-cols-2 gap-3">
                                         <button
-                                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" >Batalkan</button>
+                                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" type="button" data-modal-hide="modal-edit-category-{{$category->id}}">Batalkan</button>
                                         <button class="py-2 w-full bg-red-600 text-white-50 rounded-lg font-bold" type="submit">Konfirmasi</button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -140,8 +137,7 @@
                                 <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
                                         <div class="flex justify-between items-center">
                                             <p class="font-bold text-2xl">Hapus Kategori</p>
-                                            <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
-                                                data-modal-toggle="modal-delete-category">X</p>
+                                            <p class="text-2xl font-bold cursor-pointer" data-modal-hide="modal-delete-category-{{$category->id}}">X</p>
                                         </div>
                                         <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" class="mx-auto">
@@ -153,7 +149,7 @@
                                         <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus kategori ini?</p>
                                         <div class="flex grid-cols-2 gap-3">
                                             <button
-                                                class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" type="reset">Batalkan</button>
+                                                class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" data-modal-hide="modal-delete-category-{{$category->id}}">Batalkan</button>
                                             <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold" type="submit">Hapus</button>
                                         </div>
                                     </div>
@@ -164,33 +160,7 @@
                     </tbody>
                 </table>
 
-                <div class="grid grid-cols-3 items-center px-6 py-3">
-                    <p>Menampilkan : 1-10 dari 100 hasil</p>
-                    <nav aria-label="Page navigation example" class="col-span-2">
-                        <ul class="flex gap-3">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border-none rounded-lg ">Prev</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-red-500 text-white-50 border border-gray-300 rounded-lg ">1</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-white border border-gray-300 rounded-lg ">2</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight  bg-white border border-gray-300 rounded-lg ">3</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border-none rounded-lg rounded-r-lg ">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                {{ $categories->links('vendor.pagination.tenant') }}
             </div>
         </div>
 
@@ -204,7 +174,7 @@
                        
                         <p class="font-bold text-2xl">Tambah Kategori</p>
                         <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-add-category"
-                            data-modal-toggle="modal-add-category">X</p>
+                            data-modal-hide="modal-add-category">X</p>
                     </div>
                     <form action="{{route('tenant-category-store', $tenant)}}" method="POST">
                         @csrf
@@ -219,7 +189,7 @@
                     <div class="flex grid-cols-2 gap-3">
                         <button type="reset"
                             class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400" data-modal-target="modal-add-category"
-                            data-modal-toggle="modal-add-category">Batalkan</button>
+                            data-modal-hide="modal-add-category">Batalkan</button>
                         <button type="submit" class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
                     </div>
                     </form>
