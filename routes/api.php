@@ -21,13 +21,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('product')->group(function () {
-        Route::controller(ProductController::class)->group(function (){
-            Route::get('/', 'index');
-            Route::get('/{product}', 'show');
-            Route::post('/{product}/status', 'editStatus');
-        });
-    });
     Route::prefix('waiter')->group(function() {
         Route::controller(WaiterController::class)->group(function () {
             Route::put('/update/{waiter}', 'update');

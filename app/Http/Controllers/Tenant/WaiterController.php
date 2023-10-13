@@ -22,6 +22,7 @@ class WaiterController extends Controller
     {
         $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(2);
 
+        $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(10);
         // Paginator::useAdminPagination();
 
         return view('tenant.waiter', compact('waiter', 'tenant'));
