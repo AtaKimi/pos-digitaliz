@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantTenantController::class)->group(function () {
                 Route::get('{tenant}/', 'index')->name('tenant-index');
                 Route::get('{tenant}/setting', 'setting')->name('tenant-setting');
+                Route::post('{tenant}/setting/update', 'updateSetting')->name('tenant-setting-update');
             });
 
             Route::controller(TenantCategoryController::class)->group(function () {
