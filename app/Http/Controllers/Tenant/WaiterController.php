@@ -21,8 +21,6 @@ class WaiterController extends Controller
     public function index(Tenant $tenant)
     {
         $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(10);
-        Paginator::useAdminPagination();
-
         // Paginator::useAdminPagination();
 
         return view('tenant.waiter', compact('waiter', 'tenant'));

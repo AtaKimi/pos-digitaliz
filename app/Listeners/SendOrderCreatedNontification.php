@@ -20,3 +20,4 @@ class SendOrderCreatedNontification
         dd($event->order);
     }
 }
+

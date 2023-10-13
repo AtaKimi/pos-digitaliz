@@ -104,7 +104,7 @@ Route::middleware('auth')->group(function () {
                 'show' => 'tenant-waiter-show',
                 'update' => 'tenant-waiter-update',
                 'destroy' => 'tenant-waiter-destroy',
-            ]);;
+            ]);
         });
     });
 });
