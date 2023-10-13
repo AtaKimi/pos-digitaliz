@@ -35,4 +35,9 @@ class WaiterController extends Controller
     {
         return view('waiter.order-detail');
     }
+
+    public function profile(Tenant $tenant)
+    {
+        return view('waiter.profile');
+    }
 }

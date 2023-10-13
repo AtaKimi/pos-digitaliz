@@ -108,7 +108,7 @@ class ProductController extends Controller
             if (array_key_exists('images', $validated)) {
                 $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
                     $fileAdder->toMediaCollection('default');
-                });
+                }); 
             }
 
             return redirect()->route('tenant-product-index', $tenant);
