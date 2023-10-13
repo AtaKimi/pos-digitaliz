@@ -6,7 +6,7 @@
             // set the labels option to true to show the labels on the X and Y axis
             xaxis: {
               show: true,
-              categories: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb'],
+              categories: [@foreach(array_keys($orderData) as $date)'{{ \Carbon\Carbon::parse($date)->format('d M') }}',@endforeach],
               labels: {
                 show: true,
                 style: {
@@ -30,14 +30,14 @@
                   cssClass: 'text-xs font-normal fill-gray-500'
                 },
                 formatter: function (value) {
-                  return '$' + value;
+                  return 'Rp.' + value;
                 }
               }
             },
             series: [
               {
-                name: "Developer Edition",
-                data: [150, 141, 145, 152, 135, 125],
+                name: "",
+                data: @json(array_values($orderData)),
                 color: "#1A56DB",
               },
             ],
@@ -75,16 +75,16 @@
               enabled: false,
             },
             stroke: {
-              width: 6,
+              width: 5,
             },
             legend: {
-              show: false
-            },
-            grid: {
               show: false,
             },
+            grid: {
+              show: true,
+            },
           }
-      
+
           if (document.getElementById("labels-chart") && typeof ApexCharts !== 'undefined') {
             const chart = new ApexCharts(document.getElementById("labels-chart"), options);
             chart.render();
@@ -98,9 +98,9 @@
         var options = {
           series: [
             {
-              name: "Income",
+              name: "Product",
               color: "#2869D4",
-              data: ["1420", "1620", "1820", "1420", "1650", "2120"],
+              data: @json($totalProducts),
             },
           ],
           chart: {
@@ -109,10 +109,10 @@
             },
             type: "bar",
             width: "100%",
-            height: 250,
+            height: 150,
             toolbar: {
               show: false,
-            }
+            },
           },
           fill: {
             opacity: 1,
@@ -133,7 +133,7 @@
             position: "bottom",
           },
           dataLabels: {
-            enabled: false,
+            enabled: true,
           },
           tooltip: {
             shared: true,
@@ -150,10 +150,10 @@
                 cssClass: 'text-xs font-normal fill-gray-500'
               },
               formatter: function(value) {
-                return "$" + value
+                return value
               }
             },
-            categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            categories: @json($categories),
             axisTicks: {
               show: false,
             },
