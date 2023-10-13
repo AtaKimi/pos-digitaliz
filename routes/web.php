@@ -45,19 +45,18 @@ Route::middleware('auth')->group(function () {
         Route::middleware('can:admin-access')->group(function () {
             Route::controller(AdminController::class)->group(function () {
                 Route::get('/', 'index')->name('admin-index');
-
             });
             // Route::controller(AdminTenantController::class)->group(function () {
-                // Route::prefix('tenant')->group(function () {
-                    Route::resource('tenant', AdminTenantController::class)->names([
-                        'index' => 'admin-tenant-index',
-                        'show' => 'admin-tenant-show',
-                        'update' => 'admin-tenant-update',
-                        'destroy' => 'admin-tenant-destroy',
-                    ]);
-                    // Route::get('/', 'index')->name('admin-tenant-index');
-                    // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-                // });
+            // Route::prefix('tenant')->group(function () {
+            Route::resource('tenant', AdminTenantController::class)->names([
+                'index' => 'admin-tenant-index',
+                'show' => 'admin-tenant-show',
+                'update' => 'admin-tenant-update',
+                'destroy' => 'admin-tenant-destroy',
+            ]);
+            // Route::get('/', 'index')->name('admin-tenant-index');
+            // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
+            // });
             // });
         });
     });
@@ -96,6 +95,8 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantDeskController::class)->group(function () {
                 Route::get('{tenant}/desk', 'index')->name('tenant-desk-index');
+                Route::post('{tenant}/desk', 'store')->name('tenant-desk-store');
+                Route::put('{tenant}/desk/{id}', 'update')->name('tenant-desk-update');
             });
             Route::resource('{tenant}/waiter', TenantWaiterController::class)->names([
                 'index' => 'tenant-waiter-index',

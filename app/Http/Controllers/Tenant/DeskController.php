@@ -18,7 +18,8 @@ class DeskController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.desk');
+        $desk = Desk::where('tenant_id', $tenant->id)->paginate(10);
+        return view('tenant.desk', compact('desk', 'tenant'));
     }
 
     /**
@@ -32,9 +33,14 @@ class DeskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Tenant $tenant)
     {
-        //
+        $validated = request()->validate([
+            "name" => 'required|string|max:255'
+        ]);
+        $validated['tenant_id'] = $tenant->id;
+        $desk = Desk::create($validated);
+        return redirect()->route('tenant-desk-index', $tenant->id);
     }
 
     /**
@@ -56,9 +62,16 @@ class DeskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Desk $desk, Tenant $tenant)
+    public function update(Request $request, Tenant $tenant, Desk $desk)
     {
         //
+        $validated = request()->validate([
+            "name" => 'required|string|max:255'
+        ]);
+        // $test = Desk::findOrFail($desk->id);
+        // dd($test);
+        $desk->update($validated);
+        return redirect()->route('tenant-desk-index', $tenant->id);
     }
 
     /**
