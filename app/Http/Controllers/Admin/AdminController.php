@@ -59,11 +59,11 @@ class AdminController extends Controller
             }
         }
 
-        $all_tenants = Tenant::onlyTrashed();
+        $all_tenants = Tenant::all();
         // $service_data = $all_tenants->getService()
         $tenants = Tenant::latest()->paginate(11);
         $tenant_counter = Tenant::all()->count();
-        $tenant_service_payments = TenantServicePayment::latest()->paginate(10);
+        $tenant_service_payments = TenantServicePayment::has('tenant')->latest()->paginate(10);
         $total_service_all = $total_service_paid_all = $total_service_paid_all = 0;
         foreach ($all_tenants as $tenant) {
             $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');

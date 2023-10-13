@@ -45,19 +45,18 @@ Route::middleware('auth')->group(function () {
         Route::middleware('can:admin-access')->group(function () {
             Route::controller(AdminController::class)->group(function () {
                 Route::get('/', 'index')->name('admin-index');
-
             });
             // Route::controller(AdminTenantController::class)->group(function () {
-                // Route::prefix('tenant')->group(function () {
-                    Route::resource('tenant', AdminTenantController::class)->names([
-                        'index' => 'admin-tenant-index',
-                        'show' => 'admin-tenant-show',
-                        'update' => 'admin-tenant-update',
-                        'destroy' => 'admin-tenant-destroy',
-                    ]);
-                    // Route::get('/', 'index')->name('admin-tenant-index');
-                    // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-                // });
+            // Route::prefix('tenant')->group(function () {
+            Route::resource('tenant', AdminTenantController::class)->names([
+                'index' => 'admin-tenant-index',
+                'show' => 'admin-tenant-show',
+                'update' => 'admin-tenant-update',
+                'destroy' => 'admin-tenant-destroy',
+            ]);
+            // Route::get('/', 'index')->name('admin-tenant-index');
+            // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
+            // });
             // });
         });
     });
@@ -71,6 +70,9 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantCategoryController::class)->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
+                Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
+                Route::get('{tenant}/category/edit', 'edit')->name('tenant-category-edit');
+                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-delete');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {
@@ -82,6 +84,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/product', 'index')->name('tenant-product-index');
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
                 Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
+                Route::put('{tenant}/product/{product}', 'update')->name('tenant-product-update');
                 Route::post('{tenant}/product', 'store')->name('tenant-product-store');
                 Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });
@@ -92,10 +95,17 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantDeskController::class)->group(function () {
                 Route::get('{tenant}/desk', 'index')->name('tenant-desk-index');
+                Route::post('{tenant}/desk', 'store')->name('tenant-desk-store');
+                Route::put('{tenant}/desk/{id}', 'update')->name('tenant-desk-update');
             });
-            Route::controller(TenantWaiterController::class)->group(function () {
-                Route::get('{tenant}/waiter', 'index')->name('tenant-waiter-index');
-            });
+            Route::resource('{tenant}/waiter', TenantWaiterController::class)->names([
+                'index' => 'tenant-waiter-index',
+                'store' => 'tenant-waiter-store',
+                'create' => 'tenant-waiter-create',
+                'show' => 'tenant-waiter-show',
+                'update' => 'tenant-waiter-update',
+                'destroy' => 'tenant-waiter-destroy',
+            ]);;
         });
     });
 });

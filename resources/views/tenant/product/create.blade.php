@@ -1,27 +1,18 @@
 @extends('layouts.tenant')
 
 @section('content')
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+    <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
         <div class="p-4">
             <div class="flex items-center">
-                <div class="mr-4 bg-red-100 rounded-xl p-4">
+                <div class="p-4 mr-4 bg-red-100 rounded-xl">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="#F54748" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M0.5 1.66667C0.5 1.02233 1.02233 0.5 1.66667 0.5H5.16667C5.70201 0.5 6.16866 0.864347 6.2985 1.38371L7.24424 5.16667H34.3333C34.6804 5.16667 35.0094 5.32119 35.2311 5.58826C35.4527 5.85533 35.544 6.20722 35.48 6.54834L31.98 25.215C31.8766 25.7668 31.3947 26.1667 30.8333 26.1667H28.5H12.1667H9.83333C9.27192 26.1667 8.79011 25.7668 8.68665 25.215L5.19306 6.58254L4.25576 2.83333H1.66667C1.02233 2.83333 0.5 2.311 0.5 1.66667ZM7.73908 7.5L10.8016 23.8333H29.8651L32.9276 7.5H7.73908ZM12.1667 26.1667C9.58934 26.1667 7.5 28.256 7.5 30.8333C7.5 33.4107 9.58934 35.5 12.1667 35.5C14.744 35.5 16.8333 33.4107 16.8333 30.8333C16.8333 28.256 14.744 26.1667 12.1667 26.1667ZM28.5 26.1667C25.9227 26.1667 23.8333 28.256 23.8333 30.8333C23.8333 33.4107 25.9227 35.5 28.5 35.5C31.0773 35.5 33.1667 33.4107 33.1667 30.8333C33.1667 28.256 31.0773 26.1667 28.5 26.1667ZM12.1667 28.5C13.4553 28.5 14.5 29.5447 14.5 30.8333C14.5 32.122 13.4553 33.1667 12.1667 33.1667C10.878 33.1667 9.83333 32.122 9.83333 30.8333C9.83333 29.5447 10.878 28.5 12.1667 28.5ZM28.5 28.5C29.7887 28.5 30.8333 29.5447 30.8333 30.8333C30.8333 32.122 29.7887 33.1667 28.5 33.1667C27.2113 33.1667 26.1667 32.122 26.1667 30.8333C26.1667 29.5447 27.2113 28.5 28.5 28.5Z" />
                     </svg>
                 </div>
                 <div>
-                    <p class="font-bold text-xl text-gray-900">Order</p>
-                    <p class="text-gray-600 text-xs hidden md:block">Akses melihat pesanan pelanggan sesuai nomor meja</p>
+                    <p class="text-xl font-bold text-gray-900">Order</p>
+                    <p class="hidden text-xs text-gray-600 md:block">Akses melihat pesanan pelanggan sesuai nomor meja</p>
                 </div>
             </div>
         </div>
@@ -29,15 +20,15 @@
 
     <form action="{{ route('tenant-product-store', $tenant) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="w-full bg-white-200 rounded-xl p-8 mb-8">
-            <p class="font-semibold text-gray-900 mb-5">Add Product</p>
-            <div class="flex flex-col md:flex-row justify-between gap-6 mb-6">
-                <div class="flex flex-col gap-4 border border-gray-400 bg-white-50 rounded-xl p-8 w-full">
+        <div class="w-full p-8 mb-8 bg-white-200 rounded-xl">
+            <p class="mb-5 font-semibold text-gray-900">Add Product</p>
+            <div class="flex flex-col justify-between gap-6 mb-6 md:flex-row">
+                <div class="flex flex-col w-full gap-4 p-8 border border-gray-400 bg-white-50 rounded-xl">
                     <p class="font-semibold text-gray-600">Add Images</p>
                     <div class="flex items-center justify-center w-full">
                         <label for="dropzone-file"
-                            class="flex flex-col items-center justify-center w-full h-64 border-2 border-blue-500 border-dashed rounded-xl cursor-pointer bg-gray-100 ">
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6 gap-4">
+                            class="flex flex-col items-center justify-center w-full h-64 bg-gray-100 border-2 border-blue-500 border-dashed cursor-pointer rounded-xl ">
+                            <div class="flex flex-col items-center justify-center gap-4 pt-5 pb-6">
                                 <svg width="63" height="55" viewBox="0 0 63 55" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -56,12 +47,13 @@
                                             fill="#2869D4" />
                                     </svg>
                                     <p class="text-sm">
-                                        Drop your files here. Or <span class="text-blue-500 font-bold">Click to
+                                        Drop your files here. Or <span class="font-bold text-blue-500">Click to
                                             Browse</span>
                                     </p>
                                 </div>
                             </div>
-                            <input id="dropzone-file" type="file" oninput="testing1()" class="hidden" multiple name="images[]" />
+                            <input id="dropzone-file" type="file" oninput="testing1()" class="hidden" multiple
+                                name="images[]" />
 
                         </label>
                         @error('images')
@@ -70,28 +62,25 @@
                     </div>
 
                     <div class="flex flex-col gap-4" id="upload-items">
+                        
 
-
-                    </div>
-                    <div class="flex justify-end">
-                        <p class="text-red-500">CANCEL</p>
                     </div>
                 </div>
-                <div class="border border-gray-400 bg-white-50 rounded-xl p-8 w-full">
+                <div class="w-full p-8 border border-gray-400 bg-white-50 rounded-xl">
                     <div class="mb-2">
                         <label for="product_name" class="block mb-2 font-bold text-gray-900 ">
                             Product Name</label>
                         <input type="text" id="product_name" name="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-4 px-5"
+                            class="block w-full px-5 py-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Input name">
                         @error('name')
                             <p>{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-2">
-                        <label for="category_id" class="block mb-2 font-bold text-gray-900 ">Choose category_id</label>
+                        <label for="category_id" class="block mb-2 font-bold text-gray-900 ">Choose category</label>
                         <select id="categories" name="category_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4">
+                            class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -111,7 +100,7 @@
                                 </svg>
                             </div>
                             <input type="number" name="price"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 p-4"
+                                class="block w-full p-4 pl-12 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="2000">
                             @error('price')
                                 <p>{{ $message }}</p>
@@ -131,14 +120,14 @@
                     </div>
                 </div>
             </div>
-            <div class="flex gap-4 justify-end">
+            <div class="flex justify-end gap-4">
                 <div>
                     <button
-                        class="w-48 h-14 border-2 border-red-500 text-red-500 bg-white-50 rounded-xl font-semibold tracking-widest text-sm">Back</button>
+                        class="w-48 text-sm font-semibold tracking-widest text-red-500 border-2 border-red-500 h-14 bg-white-50 rounded-xl">Back</button>
                 </div>
                 <div>
                     <button
-                        class="w-48 h-14 border bg-red-500 rounded-xl text-white-50 text-sm font-semibold tracking-widest">
+                        class="w-48 text-sm font-semibold tracking-widest bg-red-500 border h-14 rounded-xl text-white-50">
                         Publish Product</button>
                 </div>
             </div>
@@ -165,7 +154,7 @@
                 // Set the image's src attribute to the file's content
                 const htmlContent =
                     `
-                    <div class="bg-white-50 rounded-xl p-3 flex justify-between items-center border border-gray-300" id="` +
+                    <div class="flex items-center justify-between p-3 border border-gray-300 bg-white-50 rounded-xl" id="` +
                     file['name'] +
                     `">
                         <div class="flex items-center gap-4">

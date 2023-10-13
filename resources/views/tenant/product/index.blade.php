@@ -3,10 +3,10 @@
 @section('content')
     {{-- Header --}}
     <div class="pb-4">
-        <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
             <div class="p-4">
                 <div class="flex items-center">
-                    <div class="mr-4 bg-red-50 rounded-xl p-5">
+                    <div class="p-5 mr-4 bg-red-50 rounded-xl">
                         <!-- Icon di sini -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <path
@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <!-- Title di sini -->
-                        <p class="font-bold text-xl text-gray-900">Product</p>
+                        <p class="text-xl font-bold text-gray-900">Product</p>
                         <!-- Subtitle di sini -->
                         <p class="text-gray-600">Akses mengedit, menambah atau menghapus menu resto kamu</p>
                     </div>
@@ -24,14 +24,14 @@
             </div>
         </div>
 
-        <div class="bg-white-50 rounded-2xl pb-4 ms-3 pt-3">
+        <div class="pt-3 pb-4 bg-white-50 rounded-2xl ms-3">
             <div class="flex items-center justify-between p-8">
                 <h4 class="text-lg font-semibold">Product List</h4>
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -39,11 +39,11 @@
                                 </svg>
                             </div>
                             <input type="search" id="default-search"
-                                class="block w-full p-2 pl-10 text-sm text-gray-900  rounded-lg bg-gray-100 border-none py-3"
+                                class="block w-full p-2 py-3 pl-10 text-sm text-gray-900 bg-gray-100 border-none rounded-lg"
                                 placeholder="Search" required>
                         </div>
                     </form>
-                    <button class="flex items-center p-3 border-2 rounded-lg gap-2" data-modal-target="modal-add-category"
+                    <button class="flex items-center gap-2 p-3 border-2 rounded-lg" data-modal-target="modal-add-category"
                         data-modal-toggle="modal-add-category">
                         <svg width="25" height="26" viewBox="0 0 25 26" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@
                         <p class="text-sm font-semibold">All (4)</p>
                     </button>
                     <a href="{{ route('tenant-product-create', $tenant) }}"
-                        class="flex items-center p-3 bg-red-500 rounded-lg gap-2" data-modal-target="modal-add-category"
+                        class="flex items-center gap-2 p-3 bg-red-500 rounded-lg" data-modal-target="modal-add-category"
                         data-modal-toggle="modal-add-category">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -73,31 +73,34 @@
             </div>
 
             {{-- card 1 --}}
-            <div class="sm:flex flex-wrap gap-3">
+            <div class="flex-wrap gap-3 px-4 sm:flex">
                 @foreach ($products as $product)
-                    <div class="flex flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
-                        <div class="flex gap-x-6 p-6 ">
+                    <div class="flex grow flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
+                        <div class="flex p-6 gap-x-6 ">
                             <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg"
                                 alt="" class="w-[130px] h-[130px] rounded-lg">
-                            <div class="text-gray-500">
+                            <div class="text-gray-500 grow">
                                 <div class="flex justify-between mb-2">
                                     <p class="text-2xl font-bold text-black">{{ $product->name }}</p>
                                     @if ($product->status == 'soldout')
-                                        <select id="countries"
+                                        <select id="product-status-input" name="product_status"
+                                            product-id="{{ $product->id }}"
                                             class="border bg-green-200 text-green-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                         @elseif($product->status == 'in_stock')
-                                            <select id="countries"
+                                            <select id="product-status-input" name="product_status"
+                                                product-id="{{ $product->id }}"
                                                 class="border bg-green-200 text-green-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                             @else
-                                                <select id="countries"
+                                                <select id="product-status-input" name="product_status"
+                                                    product-id="{{ $product->id }}"
                                                     class="border bg-gray-200 text-gray-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5">
                                     @endif
-                                    <option @if ($product->status == 'soldout') selected @endif
-                                        class="bg-white-50 text-black">Sold Out</option>
-                                    <option @if ($product->status == 'in_stock') selected @endif value="US"
-                                        class="bg-white-50 text-black">Publish</option>
-                                    <option @if ($product->status == 'disabled') selected @endif value="CA"
-                                        class="bg-white-50 text-black">Unpublish</option>
+                                    <option @if ($product->status == 'soldout') selected @endif value="soldout"
+                                        class="text-black bg-white-50">Sold Out</option>
+                                    <option @if ($product->status == 'in_stock') selected @endif value="in_stock"
+                                        class="text-black bg-white-50">Publish</option>
+                                    <option @if ($product->status == 'disabled') selected @endif value="disabled"
+                                        class="text-black bg-white-50">Unpublish</option>
                                     </select>
                                 </div>
                                 <p class="mb-2"> <span class="text-base font-bold">Category : </span>
@@ -113,7 +116,7 @@
                             </svg>
                         </div>
 
-                        <div class="flex-row flex justify-between pb-5 px-5">
+                        <div class="flex flex-row justify-between px-5 pb-5">
                             <a href="{{ route('tenant-product-edit', [$tenant->id, $product->id]) }}"
                                 class="w-full justify-center text-warning-500 hover:bg-warning-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
                                 <svg width="15" height="14" class="me-3" viewBox="0 0 15 14" fill="none"
@@ -158,9 +161,9 @@
                         @csrf
                         <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
                             <input type="number" class="hidden" id="deleteInputId" name="product_id">
-                            <div class="flex justify-between items-center">
+                            <div class="flex items-center justify-between">
                                 <div class=""></div>
-                                <p class="font-bold text-2xl">Hapus Produk</p>
+                                <p class="text-2xl font-bold">Hapus Produk</p>
                                 <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
                                     data-modal-toggle="modal-delete-category">X</p>
                             </div>
@@ -171,11 +174,11 @@
                                     d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
                                     fill="white" />
                             </svg>
-                            <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus produk ini?</p>
+                            <p class="text-center text-gray-500">Apakah Anda yakin ingin menghapus produk ini?</p>
                             <div class="flex grid-cols-2 gap-3">
                                 <button
-                                    class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                                <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Hapus</button>
+                                    class="w-full py-2 font-bold rounded-lg hover:border-2 hover:border-black-400">Batalkan</button>
+                                <button class="w-full py-2 font-bold bg-red-500 rounded-lg text-white-50">Hapus</button>
                             </div>
                         </div>
                     </form>
@@ -186,11 +189,45 @@
 @endsection
 
 @section('script')
-    <script>
+    <script defer>
         const productIdInput = document.getElementById('deleteInputId');
+        const token = '{{ session('token') }}'
+        const productStatusInputs = document.querySelectorAll('#product-status-input')
 
         function putProductId(id) {
             productIdInput.setAttribute('value', id)
         }
+
+        async function updateStatusProduct(status, product_id, bearerToken) {
+            const response = await fetch(`http://127.0.0.1:8000/api/product/${product_id}/status`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${bearerToken}`,
+                },
+                body: JSON.stringify({
+                    status,
+                }),
+            });
+
+            if (response.status === 200) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        productStatusInputs.forEach(productStatusInput => {
+            productStatusInput.addEventListener('change', async function() {
+                if (updateStatusProduct(productStatusInput.value, productStatusInput.getAttribute(
+                        'product-id'), token)) {
+                    console.log('success');
+                    alert('success');
+                } else {
+                    console.log('failed');
+                }
+            });
+        });
     </script>
 @endsection
