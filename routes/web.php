@@ -66,13 +66,14 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantTenantController::class)->group(function () {
                 Route::get('{tenant}/', 'index')->name('tenant-index');
                 Route::get('{tenant}/setting', 'setting')->name('tenant-setting');
+                Route::post('{tenant}/setting/update', 'updateSetting')->name('tenant-setting-update');
             });
 
             Route::controller(TenantCategoryController::class)->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
                 Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
-                Route::get('{tenant}/category/edit', 'edit')->name('tenant-category-edit');
-                Route::get('{tenant}/category/delete', 'destroy')->name('tenant-category-destroy');
+                Route::post('{tenant}/category/{category}/edit', 'update')->name('tenant-category-edit');
+                Route::delete('{tenant}/category/delete/{category}', 'destroy')->name('tenant-category-destroy');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {
@@ -105,7 +106,7 @@ Route::middleware('auth')->group(function () {
                 'show' => 'tenant-waiter-show',
                 'update' => 'tenant-waiter-update',
                 'destroy' => 'tenant-waiter-destroy',
-            ]);;
+            ]);
         });
     });
 });

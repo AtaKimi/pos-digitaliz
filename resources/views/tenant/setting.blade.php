@@ -36,47 +36,52 @@
                 </div>
             </div>
             <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
-            <form action="#" class="border-2 rounded-2xl p-5 mb-8">
+            <form action="{{route('tenant-setting-update', $tenant->id)}}" method="POST" class="border-2 rounded-2xl p-5 mb-8">
+                @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Nama Tenant</label>
-                        <input type="text" name="brand" id="brand"
+                        <label for="name" class="block mb-2 font-semibold">Nama Tenant</label>
+                        <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required value="{{ $tenant->name }}">
                     </div>
                     <div class="w-full">
                         <label class="block mb-2 font-semibold">User Tenant</label>
-                        <input type="text" name="brand" id="brand"
+                        <input type="text" name="tenant-user" id="tenant-user"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             required value="{{ request()->user()->name }}">
                     </div>
                     <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Phone</label>
-                        <input type="text" name="brand" id="brand"
+                        <label class="block mb-2 font-semibold">Phone</label>
+                        <input type="text" name="phone-number" id="phone-number"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             required value="{{ request()->user()->phone_number }}">
                     </div>
                     <div class="w-full">
-                        <label for="price" class="block mb-2 font-semibold">Email Address</label>
-                        <input type="text" name="price" id="price"
+                        <label class="block mb-2 font-semibold">Email Address</label>
+                        <input type="text" name="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                             required value="{{ request()->user()->email }}">
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="description" class="block mb-2 font-semibold">Address</label>
-                        <input id="description" rows="1"
+                        <label class="block mb-2 font-semibold">Address</label>
+                        <input name="address" id="address" rows="1"
                             class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
                             required value="{{ $tenant->address }}">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 font-semibold">Deskripsi</label>
-                        <textarea id="description" rows="1"
+                        <textarea id="description" name="description" rows="4"
                             class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="Detective Store is your one-stop destination for all things related to investigation and detective work.">{{ $tenant->description }}</textarea>
                     </div>
                 </div>
+                <div class="flex justify-end pt-5">
+                    <button type="submit"
+                    class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
+                </div>
             </form>
-            <h3 class="text-xl font-semibold mb-4">Change Password</h3>
-            <form action="#" class="border-2 rounded-2xl p-5 mb-8">
+            {{-- <h3 class="text-xl font-semibold mb-4">Change Password</h3> --}}
+            {{-- <form action="" class="border-2 rounded-2xl p-5 mb-8">
                 <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Current Password</label>
@@ -95,9 +100,7 @@
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
                 </div>
-            </form>
-            <button type="button"
-                class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2 self-end">Save</button>
+            </form> --}}
         </div>
     </div>
 @endsection

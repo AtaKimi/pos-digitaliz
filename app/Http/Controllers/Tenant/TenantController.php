@@ -41,8 +41,23 @@ class TenantController extends Controller
         return view('tenant.index', compact('desks', 'orders', 'totalCategory', 'totalProduct'));
     }
 
-    public function setting(Tenant $tenant)
+    public function setting(Request $request, Tenant $tenant, User $user)
     {
         return view('tenant.setting', compact('tenant'));
+    }
+
+    public function updateSetting(Request $request, Tenant $tenant, User $user)
+    {
+        $validated = $request->validate([
+            'name'=>'required|string',
+            'tenant-user'=>'required|string',
+            'phone-number'=>'required|string',
+            'email'=>'required|string',
+            'address'=>'required|string',
+            'description'=>'required|string',
+        ]);
+        $tenant->update($validated);
+        
+        return redirect()->route('tenant-setting', $tenant->id);
     }
 }

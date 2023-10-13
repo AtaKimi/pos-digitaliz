@@ -137,7 +137,7 @@
                 </tbody>
             </table>
 
-            {{ $waiter->links() }}
+            {{ $waiter->links('vendor.pagination.tenant') }}
         </div>
 
     <!-- POPUP HAPUS -->
