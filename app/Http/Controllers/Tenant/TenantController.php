@@ -32,7 +32,7 @@ class TenantController extends Controller
         // }
 
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $orders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(2);
+        $orders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(10);
         $category = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $category->count();
         $totalProduct = Product::whereIn('category_id', $category)->count();
