@@ -33,14 +33,13 @@ class AuthenticatedSessionController extends Controller
 
         $session_testing = session()->put('token', $token);
 
-        //left the error alone if it's error on hasPermissionTo() as it's a function that is form spatie laravel permission
-        // if ($user->hasPermissionTo('waiter-access')) {
-        //     return redirect()->route('waiter-index');
-        // } else  if ($user->hasPermissionTo('admin-access')) {
-        //     return redirect()->route('admin-index');
-        // } else if ($user->hasPermissionTo('waiter-access')) {
-        //     return redirect()->route('waiter-index');
-        // }
+        if ($user->hasPermissionTo('tenant-access')) {
+            return redirect()->route('tenant-index', $user->tenant->id);
+        } else  if ($user->hasPermissionTo('admin-access')) {
+            return redirect()->route('admin-index');
+        } else if ($user->hasPermissionTo('waiter-access')) {
+            return redirect()->route('waiter-index', $user->waiter->tenant->id);
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

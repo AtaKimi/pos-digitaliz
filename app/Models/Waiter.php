@@ -21,6 +21,6 @@ class Waiter extends Model
     }
     public function tenant()
     {
-        return $this->hasOne(Tenant::class);
+        return $this->belongsTo(Tenant::class);
     }
 }
