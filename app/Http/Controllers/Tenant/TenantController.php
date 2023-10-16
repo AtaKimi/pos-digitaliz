@@ -27,6 +27,7 @@ class TenantController extends Controller
         $categories_id = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $categories_id->count();
         $totalProduct = Product::whereIn('category_id', $categories_id)->count();
+        $order_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(3);
 
         // $months = ['Jan' => 0, 'Feb' => 0,'Mar' => 0,'Apr' => 0, 'May' => 0,'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0 , 'Nov' => 0, 'Dec' => 0];
 

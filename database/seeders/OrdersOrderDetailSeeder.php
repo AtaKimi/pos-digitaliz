@@ -15,7 +15,7 @@ class OrdersOrderDetailSeeder extends Seeder
         $statuses = [
             'pending', 'cooking', 'serving', 'done', 'canceled'
         ];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $order = \App\Models\Order::factory()->state(
                 [
                     'is_paid' => fake()->boolean(),
