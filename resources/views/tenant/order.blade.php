@@ -3,10 +3,10 @@
 @section('content')
     {{-- Header --}}
     <div class="pb-4">
-        <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
             <div class="p-4">
                 <div class="flex items-center">
-                    <div class="mr-4 bg-red-50 rounded-xl p-5">
+                    <div class="p-5 mr-4 bg-red-50 rounded-xl">
                         <!-- Icon di sini -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <path
@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <!-- Title di sini -->
-                        <p class="font-bold text-xl text-gray-900">Order</p>
+                        <p class="text-xl font-bold text-gray-900">Order</p>
                         <!-- Subtitle di sini -->
                         <p class="text-gray-600">Akses melihat pesanan pelanggan sesuai nomor meja</p>
                     </div>
@@ -26,9 +26,9 @@
 
         {{-- Table Order Start --}}
         <div class="relative mt-10 overflow-x-auto shadow-md sm:rounded-lg bg-white-50">
-            <div class="grid grid-cols-2 justify-between">
+            <div class="grid justify-between grid-cols-2">
                 <h3 class="p-6 font-bold">Order list</h3>
-                <div class="relative right-4 top-4 w-full">
+                <div class="relative w-full right-4 top-4">
                     <div class="absolute flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 my-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 20 20">
@@ -90,7 +90,4 @@
         {{-- Table Order End --}}
     </div>
     </div>
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
 @endsection

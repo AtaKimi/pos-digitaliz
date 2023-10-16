@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\Enum;
 
 enum ProductStatusEnum:string {
     case in_stock = 'in_stock';
