@@ -62,35 +62,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $row = 0;
-                    while ($row < 8) {
-                        echo "<tr class=\"bg-white-50 border-b hover:bg-gray-50\">";
-                        echo "<th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\"> AF-001 </th>";
-                        echo "<td class=\"px-6 py-4\">Meja 1</td>";
-                        echo "<td class=\"px-6 py-4\">Rp 5.000.000</td>";
-                        echo "<td class=\"px-6 py-4\">";
-                        echo "<button disabled class=\"flex justify-center align-middle bg-[#FFE8BF] w-full py-1 rounded-full\">Pending</button>";
-                        echo '</td>';
-                        echo "<td class=\"px-6 py-4 flex justify-center\">";
-                        echo "<a href=\"#\" class=\"block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2\">";
-                        echo "<svg width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">";
-                        echo "<path d=\"M16.8037 8.49976C16.8037 8.49976 13.8037 2.99976 8.80371 2.99976C3.80371 2.99976 0.803711 8.49976 0.803711 8.49976C0.803711 8.49976 3.80371 13.9998 8.80371 13.9998C13.8037 13.9998 16.8037 8.49976 16.8037 8.49976ZM1.97641 8.49976C2.03334 8.41297 2.09825 8.31653 2.17098 8.21217C2.50587 7.73169 3.00002 7.09266 3.63582 6.45686C4.92474 5.16794 6.68433 3.99976 8.80371 3.99976C10.9231 3.99976 12.6827 5.16794 13.9716 6.45686C14.6074 7.09266 15.1016 7.73169 15.4364 8.21217C15.5092 8.31653 15.5741 8.41297 15.631 8.49976C15.5741 8.58654 15.5092 8.68298 15.4364 8.78734C15.1016 9.26783 14.6074 9.90685 13.9716 10.5427C12.6827 11.8316 10.9231 12.9998 8.80371 12.9998C6.68433 12.9998 4.92474 11.8316 3.63582 10.5427C3.00002 9.90685 2.50587 9.26783 2.17098 8.78734C2.09825 8.68298 2.03334 8.58654 1.97641 8.49976Z\" fill=\"#FDC55E\"/>";
-                        echo "<path d=\"M8.80371 5.99976C7.423 5.99976 6.30371 7.11904 6.30371 8.49976C6.30371 9.88047 7.423 10.9998 8.80371 10.9998C10.1844 10.9998 11.3037 9.88047 11.3037 8.49976C11.3037 7.11904 10.1844 5.99976 8.80371 5.99976ZM5.30371 8.49976C5.30371 6.56676 6.87072 4.99976 8.80371 4.99976C10.7367 4.99976 12.3037 6.56676 12.3037 8.49976C12.3037 10.4328 10.7367 11.9998 8.80371 11.9998C6.87072 11.9998 5.30371 10.4328 5.30371 8.49976Z\" fill=\"#FDC55E\"/>";
-                        echo '</svg>';
-                        echo '</a>';
-                        echo '</td>';
-                        echo '</tr>';
-                        $row += 1;
-                    }
-                    ?>
+                    @forelse ($orders as $order)
+                        <tr class="bg-white-50 border-b hover:bg-gray-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"> {{$order->id}} </th>
+                            <td class="px-6 py-4">{{$order->desk->name}}</td>
+                            <td class="px-6 py-4">Rp. {{$order->total}}</td>
+                            <td class="px-6 py-4">
+                                <button disabled
+                                    class="flex justify-center align-middle bg-[#FFE8BF] w-full py-1 rounded-full">{{$order->status}}</button>
+                            </td>
+                            <td class="px-6 py-4 flex justify-center">
+                                <a href="{{route('tenant-order-show', ['tenant' => $tenant, 'order' => $order])}}"
+                                    class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.8037 8.49976C16.8037 8.49976 13.8037 2.99976 8.80371 2.99976C3.80371 2.99976 0.803711 8.49976 0.803711 8.49976C0.803711 8.49976 3.80371 13.9998 8.80371 13.9998C13.8037 13.9998 16.8037 8.49976 16.8037 8.49976ZM1.97641 8.49976C2.03334 8.41297 2.09825 8.31653 2.17098 8.21217C2.50587 7.73169 3.00002 7.09266 3.63582 6.45686C4.92474 5.16794 6.68433 3.99976 8.80371 3.99976C10.9231 3.99976 12.6827 5.16794 13.9716 6.45686C14.6074 7.09266 15.1016 7.73169 15.4364 8.21217C15.5092 8.31653 15.5741 8.41297 15.631 8.49976C15.5741 8.58654 15.5092 8.68298 15.4364 8.78734C15.1016 9.26783 14.6074 9.90685 13.9716 10.5427C12.6827 11.8316 10.9231 12.9998 8.80371 12.9998C6.68433 12.9998 4.92474 11.8316 3.63582 10.5427C3.00002 9.90685 2.50587 9.26783 2.17098 8.78734C2.09825 8.68298 2.03334 8.58654 1.97641 8.49976Z"
+                                            fill="#FDC55E" />
+                                        <path
+                                            d="M8.80371 5.99976C7.423 5.99976 6.30371 7.11904 6.30371 8.49976C6.30371 9.88047 7.423 10.9998 8.80371 10.9998C10.1844 10.9998 11.3037 9.88047 11.3037 8.49976C11.3037 7.11904 10.1844 5.99976 8.80371 5.99976ZM5.30371 8.49976C5.30371 6.56676 6.87072 4.99976 8.80371 4.99976C10.7367 4.99976 12.3037 6.56676 12.3037 8.49976C12.3037 10.4328 10.7367 11.9998 8.80371 11.9998C6.87072 11.9998 5.30371 10.4328 5.30371 8.49976Z"
+                                            fill="#FDC55E" />
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        </tr>
+                    @empty
+                    @endforelse
                 </tbody>
             </table>
         </div>
         {{-- Table Order End --}}
     </div>
     </div>
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
 @endsection

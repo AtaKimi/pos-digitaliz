@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
 
             Route::controller(TenantOrderController::class)->group(function () {
                 Route::get('{tenant}/order', 'index')->name('tenant-order-index');
-                Route::get('{tenant}/order/detail', 'show')->name('tenant-order-show');
+                Route::get('{tenant}/order/detail/{order}', 'show')->name('tenant-order-show');
             });
 
             Route::controller(TenantProductController::class)->group(function () {
