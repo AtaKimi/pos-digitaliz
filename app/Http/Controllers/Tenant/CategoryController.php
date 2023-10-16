@@ -20,17 +20,10 @@ class CategoryController extends Controller
     public function index(Tenant $tenant)
     {
        // $category1 = Category::all();
-        $categories = Category::where('tenant_id', $tenant->id)->paginate(3);
+       $params = request()->query();
+        $categories = Category::where('tenant_id', $tenant->id)->filter($params)->paginate(3);
         
-        return view('tenant.category', compact('categories', 'tenant'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('tenant.category.index', compact('categories', 'tenant'));
     }
 
     /**
@@ -52,22 +45,6 @@ class CategoryController extends Controller
             ]
         );
         return redirect()->route('tenant-category-index', $tenant->id);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Category $category)
-    {
-        return view('tenant.category', compact('category'));
     }
 
     /**

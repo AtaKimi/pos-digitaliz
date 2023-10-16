@@ -20,7 +20,7 @@ class OrdersOrderDetailSeeder extends Seeder
                 [
                     'is_paid' => fake()->boolean(),
                     'status' => $statuses[fake()->numberBetween(0, 4)],
-                    'created_at' => fake()->dateTimeBetween('-1 week')
+                    'created_at' => fake()->dateTimeBetween('-1 days')
                 ]
             )->create();
 

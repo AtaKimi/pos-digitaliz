@@ -31,12 +31,14 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = \App\Models\Order::factory()->state(
-        [
-            'is_paid' => fake()->boolean(),
-        ]
-    )->create();
-    OrderCreated::dispatch($order);
+    $startDate = now()->startOfWeek();
+    $endDate = now()->endOfWeek();
+
+    $orders = Order::whereBetween('created_at', [$startDate, $endDate])->with('desks')
+        ->selectRaw('DATE(created_at) as date, SUM(total) as total_orders')
+        ->groupBy('date')
+        ->get();
+    dd($orders);
 });
 
 Artisan::command('rholand', function () {

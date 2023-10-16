@@ -19,15 +19,7 @@ class DeskController extends Controller
     public function index(Tenant $tenant)
     {
         $desk = Desk::where('tenant_id', $tenant->id)->paginate(10);
-        return view('tenant.desk', compact('desk', 'tenant'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('tenant.desk.index', compact('desk', 'tenant'));
     }
 
     /**
@@ -41,22 +33,6 @@ class DeskController extends Controller
         $validated['tenant_id'] = $tenant->id;
         $desk = Desk::create($validated);
         return redirect()->route('tenant-desk-index', $tenant->id);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Desk $desk)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Desk $desk)
-    {
-        //
     }
 
     /**

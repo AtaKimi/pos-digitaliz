@@ -22,6 +22,6 @@ class TenantServicePaymentController extends Controller
                     ->orderBy('transfer_at', 'desc')
                     ->paginate(5);
 
-        return view('tenant.service-payment', compact('payment'));
+        return view('tenant.service-payment.index', compact('payment'));
     }
 }
