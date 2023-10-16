@@ -23,7 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('waiter')->group(function() {
         Route::controller(WaiterController::class)->group(function () {
-            Route::put('/update/{waiter}', 'update');
+            Route::post('/update/{waiter}', 'update');
+        });
+    });
+    Route::prefix('product')->group(function() {
+        Route::controller(ProductController::class)->group(function() {
+            Route::post('{{product}}/edit-status', 'editStatus')->name('api-tenant-status-update');
         });
     });
 });

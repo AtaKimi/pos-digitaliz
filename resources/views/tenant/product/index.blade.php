@@ -199,7 +199,7 @@
         }
 
         async function updateStatusProduct(status, product_id, bearerToken) {
-            const response = await fetch(`http://127.0.0.1:8000/api/product/${product_id}/status`, {
+            const response = await fetch(`{{route('api-tenant-status-update', $product->id)}}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -212,6 +212,7 @@
             });
 
             if (response.status === 200) {
+                console.log(response)
                 return true
             } else {
                 return false
@@ -222,7 +223,9 @@
             productStatusInput.addEventListener('change', async function() {
                 if (updateStatusProduct(productStatusInput.value, productStatusInput.getAttribute(
                         'product-id'), token)) {
-                    console.log('success');
+                    productStatusInput.setAttribute("class",
+                        "border bg-gray-200 text-gray-700 font-bold border-gray-300 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5"
+                    );
                     alert('success');
                 } else {
                     console.log('failed');

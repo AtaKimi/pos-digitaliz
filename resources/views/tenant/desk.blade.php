@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="">
-        <div class="flex bg-white justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
+        <div class="flex items-center justify-start w-full gap-4 p-5 mb-8 bg-white rounded-3xl bg-white-50">
             <div class="flex flex-col p-5 bg-red-100 rounded-xl">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="12" viewBox="0 0 36 12" fill="none">
                     <path
@@ -21,20 +21,20 @@
                         fill="#F54748" />
                 </svg>
             </div>
-            <div class="flex flex-col gap-1 justify-center">
+            <div class="flex flex-col justify-center gap-1">
                 <h3 class="text-2xl font-bold">Desk</h3>
                 <p class="text-base">Akses mengedit, menambah atau menghapus nomor meja resto kamu</p>
             </div>
         </div>
 
-        <div class="bg-white w-full rounded-3xl shadow-md mb-8 bg-white-50">
+        <div class="w-full mb-8 bg-white shadow-md rounded-3xl bg-white-50">
             <div class="flex items-center justify-between p-8">
                 <h4 class="text-lg font-semibold">Desk List</h4>
                 <div class="flex gap-4">
                     <form>
                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -42,11 +42,11 @@
                                 </svg>
                             </div>
                             <input type="search" id="default-search"
-                                class="block w-full p-2 pl-10 text-sm text-gray-900  rounded-lg bg-gray-100 border-none py-3"
+                                class="block w-full p-2 py-3 pl-10 text-sm text-gray-900 bg-gray-100 border-none rounded-lg"
                                 placeholder="Search" required>
                         </div>
                     </form>
-                    <button class="flex items-center p-3 bg-red-500 rounded-lg gap-2" data-modal-target="modal-add-category"
+                    <button class="flex items-center gap-2 p-3 bg-red-500 rounded-lg" data-modal-target="modal-add-category"
                         data-modal-toggle="modal-add-category">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -117,9 +117,9 @@
                                     <div class="relative w-full max-w-md max-h-full">
                                         <div
                                             class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                                            <div class="flex justify-between items-center">
+                                            <div class="flex items-center justify-between">
                                                 <div class=""></div>
-                                                <p class="font-bold text-2xl">Edit Meja</p>
+                                                <p class="text-2xl font-bold">Edit Meja</p>
                                                 <p class="text-2xl font-bold cursor-pointer"
                                                     data-modal-target="modal-edit-category-{{ $item->id }}"
                                                     data-modal-toggle="modal-edit-category-{{ $item->id }}">X</p>
@@ -138,9 +138,9 @@
                                                 </div>
                                                 <div class="flex grid-cols-2 gap-3">
                                                     <button
-                                                        class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
+                                                        class="w-full py-2 font-bold rounded-lg hover:border-2 hover:border-black-400">Batalkan</button>
                                                     <button
-                                                        class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
+                                                        class="w-full py-2 font-bold bg-red-500 rounded-lg text-white-50">Konfirmasi</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -164,9 +164,9 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                    <div class="flex justify-between items-center">
+                    <div class="flex items-center justify-between">
                         <div class=""></div>
-                        <p class="font-bold text-2xl">Tambah Meja</p>
+                        <p class="text-2xl font-bold">Tambah Meja</p>
                         <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-add-category"
                             data-modal-toggle="modal-add-category">X</p>
                     </div>
@@ -181,8 +181,8 @@
                         </div>
                         <div class="flex grid-cols-2 gap-3">
                             <button
-                                class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                            <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Konfirmasi</button>
+                                class="w-full py-2 font-bold rounded-lg hover:border-2 hover:border-black-400">Batalkan</button>
+                            <button class="w-full py-2 font-bold bg-red-500 rounded-lg text-white-50">Konfirmasi</button>
                         </div>
                     </form>
                 </div>
@@ -198,9 +198,9 @@
             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-md max-h-full">
                 <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                    <div class="flex justify-between items-center">
+                    <div class="flex items-center justify-between">
                         <div class=""></div>
-                        <p class="font-bold text-2xl">Hapus Meja</p>
+                        <p class="text-2xl font-bold">Hapus Meja</p>
                         <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-delete-category"
                             data-modal-toggle="modal-delete-category">X</p>
                     </div>
@@ -211,18 +211,16 @@
                             d="M47.5 30C47.0358 30.0002 46.5809 30.1297 46.1862 30.3739C45.7914 30.6181 45.4725 30.9673 45.265 31.3825L43.455 35H35C34.337 35 33.7011 35.2634 33.2322 35.7322C32.7634 36.2011 32.5 36.837 32.5 37.5C32.5 38.163 32.7634 38.7989 33.2322 39.2678C33.7011 39.7366 34.337 40 35 40V65C35 66.3261 35.5268 67.5979 36.4645 68.5355C37.4021 69.4732 38.6739 70 40 70H60C61.3261 70 62.5979 69.4732 63.5355 68.5355C64.4732 67.5979 65 66.3261 65 65V40C65.663 40 66.2989 39.7366 66.7678 39.2678C67.2366 38.7989 67.5 38.163 67.5 37.5C67.5 36.837 67.2366 36.2011 66.7678 35.7322C66.2989 35.2634 65.663 35 65 35H56.545L54.735 31.3825C54.5275 30.9673 54.2086 30.6181 53.8138 30.3739C53.4191 30.1297 52.9642 30.0002 52.5 30H47.5ZM42.5 45C42.5 44.337 42.7634 43.7011 43.2322 43.2322C43.7011 42.7634 44.337 42.5 45 42.5C45.663 42.5 46.2989 42.7634 46.7678 43.2322C47.2366 43.7011 47.5 44.337 47.5 45V60C47.5 60.663 47.2366 61.2989 46.7678 61.7678C46.2989 62.2366 45.663 62.5 45 62.5C44.337 62.5 43.7011 62.2366 43.2322 61.7678C42.7634 61.2989 42.5 60.663 42.5 60V45ZM55 42.5C54.337 42.5 53.7011 42.7634 53.2322 43.2322C52.7634 43.7011 52.5 44.337 52.5 45V60C52.5 60.663 52.7634 61.2989 53.2322 61.7678C53.7011 62.2366 54.337 62.5 55 62.5C55.663 62.5 56.2989 62.2366 56.7678 61.7678C57.2366 61.2989 57.5 60.663 57.5 60V45C57.5 44.337 57.2366 43.7011 56.7678 43.2322C56.2989 42.7634 55.663 42.5 55 42.5Z"
                             fill="white" />
                     </svg>
-                    <p class="text-gray-500 text-center">Apakah Anda yakin ingin menghapus meja ini?</p>
+                    <p class="text-center text-gray-500">Apakah Anda yakin ingin menghapus meja ini?</p>
                     <div class="flex grid-cols-2 gap-3">
                         <button
-                            class="py-2 w-full rounded-lg font-bold hover:border-2 hover:border-black-400">Batalkan</button>
-                        <button class="py-2 w-full bg-red-500 text-white-50 rounded-lg font-bold">Hapus</button>
+                            class="w-full py-2 font-bold rounded-lg hover:border-2 hover:border-black-400">Batalkan</button>
+                        <button class="w-full py-2 font-bold bg-red-500 rounded-lg text-white-50">Hapus</button>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
+
 @endsection

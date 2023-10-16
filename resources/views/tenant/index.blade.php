@@ -41,7 +41,7 @@
                         <span class="mr-2 text-xs font-semibold text-black">Total Pendapatan Order</span>
                     </div>
                     <div>
-                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($order_pending->sum('total'), 2, ',', '.') }}
+                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($orders_pending->sum('total'), 2, ',', '.') }}
 
 
                         </p>
@@ -256,7 +256,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($order_pending as $order)
+                    @forelse ($orders_pending as $order)
                         <tr class="border-b bg-white-50 hover:bg-gray-50">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $order->id }}
@@ -291,7 +291,7 @@
 
                 </tbody>
             </table>
-            {{ $order_pending->links('vendor.pagination.tenant')}}
+            {{ $orders_pending->links('vendor.pagination.tenant')}}
         </div>
         {{-- Table Order End --}}
     </div>
