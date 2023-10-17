@@ -18,7 +18,8 @@ class DeskController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $desk = Desk::where('tenant_id', $tenant->id)->paginate(10);
+        $params = request()->query();
+        $desk = Desk::where('tenant_id', $tenant->id)->filterByName($params)->paginate(10);
         return view('tenant.desk.index', compact('desk', 'tenant'));
     }
 

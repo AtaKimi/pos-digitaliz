@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Tenant;
 use App\Models\Waiter;
+use App\traits\HasFilter;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ use Spatie\MediaLibrary\HasMedia;
 
 class User extends Authenticatable implements HasMedia
 {
-    use InteractsWithMedia, HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
+    use InteractsWithMedia, HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasFilter;
 
     /**
      * The attributes that are mass assignable.

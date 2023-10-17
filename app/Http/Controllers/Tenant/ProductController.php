@@ -25,7 +25,7 @@ class ProductController extends Controller
 
         $params = request()->query();
         $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
-        $products = Product::whereIn('category_id', $category_ids)->filter($params)->with('category')
+        $products = Product::whereIn('category_id', $category_ids)->filterByName($params)->with('category')
         ->get();
         return view('tenant.product.index', compact('products', 'tenant'));
     }

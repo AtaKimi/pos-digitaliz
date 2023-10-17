@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
        // $category1 = Category::all();
        $params = request()->query();
-        $categories = Category::where('tenant_id', $tenant->id)->filter($params)->paginate(3);
+        $categories = Category::where('tenant_id', $tenant->id)->filterByName($params)->paginate(3);
         
         return view('tenant.category.index', compact('categories', 'tenant'));
     }

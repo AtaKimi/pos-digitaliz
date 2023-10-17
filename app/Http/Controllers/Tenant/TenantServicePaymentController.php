@@ -18,10 +18,12 @@ class TenantServicePaymentController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $payment = TenantServicePayment::where('tenant_id', $tenant->id)
-                    ->orderBy('transfer_at', 'desc')
-                    ->paginate(5);
+        $params = request()->query();
+        $payments = TenantServicePayment::where('tenant_id', $tenant->id)
+            ->filterById($params)
+            ->orderBy('transfer_at', 'desc')
+            ->paginate(5);
 
-        return view('tenant.service-payment.index', compact('payment'));
+        return view('tenant.service-payment.index', compact('payments'));
     }
 }

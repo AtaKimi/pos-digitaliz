@@ -2,10 +2,10 @@
 
 @section('content')
     {{-- Header --}}
-    <div class="rounded-2xl overflow-hidden shadow-lg bg-white-50 mb-5">
+    <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
         <div class="p-4">
             <div class="flex items-center">
-                <div class="mr-4 bg-red-50 rounded-xl p-5">
+                <div class="p-5 mr-4 bg-red-50 rounded-xl">
                     <!-- Icon di sini -->
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -21,7 +21,7 @@
                 </div>
                 <div>
                     <!-- Title di sini -->
-                    <p class="font-bold text-xl text-gray-900">Service Payment</p>
+                    <p class="text-xl font-bold text-gray-900">Service Payment</p>
                     <!-- Subtitle di sini -->
                     <p class="text-gray-600">Akses melihat tagihan pembayaran anda kepada pusat</p>
                 </div>
@@ -30,25 +30,11 @@
     </div>
 
     {{-- Tabel --}}
-    <div class="bg-white w-full rounded-3xl shadow-md mb-8 bg-white-50">
+    <div class="w-full mb-8 bg-white shadow-md rounded-3xl bg-white-50">
         <div class="flex items-center justify-between p-8">
             <h4 class="text-lg font-semibold">Daftar Tagihan</h4>
             <div class="flex gap-4">
-                <form>
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="search" id="default-search"
-                            class="block w-full p-2 pl-10 text-sm text-gray-900  rounded-lg bg-gray-100 border-none py-3"
-                            placeholder="Search" required>
-                    </div>
-                </form>
+                <x-filter/>
             </div>
         </div>
 
@@ -57,7 +43,7 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            No
+                            ID
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
@@ -85,54 +71,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($payment as $item)
+                    @forelse ($payments as $payment)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ ($payment->currentPage() - 1) * $payment->perPage() + $loop->index + 1 }}
+                                {{ $payment->id }}
                             </th>
                             <td class="px-6 py-4">
-                               {{ \Carbon\Carbon::parse($item->transfer_at)->format('d-m-Y') }}
+                               {{ \Carbon\Carbon::parse($payment->transfer_at)->format('d-m-Y') }}
                             </td>
                             <td class="px-6 py-4">
-                                Rp {{ number_format($item->total, 2, ',', '.') }}
+                                Rp {{ number_format($payment->total, 2, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
                                  <div class="flex items-center">
-                                    <div class="w-11 h-12" data-modal-target="modal-transaction-{{ $item->id }}"
-                                        data-modal-toggle="modal-transaction-{{ $item->id }}">
-                                        <img src="{{ $item->getFirstMediaUrl('buktiTf') }}" alt="">
+                                    <div class="h-12 w-11" data-modal-target="modal-transaction-{{ $payment->id }}"
+                                        data-modal-toggle="modal-transaction-{{ $payment->id }}">
+                                        <img src="{{ $payment->getFirstMediaUrl('buktiTf') }}" alt="">
                                     </div>
                                 </div>
                             </td>
                         </tr>
 
                         {{-- MODAL PAYMENT --}}
-                        <div id="modal-transaction-{{ $item->id }}" tabindex="-1"
+                        <div id="modal-transaction-{{ $payment->id }}" tabindex="-1"
                             class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative w-full max-w-md max-h-full">
                                 <div
                                     class="flex flex-col relative bg-white-50 rounded-lg shadow p-10 w-[500px] h-[500px]">
-                                    <div class="flex justify-between mb-8 items-center">
+                                    <div class="flex items-center justify-between mb-8">
                                         <div class=""></div>
-                                        <p class="font-bold text-2xl">Bukti Transfer</p>
-                                        <p class="text-2xl font-bold" data-modal-target="modal-transaction-{{ $item->id }}"
-                                            data-modal-toggle="modal-transaction-{{ $item->id }}">X</p>
+                                        <p class="text-2xl font-bold">Bukti Transfer</p>
+                                        <p class="text-2xl font-bold" data-modal-target="modal-transaction-{{ $payment->id }}"
+                                            data-modal-toggle="modal-transaction-{{ $payment->id }}">X</p>
                                     </div>
-                                    <div class="self-cewnte w-full h-full">
-                                        <img src="{{ $item->getFirstMediaUrl('buktiTf') }}" alt="">
+                                    <div class="w-full h-full self-cewnte">
+                                        <img src="{{ $payment->getFirstMediaUrl('buktiTf') }}" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @empty
                         <tr>
-                            <td colspan="55" class="text-center py-5">tidak ada data</td>
+                            <td colspan="55" class="py-5 text-center">tidak ada data</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
 
-            {{ $payment->links('vendor.pagination.tenant') }}
+            {{ $payments->links('vendor.pagination.tenant') }}
         </div>
     </div>
 @endsection

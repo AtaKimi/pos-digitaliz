@@ -26,20 +26,9 @@
 
         {{-- Table Order Start --}}
         <div class="relative mt-10 overflow-x-auto shadow-md sm:rounded-lg bg-white-50">
-            <div class="grid justify-between grid-cols-2">
+            <div class="flex items-center justify-between px-4">
                 <h3 class="p-6 font-bold">Order list</h3>
-                <div class="relative w-full right-4 top-4">
-                    <div class="absolute flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 my-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                    <input type="text" id="simple-search"
-                        class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
-                        placeholder="Search" required>
-                </div>
+                <x-filter />
             </div>
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -63,16 +52,17 @@
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
-                        <tr class="bg-white-50 border-b hover:bg-gray-50">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"> {{$order->id}} </th>
-                            <td class="px-6 py-4">{{$order->desk->name}}</td>
-                            <td class="px-6 py-4">Rp. {{$order->total}}</td>
+                        <tr class="border-b bg-white-50 hover:bg-gray-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ $order->id }} </th>
+                            <td class="px-6 py-4">{{ $order->desk->name }}</td>
+                            <td class="px-6 py-4">Rp. {{ $order->total }}</td>
                             <td class="px-6 py-4">
                                 <button disabled
-                                    class="flex justify-center align-middle bg-[#FFE8BF] w-full py-1 rounded-full">{{$order->status}}</button>
+                                    class="flex justify-center align-middle bg-[#FFE8BF] w-full py-1 rounded-full">{{ $order->status }}</button>
                             </td>
-                            <td class="px-6 py-4 flex justify-center">
-                                <a href="{{route('tenant-order-show', ['tenant' => $tenant, 'order' => $order])}}"
+                            <td class="flex justify-center px-6 py-4">
+                                <a href="{{ route('tenant-order-show', ['tenant' => $tenant, 'order' => $order]) }}"
                                     class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">
                                     <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -91,6 +81,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $orders->links('pagination::tenant') }}
         </div>
         {{-- Table Order End --}}
     </div>

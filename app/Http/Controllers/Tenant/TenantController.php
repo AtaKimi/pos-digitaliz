@@ -56,7 +56,7 @@ class TenantController extends Controller
         $startDate = now()->startOfWeek();
         $endDate = now()->endOfWeek();
 
-        $orders = Order::whereBetween('created_at', [$startDate, $endDate])->with('desk')
+        $orders = Order::whereIn('desk_id', $desks)->whereBetween('created_at', [$startDate, $endDate])->with('desk')
             ->selectRaw('DATE(created_at) as date, SUM(total) as total_orders')
             ->groupBy('date')
             ->get();
@@ -65,7 +65,6 @@ class TenantController extends Controller
         $orderData = $orders->pluck('total_orders', 'date')->all();
 
         // total product by category
-
         $categories = Category::where('tenant_id', $tenant->id)->with('products')->get();
         $categories_name = $categories->pluck('name');
         $totalProducts = [];
