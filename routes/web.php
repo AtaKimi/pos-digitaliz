@@ -135,6 +135,10 @@ Route::prefix('customer')->group(function () {
 });
 
 
+// Route::get('/test', function () {
+//     broadcast(new \App\Events\ProductCreated());
+// })->name('test');
+
 
 
 
