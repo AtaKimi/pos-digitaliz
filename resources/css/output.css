@@ -2881,6 +2881,10 @@ html {
   fill: #6B7280;
 }
 
+.fill-gray-900{
+  fill: #111827;
+}
+
 .fill-white-50{
   fill: #F9F9F9;
 }
@@ -2933,6 +2937,10 @@ html {
   padding: 2rem;
 }
 
+.p-7{
+  padding: 1.75rem;
+}
+
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -2946,11 +2954,6 @@ html {
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.px-2\.5{
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
 }
 
 .px-3{
@@ -3058,10 +3061,6 @@ html {
   padding-bottom: 8px;
 }
 
-.pb-0{
-  padding-bottom: 0px;
-}
-
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -3138,10 +3137,6 @@ html {
   padding-inline-start: 3rem;
 }
 
-.pt-0{
-  padding-top: 0px;
-}
-
 .pt-1{
   padding-top: 0.25rem;
 }
@@ -3176,6 +3171,10 @@ html {
 
 .pt-8{
   padding-top: 2rem;
+}
+
+.pl-5{
+  padding-left: 1.25rem;
 }
 
 .text-left{
@@ -4556,10 +4555,6 @@ html {
     padding-bottom: 0.75rem;
   }
 
-  .md\:pb-0{
-    padding-bottom: 0px;
-  }
-
   .md\:pb-10{
     padding-bottom: 2.5rem;
   }
@@ -4570,10 +4565,6 @@ html {
 
   .md\:ps-20{
     padding-inline-start: 5rem;
-  }
-
-  .md\:pt-0{
-    padding-top: 0px;
   }
 
   .md\:pt-32{

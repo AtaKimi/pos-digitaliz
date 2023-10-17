@@ -1,34 +1,32 @@
 @extends('layouts.tenant')
 
 @section('content')
-    {{-- Header --}}
-    <div class="pb-4">
-        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
-            <div class="p-4">
-                <div class="flex items-center">
-                    <div class="p-5 mr-4 bg-red-50 rounded-xl">
-                        <!-- Icon di sini -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                            <path
-                                d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
-                                fill="#F54748" />
-                        </svg>
-                    </div>
-                    <div>
-                        <!-- Title di sini -->
-                        <p class="text-xl font-bold text-gray-900">Product</p>
-                        <!-- Subtitle di sini -->
-                        <p class="text-gray-600">Akses mengedit, menambah atau menghapus menu resto kamu</p>
-                    </div>
+        {{-- Header --}}
+        <x-card>
+            <div class="flex items-center">
+                <div class="p-5 mr-4 bg-red-50 rounded-xl">
+                    <!-- Icon di sini -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"
+                        fill="none">
+                        <path
+                            d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
+                            fill="#F54748" />
+                    </svg>
+                </div>
+                <div>
+                    <!-- Title di sini -->
+                    <p class="text-xl font-bold text-gray-900">Product</p>
+                    <!-- Subtitle di sini -->
+                    <p class="text-gray-600">Akses mengedit, menambah atau menghapus menu resto kamu</p>
                 </div>
             </div>
-        </div>
+        </x-card>
 
         <div class="pt-3 pb-4 bg-white-50 rounded-2xl ms-3">
             <div class="flex items-center justify-between p-8">
                 <h4 class="text-lg font-semibold">Product List</h4>
                 <div class="flex gap-4">
-                    <x-filter/>
+                    <x-filter />
                     <button class="flex items-center gap-2 p-2 border-2 rounded-lg" data-modal-target="modal-add-category"
                         data-modal-toggle="modal-add-category">
                         <svg width="25" height="26" viewBox="0 0 25 26" fill="none"

@@ -35,7 +35,7 @@ Artisan::command('inspire', function () {
 Artisan::command('zaidan', function () {
     $waiter_ids = Waiter::where('tenant_id', 1)->pluck('user_id');
     $users = User::whereIn('id', $waiter_ids)->with('waiter')->get();
-    dd($waiter_ids);
+    dd($users[0]['name']);
 });
 
 Artisan::command('rholand', function () {
