@@ -64,7 +64,7 @@ class UserSeeder extends Seeder
         // user id 15 is tenant
         \App\Models\User::factory()->create(
             [
-                'name' => 'tenant',
+                'name' => 'waiter',
                 'email' => 'waiter@example.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password

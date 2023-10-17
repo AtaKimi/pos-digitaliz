@@ -153,7 +153,7 @@
                 return value
               }
             },
-            categories: @json($categories),
+            categories: @json($categories_name),
             axisTicks: {
               show: false,
             },

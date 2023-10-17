@@ -2,18 +2,20 @@
 
 <?php
 
-use App\Events\OrderCreated;
-use App\Http\Resources\Tenant\ProductResource;
-use App\Listeners\SendOrderCreatedNontification;
 use App\Models\Desk;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Tenant;
+use App\Models\Waiter;
 use App\Models\Product;
 use App\Models\Category;
+use App\Events\OrderCreated;
+use Illuminate\Support\Carbon;
 use App\Models\TenantServicePayment;
 use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Resources\Tenant\ProductResource;
+use App\Listeners\SendOrderCreatedNontification;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +33,9 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = \App\Models\Order::factory()->state(
-        [
-            'is_paid' => fake()->boolean(),
-        ]
-    )->create();
-    OrderCreated::dispatch($order);
+    $waiter_ids = Waiter::where('tenant_id', 1)->pluck('user_id');
+    $users = User::whereIn('id', $waiter_ids)->with('waiter')->get();
+    dd($waiter_ids);
 });
 
 Artisan::command('rholand', function () {
