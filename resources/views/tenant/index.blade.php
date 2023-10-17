@@ -41,7 +41,7 @@
                         <span class="mr-2 text-xs font-semibold text-black">Total Pendapatan Order</span>
                     </div>
                     <div>
-                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($order_pending->sum('total'), 2, ',', '.') }}
+                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($order_done, 2, ',', '.') }}
 
 
                         </p>
@@ -232,7 +232,7 @@
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="table-search"
+                        <input type="search" id="table-search"
                             class="block p-2 pl-10 text-sm text-gray-900 placeholder-gray-400 bg-gray-100 border-none rounded-lg focus:ring-0 w-80 "
                             placeholder="Search">
                     </div>
@@ -265,7 +265,7 @@
                                 {{ $order->desk->name }}
                             </td>
                             <td class="px-6 py-4">
-                                Rp.{{ number_format($order->total, 2, ',', '.') }}
+                                Rp.{{ number_format($order->total, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"

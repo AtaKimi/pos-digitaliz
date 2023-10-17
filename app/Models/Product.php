@@ -12,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Product extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, SoftDeletes;
-    protected $fillable = 
+    protected $fillable =
     [
         'name',
         'price',
@@ -21,6 +21,7 @@ class Product extends Model implements HasMedia
         'category_id',
         'tenant_id',
     ];
+
 
     public function modelable(): MorphTo
     {

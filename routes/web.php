@@ -121,10 +121,10 @@ Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
     });
 });
 
-Route::prefix('customer')->group(function () {
+Route::prefix('/customer/{tenant}')->group(function () {
     Route::controller(CustomerCustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
-        Route::get('/menu', 'menu')->name('customer-menu');
+        Route::get('/product-list', 'product')->name('customer-product');
     });
 
     Route::prefix('cart')->group(function () {

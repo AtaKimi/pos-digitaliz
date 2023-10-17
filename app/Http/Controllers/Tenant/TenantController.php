@@ -29,7 +29,9 @@ class TenantController extends Controller
     {
 
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $order_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(2);
+        $order_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(3);
+        $order_done = Order::whereIn('desk_id', $desks)->where('status', 'done')->sum('total');
+        // dd($order_done);
         $category = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $category->count();
         $totalProduct = Product::whereIn('category_id', $category)->count();
@@ -62,7 +64,8 @@ class TenantController extends Controller
         $startDate = now()->startOfWeek();
         $endDate = now()->endOfWeek();
 
-        $orders = Order::whereBetween('created_at', [$startDate, $endDate])
+        $orders = Order::whereIn('desk_id', $desks)
+            ->whereBetween('created_at', [$startDate, $endDate])
             ->selectRaw('DATE(created_at) as date, SUM(total) as total_orders')
             ->groupBy('date')
             ->get();
@@ -83,7 +86,7 @@ class TenantController extends Controller
         }
 
 
-        return view('tenant.index', compact('categories', 'totalProducts','desks', 'orderData', 'order_pending', 'totalCategory', 'totalProduct'));
+        return view('tenant.index', compact('order_done','categories', 'totalProducts','desks', 'orderData', 'order_pending', 'totalCategory', 'totalProduct'));
     }
 
     public function setting(Request $request, Tenant $tenant, User $user)
@@ -102,7 +105,7 @@ class TenantController extends Controller
             'description'=>'required|string',
         ]);
         $tenant->update($validated);
-        
+
         return redirect()->route('tenant-setting', $tenant->id);
     }
 }
