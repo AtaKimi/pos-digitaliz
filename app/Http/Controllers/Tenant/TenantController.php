@@ -23,7 +23,7 @@ class TenantController extends Controller
     public function index(Tenant $tenant)
     {
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $orders_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(10);
+        $lastTenOrders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->with('desk')->latest()->limit(10)->get();
         
         $categories_id = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $categories_id->count();
@@ -73,7 +73,7 @@ class TenantController extends Controller
             $totalProducts[] = $category->products->count();
         }
 
-        return view('tenant.index', compact('categories_name', 'totalProducts', 'desks', 'orderData', 'orders_pending', 'totalCategory', 'totalProduct'));
+        return view('tenant.index', compact('categories_name', 'totalProducts', 'desks', 'orderData', 'lastTenOrders', 'totalCategory', 'totalProduct'));
     }
 
     public function setting(Request $request, Tenant $tenant, User $user)

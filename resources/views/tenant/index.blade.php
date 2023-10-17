@@ -39,7 +39,7 @@
                 </div>
                 <div>
                     <p class="text-2xl font-bold text-gray-900 pl-3">
-                        Rp.{{ number_format($orders_pending->sum('total'), 2, ',', '.') }}
+                        Rp.{{ number_format($lastTenOrders->sum('total'), 2, ',', '.') }}
                     </p>
                     {{-- <div class="flex items-center gap-1">
                         <span>
@@ -107,7 +107,7 @@
                                 fill="white" />
                         </svg>
                     </span>
-                    <span class="text-xs font-semibold text-black">All Category</span>
+                    <span class= "font-medium text-black">All Category</span>
                 </div>
                 <div>
                     <p class="text-xl font-bold text-gray-900 pl-3">{{ $totalCategory }} Categories</p>
@@ -163,35 +163,6 @@
                         <dt class="pb-1 text-sm font-normal text-gray-500">Statistik</dt>
                         <dd class="text-xl font-bold leading-none text-gray-900">Total Product by Category</dd>
                     </dl>
-                    <div>
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="totalTenantFilter"
-                            data-dropdown-placement="bottom" type="button"
-                            class="inline-flex items-center px-3 py-2 text-xs text-gray-500 bg-gray-100 rounded-full focus:outline-none hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
-                            Weekly
-                            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <div id="totalTenantFilter"
-                            class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white-50 w-44">
-                            <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Weekly"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Weekly</button>
-                                </li>
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Monthly"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Monthly</button>
-                                </li>
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Annually"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Annually</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
 
                 <div id="bar-chart" class="px-3"></div>
@@ -205,7 +176,7 @@
             <h2 class="text-sm font-normal text-gray-500">Table Orders</h2>
             <h1 class="text-2xl font-bold mb-2">Last 10 Orders</h1>
             <hr class="mb-5">
-            <x-table :items="$orders_pending">
+            <x-table>
                 <x-slot:header>
                     <th scope="col" class="px-6 py-3">
                         UID
@@ -221,7 +192,7 @@
                     </th>
                 </x-slot:header>
 
-                @forelse ($orders_pending as $order)
+                @forelse ($lastTenOrders as $order)
                     <tr class="border-b bg-white-50 hover:bg-gray-50">
                         <th scope="row" class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
                             {{ $order->id }}
@@ -253,7 +224,6 @@
                     </tr>
                 @endforelse
             </x-table>
-            {{ $orders_pending->links('vendor.pagination.tenant') }}
         </x-card>
         {{-- Table Order End --}}
     </div>
