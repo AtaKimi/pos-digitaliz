@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Events\ProductCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -58,6 +59,7 @@ class ProductController extends Controller
         $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
             $fileAdder->toMediaCollection('default');
         });
+        event(new ProductCreated($product));
 
         return redirect()->route('tenant-product-index', $tenant);
     }

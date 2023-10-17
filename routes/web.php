@@ -158,7 +158,6 @@ Route::prefix('customer')->group(function () {
 
 
 
-
 // Routes for tenant
 // Route::controller(TenantController::class)->group(function () {
 //     Route::get('/tenant', 'index')->name('tenant-index');
