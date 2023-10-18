@@ -7,8 +7,8 @@
     </head>
 
     <body class="bg-slate-200">
-        <div class="w-[375px] bg-white-50 mx-auto flex flex-col">
-            <div class="h-[179px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover bg-bottom">
+        <div class="w-[375px] bg-white-50 mx-auto flex flex-col h-screen">
+            <div class="h-[300px] bg-[url('/public/assets/img/bg-layout.png')] bg-cover mb-5">
                 <nav class="flex justify-between pt-8">
                     <div>
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
@@ -73,7 +73,10 @@
                     </div>
                 </nav>
             </div>
-            @yield('content')
+            <div class="overflow-y-scroll">
+                @yield('content')
+            </div>
+
         </div>
 
         @yield('file-footer')

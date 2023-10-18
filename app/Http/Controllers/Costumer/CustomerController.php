@@ -29,6 +29,8 @@ class CustomerController extends Controller
         $desk_id = $request->get('desk');
         $desk = Desk::findOrFail($desk_id);
 
+        
+
         if ($desk->tenant_id == $tenant_id) {
             $tenant = Tenant::findOrFail($tenant_id);
             $categories = Category::where('tenant_id', $tenant->id)
@@ -38,12 +40,14 @@ class CustomerController extends Controller
             }])
             ->get();
 
+
             // $categories = Category::where('tenant_id', $tenant->id)->pluck('id');
             // $products = Product::whereIn('category_id', $categories)->get();
             return view('customer.menu', compact('categories', 'tenant'));
         } else {
             return redirect()->back();
         }
+
 
 
 
