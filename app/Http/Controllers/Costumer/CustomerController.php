@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $desk_id = $request->get('desk');
         $desk = Desk::findOrFail($desk_id);
 
-        
+
 
         if ($desk->tenant_id == $tenant_id) {
             $tenant = Tenant::findOrFail($tenant_id);
