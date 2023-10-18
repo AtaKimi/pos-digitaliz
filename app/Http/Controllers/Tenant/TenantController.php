@@ -49,6 +49,7 @@ class TenantController extends Controller
     public function updateSetting(Request $request, Tenant $tenant, User $user)
     {
         $validated = $request->validate([
+            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
             'name'=>'required|string',
             'tenant-user'=>'required|string',
             'phone-number'=>'required|string',
@@ -56,8 +57,28 @@ class TenantController extends Controller
             'address'=>'required|string',
             'description'=>'required|string',
         ]);
+        
+        if($request->hasFile('image')){
+            $tenant->clearMediaCollection('default');
+            $tenant->addMediaFromRequest('image')->toMediaCollection('default');
+        };
         $tenant->update($validated);
         
         return redirect()->route('tenant-setting', $tenant->id);
+    }
+
+    public function updateProfilePhoto(Request $request, Tenant $tenant)
+    {
+        $validate = $request->validate([
+            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+        ]);
+
+        if($request->hasFile('image')){
+            $tenant->clearMediaCollection('default');
+        };
+
+        $tenant->addMediaFromRequest('image')->toMediaCollection('default');
+
+        return back()->with('message', 'success');
     }
 }
