@@ -97,6 +97,12 @@
 @endsection
 @section('title')
     {{ $tenant->name }}
+    <livewire:total :total="0" >
+
+    </livewire:total>
+
+
+
 @endsection
 @section('content')
     {{-- Search & Navbar --}}
@@ -146,67 +152,68 @@
     {{-- END OF Search & Navbar --}}
 
     {{-- Product List by category --}}
-    <livewire:customer-total-order :categories="$categories" :total />
+    <div id="menulist" class="pb-5">
+        @forelse ($categories as $category)
+            {{-- Product --}}
+            <div id="{{ $category->name }}" class="flex flex-col gap-y-3 mb-3">
+                <h3 class="p-3 mx-3">{{ $category->name }}</h3>
+                @forelse($category->products as $product)
+                    <div class="shadow-card rounded-[12px] flex items-center justify-between p-3 mx-3">
+                        <div id="open-modal-btn-{{ $product->id }}" class=" flex items-center gap-x-[16px]">
+                            <img class="min-w-[74px] h-[74px] rounded-[12px]"
+                                src="{{ $product->getFirstMediaUrl('default') }}" alt="Makanan" />
+                            <div class="flex flex-col justify-between w-full">
+                                <p class="text-[14px] text-[#2E2E2E] font-[500px]">{{ $product->name }}</p>
+                                <p class="text-[12px] text-grey-600 mb-[12px]">
+                                    {{ Str::limit($product->description, 20, '...') }}</p>
+                                <p class="text-yellow-500 font-[700]">Rp{{ number_format($product->price, 0, ',', '.') }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="buttons-{{ $product->id }}" class="relative flex justify-evenly w-[61.5px] h-[27px]">
+                            <button id="tambah-btn-{{ $product->id }}"
+                                class="absolute w-fit h-fit px-[12px] py-[6px] text-[10px] bg-[#FDC55E] text-[#FFF] rounded-[6px]">Tambah</button>
+                            <button id="plus-btn-{{ $product->id }}"
+                                class="absolute items-center justify-center w-1/3 h-full py-[6px] -right-2 bg-[#FDC55E] text-[#FFF] rounded-[6px] hidden">+</button>
+                            <p id="count-{{ $product->id }}" class="absolute hidden text-[#FDC55E]">0</p>
+                            <button id="minus-btn-{{ $product->id }}"
+                                class="absolute items-center justify-center w-1/3 h-full py-[6px] -left-2 bg-[#FDC55E] text-[#FFF] rounded-[6px] hidden">-
+                            </button>
+                        </div>
+                    </div>
+                    {{-- Modal --}}
+                    @include('customer.modal')
+
+
+
+                @empty
+                @endforelse
+            </div>
+        @empty
+        @endforelse
+        {{-- END OF Menu List --}}
+        <div id="order-summary" style="background-image: url('{{ asset('assets/img/order-detail.png') }}');"
+            class="fixed transform transition translate-y-[200px] mx-1 duration-500 justify-between items-center bottom-9 z-40 w-[345px] px-8 py-2 rounded-full place-self-center text-white-50 bg-red-500 hidden">
+            <div>
+                <p class="inline text-[14px] m-0" id="total-items">0</p>
+                <p class="inline text-[14px] m-0">Items</p>
+                <p class="text-[18px] font-[700] -mt-1">Total</p>
+            </div>
+            <div class="flex gap-x-2 text-xl font-[700]">
+                <p id="total-price">Rp.0</p>
+                <img src={{ URL('assets/img/solar_bag-2-bold.png') }}>
+            </div>
+        </div>
+
+    </div>
+
 @endsection
 
 @section('file-footer')
+    @stack('script')
     <script>
-        // MODAL LOGIC
-        function openModal(productId) {
-            const modal = document.getElementById(`modal-${productId}`);
-            const overlay = document.getElementById(`overlay-${productId}`);
-
-            modal.classList.remove("hidden");
-            setTimeout(() => {
-                modal.classList.remove("translate-y-[100%]");
-                modal.classList.add("translate-y-0")
-            }, 100);
-
-            overlay.classList.remove("hidden");
-        }
-
-        function closeModal(productId) {
-            const modal = document.getElementById(`modal-${productId}`);
-            const overlay = document.getElementById(`overlay-${productId}`);
-
-            modal.classList.remove("translate-y-0");
-            modal.classList.add("translate-y-[100%]");
-            setTimeout(() => {
-                modal.classList.add("hidden");
-                overlay.classList.add("hidden");
-            }, 300);
-        }
-
-        // Ambil semua tombol untuk membuka modal
-        const openModalBtns = document.querySelectorAll("[id^='open-modal-btn-']");
-        // Tambahkan event listener untuk setiap tombol
-        openModalBtns.forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const productId = btn.id.split('-').pop(); // Dapatkan ID produk dari ID tombol
-                openModal(productId);
-            });
-        });
-
-        // Ambil semua tombol untuk menutup modal
-        const closeModalBtns = document.querySelectorAll("[id^='close-modal-btn-']");
-        // Tambahkan event listener untuk setiap tombol
-        closeModalBtns.forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const productId = btn.id.split('-').pop(); // Dapatkan ID produk dari ID tombol
-                closeModal(productId);
-            });
-        });
-
-        // Ambil semua elemen overlay
-        const overlays = document.querySelectorAll("[id^='overlay-']");
-        // Tambahkan event listener untuk setiap elemen overlay
-        overlays.forEach((overlay) => {
-            overlay.addEventListener("click", () => {
-                const productId = overlay.id.split('-').pop(); // Dapatkan ID produk dari ID elemen overlay
-                closeModal(productId);
-            });
-        });
-
+        // BUTTON LOGIC
         const categories = @json($categories);
         const totalItemsElement = document.getElementById('total-items');
         const totalPriceElement = document.getElementById('total-price');
@@ -222,6 +229,25 @@
                 const count = document.getElementById('count-' + product.id);
 
                 const updateVisibility = () => {
+                    const totalItems = getTotalItems();
+
+                    if (totalItems < 1) {
+                        orderSummary.classList.add('translate-y-[200px]');
+                        orderSummary.classList.remove('translate-y-0');
+                        setTimeout(() => {
+                            orderSummary.classList.add('hidden');
+                            orderSummary.classList.remove('flex');
+                        }, 300);
+                    } else {
+                        orderSummary.classList.remove('hidden');
+                        orderSummary.classList.add('flex');
+                        setTimeout(() => {
+                            orderSummary.classList.add('translate-y-0');
+                            orderSummary.classList.remove('translate-y-[200px]');
+                        }, 100);
+
+                    }
+
                     if (parseInt(count.textContent) < 1) {
                         buttons[0].classList.remove('fade-out');
                         buttons[0].classList.add('fade-in');
@@ -231,6 +257,7 @@
                         buttons[1].classList.add('hidden');
                         buttons[2].classList.add('hidden');
                         count.classList.add('hidden');
+
                     } else if (parseInt(count.textContent) > 0) {
                         buttons[0].classList.add('hidden');
                         buttons[1].classList.add('flex');
@@ -245,19 +272,63 @@
                 document.getElementById('tambah-btn-' + product.id).addEventListener('click', () => {
                     buttons[0].classList.add('fade-out');
                     ++count.innerText;
+                    updateTotalPrice(product.price); // Update total price
                     setTimeout(() => {
                         updateVisibility();
                         buttons[1].classList.add('fade-in');
                         buttons[2].classList.add('fade-in');
                     }, 500);
                 });
+
+                // WHEN THE '+' BUTTON CLICKED
+                document.getElementById('plus-btn-' + product.id).addEventListener('click', () => {
+                    ++count.innerText;
+                    updateTotalPrice(product.price); // Update total price
+                    updateVisibility();
+                });
+
+                // WHEN THE '-' BUTTON CLICKED
+                document.getElementById('minus-btn-' + product.id).addEventListener('click', () => {
+                    --count.innerText;
+                    updateTotalPrice(product.price); // Update total price
+                    setTimeout(() => {
+                        updateVisibility();
+                    }, 500);
+                });
             });
         });
 
         function getTotalItems() {
-            const totalItems = document.getElementById('total-items').text;
-            console.log(totalItems)
+            let totalItems = 0;
+
+            categories.forEach(category => {
+                category.products.forEach(product => {
+                    const count = document.getElementById('count-' + product.id);
+                    totalItems += parseInt(count.textContent);
+                });
+            });
+
             return totalItems;
+        }
+
+        // Function to update total price
+        function updateTotalPrice(productPrice) {
+            totalPrice = 0;
+
+            categories.forEach(category => {
+                category.products.forEach(product => {
+                    const count = document.getElementById('count-' + product.id);
+                    totalPrice += parseInt(count.textContent) * product.price;
+                });
+            });
+
+            totalItemsElement.textContent = getTotalItems();
+            totalPriceElement.textContent = formatCurrency(totalPrice);
+        }
+
+        // Function to format currency (customize as needed)
+        function formatCurrency(amount) {
+            return 'Rp.' + amount.toLocaleString('id-ID');
         }
     </script>
 @endsection
