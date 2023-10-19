@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\OrderStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('desk_id')->constrained('desks');
-            $table->enum('status', ['pending', 'cooking', 'serving', 'done', 'canceled'])->default('pending');
+            $table->enum('status', OrderStatus::getValues())->default(OrderStatus::PENDING);
             $table->integer('total')->default(0);
             $table->boolean('is_paid')->default(false);
             $table->softDeletes();

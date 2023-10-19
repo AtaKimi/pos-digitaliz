@@ -9,6 +9,7 @@ use App\Models\Tenant;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class TenantController extends Controller
@@ -24,47 +25,29 @@ class TenantController extends Controller
     {
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
         $lastTenOrders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->with('desk')->latest()->limit(10)->get();
-        
+
         $categories_id = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $categories_id->count();
         $totalProduct = Product::whereIn('category_id', $categories_id)->count();
-        // $months = ['Jan' => 0, 'Feb' => 0,'Mar' => 0,'Apr' => 0, 'May' => 0,'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0 , 'Nov' => 0, 'Dec' => 0];
 
-        // for this year groupby months
-        // for($i = 1; $i <= 12; $i++) {
-        //     $months[$i] = Order::where('created_at', 'like', '2023-'.sprintf('%02d', $i).'%')->get();
-        // }
-        // dd($months);
-        // $monthlyData = Order::where('created_at', 'like', '2023-10%')
-        //     ->get();
-
-        // dd($monthlyData);
-
-        // for this month groupby weeks
-        // $startDate = Carbon::now()->startOfMonth(); // Mengambil tanggal awal bulan ini
-        // $endDate = Carbon::now()->endOfMonth(); // Mengambil tanggal akhir bulan ini
-
-        // $orders = Order::whereBetween('created_at', [$startDate, $endDate])
-        //     ->get()
-        //     ->groupBy(function ($date) {
-        //         return Carbon::parse($date->created_at)->format('W');
-        //     });
-
-        // dd($orders);
-
-        // for this week groupby days
+        $params = request()->query();
         $startDate = now()->startOfWeek();
         $endDate = now()->endOfWeek();
+        $formatDate = 'd';
+        if (@$params['totalBy']) {
+            if ($params['totalBy'] == 'monthly') {
+                $startDate = now()->startOfYear();
+                $endDate = now()->endOfYear();
+                $formatDate = 'm';
+            } else if ($params['totalBy'] == 'yearly') {
+                $startDate = now()->startOfDecade();
+                $endDate = now()->endOfDecade();
+                $formatDate = 'y';
+            }
+        } 
 
-        $orders = Order::whereIn('desk_id', $desks)->whereBetween('created_at', [$startDate, $endDate])->with('desk')
-            ->selectRaw('DATE(created_at) as date, SUM(total) as total_orders')
-            ->groupBy('date')
-            ->get();
+        $orderData = $this->chartTotalOrderRevenue($desks,$formatDate, $startDate, $endDate, true);
 
-        // Membuat array untuk menyimpan data order per hari
-        $orderData = $orders->pluck('total_orders', 'date')->all();
-
-        // total product by category
         $categories = Category::where('tenant_id', $tenant->id)->with('products')->get();
         $categories_name = $categories->pluck('name');
         $totalProducts = [];
@@ -94,5 +77,25 @@ class TenantController extends Controller
         $tenant->update($validated);
 
         return redirect()->route('tenant-setting', $tenant->id);
+    }
+
+    private function chartTotalOrderRevenue(
+        $desks,
+        $groupBy = "w",
+        $startDate,
+        $endDate,
+        $sort = false
+    ) {
+        $orders = Order::whereIn('desk_id', $desks)->whereBetween('created_at', [$startDate, $endDate])
+            ->get()
+            ->groupBy(function ($date) use ($groupBy) {
+                return Carbon::parse($date->created_at)->format($groupBy);
+            });
+        $orders_sum = [];
+        foreach ($orders as $key => $order) {
+            $orders_sum[$key] = $order->sum('total');
+        }
+        ksort($orders_sum);
+        return $orders_sum;
     }
 }

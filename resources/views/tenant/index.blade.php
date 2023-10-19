@@ -117,42 +117,34 @@
 
 
         {{-- Chart Start --}}
-        <div class="flex flex-wrap gap-10 lg:flex-nowrap">
-            <x-card class="w-full">
+        <div class="flex flex-wrap items-center gap-10 lg:flex-nowrap">
+            <x-card class="w-full h-fit">
                 <div class="flex justify-between items-center">
                     <dl>
-                        <dt class="pb-1 text-sm font-normal text-gray-500">Statistik</dt>
+                        <dt class="pb-1 text-sm font-normal text-gray-500">Statistik </dt>
                         <dd class="text-xl font-bold leading-none text-gray-900">Total Pendapatan Order</dd>
                     </dl>
-                    <div>
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="totalTenantFilter"
-                            data-dropdown-placement="bottom" type="button"
-                            class="inline-flex items-center px-3 py-2 text-xs text-gray-500 bg-gray-100 rounded-full focus:outline-none hover:bg-gray-200 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-200">
-                            Weekly
-                            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <div id="totalTenantFilter"
-                            class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white-50 w-44">
-                            <ul class="py-2 text-xs text-gray-500" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Weekly"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Weekly</button>
-                                </li>
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Monthly"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Monthly</button>
-                                </li>
-                                <li>
-                                    <button type="submit" name="totalTenantFilter" value="Annually"
-                                        class="block w-full px-4 py-2 hover:bg-gray-100 text-start">Annually</button>
-                                </li>
-                            </ul>
+                    <form method="get">
+                        <div>
+                            <select id="countries" onchange="this.closest('form').submit()" name="totalBy"
+                                class="bg-grey-100 px-5 border-none text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block py-1.5">
+                                {{-- <option value="weekly" @if (request()->query()['totalBy'] == 'weekly') selected  @endif>Weekly</option>
+                                <option value="monthly" @if (request()->query()['totalBy'] == 'monthly') selected  @endif>Monthly</option>
+                                <option value="yearly" @if (request()->query()['totalBy'] == 'yearly') selected @endif>Yearly</option> --}}
+                                @isset(request()->query()['totalBy'])
+                                    <option value="weekly" @if (request()->query()['totalBy'] == 'weekly') selected @endif>Weekly</option>
+                                    <option value="monthly" @if (request()->query()['totalBy'] == 'monthly') selected @endif>Monthly</option>
+                                    <option value="yearly" @if (request()->query()['totalBy'] == 'yearly') selected @endif>Yearly</option>
+                                @else
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="yearly">Yearly</option>
+                                @endisset
+
+                            </select>
+
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div id="labels-chart"></div>
             </x-card>

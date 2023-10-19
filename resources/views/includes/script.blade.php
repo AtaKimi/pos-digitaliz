@@ -1,14 +1,15 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     //Total pendapatan Order Chart
+
     window.addEventListener("load", function() {
         let options = {
             // set the labels option to true to show the labels on the X and Y axis
             xaxis: {
                 show: true,
                 categories: [
-                    @foreach (array_keys($orderData) as $date)
-                        '{{ \Carbon\Carbon::parse($date)->format('d M') }}',
+                    @foreach (array_keys($orderData) as $key)
+                        {{ $key }},
                     @endforeach
                 ],
                 labels: {
@@ -38,7 +39,11 @@
             },
             series: [{
                 name: "",
-                data: @json(array_values($orderData)),
+                data: [
+                    @foreach ($orderData as $order)
+                        {{ $order }},
+                    @endforeach
+                ],
                 color: "#1A56DB",
             }, ],
             chart: {
