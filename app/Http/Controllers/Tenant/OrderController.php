@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\Enums\OrderStatus;
-use App\Http\Controllers\Controller;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:viewAny,tenant');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index(Tenant $tenant)
     {
+        if (!Gate::allows('viewAny', $tenant)) {
+            abort(403);
+        }
+
         $params = request()->query();
 
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
@@ -32,11 +33,19 @@ class OrderController extends Controller
      */
     public function show(Tenant $tenant, Order $order)
     {
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
         return view('tenant.order.show', compact('order', 'tenant'));
     }
 
     public function nextStatus(Tenant $tenant, Order $order)
     {
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
         $order_status = intval($order->status);
         if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
             return back()->with('message', 'failed');
@@ -47,6 +56,10 @@ class OrderController extends Controller
 
     public function cancel(Tenant $tenant, Order $order)
     {
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
         $order_status = intval($order->status);
         if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
             return back()->with('message', 'failed');

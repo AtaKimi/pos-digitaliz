@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Events\OrderCreated;
 use App\Listeners\SendOrderCreatedNontification;
+use App\Models\Order;
+use App\Observers\OrderObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,7 +33,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Order::observe(OrderObserver::class);
     }
 
     /**

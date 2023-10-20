@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('desk_id')->constrained('desks');
+            $table->string('code')->unique()->nullable();
             $table->enum('status', OrderStatus::getValues())->default(OrderStatus::PENDING);
             $table->integer('total')->default(0);
             $table->boolean('is_paid')->default(false);

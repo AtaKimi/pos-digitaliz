@@ -37,8 +37,8 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = Order::find(1);
-    dd(OrderStatus::getValues());
+    $tenant = Tenant::find(2);
+    dd($tenant->taxes->first());
 });
 
 Artisan::command('rholand', function () {

@@ -13,9 +13,9 @@ class OrderPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function viewAny(User $user, Tenant $tenant): Response
+    public function viewAny(User $user, Order $order): Response
     {
-        return $user->id === $tenant->user_id
+        return $user->id === $order->desk->tenant->user->id
             ? Response::allow('success', 201)
             : Response::deny();;
     }

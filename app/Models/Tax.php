@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tax extends Model
@@ -17,13 +18,13 @@ class Tax extends Model
         'percentage',
     ];
 
-    public function order(): MorphOne
+    public function order(): MorphTo
     {
-        return $this->morphOne(Order::class, 'modelable');
+        return $this->morphTo(Order::class, 'taxable');
     }
 
-    public function tenant()
+    public function tenant(): MorphTo
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->morphTo(Order::class, 'taxable');
     }
 }

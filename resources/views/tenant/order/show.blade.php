@@ -157,7 +157,8 @@
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.00036 0L9.9338 7.12081H0.0669165L5.00036 0Z" fill="#835F1D" />
                         </svg>
-                        <div class="py-1 px-8 rounded-2xl
+                        <div
+                            class="py-1 px-8 rounded-2xl
                         @if (intval($order->status) > App\Enums\OrderStatus::SERVING) bg-green-400 text-green-900
                         @else
                         bg-grey-200 text-grey-700 @endif">
@@ -217,11 +218,11 @@
             </div>
         </div>
         <div class="flex gap-5 justify-end">
-            <form action="{{route('tenant-order-cancel', [$tenant->id, $order->id])}}" method="post">
+            <form action="{{ route('tenant-order-cancel', [$tenant->id, $order->id]) }}" method="post">
                 @csrf
                 @method('PUT')
                 <button
-                    class="flex bg-red-500 py-3 px-4 rounded-xl items-center @if ($order->status == App\Enums\OrderStatus::CANCELED) hidden @endif">
+                    class="flex bg-red-500 py-3 px-4 rounded-xl items-center @if ($order->status == App\Enums\OrderStatus::CANCELED || $order->status >= App\Enums\OrderStatus::SERVING) hidden @endif">
                     <p class="text-sm  text-white-50 mr-2">Cancel</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="fill-white-50" viewBox="0 0 16 16">
@@ -230,12 +231,12 @@
                     </svg>
                 </button>
             </form>
-            <form action="{{route('tenant-order-next-status', [$tenant->id, $order->id])}}" method="post">
+            <form action="{{ route('tenant-order-next-status', [$tenant->id, $order->id]) }}" method="post">
                 @csrf
                 @method('PUT')
                 <button
                     class="flex  py-3 px-4 rounded-xl items-center 
-                @if ($order->status == App\Enums\OrderStatus::CANCELED) bg-grey-200 text-grey-700
+                @if ($order->status == App\Enums\OrderStatus::CANCELED || $order->status == App\Enums\OrderStatus::DONE) bg-grey-200 text-grey-700 
                 @else
                     border border-red-500 text-red-500 @endif">
                     <p class="text-sm font-medium  mr-2">Next Status</p>
@@ -261,16 +262,22 @@
                 </div>
             </div>
             <div class="text-end">
-                <p class="text-xs text-gray-600">UUID</p>
-                <h1 class="text-lg font-bold mb-14">#AF-001</h1>
-                <p class="text-sm text-gray-700">Issued On</p>
-                <p class="text-sm font-semibold mb-4">December 7, 2022</p>
-                <p class="text-sm text-gray-700">Payment due</p>
-                <p class="text-sm font-semibold">December 22, 2022</p>
+                <div class="mb-14">
+                    <p class="text-xs text-gray-600">UUID</p>
+                    <h1 class="text-lg font-bold ">{{ $order->code }}</h1>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-700">Issued On</p>
+                    <p class="text-sm font-semibold mb-4">{{ $order->created_at->format('F d, Y') }}</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-700">Last Updated</p>
+                    <p class="text-sm font-semibold mb-4">{{ $order->updated_at->format('F d, Y') }}</p>
+                </div>
             </div>
         </div>
         <div class="flex justify-between items-center mb-5">
-            <h1 class="font-bold text-lg">Services</h1>
+            <h1 class="font-bold text-lg">Items</h1>
             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
                 class="flex bg-yellow-500 py-3 px-4 rounded-xl items-center">
                 <p class="text-sm  text-white-50 mr-2">Cetak Struck</p>
@@ -282,133 +289,85 @@
             </button>
         </div>
 
-        <div class="relative overflow-x-auto ">
-            <table class="w-full text-sm text-left text-gray-700">
-                <thead class="text-sm text-gray-700 uppercase bg-gray-50 font-bold border-black border-b">
-                    <tr>
-                        <th scope="col" class="px-10 py-6 w-full">
-                            Nama
-                        </th>
-                        <th scope="col" class="px-10 py-6">
-                            Qty
-                        </th>
-                        <th scope="col" class="px-10 py-6">
-                            Harga
-                        </th>
-                        <th scope="col" class="px-10 py-6">
-                            Total
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b font-semibold">
-                        <td class="px-6 py-6">
-                            Nasi Padang
-                        </td>
-                        <td class="px-6 py-6">
-                            1
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b font-semibold">
-                        <td class="px-6 py-6">
-                            Nasi Padang
-                        </td>
-                        <td class="px-6 py-6">
-                            1
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b font-semibold">
-                        <td class="px-6 py-6">
-                            Nasi Padang
-                        </td>
-                        <td class="px-6 py-6">
-                            1
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                    </tr>
-                    <tr class=" font-semibold">
-                        <td class="px-6 py-6">
-                            Nasi Padang
-                        </td>
-                        <td class="px-6 py-6">
-                            1
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                        <td class="px-6 py-6">
-                            Rp.20.000.00
-                        </td>
-                    </tr>
-                    <tr class=" font-semibold">
-                        <td class="px-6 py-4" colspan="2">
+        <x-table>
+            <x-slot:header>
+                <th scope="col" class="px-10 py-6 ">
+                    Nama
+                </th>
+                <th scope="col" class="px-10 py-6">
+                    Qty
+                </th>
+                <th scope="col" class="px-10 py-6">
+                    Harga
+                </th>
+                <th scope="col" class="px-10 py-6">
+                    Total
+                </th>
+            </x-slot:header>
+            @forelse ($order->orderDetail as $detail)
+                <tr class="border-b font-semibold">
+                    <td class="px-6 py-6 text-start">
+                        {{ $detail->product->name }}
+                    </td>
+                    <td class="px-6 py-6">
+                        {{ $detail->quantity }}
+                    </td>
+                    <td class="px-6 py-6">
+                        {{ $detail->product->price }}
+                    </td>
+                    <td class="px-6 py-6">
+                        Rp. {{ number_format($detail->price, 2)}}
+                    </td>
+                </tr>
+            @empty
+            @endforelse
+            <tr class=" font-semibold">
+                <td class="px-6 py-4" colspan="2">
 
-                        </td>
-                        <td class="px-6 py-4">
-                            Subtotal
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp.80.000.00
-                        </td>
-                    </tr>
-                    <tr class=" font-semibold">
-                        <td class="px-6 py-4" colspan="2">
+                </td>
+                <td class="px-6 py-4 border-b">
+                    Subtotal
+                </td>
+                <td class="px-6 py-4 border-b">
+                    Rp. {{ number_format($order->getSubTotal(), 2)}}
+                </td>
+            </tr>
+            @if ($order->tax != null)
+                <tr class=" font-semibold">
+                    <td class="px-6 py-4" colspan="2">
 
-                        </td>
-                        <td class="px-6 py-4">
-                            Tax (10%)
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp.8.000.00
-                        </td>
-                    </tr>
-                    <tr class=" font-semibold">
-                        <td class="px-6 py-4" colspan="2">
+                    </td>
+                    <td class="px-6 py-4 border-b">
+                        Tax ({{$order->tax->percentage}}%) 
+                    </td>
+                    <td class="px-6 py-4 border-b">
+                        Rp. {{ number_format($order->tax->tax_total, 2)}}
+                    </td>
+                </tr>
+            @endif
+            <tr class=" font-semibold">
+                <td class="px-6 py-4" colspan="2">
 
-                        </td>
-                        <td class="px-6 py-4">
-                            Service Change
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp.8.000.00
-                        </td>
-                    </tr>
-                    <tr class=" font-semibold">
-                        <td class="px-6 py-4" colspan="2">
+                </td>
+                <td class="px-6 py-4 border-b">
+                    Service Change
+                </td>
+                <td class="px-6 py-4 border-b">
+                    Rp. {{ number_format($order->getService()->price, 2)}}
+                </td>
+            </tr>
+            <tr class=" font-semibold">
+                <td class="px-6 py-4" colspan="2">
 
-                        </td>
-                        <td class="px-6 py-4 bg-gray-300 rounded-s-full">
-                            Total
-                        </td>
-                        <td class="px-6 py-4  bg-gray-300 rounded-e-full">
-                            Rp.96.000.00
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="flex justify-end">
-                <div class="">
-
-                </div>
-            </div>
-        </div>
+                </td>
+                <td class="px-6 py-4 border-b font-extrabold">
+                    TOTAL
+                </td>
+                <td class="px-6 py-4 border-b font-extrabold">
+                    Rp. {{ number_format($order->total, 2)}}
+                </td>
+            </tr>
+        </x-table>
     </x-card>
 
     <!-- Main modal -->
