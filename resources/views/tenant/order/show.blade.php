@@ -1,7 +1,7 @@
 @extends('layouts.tenant')
 
 @section('content')
-    <x-card>
+    <x-card class="mb-5">
         <div class="flex items-center">
             <div class="mr-4 bg-red-100 rounded-xl p-4">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="#F54748" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
         </div>
     </x-card>
 
-    <x-card>
+    <x-card class="mb-5">
         <h1 class="text-lg font-bold mb-6">Progress status order</h1>
         <div class="relative mb-24">
             <div class="absolute -top-3 w-full">

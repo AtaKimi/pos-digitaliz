@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Header --}}
-    <x-card>
+    <x-card class="mb-5">
         <div class="flex items-center">
             <div class="p-5 mr-4 bg-red-50 rounded-xl">
                 <!-- Icon di sini -->

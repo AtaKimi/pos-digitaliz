@@ -3,7 +3,7 @@
 @section('content')
     <div class="pb-10">
         {{-- Header --}}
-        <x-card>
+        <x-card class="mb-5">
             <div class="flex items-center">
                 <div class="p-5 mr-4 bg-red-50 rounded-xl">
                     <!-- Icon di sini -->
@@ -25,7 +25,7 @@
         {{-- card --}}
         <div class="flex flex-col gap-5 md:flex-row">
             {{-- card 1 --}}
-            <x-card class="w-full flex flex-col gap-6">
+            <x-card class="w-full flex flex-col gap-6 mb-5">
                 <div class="flex items-center gap-5 p-1 rounded-full bg-yellow-50 w-full">
                     <div class="p-3 bg-yellow-400 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 19"
@@ -58,7 +58,7 @@
             </x-card>
 
             {{-- card 2 --}}
-            <x-card class="w-full flex flex-col gap-6">
+            <x-card class="w-full flex flex-col gap-6 mb-5">
                 <div class="flex items-center gap-5 p-1 rounded-full bg-green-200 w-full">
                     <span class="p-3 bg-green-400 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 22"
@@ -88,7 +88,7 @@
             </x-card>
 
             {{-- card 3 --}}
-            <x-card class="w-full flex flex-col gap-6">
+            <x-card class="w-full flex flex-col gap-6 mb-5">
                 <div class="flex items-center gap-5 p-1 rounded-full bg-red-50 w-full">
                     <span class="p-3 bg-red-400 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20"
@@ -118,7 +118,7 @@
 
         {{-- Chart Start --}}
         <div class="flex flex-wrap items-center gap-10 lg:flex-nowrap">
-            <x-card class="w-full h-fit">
+            <x-card class="w-full h-fit mb-5">
                 <div class="flex justify-between items-center">
                     <dl>
                         <dt class="pb-1 text-sm font-normal text-gray-500">Statistik </dt>
@@ -149,7 +149,7 @@
                 <div id="labels-chart"></div>
             </x-card>
 
-            <x-card class="w-full">
+            <x-card class="w-full mb-5">
                 <div class="flex items-center justify-between pb-3 border-b border-gray-200">
                     <dl>
                         <dt class="pb-1 text-sm font-normal text-gray-500">Statistik</dt>
@@ -164,9 +164,7 @@
         {{-- Chart End --}}
 
         {{-- Table Order Start --}}
-        <x-card>
-            <h2 class="text-sm font-normal text-gray-500">Table Orders</h2>
-            <h1 class="text-2xl font-bold mb-2">Last 10 Orders</h1>
+        <x-card class="mb-5">
             <hr class="mb-5">
             <x-table>
                 <x-slot:header>

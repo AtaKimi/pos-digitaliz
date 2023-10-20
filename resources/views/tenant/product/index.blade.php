@@ -2,7 +2,7 @@
 
 @section('content')
         {{-- Header --}}
-        <x-card>
+        <x-card class="mb-5">
             <div class="flex items-center">
                 <div class="p-5 mr-4 bg-red-50 rounded-xl">
                     <!-- Icon di sini -->
@@ -22,9 +22,12 @@
             </div>
         </x-card>
 
-        <div class="pt-3 pb-4 bg-white-50 rounded-2xl ms-3">
-            <div class="flex items-center justify-between p-8">
-                <h4 class="text-lg font-semibold">Product List</h4>
+        <x-card >
+            <div class="flex items-center justify-between mb-5">
+                <x-table.table-title> 
+                    <x-slot:sub_title> Show yours products </x-slot:sub_title>
+                    <x-slot:title> Products Items </x-slot:title>
+                </x-table.table-title>
                 <div class="flex gap-4">
                     <x-filter />
                     <button class="flex items-center gap-2 p-2 border-2 rounded-lg" data-modal-target="modal-add-category"
@@ -56,18 +59,17 @@
                 </div>
             </div>
 
-            {{-- card 1 --}}
             <div class="products-container">
-                <div class="flex-wrap gap-3 px-4 sm:flex">
+                <div class="flex-wrap gap-3 sm:flex">
                     @foreach ($products as $product)
-                        <div class="flex grow flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
+                        <x-card class="grow rounded-none w-[550px] border-b odd:border-r">
                             <form action="{{ route('tenant-product-update-status', [$tenant->id, $product->id]) }}"
-                                method="POST", id="status-form-{{ $product->id }}">
+                                method="POST", id="status-form-{{ $product->id }}" class="flex flex-col gap-5">
                                 @csrf
                                 @method('PUT')
-                                <div class="flex p-6 gap-x-6 ">
+                                <div class="flex gap-x-6">
                                     <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg"
-                                        alt="" class="w-[130px] h-[130px] rounded-lg">
+                                        alt="" class="w-[130px] h-[130px] rounded-lg mb-4">
                                     <div class="text-gray-500 grow">
                                         <div class="flex justify-between mb-2">
                                             <p class="text-2xl font-bold text-black">{{ $product->name }}</p>
@@ -101,16 +103,10 @@
                                             {{ $product->description }}</p>
                                     </div>
                                 </div>
-                                <div class="flex justify-center mb-2">
-                                    <svg width="445" height="2" viewBox="0 0 445 2" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1H444" stroke="#F1F1F1" stroke-width="2" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-
-                                <div class="flex flex-row justify-between px-5 pb-5">
+                                
+                                <div class="flex flex-row items-center justify-between gap-2 px-5">
                                     <a href="{{ route('tenant-product-edit', [$tenant->id, $product->id]) }}"
-                                        class="w-full justify-center text-warning-500 hover:bg-warning-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
+                                        class="w-full justify-center text-warning-500 border border-yellow-500 hover:bg-warning-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                                         <svg width="15" height="14" class="me-3" viewBox="0 0 15 14"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -125,12 +121,9 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <svg width="3" height="30" viewBox="0 0 3 30" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.5 1V29" stroke="#F1F1F1" stroke-width="100" stroke-linecap="round" />
-                                    </svg>
+                                    <div class="h-8 border"></div>
                                     <button type="button" onclick="putProductId({{ $product->id }})"
-                                        class="w-full justify-center text-danger-500 hover:bg-danger-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+                                        class="w-full justify-center text-danger-500 border border-red-500 hover:bg-danger-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
                                         data-modal-target="modal-delete-category" data-modal-toggle="modal-delete-category">
                                         <svg width="15" height="14" class="me-3" viewBox="0 0 15 14"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +135,7 @@
                                     </button>
                                 </div>
                             </form>
-                        </div>
+                        </x-card>
                     @endforeach
                 </div>
             </div>
@@ -178,7 +171,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </x-card>
     </div>
 @endsection
 
