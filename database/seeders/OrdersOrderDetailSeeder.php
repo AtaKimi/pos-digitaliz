@@ -15,11 +15,12 @@ class OrdersOrderDetailSeeder extends Seeder
         $statuses = [
             'pending', 'cooking', 'serving', 'done', 'canceled'
         ];
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $order = \App\Models\Order::factory()->state(
                 [
                     'is_paid' => fake()->boolean(),
                     'status' => $statuses[fake()->numberBetween(0, 4)],
+                    'created_at' => fake()->dateTimeBetween('-1 days')
                 ]
             )->create();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TenantServicePayment;
 
 class TenantServicePaymentController extends Controller
 {
@@ -17,6 +18,12 @@ class TenantServicePaymentController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.service-payment');
+        $params = request()->query();
+        $payments = TenantServicePayment::where('tenant_id', $tenant->id)
+            ->filterById($params)
+            ->orderBy('transfer_at', 'desc')
+            ->paginate(5);
+
+        return view('tenant.service-payment.index', compact('payments'));
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex flex-col gap-4">
-        <div class="flex justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
+        <div class="flex items-center justify-start w-full gap-4 p-5 mb-8 rounded-3xl bg-white-50">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="80" height="80" rx="16" fill="#FFEDED" />
                 <path
@@ -13,7 +13,7 @@
                     fill="#F54748" />
             </svg>
 
-            <div class="flex flex-col gap-1 justify-center">
+            <div class="flex flex-col justify-center gap-1">
                 <h3 class="text-2xl font-bold">Settings</h3>
                 <p class="text-base">Akses mengatur profile kamu</p>
             </div>
@@ -28,7 +28,7 @@
                         @csrf
                     <h4 class="text-2xl">Anya Forger</h4>
                     <label for="dropzone-file"
-                        class="flex flex-col items-center justify-center w-full border-2 border-red-500 rounded-lg cursor-pointer p-2">
+                        class="flex flex-col items-center justify-center w-full p-2 border-2 border-red-500 rounded-lg cursor-pointer">
                         <div class="flex flex-col items-center justify-center">
                             <p class="text-sm text-red-500"><span class="font-semibold">Upload new photo</p>
                         </div>
@@ -83,8 +83,8 @@
                     class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
                 </div>
             </form>
-            {{-- <h3 class="text-xl font-semibold mb-4">Change Password</h3> --}}
-            {{-- <form action="" class="border-2 rounded-2xl p-5 mb-8">
+            {{-- <h3 class="mb-4 text-xl font-semibold">Change Password</h3> --}}
+            {{-- <form action="" class="p-5 mb-8 border-2 rounded-2xl">
                 <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                     <div class="w-full">
                         <label for="brand" class="block mb-2 font-semibold">Current Password</label>

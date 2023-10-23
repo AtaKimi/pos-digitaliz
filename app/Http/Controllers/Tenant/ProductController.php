@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Events\ProductCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -22,8 +23,11 @@ class ProductController extends Controller
      */
     public function index(Tenant $tenant)
     {
+
+        $params = request()->query();
         $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
-        $products = Product::whereIn('category_id', $category_ids)->get();
+        $products = Product::whereIn('category_id', $category_ids)->filterByName($params)->with('category')
+        ->get();
         return view('tenant.product.index', compact('products', 'tenant'));
     }
 
@@ -55,6 +59,7 @@ class ProductController extends Controller
         $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
             $fileAdder->toMediaCollection('default');
         });
+        event(new ProductCreated($product));
 
         return redirect()->route('tenant-product-index', $tenant);
     }
@@ -132,5 +137,15 @@ class ProductController extends Controller
         $product->clearMediaCollection('default');
         $product->delete();
         return redirect()->route('tenant-product-index', $tenant);
+    }
+
+    public function updateStatus(Tenant $tenant, Product $product)
+    {
+        $validated = request()->validate([
+            'status' => 'in:in_stock,soldout,disabled',
+        ]);
+
+        $product->update($validated);
+        return back()->with('message', 'success');
     }
 }

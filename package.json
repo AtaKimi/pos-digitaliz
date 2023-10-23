@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
-        "apexcharts": "^3.42.0"
+        "apexcharts": "^3.42.0",
+        "laravel-mix": "^6.0.49"
     }
 }

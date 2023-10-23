@@ -19,8 +19,40 @@
             scrollbar-width: none;
             /* Firefox */
         }
+
+        /* BUTTON ANIMATION */
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease-in-out;
+            /* Adjust the duration and timing function as needed */
+        }
+
+        /* END OF BUTTON ANIMATION */
     </style>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -66,6 +98,7 @@
 
     {{-- Menu List --}}
     <div id="menulist" class="px-5 pb-5">
+        {{-- Makanan --}}
         <div class="flex flex-col gap-y-3 mb-3">
             <h3 class="p-3">Makanan</h3>
             <div class="shadow-card rounded-[12px] flex items-center justify-between p-3">
@@ -79,8 +112,16 @@
                         <p class="text-yellow-500 font-[700]">Rp. 32.500</p>
                     </div>
                 </div>
-                <button
-                    class="w-fit h-fit px-[12px] py-[6px] text-[10px] bg-[#FDC55E] text-[#FFF] rounded-[6px]">Tambah</button>
+                <div id="buttons" class="relative flex justify-evenly w-[61.5px] h-[27px]">
+                    <button
+                        class="absolute w-fit h-fit px-[12px] py-[6px] text-[10px] bg-[#FDC55E] text-[#FFF] rounded-[6px]">Tambah</button>
+                    <button
+                        class="absolute items-center justify-center w-1/3 h-full py-[6px] -right-2 bg-[#FDC55E] text-[#FFF] rounded-[6px] hidden">+</button>
+                    <p id="count" class="absolute hidden text-[#FDC55E]">0</p>
+                    <button
+                        class="absolute items-center justify-center w-1/3 h-full py-[6px] -left-2 bg-[#FDC55E] text-[#FFF] rounded-[6px] hidden">-</button>
+                </div>
+
             </div>
             <div class="shadow-card rounded-[12px] flex items-center gap-x-[16px] p-3">
                 <img class="min-w-[74px] h-[74px] rounded-[12px]"
@@ -112,6 +153,7 @@
             </div>
         </div>
 
+        {{-- Minuman --}}
         <div class="flex flex-col gap-y-3">
             <h3 class="p-3">Minuman</h3>
             <div class="shadow-card rounded-[12px] flex items-center gap-x-[16px] p-3">
@@ -146,7 +188,7 @@
     </div>
     {{-- END OF Menu List --}}
 
-    {{-- MODAL --}}
+    {{-- Modal --}}
     <div id="overlay" class="fixed inset-0 bg-black-400 opacity-50 z-40 hidden"></div>
     <div id="close-modal-btn" class="fixed inset-0 bg-black-400 opacity-50 z-41 hidden"></div>
 
@@ -199,6 +241,25 @@
             </div>
 
             {{-- RED BUTTON --}}
-            <button class="bg-red-500 text-white-50 rounded-full py-2 w-full text-center">Tambah Pesanan</button>
+            <button class="bg-red-500 text-white-50 rounded-full py-2 w-full text-center" style="background-image: url('{{ asset('assets/img/add-desc.png') }}');">Tambah Pesanan</button>
         </div>
-    @endsection
+    </div>
+    {{-- END OF Modal --}}
+
+    {{-- Order Detail --}}
+
+    <div id="order-detail" style="background-image: url('{{ asset('assets/img/order-detail.png') }}');"
+        class="fixed transform transition translate-y-[200px] duration-500 justify-between items-center bottom-9 z-40 w-[345px] px-8 py-2 rounded-full place-self-center text-white-50 bg-red-500 hidden">
+        <div>
+            <p class="inline text-[14px] m-0">1</p>
+            <p class="inline text-[14px] m-0">Item</p>
+            <p class="text-[18px] font-[700] -mt-1">Total</p>
+        </div>
+        <div class="flex gap-x-2 text-xl font-[700]">
+            <p>Rp32.500</p>
+            <img src={{ URL('assets/img/solar_bag-2-bold.png') }}>
+        </div>
+    </div>
+
+    {{-- END OF Order Detail --}}
+@endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
+use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
@@ -17,7 +18,11 @@ class OrderController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        return view('tenant.order');
+        $params = request()->query();
+
+        $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
+        $orders = Order::whereIn('desk_id', $desks)->filterById($params)->with('desk')->latest()->paginate(10);
+        return view('tenant.order', compact('orders', 'tenant'));
     }
 
     /**
@@ -39,9 +44,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tenant $tenant)
+    public function show(Tenant $tenant, Order $order)
     {
-        return view('tenant.order-detail');
+        $order = Order::findOrFail($order->id);
+        return view('tenant.order-detail', compact('order'));
     }
 
     /**

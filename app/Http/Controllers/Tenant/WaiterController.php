@@ -20,32 +20,33 @@ class WaiterController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(2);
-
-        $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(10);
+        $params = request()->query();
+        $waiter_ids = Waiter::where('tenant_id', 1)->pluck('user_id');
+        $users = User::whereIn('id', $waiter_ids)->filterByName($params)->with('waiter')->paginate(1);
         // Paginator::useAdminPagination();
 
-        return view('tenant.waiter', compact('waiter', 'tenant'));
+        return view('tenant.waiter.index', compact('users', 'tenant'));
     }
 
     public function update(Request $request, Tenant $tenant)
     {
-            $waiterId = $request->input('id');
-            $isActive = $request->input('is_active');
+        $waiterId = $request->input('id');
+        $isActive = $request->input('is_active');
 
-            $waiter = Waiter::findOrFail($waiterId);
+        $waiter = Waiter::findOrFail($waiterId);
 
-            if (!$waiter) {
-                return response()->json(['failed' => false, 'message' => 'waiter$waiter not found']);
-            }
+        if (!$waiter) {
+            return response()->json(['failed' => false, 'message' => 'waiter$waiter not found']);
+        }
 
-            $waiter->is_active = $isActive;
-            $waiter->save();
+        $waiter->is_active = $isActive;
+        $waiter->save();
 
-            return response()->json(['success' => true, 'message' => 'Tenant status updated successfully']);
+        return response()->json(['success' => true, 'message' => 'Tenant status updated successfully']);
     }
 
-    public function store(Tenant $tenant) {
+    public function store(Tenant $tenant)
+    {
         $validate = request()->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -64,5 +65,4 @@ class WaiterController extends Controller
 
         return redirect()->route('tenant-waiter-index', $tenant->id)->with('message', 'Sukses menambahkan waiter');
     }
-
 }
