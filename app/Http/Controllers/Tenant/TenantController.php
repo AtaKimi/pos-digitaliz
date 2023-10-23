@@ -23,11 +23,13 @@ class TenantController extends Controller
     public function index(Tenant $tenant)
     {
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $orders_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(10);
-        
-        $categories_id = Category::where('tenant_id', $tenant->id)->pluck('id');
-        $totalCategory = $categories_id->count();
-        $totalProduct = Product::whereIn('category_id', $categories_id)->count();
+        $order_pending = Order::whereIn('desk_id', $desks)->where('status', 'pending')->latest()->paginate(3);
+        $order_done = Order::whereIn('desk_id', $desks)->where('status', 'done')->sum('total');
+        // dd($order_done);
+        $category = Category::where('tenant_id', $tenant->id)->pluck('id');
+        $totalCategory = $category->count();
+        $totalProduct = Product::whereIn('category_id', $category)->count();
+
         // $months = ['Jan' => 0, 'Feb' => 0,'Mar' => 0,'Apr' => 0, 'May' => 0,'Jun' => 0, 'Jul' => 0, 'Aug' => 0, 'Sep' => 0, 'Oct' => 0 , 'Nov' => 0, 'Dec' => 0];
 
         // for this year groupby months
@@ -56,7 +58,8 @@ class TenantController extends Controller
         $startDate = now()->startOfWeek();
         $endDate = now()->endOfWeek();
 
-        $orders = Order::whereIn('desk_id', $desks)->whereBetween('created_at', [$startDate, $endDate])->with('desk')
+        $orders = Order::whereIn('desk_id', $desks)
+            ->whereBetween('created_at', [$startDate, $endDate])
             ->selectRaw('DATE(created_at) as date, SUM(total) as total_orders')
             ->groupBy('date')
             ->get();
@@ -73,7 +76,8 @@ class TenantController extends Controller
             $totalProducts[] = $category->products->count();
         }
 
-        return view('tenant.index', compact('categories_name', 'totalProducts', 'desks', 'orderData', 'orders_pending', 'totalCategory', 'totalProduct'));
+
+        return view('tenant.index', compact('order_done','categories', 'totalProducts','desks', 'orderData', 'order_pending', 'totalCategory', 'totalProduct'));
     }
 
     public function setting(Request $request, Tenant $tenant, User $user)
@@ -92,11 +96,6 @@ class TenantController extends Controller
             'address'=>'required|string',
             'description'=>'required|string',
         ]);
-        
-        if($request->hasFile('image')){
-            $tenant->clearMediaCollection('default');
-            $tenant->addMediaFromRequest('image')->toMediaCollection('default');
-        };
         $tenant->update($validated);
 
         return redirect()->route('tenant-setting', $tenant->id);

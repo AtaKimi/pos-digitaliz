@@ -9,18 +9,21 @@
         <div class="relative mx-auto">
             <img src="{{ asset('assets/img/hd-lp-cs.png') }}" class="" alt="">
             <div class="absolute bottom-3 left-0 right-0">
-                <img src="{{ asset('assets/img/anya-profile.png') }}"
+
+                {{-- <img src="{{ asset('assets/img/anya-profile.png') }}"
+                    class="rounded-full w-[120px] border-4 border-white-100 mx-auto" alt=""> --}}
+
+                <img src="{{ $tenant->getFirstMediaurl('default') }}"
                     class="rounded-full w-[120px] border-4 border-white-100 mx-auto" alt="">
             </div>
         </div>
         <div class=" px-5">
             <div class="text-center mb-3">
                 <h1 class="text-xl font-semibold mb-2">
-                    Wet Land Square
+                    {{ $tenant->name }}
                 </h1>
                 <p class="text-xs">
-                    Pusat ruang kreatif yang dibangun dengan pondasi semangat berkontribusi insan kreatif Banua untuk saling
-                    berkolaborasi dengan memadukan tiga pilar utama yaitu collaboration, entrepreneur, dan education.
+                   {{ $tenant->description }}
                 </p>
             </div>
             <div class="text-xs bg-gray-100 rounded-xl flex flex-col gap-3 p-5 mb-10">
@@ -32,11 +35,10 @@
                             fill="#101010" />
                     </svg>
                     <span>
-                        Jl. Kenangan yang kita lewati bersama
+                        {{ $tenant->address }}
                     </span>
                 </div>
-                <div id="accordion-flush" data-accordion="collapse"
-                    data-active-classes="bg-white text-gray-900"
+                <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white text-gray-900"
                     data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-1">
                         <button type="button" class="flex items-center gap-3"
@@ -101,7 +103,7 @@
                             fill="#101010" />
                     </svg>
                     <span>
-                        +62 812 3456 7890
+                        {{ $tenant->user->phone_number }}
                     </span>
                 </div>
             </div>
@@ -109,8 +111,9 @@
                 <p class="text-xs mb-1 text-center">
                     Ingin membeli sesuatu?
                 </p>
-                <button
-                    class="flex items-center gap-2 mx-auto px-3 py-1 bg-red-500 hover:bg-red-700 rounded text-white-100">
+                <a
+                    href="{{ route('customer-product', [ 'tenant' => $tenant->id, 'desk' => 8])}}"
+                    class="flex items-center w-fit gap-2 mx-auto px-3 py-1 bg-red-500 hover:bg-red-700 rounded text-white-100">
                     <span>
                         Daftar Menu
                     </span>
@@ -120,7 +123,7 @@
                             d="M8 0.5C12.1421 0.5 15.5 3.85786 15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5ZM4.71875 7.53125C4.45987 7.53125 4.25 7.74112 4.25 8C4.25 8.25888 4.45987 8.46875 4.71875 8.46875H10.1496L8.13729 10.481C7.95423 10.6641 7.95423 10.9609 8.13729 11.144C8.32035 11.327 8.61715 11.327 8.80021 11.144L11.6127 8.33146C11.7958 8.1484 11.7958 7.8516 11.6127 7.66854L8.80021 4.85604C8.61715 4.67299 8.32035 4.67299 8.13729 4.85604C7.95423 5.0391 7.95423 5.3359 8.13729 5.51896L10.1496 7.53125H4.71875Z"
                             fill="white" />
                     </svg>
-                </button>
+                </a>
 
             </div>
 

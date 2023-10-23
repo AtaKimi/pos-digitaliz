@@ -12,8 +12,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model implements HasMedia
 {
+<<<<<<< HEAD
     use HasFactory, InteractsWithMedia, SoftDeletes, HasFilter;
     protected $fillable = 
+=======
+    use HasFactory, InteractsWithMedia, SoftDeletes;
+    protected $fillable =
+>>>>>>> 2ab510146be36642935f25fc8cb963326d53e31f
     [
         'name',
         'price',
