@@ -16,5 +16,12 @@ trait HasFilter {
             $query->where('id', 'like', "%{$params['search']}%");
         }
     }
+
+    public function scopeFilterByCategory($query, array $params)
+    {
+        if (@$params['category']) {
+            $query->where('category_id', '=', "{$params['category']}");
+        }
+    }
 }
 

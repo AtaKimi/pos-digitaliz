@@ -23,48 +23,49 @@
 
     {{-- Table Order Start --}}
     <x-card>
-        <div class="flex items-center justify-between mb-5">
-            <h3 class="font-bold text-xl">Orders Table</h3>
+        <x-card.header>
+            <x-table.table-title>
+                <x-slot:sub_title> All your orders are being shown here </x-slot:sub_title>
+                <x-slot:title> Order Table</x-slot:title>
+            </x-table.table-title>
             <x-filter />
-        </div>
+        </x-card.header>
         <x-table>
             <x-slot:header>
-                <th scope="col" class="px-6 py-3">
+                <x-table.th scope="col">
                     UID
-                </th>
-                <th scope="col" class="px-6 py-3">
+                </x-table.th>
+                <x-table.th scope="col">
                     Nama Meja
-                </th>
-                <th scope="col" class="px-6 py-3">
+                </x-table.th>
+                <x-table.th scope="col">
                     Total Tagihan Meja
-                </th>
-                <th scope="col" class="px-6 py-3">
+                </x-table.th>
+                <x-table.th scope="col">
                     Status Order
-                </th>
-                <th scope="col" class="px-6 py-3">
+                </x-table.th>
+                <x-table.th scope="col">
                     Action
-                </th>
+                </x-table.th>
             </x-slot:header>
 
             @forelse ($orders as $order)
-                <tr class="border-b bg-white-50 hover:bg-gray-50">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $order->id }} </th>
-                    <td class="px-6 py-4">{{ $order->desk->name }}</td>
-                    <td class="px-6 py-4">Rp. {{ $order->total }}</td>
-                    <td class="px-6 py-4">
+                <x-table.tr>
+                    <x-table.th scope="row"> {{ $order->id }} </x-table.th>
+                    <x-table.td>{{ $order->desk->name }}</x-table.td>
+                    <x-table.td>Rp. {{ $order->total }}</x-table.td>
+                    <x-table.td>
                         <button disabled
                             class="flex justify-center align-middle w-full py-1 rounded-full
-                            @if($order->status == App\Enums\OrderStatus::PENDING) bg-yellow-300 text-yellow-950                          
+                            @if ($order->status == App\Enums\OrderStatus::PENDING) bg-yellow-300 text-yellow-950                          
                             @elseif($order->status == App\Enums\OrderStatus::COOKING) bg-blue-200 text-blue-950
                             @elseif($order->status == App\Enums\OrderStatus::SERVING) bg-purple-200 text-purple-950
                             @elseif($order->status == App\Enums\OrderStatus::DONE)  bg-green-400 text-green-950
-                            @elseif($order->status == App\Enums\OrderStatus::CANCELED) bg-red-500 text-white-50
-                            @endif
+                            @elseif($order->status == App\Enums\OrderStatus::CANCELED) bg-red-500 text-white-50 @endif
                             ">{{ App\Enums\OrderStatus::fromValue(intval($order->status))->description }}
                         </button>
-                    </td>
-                    <td class="flex justify-center px-6 py-4">
+                    </x-table.td>
+                    <x-table.td class="flex justify-center">
                         <a href="{{ route('tenant-order-show', ['tenant' => $tenant, 'order' => $order]) }}"
                             class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">
                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -77,9 +78,8 @@
                                     fill="#FDC55E" />
                             </svg>
                         </a>
-                    </td>
-                </tr>
-                </tr>
+                    </x-table.td>
+                </x-table.tr>
             @empty
             @endforelse
         </x-table>

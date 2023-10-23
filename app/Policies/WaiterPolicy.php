@@ -12,9 +12,9 @@ class WaiterPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(Tenant $tenant, Waiter $waiter): Response
+    public function viewAny(User $user, Waiter $waiter): Response
     {
-        return $waiter->tenant_id === $tenant->id
+        return $waiter->tenant->user_id === $user->id
             ? Response::allow()
             : Response::deny();
         ;
