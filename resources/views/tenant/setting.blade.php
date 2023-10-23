@@ -80,27 +80,6 @@
                     class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
                 </div>
             </form>
-            {{-- <h3 class="mb-4 text-xl font-semibold">Change Password</h3> --}}
-            {{-- <form action="" class="p-5 mb-8 border-2 rounded-2xl">
-                <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
-                    <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Current Password</label>
-                        <input type="password" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            required="">
-                    </div>
-                    <div class="w-full">
-                        <label class="block mb-2 font-semibold">New Password</label>
-                        <input type="password"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                    </div>
-                    <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Confirm Password</label>
-                        <input type="password" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                    </div>
-                </div>
-            </form> --}}
         </div>
     </div>
 @endsection
