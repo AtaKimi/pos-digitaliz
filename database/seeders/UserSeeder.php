@@ -102,7 +102,7 @@ class UserSeeder extends Seeder
                 //user_id for to became a waiter
                 'user_id' => $i,
                 //tenant_id to choice where does the waiter should belong
-                'tenant_id' => fake()->numberBetween(1, 11),
+                'tenant_id' => 1,
             ]);
         }
     }

@@ -14,6 +14,7 @@ class Waiter extends Model
     [
         'user_id',
         'tenant_id',
+        'is_active',
     ];
 
     public function scopeFilterByUserName(Builder $query, array $params){

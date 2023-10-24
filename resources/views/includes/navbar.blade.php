@@ -2,7 +2,7 @@
     <div class="flex items-center">
         <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
             aria-controls="separator-sidebar" type="button"
-            class=" p-2 mt-2 mr-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            class=" p-2 mt-2 mr-2 text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
