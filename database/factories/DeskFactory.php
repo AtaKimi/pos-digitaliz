@@ -17,7 +17,7 @@ class DeskFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => fake()->numberBetween(1, 3),
+            'tenant_id' => 1,
             'name' => "Table " . fake()->word() . fake()->numerify('-#####'),
             'qrcode' => fake()->url(),
         ];

@@ -17,15 +17,11 @@ class OrderController extends Controller
      */
     public function index(Tenant $tenant)
     {
+        //Almost all is being handled by Livewire OrderList::class
         if (!Gate::allows('viewAny', $tenant)) {
             abort(403);
         }
-
-        $params = request()->query();
-
-        $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $orders = Order::whereIn('desk_id', $desks)->filterById($params)->with('desk')->latest()->paginate(10);
-        return view('tenant.order.index', compact('orders', 'tenant'));
+        return view('tenant.order.index', compact('tenant'));
     }
 
     /**
