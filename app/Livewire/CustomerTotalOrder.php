@@ -17,17 +17,20 @@ class CustomerTotalOrder extends Component
         ],
     ];
 
-    public function addOrder($product_price, $product_id, $desk_id)
+    // public function addOrder($product_price, $product_id, $desk_id)
+    public function addOrder($product_price)
+
     {
         $this->items_total++;
 
-        $this->items[] = [
-            'quantity' => $product_id,
-            'desk_id' => $desk_id,
-        ];
+        // $this->items[] = [
+        //     'quantity' => $product_id,
+        //     'desk_id' => $desk_id,
+        // ];
+
         $this->total_payment = $this->total_payment + $product_price;
 
-        print_r($this->items);
+        // print_r($this->items);
     }
 
     public function deleteOrder($product_price)

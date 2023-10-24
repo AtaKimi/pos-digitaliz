@@ -340,7 +340,7 @@
                                 </div>
                             </th>
                             <td class="px-6 py-4">
-                                Rp.{{ number_format($service->total, 2, ',', '.') }}
+                                Rp.{{ number_format($service->total, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
 
