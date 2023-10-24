@@ -80,6 +80,8 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantOrderController::class)->group(function () {
                 Route::get('{tenant}/order', 'index')->name('tenant-order-index');
                 Route::get('{tenant}/order/detail/{order}', 'show')->name('tenant-order-show');
+                Route::put('{tenant}/order/{order}/next-status', 'nextStatus')->name('tenant-order-next-status');
+                Route::put('{tenant}/order/{order}/cancel', 'cancel')->name('tenant-order-cancel');
             });
 
             Route::controller(TenantProductController::class)->group(function () {

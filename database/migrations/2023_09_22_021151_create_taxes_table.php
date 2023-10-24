@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('percentage');
             $table->integer('taxable_id')->nullable()->default(null);
             $table->string('taxable_type')->nullable()->default(null);
+            $table->float('tax_total')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

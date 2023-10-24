@@ -86,7 +86,7 @@
                                  <div class="flex items-center">
                                     <div class="h-12 w-11" data-modal-target="modal-transaction-{{ $payment->id }}"
                                         data-modal-toggle="modal-transaction-{{ $payment->id }}">
-                                        <img src="{{ $payment->getFirstMediaUrl('buktiTf') }}" alt="">
+                                        <img src="{{ $payment->getFirstMediaUrl('default') }}" alt="">
                                     </div>
                                 </div>
                             </td>

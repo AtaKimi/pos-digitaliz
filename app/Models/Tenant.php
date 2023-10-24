@@ -49,10 +49,6 @@ class Tenant extends Model implements HasMedia
     {
         return $this->hasMany(Service::class);
     }
-    public function tax()
-    {
-        return $this->hasMany(Tax::class);
-    }
     public function cart()
     {
         return $this->hasMany(Cart::class);
@@ -66,7 +62,6 @@ class Tenant extends Model implements HasMedia
     {
         return $this->morphMany(Tax::class, 'taxable');
     }
-
     public function services(): MorphMany
     {
         return $this->morphMany(service::class, 'serviceable');

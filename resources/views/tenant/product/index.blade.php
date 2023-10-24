@@ -1,34 +1,35 @@
 @extends('layouts.tenant')
 
 @section('content')
-    {{-- Header --}}
-    <div class="pb-4">
-        <div class="mb-5 overflow-hidden shadow-lg rounded-2xl bg-white-50">
-            <div class="p-4">
-                <div class="flex items-center">
-                    <div class="p-5 mr-4 bg-red-50 rounded-xl">
-                        <!-- Icon di sini -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                            <path
-                                d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
-                                fill="#F54748" />
-                        </svg>
-                    </div>
-                    <div>
-                        <!-- Title di sini -->
-                        <p class="text-xl font-bold text-gray-900">Product</p>
-                        <!-- Subtitle di sini -->
-                        <p class="text-gray-600">Akses mengedit, menambah atau menghapus menu resto kamu</p>
-                    </div>
+        {{-- Header --}}
+        <x-card class="mb-5">
+            <div class="flex items-center">
+                <div class="p-5 mr-4 bg-red-50 rounded-xl">
+                    <!-- Icon di sini -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"
+                        fill="none">
+                        <path
+                            d="M13.625 2.6875H2.6875L2.6875 33.3125H13.625V2.6875ZM33.3125 2.6875H22.375V13.625H33.3125V2.6875ZM33.3125 22.375V33.3125H22.375V22.375H33.3125ZM0.5 2.6875C0.5 1.47938 1.47938 0.5 2.6875 0.5H13.625C14.8331 0.5 15.8125 1.47938 15.8125 2.6875V33.3125C15.8125 34.5206 14.8331 35.5 13.625 35.5H2.6875C1.47938 35.5 0.5 34.5206 0.5 33.3125V2.6875ZM20.1875 2.6875C20.1875 1.47938 21.1669 0.5 22.375 0.5H33.3125C34.5206 0.5 35.5 1.47938 35.5 2.6875V13.625C35.5 14.8331 34.5206 15.8125 33.3125 15.8125H22.375C21.1669 15.8125 20.1875 14.8331 20.1875 13.625V2.6875ZM22.375 20.1875C21.1669 20.1875 20.1875 21.1669 20.1875 22.375V33.3125C20.1875 34.5206 21.1669 35.5 22.375 35.5H33.3125C34.5206 35.5 35.5 34.5206 35.5 33.3125V22.375C35.5 21.1669 34.5206 20.1875 33.3125 20.1875H22.375Z"
+                            fill="#F54748" />
+                    </svg>
+                </div>
+                <div>
+                    <!-- Title di sini -->
+                    <p class="text-xl font-bold text-gray-900">Product</p>
+                    <!-- Subtitle di sini -->
+                    <p class="text-gray-600">Akses mengedit, menambah atau menghapus menu resto kamu</p>
                 </div>
             </div>
-        </div>
+        </x-card>
 
-        <div class="pt-3 pb-4 bg-white-50 rounded-2xl ms-3">
-            <div class="flex items-center justify-between p-8">
-                <h4 class="text-lg font-semibold">Product List</h4>
+        <x-card >
+            <div class="flex items-center justify-between mb-5">
+                <x-table.table-title> 
+                    <x-slot:sub_title> Show yours products </x-slot:sub_title>
+                    <x-slot:title> Products Items </x-slot:title>
+                </x-table.table-title>
                 <div class="flex gap-4">
-                    <x-filter/>
+                    <x-filter />
                     <button class="flex items-center gap-2 p-2 border-2 rounded-lg" data-modal-target="modal-add-category"
                         data-modal-toggle="modal-add-category">
                         <svg width="25" height="26" viewBox="0 0 25 26" fill="none"
@@ -58,18 +59,17 @@
                 </div>
             </div>
 
-            {{-- card 1 --}}
             <div class="products-container">
-                <div class="flex-wrap gap-3 px-4 sm:flex">
+                <div class="flex-wrap gap-3 sm:flex">
                     @foreach ($products as $product)
-                        <div class="flex grow flex-col bg-white-50 flex-wrap rounded-lg w-[550px] border-2">
+                        <x-card class="grow rounded-none w-[550px] border-b odd:border-r">
                             <form action="{{ route('tenant-product-update-status', [$tenant->id, $product->id]) }}"
-                                method="POST", id="status-form-{{ $product->id }}">
+                                method="POST", id="status-form-{{ $product->id }}" class="flex flex-col gap-5">
                                 @csrf
                                 @method('PUT')
-                                <div class="flex p-6 gap-x-6 ">
+                                <div class="flex gap-x-6">
                                     <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg"
-                                        alt="" class="w-[130px] h-[130px] rounded-lg">
+                                        alt="" class="w-[130px] h-[130px] rounded-lg mb-4">
                                     <div class="text-gray-500 grow">
                                         <div class="flex justify-between mb-2">
                                             <p class="text-2xl font-bold text-black">{{ $product->name }}</p>
@@ -103,16 +103,10 @@
                                             {{ $product->description }}</p>
                                     </div>
                                 </div>
-                                <div class="flex justify-center mb-2">
-                                    <svg width="445" height="2" viewBox="0 0 445 2" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1H444" stroke="#F1F1F1" stroke-width="2" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-
-                                <div class="flex flex-row justify-between px-5 pb-5">
+                                
+                                <div class="flex flex-row items-center justify-between gap-2 px-5">
                                     <a href="{{ route('tenant-product-edit', [$tenant->id, $product->id]) }}"
-                                        class="w-full justify-center text-warning-500 hover:bg-warning-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
+                                        class="w-full justify-center text-warning-500 border border-yellow-500 hover:bg-warning-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                                         <svg width="15" height="14" class="me-3" viewBox="0 0 15 14"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -127,12 +121,9 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <svg width="3" height="30" viewBox="0 0 3 30" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.5 1V29" stroke="#F1F1F1" stroke-width="100" stroke-linecap="round" />
-                                    </svg>
+                                    <div class="h-8 border"></div>
                                     <button type="button" onclick="putProductId({{ $product->id }})"
-                                        class="w-full justify-center text-danger-500 hover:bg-danger-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
+                                        class="w-full justify-center text-danger-500 border border-red-500 hover:bg-danger-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
                                         data-modal-target="modal-delete-category" data-modal-toggle="modal-delete-category">
                                         <svg width="15" height="14" class="me-3" viewBox="0 0 15 14"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +135,7 @@
                                     </button>
                                 </div>
                             </form>
-                        </div>
+                        </x-card>
                     @endforeach
                 </div>
             </div>
@@ -180,7 +171,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </x-card>
     </div>
 @endsection
 

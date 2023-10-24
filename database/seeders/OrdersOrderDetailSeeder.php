@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\OrderStatus;
+use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,15 +14,12 @@ class OrdersOrderDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        $statuses = [
-            'pending', 'cooking', 'serving', 'done', 'canceled'
-        ];
-        for ($i = 0; $i < 500; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $order = \App\Models\Order::factory()->state(
                 [
                     'is_paid' => fake()->boolean(),
-                    'status' => $statuses[fake()->numberBetween(0, 4)],
-                    'created_at' => fake()->dateTimeBetween('-1 days')
+                    'status' => OrderStatus::fromValue(rand(OrderStatus::CANCELED, OrderStatus::DONE)),
+                    'created_at' => fake()->dateTimeBetween('-3 years'),
                 ]
             )->create();
 

@@ -1,44 +1,31 @@
 <?php
 
 namespace App\Http\Controllers\Tenant;
-use App\Http\Controllers\Controller;
+
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:viewAny,tenant');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index(Tenant $tenant)
     {
+        if (!Gate::allows('viewAny', $tenant)) {
+            abort(403);
+        }
+
         $params = request()->query();
 
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
         $orders = Order::whereIn('desk_id', $desks)->filterById($params)->with('desk')->latest()->paginate(10);
-        return view('tenant.order', compact('orders', 'tenant'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('tenant.order.index', compact('orders', 'tenant'));
     }
 
     /**
@@ -46,31 +33,38 @@ class OrderController extends Controller
      */
     public function show(Tenant $tenant, Order $order)
     {
-        $order = Order::findOrFail($order->id);
-        return view('tenant.order-detail', compact('order'));
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
+        return view('tenant.order.show', compact('order', 'tenant'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
+    public function nextStatus(Tenant $tenant, Order $order)
     {
-        //
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
+        $order_status = intval($order->status);
+        if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
+            return back()->with('message', 'failed');
+        }
+        $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
+        return back()->with('message', 'success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
+    public function cancel(Tenant $tenant, Order $order)
     {
-        //
-    }
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
+        $order_status = intval($order->status);
+        if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
+            return back()->with('message', 'failed');
+        }
+        $order->update(['status' => OrderStatus::CANCELED]);
+        return back()->with('message', 'success');
     }
 }

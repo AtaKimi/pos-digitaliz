@@ -2,32 +2,29 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Models\Tenant;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Events\ProductCreated;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Tenant;
-use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:viewAny,tenant');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index(Tenant $tenant)
     {
+        if (!Gate::allows('viewAny', $tenant)) {
+            abort(403);
+        }
 
         $params = request()->query();
         $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
         $products = Product::whereIn('category_id', $category_ids)->filterByName($params)->with('category')
-        ->get();
+            ->get();
         return view('tenant.product.index', compact('products', 'tenant'));
     }
 
@@ -36,6 +33,9 @@ class ProductController extends Controller
      */
     public function create(Tenant $tenant)
     {
+        if (!Gate::allows('viewAny', $tenant)) {
+            abort(403);
+        }
 
         $categories = Category::where('tenant_id', $tenant->id)->get();
         return view('tenant.product.create', compact('categories', 'tenant'));
@@ -46,6 +46,10 @@ class ProductController extends Controller
      */
     public function store(Tenant $tenant)
     {
+        if (!Gate::allows('viewAny', $tenant)) {
+            abort(403);
+        }
+
         $validated = request()->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|string',
@@ -69,6 +73,10 @@ class ProductController extends Controller
      */
     public function edit(Tenant $tenant, Product $product)
     {
+        if (!Gate::allows('viewAny', $product)) {
+            abort(403);
+        }
+
         $categories = Category::where('tenant_id', $tenant->id)->get();
         return view('tenant.product.edit', compact('tenant', 'product', 'categories'));
     }
@@ -78,6 +86,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Tenant $tenant, Product $product)
     {
+        if (!Gate::allows('viewAny', $product)) {
+            abort(403);
+        }
+
         $validated = request()->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|string',
@@ -134,6 +146,11 @@ class ProductController extends Controller
         );
 
         $product = Product::find($validated['product_id']);
+
+        if (!Gate::allows('viewAny', $product)) {
+            abort(403);
+        }
+
         $product->clearMediaCollection('default');
         $product->delete();
         return redirect()->route('tenant-product-index', $tenant);
@@ -141,6 +158,10 @@ class ProductController extends Controller
 
     public function updateStatus(Tenant $tenant, Product $product)
     {
+        if (!Gate::allows('viewAny', $product)) {
+            abort(403);
+        }
+           
         $validated = request()->validate([
             'status' => 'in:in_stock,soldout,disabled',
         ]);

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav class="flex items-center px-2 py-2 pt-4 place-content-center" role="navigation"
+    <nav class="relative flex items-center px-2 py-2 pt-4 place-content-center" role="navigation"
         aria-label="{{ __('Pagination Navigation') }}">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
@@ -26,7 +26,7 @@
                 </span>
             @endif
         </div>
-        <p class="absolute left-0 px-2 mr-20 text-xs text-gray-700">
+        <p class="absolute left-0 px-2 mr-20 text-sm text-gray-700">
             {!! __('Menampilkan') !!}
             @if ($paginator->firstItem())
                 <span class="font-semibold text-gray-900">{{ $paginator->firstItem() }}</span>
@@ -44,25 +44,25 @@
             <!-- Previous Button -->
             @if ($paginator->onFirstPage())
                 <span aria-disabled="true" aria-label="{{ __('pagination.previous') }}"
-                    class="flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-400">
+                    class="flex items-center justify-center h-8 px-3 text-sm font-medium text-gray-400">
                     Prev
                 </span>
             @else
                 <a href="{{ $paginator->previousPageUrl() }}" rel="prev"
                     aria-label="{{ __('pagination.previous') }}"
-                    class="flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-600 hover:text-gray-500">
+                    class="flex items-center justify-center h-8 px-3 text-sm font-medium text-gray-600 hover:text-gray-500">
                     Prev
                 </a>
             @endif
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
                 @if (is_array($element))
-                    <ul class="inline-flex -space-x-px text-xs">
+                    <ul class="inline-flex -space-x-px text-sm">
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
                                 <li>
                                     <span aria-current="page"
-                                        class="flex items-center justify-center w-10 h-10 mr-1 bg-red-500 border text-md text-white-50 border-grey-20 hover:text-white-50 rounded-xl">
+                                        class="flex items-center justify-center w-10 h-10 mr-1 bg-red-500 border text-sm text-white-50 border-grey-20 hover:text-white-50 rounded-xl">
                                         {{ $page }}
                                     </span>
                                 </li>
@@ -71,7 +71,7 @@
                                     <a href="{{ $url }}"
                                         aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
                                         <span
-                                            class="flex items-center justify-center w-10 h-10 mr-1 border text-md text-grey-600 bg-white-50 border-grey-200 hover:bg-red-500 hover:text-white-50 rounded-xl">
+                                            class="flex items-center justify-center w-10 h-10 mr-1 border text-sm text-grey-600 bg-white-50 border-grey-200 hover:bg-red-500 hover:text-white-50 rounded-xl">
                                             {{ $page }}
                                         </span>
                                     </a>
@@ -86,12 +86,12 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <a href="{{ $paginator->nextPageUrl() }}" rel="next"
-                    class="flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-600">
+                    class="flex items-center justify-center h-8 px-3 text-sm font-medium text-gray-600">
                     Next
                 </a>
             @else
                 <span aria-disabled="true" aria-label="{{ __('pagination.next') }}"
-                    class="flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-400">
+                    class="flex items-center justify-center h-8 px-3 text-sm font-medium text-gray-400">
                     Next
                 </span>
             @endif

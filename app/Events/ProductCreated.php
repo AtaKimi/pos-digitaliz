@@ -42,7 +42,7 @@ class ProductCreated implements ShouldBroadcast
                 'name' => $this->products->name,
                 'price' => $this->products->price,
                 'description' => $this->products->description,
-                'images' => $this->products->images,
+                'images' => $this->products->getFirstMediaUrl('default'),
                 'category_id' => $this->products->category_id,
             ]
         ];
