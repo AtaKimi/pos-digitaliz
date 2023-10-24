@@ -13,16 +13,9 @@ class ProductPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function viewAny(User $user, Tenant $tenant): Response
+    public function viewAny(User $user, Product $product): Response
     {
-        return $user->id === $tenant->user_id
-            ? Response::allow('success', 201)
-            : Response::deny();;
-    }
-
-    public function apiViewAny(User $user): Response
-    {
-        return $user->id === $user->tenant->user_id
+        return $user->id === $product->category->tenant->user->id
             ? Response::allow('success', 201)
             : Response::deny();;
     }

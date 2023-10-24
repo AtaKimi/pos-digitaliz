@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex flex-col gap-4">
-        <div class="flex justify-start items-center w-full rounded-3xl p-5 gap-4 mb-8 bg-white-50">
+        <div class="flex items-center justify-start w-full gap-4 p-5 mb-8 rounded-3xl bg-white-50">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="80" height="80" rx="16" fill="#FFEDED" />
                 <path
@@ -13,30 +13,33 @@
                     fill="#F54748" />
             </svg>
 
-            <div class="flex flex-col gap-1 justify-center">
+            <div class="flex flex-col justify-center gap-1">
                 <h3 class="text-2xl font-bold">Settings</h3>
                 <p class="text-base">Akses mengatur profile kamu</p>
             </div>
         </div>
         <div class="flex flex-col bg-white-50 p-8 rounded-3xl">
             <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
-                <div class="">
-                    <img src="{{$tenant->user->getFirstMediaUrl('default')}}" alt="" class="w-20 h-20 rounded-full">
+                <div class="" name="image">
+                    <img src="{{$tenant->getFirstMediaUrl('default')}}" class="w-20 h-20 rounded-full">
                 </div>
                 <div class="flex flex-col justify-center w-40 gap-2">
+                    <form action="{{route('tenant-update-profile-photo', $tenant->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                     <h4 class="text-2xl">Anya Forger</h4>
                     <label for="dropzone-file"
-                        class="flex flex-col items-center justify-center w-full border-2 border-red-500 rounded-lg cursor-pointer p-2">
+                        class="flex flex-col items-center justify-center w-full p-2 border-2 border-red-500 rounded-lg cursor-pointer">
                         <div class="flex flex-col items-center justify-center">
-                            <p class="text-sm text-red-500"><span class="font-semibold">Upload new
-                                    photo</p>
+                            <p class="text-sm text-red-500"><span class="font-semibold">Upload new photo</p>
                         </div>
-                        <input id="dropzone-file" type="file" class="hidden" />
+                        <input id="dropzone-file" type="file" name="image" class="hidden" 
+                        onchange="this.closest('form').submit()"/>
                     </label>
+                    </form>
                 </div>
             </div>
+        <form action="{{route('tenant-setting-update', $tenant->id)}}" method="POST" enctype="multipart/form-data" class="bg-white-50 rounded-2xl p-5 mb-8">
             <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
-            <form action="{{route('tenant-setting-update', $tenant->id)}}" method="POST" class="border-2 rounded-2xl p-5 mb-8">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="w-full">
@@ -80,27 +83,6 @@
                     class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
                 </div>
             </form>
-            {{-- <h3 class="text-xl font-semibold mb-4">Change Password</h3> --}}
-            {{-- <form action="" class="border-2 rounded-2xl p-5 mb-8">
-                <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
-                    <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Current Password</label>
-                        <input type="password" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                            required="">
-                    </div>
-                    <div class="w-full">
-                        <label class="block mb-2 font-semibold">New Password</label>
-                        <input type="password"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                    </div>
-                    <div class="w-full">
-                        <label for="brand" class="block mb-2 font-semibold">Confirm Password</label>
-                        <input type="password" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                    </div>
-                </div>
-            </form> --}}
         </div>
     </div>
 @endsection

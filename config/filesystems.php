@@ -81,7 +81,6 @@ return [
             'root'   => public_path('media/payment_image'),
             'url'    => env('APP_URL').'/media/payment_image',
         ],
-
     ],
 
     /*

@@ -2,18 +2,24 @@
 
 <?php
 
-use App\Events\OrderCreated;
-use App\Http\Resources\Tenant\ProductResource;
-use App\Listeners\SendOrderCreatedNontification;
 use App\Models\Desk;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Tenant;
+use App\Models\Waiter;
 use App\Models\Product;
+use App\Enums\MonthName;
 use App\Models\Category;
+use App\Enums\OrderStatus;
+use App\Events\OrderCreated;
+use App\Events\ProductCreated;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Models\TenantServicePayment;
 use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Resources\Tenant\ProductResource;
+use App\Listeners\SendOrderCreatedNontification;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,17 +37,13 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = \App\Models\Order::factory()->state(
-        [
-            'is_paid' => fake()->boolean(),
-        ]
-    )->create();
-    OrderCreated::dispatch($order);
+    $order = Order::factory()->create();
+    event(new OrderCreated($order));
 });
 
 Artisan::command('rholand', function () {
     $tenant = Tenant::find(1);
-    $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');
+    $desk_ids = Desk::where('tenant_id', 1)->pluck('id');
     $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
     $tenant_service_total = 0;
     foreach ($tenant_orders as $tenant_order) {
@@ -57,7 +59,7 @@ Artisan::command('rholand2', function () {
     $tenants = Tenant::all();
     $total_service_all = $total_service_paid_all = $total_service_unpaid_all = 0;
     foreach ($tenants as $tenant) {
-        $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');
+        $desk_ids = Desk::where('tenant_id', 1)->pluck('id');
         $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
         $tenant_service_total = 0;
         foreach ($tenant_orders as $tenant_order) {

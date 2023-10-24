@@ -27,23 +27,15 @@ class DatabaseSeeder extends Seeder
                 CategorySeeder::class,
                 DeskSeeder::class,
                 ProductSeeder::class,
+                UserPermissionSeeder::class,
                 UserProfileImageSeeder::class,
                 CartSeeder::class,
-                // user id 1 is super admin
-                // user id 2 - 3 is admin
-                // user id 4 - 14 is tenant
-                // user id 15 - 35 is waiter
-                UserPermissionSeeder::class,
                 OrdersOrderDetailSeeder::class,
                 TenantProfileImageSeeder::class,
                 ProductImageSeeder::class,
                 TenantServicePaymentSeeder::class,
+                TenantServicePaymentImageSeeder::class,
             ]
         );
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

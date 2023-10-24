@@ -17,7 +17,5 @@ class SendOrderCreatedNontification
      */
     public function handle(OrderCreated $event): void
     {
-        dd($event->order);
     }
 }
-

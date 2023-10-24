@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tenant;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -64,7 +65,7 @@ class UserSeeder extends Seeder
         // user id 15 is tenant
         \App\Models\User::factory()->create(
             [
-                'name' => 'tenant',
+                'name' => 'waiter',
                 'email' => 'waiter@example.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password
@@ -79,8 +80,12 @@ class UserSeeder extends Seeder
 
         // user with id from 4 - 14 is tenant
         for ($i = 4; $i <= 14; $i++) {
+            $code = Str::random(5);
+            while(Tenant::where('code', $code)->exists()){
+                $code = Str::random(5);
+            }
             $tenant = \App\Models\Tenant::factory()->create([
-                'code' => Str::random(5) . "TN" . fake()->numerify('####'),
+                'code' => $code,
                 'name' => fake()->company(),
                 'address' => fake()->address(),
                 'description' => fake()->paragraph(5),
@@ -97,7 +102,7 @@ class UserSeeder extends Seeder
                 //user_id for to became a waiter
                 'user_id' => $i,
                 //tenant_id to choice where does the waiter should belong
-                'tenant_id' => fake()->numberBetween(1, 11),
+                'tenant_id' => 1,
             ]);
         }
     }

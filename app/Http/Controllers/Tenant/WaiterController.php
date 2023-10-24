@@ -20,10 +20,12 @@ class WaiterController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $waiter = Waiter::where('tenant_id', $tenant->id)->paginate(10);
+        $params = request()->query();
+        $waiter_ids = Waiter::where('tenant_id', 1)->pluck('user_id');
+        $users = User::whereIn('id', $waiter_ids)->filterByName($params)->with('waiter')->paginate(10);
         // Paginator::useAdminPagination();
 
-        return view('tenant.waiter', compact('waiter', 'tenant'));
+        return view('tenant.waiter.index', compact('users', 'tenant'));
     }
 
     public function update(Request $request, Tenant $tenant)

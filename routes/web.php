@@ -67,18 +67,21 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/', 'index')->name('tenant-index');
                 Route::get('{tenant}/setting', 'setting')->name('tenant-setting');
                 Route::post('{tenant}/setting/update', 'updateSetting')->name('tenant-setting-update');
+                Route::post('{tenant}/setting/update-profile-photo', 'updateProfilePhoto')->name('tenant-update-profile-photo');
             });
 
             Route::controller(TenantCategoryController::class)->group(function () {
                 Route::get('{tenant}/category', 'index')->name('tenant-category-index');
                 Route::post('{tenant}/category/store', 'store')->name('tenant-category-store');
-                Route::post('{tenant}/category/{category}/edit', 'update')->name('tenant-category-edit');
-                Route::delete('{tenant}/category/delete/{category}', 'destroy')->name('tenant-category-destroy');
+                Route::post('{tenant}/category/edit', 'update')->name('tenant-category-edit');
+                Route::delete('{tenant}/category/delete', 'destroy')->name('tenant-category-destroy');
             });
 
             Route::controller(TenantOrderController::class)->group(function () {
                 Route::get('{tenant}/order', 'index')->name('tenant-order-index');
-                Route::get('{tenant}/order/detail', 'show')->name('tenant-order-show');
+                Route::get('{tenant}/order/detail/{order}', 'show')->name('tenant-order-show');
+                Route::put('{tenant}/order/{order}/next-status', 'nextStatus')->name('tenant-order-next-status');
+                Route::put('{tenant}/order/{order}/cancel', 'cancel')->name('tenant-order-cancel');
             });
 
             Route::controller(TenantProductController::class)->group(function () {
@@ -86,6 +89,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/product/create', 'create')->name('tenant-product-create');
                 Route::get('{tenant}/product/{product}/edit', 'edit')->name('tenant-product-edit');
                 Route::put('{tenant}/product/{product}', 'update')->name('tenant-product-update');
+                Route::put('{tenant}/product/{product}/status', 'updateStatus')->name('tenant-product-update-status');
                 Route::post('{tenant}/product', 'store')->name('tenant-product-store');
                 Route::post('{tenant}/product/destroy', 'destroy')->name('tenant-product-destroy');
             });
@@ -97,7 +101,8 @@ Route::middleware('auth')->group(function () {
             Route::controller(TenantDeskController::class)->group(function () {
                 Route::get('{tenant}/desk', 'index')->name('tenant-desk-index');
                 Route::post('{tenant}/desk', 'store')->name('tenant-desk-store');
-                Route::put('{tenant}/desk/{id}', 'update')->name('tenant-desk-update');
+                Route::put('{tenant}/desk/update', 'update')->name('tenant-desk-update');
+                Route::delete('{tenant}/desk/destroy', 'destroy')->name('tenant-desk-destroy');
             });
             Route::resource('{tenant}/waiter', TenantWaiterController::class)->names([
                 'index' => 'tenant-waiter-index',
@@ -133,7 +138,6 @@ Route::prefix('/customer/{tenant}')->group(function () {
         });
     });
 });
-
 
 
 

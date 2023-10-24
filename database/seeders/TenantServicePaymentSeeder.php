@@ -13,6 +13,8 @@ class TenantServicePaymentSeeder extends Seeder
      */
     public function run(): void
     {
-        TenantServicePayment::factory(20)->create();
+        for ($i=0; $i < 20; $i++) { 
+            $tenant_service_payment = TenantServicePayment::factory()->create();
+        }
     }
 }

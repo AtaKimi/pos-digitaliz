@@ -18,16 +18,9 @@ class DeskController extends Controller
      */
     public function index(Tenant $tenant)
     {
-        $desk = Desk::where('tenant_id', $tenant->id)->paginate(10);
-        return view('tenant.desk', compact('desk', 'tenant'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $params = request()->query();
+        $desk = Desk::where('tenant_id', $tenant->id)->filterByName($params)->paginate(5);
+        return view('tenant.desk.index', compact('desk', 'tenant'));
     }
 
     /**
@@ -44,32 +37,17 @@ class DeskController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Desk $desk)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Desk $desk)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tenant $tenant, Desk $desk)
+    public function update(Request $request, Tenant $tenant)
     {
         //
         $validated = request()->validate([
-            "name" => 'required|string|max:255'
+            "name" => "required|string|max:255",
+            "id" => "required|integer|exists:desks",
         ]);
-        // $test = Desk::findOrFail($desk->id);
-        // dd($test);
+
+        $desk = Desk::find($validated['id']);
         $desk->update($validated);
         return redirect()->route('tenant-desk-index', $tenant->id);
     }
@@ -77,8 +55,14 @@ class DeskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Desk $desk)
+    public function destroy(Tenant $tenant)
     {
-        //
+        $validated = request()->validate([
+            "id" => "required|integer|exists:desks",
+        ]);
+
+        $desk = Desk::find($validated['id']);
+        $desk->delete();
+        return redirect()->route('tenant-desk-index', $tenant->id);
     }
 }

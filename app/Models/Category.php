@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasFilter;
     protected $fillable =
     [
         'tenant_id',
@@ -21,7 +22,7 @@ class Category extends Model
     }
     public function tenant()
     {
-        return $this->hasMany(Tenant::class);
+        return $this->belongsTo(Tenant::class);
     }
 
 }
