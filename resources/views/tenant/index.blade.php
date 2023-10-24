@@ -50,8 +50,19 @@
                                     fill="#04CE00" />
                             </svg>
                         </span>
+<<<<<<< HEAD
+                        <span class="mr-2 text-xs font-semibold text-black">Total Pendapatan Order</span>
+                    </div>
+                    <div>
+<<<<<<< HEAD
+                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($orders_pending->sum('total'), 2, ',', '.') }}
+=======
+                        <p class="mb-2 text-xl font-bold text-gray-900"> Rp.{{ number_format($order_done, 2, ',', '.') }}
+>>>>>>> 2ab510146be36642935f25fc8cb963326d53e31f
+=======
                         <p class="text-lime-600 text-[10px]">+21.01%</p>
                         <p class="text-[10px]">vs last month</p>
+>>>>>>> d03b5355e7b3e9066acd71c7c1e9c31f9bcc2340
 
                     </div> --}}
                 </div>

@@ -67,12 +67,13 @@ class TenantController extends Controller
     public function updateSetting(Request $request, Tenant $tenant, User $user)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
-            'tenant-user' => 'required|string',
-            'phone-number' => 'required|string',
-            'email' => 'required|string',
-            'address' => 'required|string',
-            'description' => 'required|string',
+            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+            'name'=>'required|string',
+            'tenant-user'=>'required|string',
+            'phone-number'=>'required|string',
+            'email'=>'required|string',
+            'address'=>'required|string',
+            'description'=>'required|string',
         ]);
         $tenant->update($validated);
 

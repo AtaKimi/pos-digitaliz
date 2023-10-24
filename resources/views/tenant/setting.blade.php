@@ -18,25 +18,28 @@
                 <p class="text-base">Akses mengatur profile kamu</p>
             </div>
         </div>
-        <div class="flex flex-col p-8 bg-white-50 rounded-3xl">
-            <div class="flex w-full gap-5 pb-8 mb-8 border-b-2">
-                <div class="">
-                    <img src="{{$tenant->user->getFirstMediaUrl('default')}}" alt="" class="w-20 h-20 rounded-full">
+        <div class="flex flex-col bg-white-50 p-8 rounded-3xl">
+            <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
+                <div class="" name="image">
+                    <img src="{{$tenant->getFirstMediaUrl('default')}}" class="w-20 h-20 rounded-full">
                 </div>
-                <div class="flex flex-col justify-center gap-4">
-                    <h4 class="text-2xl">{{$tenant->name}}</h4>
+                <div class="flex flex-col justify-center w-40 gap-2">
+                    <form action="{{route('tenant-update-profile-photo', $tenant->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                    <h4 class="text-2xl">Anya Forger</h4>
                     <label for="dropzone-file"
                         class="flex flex-col items-center justify-center w-full p-2 border-2 border-red-500 rounded-lg cursor-pointer">
                         <div class="flex flex-col items-center justify-center">
-                            <p class="text-sm text-red-500"><span class="font-semibold">Upload new
-                                    photo</p>
+                            <p class="text-sm text-red-500"><span class="font-semibold">Upload new photo</p>
                         </div>
-                        <input id="dropzone-file" type="file" class="hidden" />
+                        <input id="dropzone-file" type="file" name="image" class="hidden" 
+                        onchange="this.closest('form').submit()"/>
                     </label>
+                    </form>
                 </div>
             </div>
-            <h3 class="mb-4 text-xl font-semibold">USER INFORMATION</h3>
-            <form action="{{route('tenant-setting-update', $tenant->id)}}" method="POST" class="p-5 mb-8 border-2 rounded-2xl">
+        <form action="{{route('tenant-setting-update', $tenant->id)}}" method="POST" enctype="multipart/form-data" class="bg-white-50 rounded-2xl p-5 mb-8">
+            <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="w-full">
