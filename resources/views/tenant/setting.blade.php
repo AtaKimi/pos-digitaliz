@@ -19,7 +19,6 @@
             </div>
         </div>
 
-
         <x-card>
             <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
                 <div class="" name="image">
@@ -29,7 +28,7 @@
                     <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <h4 class="text-2xl">Anya Forger</h4>
+                        <h4 class="text-2xl mb-1">Anya Forger</h4>
                         <label for="dropzone-file"
                             class="flex flex-col items-center justify-center w-full p-2 border-2 border-red-500 rounded-lg cursor-pointer">
                             <div class="flex flex-col items-center justify-center">
@@ -80,7 +79,7 @@
                 <div class="flex justify-end pt-5">
                     <button type="submit"
                         class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
-                        
+
                 </div>
             </form>
         </x-card>

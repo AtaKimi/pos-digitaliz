@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Tenant;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
@@ -39,14 +40,22 @@ class CategoryController extends Controller
 
         $validatedData['tenant_id'] = $tenant->id;
 
-        // Simpan data ke database
-        $category = Category::create(
-            [
+        try {
+            DB::beginTransaction();
+
+            // Simpan data ke database
+            $category = Category::create([
                 'name'  => $validatedData['name'],
                 'tenant_id' => $validatedData['tenant_id'],
-            ]
-        );
-        return redirect()->route('tenant-category-index', $tenant->id);
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('tenant-category-index', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create category.']);
+        }
     }
 
     /**
@@ -64,10 +73,20 @@ class CategoryController extends Controller
             abort(403);
         }
 
-        $category->update([
-            'name' => $validated['name']
-        ]);
-        return redirect()->route('tenant-category-index', $tenant->id);
+        try {
+            DB::beginTransaction();
+
+            $category->update([
+                'name' => $validated['name']
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('tenant-category-index', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update category.']);
+        }
     }
 
     /**
@@ -83,9 +102,19 @@ class CategoryController extends Controller
         if (!Gate::allows('viewAny', $category)) {
             abort(403);
         }
-        
-        $category->delete();
 
-        return redirect()->route('tenant-category-index', $tenant->id)->with('success', 'Tenant has been deleted successfully');
+        try {
+            DB::beginTransaction();
+
+            $category->delete();
+
+
+            DB::commit();
+
+            return redirect()->route('tenant-category-index', $tenant->id)->with('success', 'Tenant has been deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete category.']);
+        }
     }
 }

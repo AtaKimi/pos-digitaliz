@@ -87,9 +87,9 @@
             {{ $categories->links('pagination.tenant') }}
         </x-card>
 
-        <x-modal id="modal-edit-category">
-            <x-slot:title>Edit Kategory</x-slot:title>
-            <form action="{{ route('tenant-category-edit', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+        <form action="{{ route('tenant-category-edit', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+            <x-modal id="modal-edit-category">
+                <x-slot:title>Edit Kategory</x-slot:title>
                 @csrf
                 <input type="number" class="hidden" name="id" x-bind:value="category_id">
                 <div class="flex flex-col">
@@ -99,12 +99,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
                         placeholder="Nama Kategori" required x-bind:value="category_name">
                 </div>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
 
-        <x-modal id="modal-delete-category">
-            <x-slot:title>Hapus Kategori</x-slot:title>
-            <form action="{{ route('tenant-category-destroy', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+        <form action="{{ route('tenant-category-destroy', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+            <x-modal id="modal-delete-category">
+                <x-slot:title>Hapus Kategori</x-slot:title>
                 @method('DELETE')
                 @csrf
                 <input type="number" x-bind:value="category_id" class="hidden" name="id">
@@ -120,12 +120,11 @@
                 </div>
                 <p class="text-start text-md font-medium">Apakah Anda yakin ingin menghapus kategori
                     ini?</p>
-            </form>
-        </x-modal>
-
-        <x-modal id="modal-create-category">
-            <x-slot:title>Tambah Kategori</x-slot:title>
-            <form action="{{ route('tenant-category-store', $tenant) }}" method="POST">
+            </x-modal>
+        </form>
+        <form action="{{ route('tenant-category-store', $tenant) }}" method="POST">
+            <x-modal id="modal-create-category">
+                <x-slot:title>Tambah Kategori</x-slot:title>
                 @csrf
                 <div class="flex flex-col">
                     <label for="text" class="block mb-2 text-sm font-medium">
@@ -134,83 +133,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                         placeholder="Nama Kategori" required>
                 </div>
-<<<<<<< HEAD
-            @endforeach
-        </x-table>
+            </x-modal>
+        </form>
 
-        {{ $categories->links('vendor.pagination.tenant') }}
-    </x-card>
-
-    {{-- MODAL ADD CATEGORY --}}
-
-    <div id="modal-add-category" tabindex="-1"
-        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-md max-h-full">
-            <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                <div class="flex items-center justify-between">
-
-                    <p class="text-2xl font-bold">Tambah Kategori</p>
-                    <p class="text-2xl font-bold cursor-pointer" data-modal-target="modal-add-category"
-                        data-modal-hide="modal-add-category">X</p>
-                </div>
-                <form action="{{ route('tenant-category-store', $tenant) }}" method="POST">
-                    @csrf
-                    <div class="flex flex-col pb-4">
-                        <label for="text" class="block mb-2 text-sm font-medium">
-                            Nama Kategori</label>
-                        <input type="text" id="text" name="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                            placeholder="Nama Kategori" required>
-                    </div>
-
-                    <div class="flex grid-cols-2 gap-3">
-                        <button type="reset"
-                            class="w-full py-2 font-bold rounded-lg hover:border-2 hover:border-black-400"
-                            data-modal-target="modal-add-category" data-modal-hide="modal-add-category">Batalkan</button>
-                        <button type="submit"
-                            class="w-full py-2 font-bold bg-red-500 rounded-lg text-white-50">Konfirmasi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <x-alert type="success" message="Data berhasil ditambahkan!" ></x-alert>
-    </div>
-
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // const alertSuccess = document.getElementById('add-success').style.display = 'none';
-
-            // alertSuccess.style.display = 'none';
-
-            const alertSuccess = document.querySelector('#add-success');
-
-            alertSuccess.addEventListener('click', function() {
-            // Lakukan aksi untuk menambah data
-
-            // Tampilkan alert
-            const alert = document.createElement('div');
-            alert.classList.add('alert', 'alert-success');
-
-            document.querySelector('#alert-container').appendChild(alert);
-            });
-        });
-    </script> --}}
-
-    <script>
-        function removeAlert() {
-            const alert = document.getElementById('alert');
-            setTimeout(() => {
-                alert.style.display = 'none';
-            }, 5000);
-        }
-
-        removeAlert();
-    </script>
-@endsection
-=======
-            </form>
-        </x-modal>
     </div>
     {{-- MODAL-create CATEGORY --}}
 @endsection
->>>>>>> 992cd470521174974df3739968c9c8046dc29e2c

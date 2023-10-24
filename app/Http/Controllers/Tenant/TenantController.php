@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class TenantController extends Controller
@@ -44,7 +45,7 @@ class TenantController extends Controller
                 $endDate = now()->endOfDecade();
                 $formatDate = 'y';
             }
-        } 
+        }
 
         $orderData = $this->chartTotalOrderRevenue($desks,$formatDate, $startDate, $endDate, true);
 
@@ -75,9 +76,19 @@ class TenantController extends Controller
             'address'=>'required|string',
             'description'=>'required|string',
         ]);
-        $tenant->update($validated);
 
-        return redirect()->route('tenant-setting', $tenant->id);
+        try {
+            DB::beginTransaction();
+
+            $tenant->update($validated);
+
+            DB::commit();
+
+            return redirect()->route('tenant-setting', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
+        }
     }
 
     private function chartTotalOrderRevenue(

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Events\ProductCreated;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
@@ -60,13 +61,31 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $product = Product::create($validated);
-        $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-            $fileAdder->toMediaCollection('default');
-        });
-        event(new ProductCreated($product));
+        try {
+            DB::beginTransaction();
 
-        return redirect()->route('tenant-product-index', $tenant);
+            $product = Product::create(
+                [
+                    'name' => $validated['name'],
+                    'price' => $validated['price'],
+                    'description' => $validated['description'],
+                    'category_id' => $validated['category_id'],
+                ]
+            );
+
+            $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+                $fileAdder->toMediaCollection('default');
+            });
+
+            event(new ProductCreated($product));
+
+            DB::commit();
+
+            return redirect()->route('tenant-product-index', $tenant);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create product.']);
+        }
     }
 
     /**
@@ -102,8 +121,9 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        //an existing image must exist or must be added into the product so there's atleast an image existed
-        if (array_key_exists('images', $validated) || array_key_exists('product_media', $validated)) {
+        try {
+            DB::beginTransaction();
+
             $product->update(
                 [
                     'name' => $validated['name'],
@@ -129,10 +149,13 @@ class ProductController extends Controller
                 });
             }
 
-            return redirect()->route('tenant-product-index', $tenant);
-        }
+            DB::commit();
 
-        return redirect()->route('tenant-product-edit', [$tenant, $product]);
+            return redirect()->route('tenant-product-index', $tenant);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update product.']);
+        }
     }
 
     /**
@@ -152,9 +175,19 @@ class ProductController extends Controller
             abort(403);
         }
 
-        $product->clearMediaCollection('default');
-        $product->delete();
-        return redirect()->route('tenant-product-index', $tenant);
+        try {
+            DB::beginTransaction();
+
+            $product->clearMediaCollection('default');
+            $product->delete();
+
+            DB::commit();
+
+            return redirect()->route('tenant-product-index', $tenant);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete product.']);
+        }
     }
 
     public function updateStatus(Tenant $tenant, Product $product)
@@ -167,7 +200,17 @@ class ProductController extends Controller
             'status' => 'in:in_stock,soldout,disabled',
         ]);
 
-        $product->update($validated);
-        return back()->with('message', 'success');
+        try {
+            DB::beginTransaction();
+
+            $product->update($validated);
+
+            DB::commit();
+
+            return back()->with('message', 'success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('message', 'failed');
+        }
     }
 }
