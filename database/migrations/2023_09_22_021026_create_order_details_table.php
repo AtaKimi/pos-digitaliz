@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('product_id')->constrained('products');
-            $table->json('metadata');
+            $table->json('metadata')->nullable();
             $table->integer('price')->default(0);
             $table->integer('quantity');
             $table->softDeletes();

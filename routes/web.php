@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\TenantController as AdminTenantController;
 use App\Http\Controllers\Admin\AdminController as AdminController;
-use App\Http\Controllers\Costumer\CartController as CustomerCartController;
 use App\Http\Controllers\Tenant\DeskController as TenantDeskController;
 use App\Http\Controllers\Tenant\OrderController as TenantOrderController;
 use App\Http\Controllers\Tenant\TenantController as TenantTenantController;
@@ -13,8 +12,9 @@ use App\Http\Controllers\Tenant\WaiterController as TenantWaiterController;
 use App\Http\Controllers\Waiter\WaiterController as WaiterWaiterController;
 use App\Http\Controllers\Tenant\ProductController as TenantProductController;
 use App\Http\Controllers\Tenant\CategoryController as TenantCategoryController;
-use App\Http\Controllers\Costumer\CustomerController as CustomerCustomerController;
 use App\Http\Controllers\Tenant\TenantServicePaymentController as TenantTenantSErvicePaymentController;
+use App\Http\Controllers\Costumer\CartController;
+use App\Http\Controllers\Costumer\CustomerController;
 
 
 use App\Http\Controllers\ProfileController;
@@ -46,18 +46,12 @@ Route::middleware('auth')->group(function () {
             Route::controller(AdminController::class)->group(function () {
                 Route::get('/', 'index')->name('admin-index');
             });
-            // Route::controller(AdminTenantController::class)->group(function () {
-            // Route::prefix('tenant')->group(function () {
             Route::resource('tenant', AdminTenantController::class)->names([
                 'index' => 'admin-tenant-index',
                 'show' => 'admin-tenant-show',
                 'update' => 'admin-tenant-update',
                 'destroy' => 'admin-tenant-destroy',
             ]);
-            // Route::get('/', 'index')->name('admin-tenant-index');
-            // Route::get('detail/{tenant}', 'show')->name('admin-tenant-show');
-            // });
-            // });
         });
     });
 
@@ -116,8 +110,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Routes for waiter
-
 Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
     Route::controller(WaiterWaiterController::class)->group(function () {
         Route::get('{tenant}/', 'index')->name('waiter-index');
@@ -126,17 +118,17 @@ Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
     });
 });
 
-Route::prefix('/customer/{tenant}')->group(function () {
-    Route::controller(CustomerCustomerController::class)->group(function () {
-        Route::get('/', 'index')->name('customer-index');
-        Route::get('/product-list', 'product')->name('customer-product');
-    });
-
+Route::prefix('/customer/{tenant}/{desk}')->group(function () {
     Route::prefix('cart')->group(function () {
-        Route::controller(CustomerCartController::class)->group(function () {
+        Route::controller(CartController::class)->group(function () {
             Route::get('/', 'index')->name('customer-cart');
         });
     });
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/', 'index')->name('customer-index');
+        Route::get('menu', 'menu')->name('customer-menu');
+    });
+
 });
 
 

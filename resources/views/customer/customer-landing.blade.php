@@ -112,7 +112,7 @@
                     Ingin membeli sesuatu?
                 </p>
                 <a
-                    href="{{ route('customer-product', [ 'tenant' => $tenant->id, 'desk' => 8])}}"
+                    href="{{ route('customer-menu', [ 'tenant' => $tenant->id, 'desk' => $desk->id])}}"
                     class="flex items-center w-fit gap-2 mx-auto px-3 py-1 bg-red-500 hover:bg-red-700 rounded text-white-100">
                     <span>
                         Daftar Menu

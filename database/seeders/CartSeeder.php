@@ -12,8 +12,6 @@ class CartSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 100; $i++) {
-            \App\Models\Cart::factory()->state(['desk_id' => $i])->create();
-        }
+
     }
 }

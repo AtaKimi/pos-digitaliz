@@ -59,15 +59,14 @@ class TenantController extends Controller
         return view('tenant.index', compact('categories_name', 'totalProducts', 'desks', 'orderData', 'lastTenOrders', 'totalCategory', 'totalProduct'));
     }
 
-    public function setting(Request $request, Tenant $tenant, User $user)
+    public function setting(Request $request, Tenant $tenant)
     {
         return view('tenant.setting', compact('tenant'));
     }
 
-    public function updateSetting(Request $request, Tenant $tenant, User $user)
+    public function updateSetting(Request $request, Tenant $tenant)
     {
         $validated = $request->validate([
-            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
             'name'=>'required|string',
             'tenant-user'=>'required|string',
             'phone-number'=>'required|string',
@@ -78,6 +77,21 @@ class TenantController extends Controller
         $tenant->update($validated);
 
         return redirect()->route('tenant-setting', $tenant->id);
+    }
+    
+    public function updateProfilePhoto(Request $request, Tenant $tenant)
+    {
+        $request->validate([
+            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+        ]);
+
+        if($request->hasFile('image')){
+            $tenant->clearMediaCollection('default');
+        };
+
+        $tenant->addMediaFromRequest('image')->toMediaCollection('default');
+
+        return back()->with('message', 'success');
     }
 
     private function chartTotalOrderRevenue(
@@ -99,4 +113,5 @@ class TenantController extends Controller
         ksort($orders_sum);
         return $orders_sum;
     }
+
 }
