@@ -6,7 +6,7 @@
         <p class="text-[18px] font-[700] -mt-1">Total</p>
     </div>
     <div class="flex gap-x-2 text-xl font-[700]">
-        <p id="total-price">Rp.{{$total_price}}</p>
+        <p id="total-price">Rp {{ number_format($total_price, 0, ',', '.') }}</p>
         <img src={{ URL('assets/img/solar_bag-2-bold.png') }}>
     </div>
 </div>

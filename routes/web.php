@@ -128,7 +128,6 @@ Route::prefix('/customer/{tenant}/{desk}')->group(function () {
         Route::get('/', 'index')->name('customer-index');
         Route::get('menu', 'menu')->name('customer-menu');
     });
-
 });
 
 

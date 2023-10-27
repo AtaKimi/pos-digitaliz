@@ -1249,10 +1249,6 @@ html {
   position: relative;
 }
 
-.sticky{
-  position: sticky;
-}
-
 .inset-0{
   inset: 0px;
 }
@@ -1423,11 +1419,6 @@ html {
 .my-3{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-}
-
-.my-4{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .my-5{
@@ -1737,16 +1728,8 @@ html {
   height: 280px;
 }
 
-.h-\[3px\]{
-  height: 3px;
-}
-
 .h-\[500px\]{
   height: 500px;
-}
-
-.h-\[80vh\]{
-  height: 80vh;
 }
 
 .h-\[calc\(100\%-1rem\)\]{
@@ -2219,11 +2202,6 @@ html {
        column-gap: 16px;
 }
 
-.gap-x-\[8px\]{
-  -moz-column-gap: 8px;
-       column-gap: 8px;
-}
-
 .gap-y-2{
   row-gap: 0.5rem;
 }
@@ -2242,12 +2220,6 @@ html {
   --tw-space-x-reverse: 0;
   margin-right: calc(-1px * var(--tw-space-x-reverse));
   margin-left: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -2560,11 +2532,6 @@ html {
 .border-yellow-500{
   --tw-border-opacity: 1;
   border-color: rgb(253 197 94 / var(--tw-border-opacity));
-}
-
-.bg-black-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 3 19 / var(--tw-bg-opacity));
 }
 
 .bg-blue-100{
@@ -2948,11 +2915,6 @@ html {
   padding-right: 2rem;
 }
 
-.px-\[16px\]{
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .py-0{
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3016,11 +2978,6 @@ html {
 .py-7{
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
-}
-
-.py-\[8px\]{
-  padding-top: 8px;
-  padding-bottom: 8px;
 }
 
 .pb-1{
@@ -3513,10 +3470,6 @@ html {
 
 .opacity-100{
   opacity: 1;
-}
-
-.opacity-50{
-  opacity: 0.5;
 }
 
 .shadow{

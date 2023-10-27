@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Enums\OrderStatus;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Locked;
@@ -12,6 +15,7 @@ class CartTotal extends Component
     #[Locked]
     public $carts;
     public $tenant;
+    public $desk;
     public $sub_total = 0;
     public $tax_total = 0;
     public $service_total = 0;
@@ -32,6 +36,25 @@ class CartTotal extends Component
         $this->tax = $this->tenant->taxes->first();
         $this->$carts = $carts;
         $this->getPrice();
+    }
+
+    public function createOrder(){
+        $order = Order::create([
+            'desk_id' => $this->desk->id,
+        ]);
+
+        $order_details = collect([]);
+
+        foreach ($this->carts as $cart) {
+            $order_details[] = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $cart->product_id,
+                'quantity' => $cart->quantity,
+            ]);
+        }
+
+        dd([$order, $order_details]);
+
     }
 
     protected function getPrice() {

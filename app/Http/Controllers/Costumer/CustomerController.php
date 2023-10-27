@@ -24,10 +24,6 @@ class CustomerController extends Controller
                 $query->with('media');
             }])
             ->get();
-
-
-        // $categories = Category::where('tenant_id', $tenant->id)->pluck('id');
-        // $products = Product::whereIn('category_id', $categories)->get();
         return view('customer.menu', compact('categories', 'tenant', 'desk'));
     }
 }

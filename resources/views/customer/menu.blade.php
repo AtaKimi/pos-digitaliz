@@ -119,8 +119,8 @@
     <script>
         let categoriesGlider = new Glide('.glide', {
             type: 'carousel',
-            perView: {{ $categories->count() <= 5 ? $categories->count() : 5 }},
-            gap: 50,
+            perView: {{ $categories->count() <= 3 ? $categories->count() : 3 }},
+            gap: 20,
             focusAt: 'center',
         }).mount()
     </script>

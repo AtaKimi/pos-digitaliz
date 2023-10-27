@@ -15,6 +15,6 @@ class CartController extends Controller
             redirect()->route('customer-menu', [$tenant->id, $desk->id]);
         }
         $carts = Cart::where('desk_id', $desk->id)->get();
-        return view('customer.cart', compact('carts', 'tenant'));
+        return view('customer.cart', compact('carts', 'tenant', 'desk'));
     }
 }
