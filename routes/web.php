@@ -123,6 +123,10 @@ Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
         Route::get('{tenant}/', 'index')->name('waiter-index');
         Route::get('{tenant}/detail-order', 'show')->name('waiter-show');
         Route::get('{tenant}/profile', 'profile')->name('waiter-profile');
+        Route::put('{tenant}/profile/update', 'update')->name('waiter-profile-update');
+        Route::post('{tenant}/profile/update-photo', 'updatePhoto')->name('waiter-profile-update-photo');
+        Route::put('{tenant}/profile/change-password', 'changePassword')->name('waiter-profile-change-password');
+
     });
 });
 

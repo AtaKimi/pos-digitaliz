@@ -10,7 +10,7 @@
     @vite(['resources/css/output.css', 'resources/js/app.js'])
     @yield('file-header')
 </head>
-{{-- 
+{{--
     minimum display width
     1. dashboard 518
     2. order 660
@@ -21,7 +21,7 @@
     7. waiter 918
 --}}
 
-<body class="bg-white-300 text-xs sm:text-sm md:text-md lg:text-base">
+<body class="bg-white-300 text-xs sm:text-sm md:text-md lg:text-base mx-auto">
     <div class="bg-red-500 h-80 w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
         @include('includes.sidebar-tenant')

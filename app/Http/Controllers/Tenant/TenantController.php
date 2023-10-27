@@ -91,6 +91,26 @@ class TenantController extends Controller
         }
     }
 
+    public function updateProfilePhoto(Request $request, Tenant $tenant, User $user)
+    {
+        $request->validate([
+            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
+        ]);
+
+        try {
+            DB::beginTransaction();
+            if($request->hasFile('image')){
+                $tenant->clearMediaCollection('default');
+            };
+            $tenant->addMediaFromRequest('image')->toMediaCollection('default');
+            DB::commit();
+            return redirect()->route('tenant-setting', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
+        }
+    }
+
     private function chartTotalOrderRevenue(
         $desks,
         $groupBy = "w",

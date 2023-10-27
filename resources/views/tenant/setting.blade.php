@@ -20,7 +20,7 @@
         </div>
 
         <x-card>
-            <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
+            {{-- <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
                 <div class="" name="image">
                     <img src="{{ $tenant->getFirstMediaUrl('default') }}" class="w-20 h-20 rounded-full">
                 </div>
@@ -39,7 +39,13 @@
                         </label>
                     </form>
                 </div>
-            </div>
+            </div> --}}
+
+            <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <x-profile-image :value="$tenant" />
+            </form>
+
             <form action="{{ route('tenant-setting-update', $tenant->id) }}" method="POST" enctype="multipart/form-data"
                 class="bg-white-50 rounded-2xl p-5 mb-8">
                 <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
