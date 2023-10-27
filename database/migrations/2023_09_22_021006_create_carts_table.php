@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('tenant_id')->constrained('tenants');
             $table->foreignId('product_id')->constrained('products');
-            $table->foreignId('desk_id')->unique()->constrained('desks');
+            $table->foreignId('desk_id');
             $table->integer('quantity');
             $table->timestamps();
         });

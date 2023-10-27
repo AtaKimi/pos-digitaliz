@@ -64,7 +64,6 @@
                 <div class="flex justify-end pt-5">
                     <button type="submit"
                         class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
-
                 </div>
             </form>
         </x-card>

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Desk;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cart extends Model
 {
@@ -15,16 +17,17 @@ class Cart extends Model
         'quantity',
     ];
 
-    public function tenant()
+    public function product()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Product::class);
     }
     public function desk()
     {
         return $this->belongsTo(Desk::class);
     }
-    // public function product()
-    // {
-    //     return $this->
-    // }
+
+    public function total() {
+        $total = $this->product->price * $this->quantity;
+        return $total;
+    }
 }

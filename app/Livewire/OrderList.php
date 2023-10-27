@@ -17,10 +17,9 @@ class OrderList extends Component
 
     public Tenant $tenant;
 
-    protected $listeners = [
-        'OrderCreated' => 'rerender',
-    ];
+    public $params;
 
+    #[On('echo:orders,OrderCreated')]
     public function rerender(){
         $this->render();
     }
@@ -32,7 +31,7 @@ class OrderList extends Component
         }
         $params = request()->query();
         $desks = Desk::where('tenant_id', $this->tenant->id)->pluck('id');
-        $orders = Order::whereIn('desk_id', $desks)->filterById($params)->with('desk')->latest()->get();
+        $orders = Order::whereIn('desk_id', $desks)->filterByCode($params)->with('desk')->latest()->paginate(10);
 
         return view('livewire.order-list', ['orders' => $orders]);
     }

@@ -11,7 +11,7 @@ class TenantPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user, Tenant $tenant ): Response
+    public function viewAny(User $user, Tenant $tenant): Response
     {
         return $tenant->user_id === $user->id
             ? Response::allow('success', 201)

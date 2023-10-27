@@ -11,51 +11,19 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index(string $id)
+    public function index(Tenant $tenant, Desk $desk)
     {
-
-        // $tenant = Tenant::where('name', $name)->first();
-
-        $tenant = Tenant::findOrFail($id);
-        // return $tenant->user;
-
-        return view('customer.customer-landing', compact('tenant'));
+        return view('customer.customer-landing', compact('tenant', 'desk'));
     }
 
-    public function product(Request $request)
+    public function menu(Tenant $tenant, Desk $desk)
     {
-
-        $tenant_id = $request->tenant;
-        $desk_id = $request->get('desk');
-        $desk = Desk::findOrFail($desk_id);
-
-
-
-        if ($desk->tenant_id == $tenant_id) {
-            $tenant = Tenant::findOrFail($tenant_id);
-            $categories = Category::where('tenant_id', $tenant->id)
+        $categories = Category::where('tenant_id', $tenant->id)
             ->has('products')
             ->with(['products' => function ($query) {
                 $query->with('media');
             }])
             ->get();
-
-
-            // $categories = Category::where('tenant_id', $tenant->id)->pluck('id');
-            // $products = Product::whereIn('category_id', $categories)->get();
-            return view('customer.menu', compact('categories', 'tenant'));
-        } else {
-            return redirect()->back();
-        }
-
-
-
-
-
-    }
-
-    public function menuList()
-    {
-        return view('customer.menu');
+        return view('customer.menu', compact('categories', 'tenant', 'desk'));
     }
 }

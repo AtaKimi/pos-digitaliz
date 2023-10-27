@@ -22,18 +22,6 @@
     </x-card>
 
     {{-- Table Order Start --}}
-    <x-card>
-        <x-card.header>
-            <x-table.table-title>
-                <x-slot:sub_title> All your orders are being shown here </x-slot:sub_title>
-                <x-slot:title> Order Table</x-slot:title>
-            </x-table.table-title>
-            <x-filter />
-        </x-card.header>
-        <livewire:order-list :tenant="$tenant"/>
+    <livewire:order-list :tenant="$tenant" />
 
-        {{ $orders->links('pagination.tenant') }}
-    </x-card>
-    {{-- Table Order End --}}
-    </div>
 @endsection
