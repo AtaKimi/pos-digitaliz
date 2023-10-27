@@ -20,7 +20,8 @@
         </div>
 
         <x-card>
-            <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 <x-profile-image :data="$tenant" />
             </form>
@@ -37,8 +38,8 @@
                     </div>
                     <div>
                         <x-input-label for="tenant-user" value="{{ __('User Tenant') }}" />
-                        <x-text-input id="tenant-user" class="block w-full mt-1" type="text" name="tenant-user"
-                            :value="$tenant->user->name" readonly />
+                        <x-text-input id="tenant-user" class="block w-full mt-1 bg-white-400" type="text" name="tenant-user"
+                            :value="$tenant->user->name" disabled readonly />
                     </div>
                     <div>
                         <x-input-label for="phone-number" value="{{ __('Phone Number') }}" />
@@ -62,8 +63,7 @@
                     </div>
                 </div>
                 <div class="flex justify-end pt-5">
-                    <button type="submit"
-                        class="text-white-50 bg-red-500 font-medium rounded-lg text-sm px-12 py-2.5 mr-2 mb-2">Save</button>
+                    <x-primary-button class="mb-2">{{ __('Save') }}</x-primary-button>
                 </div>
             </form>
         </x-card>

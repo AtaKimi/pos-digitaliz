@@ -6,13 +6,14 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Tenant;
 use App\Models\Waiter;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -33,15 +34,69 @@ class WaiterController extends Controller
         // dd($response);
         $orders = Order::latest()->paginate(5);
 
-        return view('waiter.index', compact('orders'));
+        return view('waiter.index', compact('orders', 'tenant'));
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      */
-    public function show(Tenant $tenant)
+    public function show(Tenant $tenant, Order $order)
     {
-        return view('waiter.order-detail');
+        if (!Gate::allows('waiterView', $order)) {
+            abort(403);
+        }
+
+        return view('waiter.order-detail', compact('order', 'tenant'));
+    }
+
+    public function nextStatus(Tenant $tenant, Order $order)
+    {
+        if (!Gate::allows('waiterView', $order)) {
+            abort(403);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $order_status = intval($order->status);
+            if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
+                return back()->with('message', 'failed');
+            }
+            $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
+
+            DB::commit();
+
+            return back()->with('message', 'success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('message', 'failed');
+        }
+
+
+    }
+
+    public function cancel(Tenant $tenant, Order $order)
+    {
+        if (!Gate::allows('viewAny', $order)) {
+            abort(403);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $order_status = intval($order->status);
+            if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
+                return back()->with('message', 'failed');
+            }
+            $order->update(['status' => OrderStatus::CANCELED]);
+
+            DB::commit();
+
+            return back()->with('message', 'success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('message', 'failed');
+        }
     }
 
     public function profile(Tenant $tenant, Request $request)

@@ -109,21 +109,6 @@ class TenantController extends Controller
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
         }
     }
-    
-    public function updateProfilePhoto(Request $request, Tenant $tenant)
-    {
-        $request->validate([
-            'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
-        ]);
-
-        if($request->hasFile('image')){
-            $tenant->clearMediaCollection('default');
-        };
-
-        $tenant->addMediaFromRequest('image')->toMediaCollection('default');
-
-        return back()->with('message', 'success');
-    }
 
     private function chartTotalOrderRevenue(
         $desks,

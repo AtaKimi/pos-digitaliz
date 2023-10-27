@@ -1829,10 +1829,6 @@ html {
   width: 80%;
 }
 
-.w-40{
-  width: 10rem;
-}
-
 .w-44{
   width: 11rem;
 }
@@ -2579,6 +2575,11 @@ html {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+.bg-gray-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
 .bg-gray-800{
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -2731,6 +2732,21 @@ html {
 .bg-yellow-500{
   --tw-bg-opacity: 1;
   background-color: rgb(253 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-gray-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.bg-white-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 168 170 / var(--tw-bg-opacity));
+}
+
+.bg-white-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(230 230 230 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{

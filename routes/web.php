@@ -113,7 +113,8 @@ Route::middleware('auth')->group(function () {
 Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
     Route::controller(WaiterWaiterController::class)->group(function () {
         Route::get('{tenant}/', 'index')->name('waiter-index');
-        Route::get('{tenant}/detail-order', 'show')->name('waiter-show');
+        Route::get('{tenant}/detail-order/{order}', 'show')->name('waiter-show');
+        Route::put('{tenant}/detail-order/{order}/next-status', 'nextStatus')->name('waiter-detail-order-next-status');
         Route::get('{tenant}/profile', 'profile')->name('waiter-profile');
         Route::put('{tenant}/profile/update', 'update')->name('waiter-profile-update');
         Route::post('{tenant}/profile/update-photo', 'updatePhoto')->name('waiter-profile-update-photo');

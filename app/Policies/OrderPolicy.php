@@ -9,13 +9,20 @@ use Illuminate\Auth\Access\Response;
 
 class OrderPolicy
 {
-   
+
     /**
      * Determine whether the user can permanently delete the model.
      */
     public function viewAny(User $user, Order $order): Response
     {
         return $user->id === $order->desk->tenant->user->id
+            ? Response::allow('success', 201)
+            : Response::deny();;
+    }
+
+    public function waiterView(User $user, Order $order): Response
+    {
+        return $user->waiter->tenant->user->id === $order->desk->tenant->user->id
             ? Response::allow('success', 201)
             : Response::deny();;
     }

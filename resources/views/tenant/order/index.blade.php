@@ -22,6 +22,6 @@
     </x-card>
 
     {{-- Table Order Start --}}
-    <livewire:order-list :tenant="$tenant" />
+    <livewire:order-list :tenant="$tenant" :url="'tenant-order-show'" />
 
 @endsection

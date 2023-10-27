@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- table --}}
-    <div class="relative m-10 overflow-x-auto shadow-md rounded-xl bg-white-100">
+    {{-- <div class="relative m-10 overflow-x-auto shadow-md rounded-xl bg-white-100">
         <div class="flex flex-wrap justify-between gap-5 p-5">
             <h1 class="text-xl font-bold text-gray-900">
                 Order List
@@ -134,7 +134,9 @@
 
 
 
-    </div>
+    </div> --}}
+
+    <livewire:order-list :tenant="$tenant" :url="'waiter-show'" />
 
 
     {{-- end table --}}
