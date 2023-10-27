@@ -11,7 +11,7 @@
         </div> --}}
         <form action="{{ route('waiter-profile-update-photo', $tenant->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <x-profile-image :value="$user" />
+            <x-profile-image :data="$user" />
         </form>
         <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
         <x-card class="mb-5">

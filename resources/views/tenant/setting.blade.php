@@ -20,30 +20,9 @@
         </div>
 
         <x-card>
-            {{-- <div class="flex gap-5 w-full border-b-2 pb-8 mb-8">
-                <div class="" name="image">
-                    <img src="{{ $tenant->getFirstMediaUrl('default') }}" class="w-20 h-20 rounded-full">
-                </div>
-                <div class="flex flex-col justify-center w-40 gap-2">
-                    <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <h4 class="text-2xl mb-1">Anya Forger</h4>
-                        <label for="dropzone-file"
-                            class="flex flex-col items-center justify-center w-full p-2 border-2 border-red-500 rounded-lg cursor-pointer">
-                            <div class="flex flex-col items-center justify-center">
-                                <p class="text-sm text-red-500"><span class="font-semibold">Upload new photo</p>
-                            </div>
-                            <input id="dropzone-file" type="file" name="image" class="hidden"
-                                onchange="this.closest('form').submit()" />
-                        </label>
-                    </form>
-                </div>
-            </div> --}}
-
             <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <x-profile-image :value="$tenant" />
+                <x-profile-image :data="$tenant" />
             </form>
 
             <form action="{{ route('tenant-setting-update', $tenant->id) }}" method="POST" enctype="multipart/form-data"
@@ -59,7 +38,7 @@
                     <div>
                         <x-input-label for="tenant-user" value="{{ __('User Tenant') }}" />
                         <x-text-input id="tenant-user" class="block w-full mt-1" type="text" name="tenant-user"
-                            :value="$tenant->user->name" required autofocus />
+                            :value="$tenant->user->name" readonly />
                     </div>
                     <div>
                         <x-input-label for="phone-number" value="{{ __('Phone Number') }}" />
