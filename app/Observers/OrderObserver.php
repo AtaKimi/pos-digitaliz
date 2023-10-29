@@ -2,9 +2,10 @@
 
 namespace App\Observers;
 
+use App\Enums\OrderStatus;
+use App\Events\OrderVerified;
 use App\Models\Tax;
 use App\Models\Order;
-use Illuminate\Support\Str;
 
 class OrderObserver
 {
@@ -20,5 +21,11 @@ class OrderObserver
             $percentage = $order->desk->tenant->taxes->first()->percentage;
             $order->tax()->save(Tax::create(['percentage' => $percentage]));
         } 
+    }
+
+    public function updated(Order $order){
+        if($order->status->value == OrderStatus::COOKING){
+            event(new OrderVerified($order));
+        }
     }
 }

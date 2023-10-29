@@ -53,6 +53,7 @@ class CartTotal extends Component
             ]);
         }
 
+        $order->getPrice();
         dd([$order, $order_details]);
 
     }
