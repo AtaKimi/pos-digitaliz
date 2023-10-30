@@ -1,5 +1,9 @@
 @extends('layouts.customer')
 
+@section('return_link')
+    {{route('customer-index', [$tenant->id, $desk->id])}}
+@endsection
+
 @section('content')
     <div class="bg-white-50 py-2 z-50">
         <div class="relative w-full px-3">
@@ -51,7 +55,7 @@
             {{-- Product --}}
             <div class="flex flex-col gap-y-3 mb-3">
                 <h3 id="{{ $category->name }}"
-                    class="p-3 mx-3 text-gray-900 shadow-md w-fit rounded-lg font-bold tracking-wide">{{ $category->name }}
+                    class="p-3 mx-3 text-gray-900 shadow-md w-fit rounded-lg font-bold tracking-wide">{{ $category->name }} 
                 </h3>
                 @forelse($category->products as $product)
                     <div class="shadow-card rounded-[12px] flex items-center justify-between p-3 mx-3">

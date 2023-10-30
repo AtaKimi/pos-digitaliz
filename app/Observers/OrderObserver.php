@@ -24,7 +24,8 @@ class OrderObserver
     }
 
     public function updated(Order $order){
-        if($order->status->value == OrderStatus::COOKING){
+        $order = Order::find($order->id);
+        if(intval($order->status) == OrderStatus::COOKING){
             event(new OrderVerified($order));
         }
     }

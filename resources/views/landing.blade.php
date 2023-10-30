@@ -52,7 +52,7 @@
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit"
-                            class="hidden md:block text-white-50 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                            class="hidden md:block text-white-900 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
                             Logout
                         </button>
                     </form>

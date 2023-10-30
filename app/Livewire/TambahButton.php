@@ -13,6 +13,10 @@ class TambahButton extends Component
     public $qty = 0;
 
     public function mount() {
+        if($this->desk->tenant->id != $this->product->category->tenant->id){
+            abort(404);
+        }
+
         if(Cart::where('product_id', $this->product->id)->where('desk_id', $this->desk->id)->exists()){
             $this->cart = Cart::where('product_id', $this->product->id)->where('desk_id', $this->desk->id)->get();
 

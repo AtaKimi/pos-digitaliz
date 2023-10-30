@@ -3,14 +3,6 @@
 module.exports = {
     content: [
         "./resources/views/**/*.blade.php",
-        "./resources/views/admin/**/*.blade.php",
-        "./resources/views/costumer/**/*.blade.php",
-        "./resources/views/includes/**/*.blade.php",
-        "./resources/views/customer/*.blade.php",
-        "./resources/views/layouts/**/*.blade.php",
-        "./resources/views/tenant/**/*.blade.php",
-        "./resources/views/waiter/**/*.blade.php",
-        "./resources/views/auth/**/*.blade.php",
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
@@ -19,10 +11,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                // yellow: "#FDC55E",
-                // black: "#101010",
-                // green: "#29CB6A",
-                // red: "#F54748",
                 black: {
                     400: "#020313",
                     600: "#020313",
@@ -140,6 +128,5 @@ module.exports = {
         require("flowbite/plugin")({
             charts: true,
         }),
-        // ... other plugins
     ],
 };

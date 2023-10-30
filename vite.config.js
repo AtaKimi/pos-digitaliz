@@ -9,7 +9,12 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/api/product.js",
             ],
-            refresh: true,
         }),
     ],
+    server: {
+        host: "127.0.0.1",
+        watch: {
+            usePolling: true,
+        },
+    },
 });

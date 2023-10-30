@@ -1,5 +1,9 @@
 @extends('layouts.customer')
 
+@section('return_link')
+    {{route('customer-menu', [$tenant->id, $desk->id])}}
+@endsection
+
 @section('content')
     <div class="flex flex-col justify-between p-3 overflow-y-scroll h-full">
         <div>
