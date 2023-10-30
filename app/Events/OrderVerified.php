@@ -8,22 +8,21 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCreated implements ShouldBroadcast
+class OrderVerified implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $order;
+    public $order;
 
     /**
-     * Create a new event instance.
+     * Get the channels the event should broadcast on.
+     *
+     * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-    public function __construct($order)
+    public function broadcastOn(): array
     {
-        $this->order = $order;
-    }
-
-    public function broadcastOn()
-    {
-        return new Channel('orders');
+        return [
+            new Channel('order-verified'),
+        ];
     }
 }

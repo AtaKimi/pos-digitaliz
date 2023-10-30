@@ -132,6 +132,8 @@ Route::prefix('/customer/{tenant}/{desk}')->group(function () {
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('customer-index');
         Route::get('menu', 'menu')->name('customer-menu');
+        Route::get('verify/{order}', 'verify')->name('customer-verify');
+        Route::get('verified/{order}', 'verified')->name('customer-verified');
     });
 });
 

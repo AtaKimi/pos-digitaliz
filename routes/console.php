@@ -12,6 +12,7 @@ use App\Enums\MonthName;
 use App\Models\Category;
 use App\Enums\OrderStatus;
 use App\Events\OrderCreated;
+use App\Events\OrderVerified;
 use App\Events\ProductCreated;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -37,8 +38,8 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = Order::factory()->create();
-    event(new OrderCreated($order));
+    $order = Order::find(20);
+    event(new OrderVerified($order));
 });
 
 Artisan::command('rholand', function () {
