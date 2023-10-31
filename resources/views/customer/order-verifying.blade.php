@@ -1,5 +1,9 @@
 @extends('layouts.customer', ['judul' => ' '])
 
+@section('return_link')
+    {{ route('customer-menu', [$tenant->id, $desk->id]) }}
+@endsection
+
 @section('content')
     <div class="flex flex-col gap-6 items-center pt-20 h-full">
         <h1 class="text-3xl font-extrabold tracking-wider">Order Status</h1>
@@ -15,6 +19,6 @@
             </svg>
         </div>
         <p class="text-gray-800 pt-8 font-medium">Please wait, We will verify your order!</p>
-        <livewire:order-verify :$order/>
+        <livewire:order-verify :$tenant :$desk :$order />
     </div>
 @endsection

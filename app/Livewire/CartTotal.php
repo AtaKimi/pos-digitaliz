@@ -33,12 +33,20 @@ class CartTotal extends Component
     }
     
     public function mount($carts){
+        if($this->desk->tenant->id != $this->tenant->id){
+            abort(404);
+        }
+        
         $this->tax = $this->tenant->taxes->first();
         $this->$carts = $carts;
         $this->getPrice();
     }
 
     public function createOrder(){
+        if($this->desk->tenant->id != $this->tenant->id){
+            abort(404);
+        }
+
         $order = Order::create([
             'desk_id' => $this->desk->id,
         ]);

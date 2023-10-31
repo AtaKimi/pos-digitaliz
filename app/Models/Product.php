@@ -40,4 +40,7 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(Cart::class);
     }
+    public function tenant() {
+        return $this->belongsTo(Tenant::class);
+    }
 }

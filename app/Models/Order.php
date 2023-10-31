@@ -6,7 +6,6 @@ use App\traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use  App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Order extends Model
@@ -15,16 +14,11 @@ class Order extends Model
 
     protected $fillable =
     [
-        // 'tenant_id',
         'desk_id',
         'total',
         'status',
         'is_paid',
         'code',
-    ];
-
-    protected $observers = [
-        Order::class => [OrderObserver::class],
     ];
 
     public function desk()
