@@ -53,7 +53,7 @@ class OrderController extends Controller
             $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
 
             DB::commit();
-
+            toast('Order status updated successfully', 'success');
             return back()->with('message', 'success');
         } catch (\Exception $e) {
             DB::rollback();

@@ -44,5 +44,6 @@
     </div>
 
     @yield('script')
+    @include('sweetalert::alert')
 
 </html>

@@ -159,37 +159,58 @@
                     <form class="space-y-6" action="{{ route('tenant-waiter-store', $tenant) }}" method="POST">
                         @csrf
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                            {{-- <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
                             <input type="text" name="name" id="name"
                                 class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Name" required>
+                                placeholder="Name" required> --}}
+                                <x-input-label for="name" id="name" value="{{ __('Nama') }}" />
+                                <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
+                                     value="{{ old('name') }}" required autofocus />
+                                <x-input-error class="mt-2"  :messages="$errors->get('name')" />
                         </div>
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                            {{-- <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                             <input type="email" name="email" id="email"
                                 class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="name@gmail.com" required>
+                                placeholder="name@gmail.com" required> --}}
+                            <x-input-label for="email" value="{{ __('Email') }}" />
+                            <x-text-input id="email" class="block w-full mt-1" type="email" name="email"
+                                 value="{{ old('email')}}" required autofocus />
+                            <x-input-error for="email" class="mt-2"  :messages="$errors->get('email')" />
                         </div>
                         <div>
-                            <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Phone
+                            {{-- <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Phone
                                 Number</label>
                             <input type="number" name="phone_number" id="number"
                                 class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Phone number" required>
+                                placeholder="Phone number" required> --}}
+                            <x-input-label for="phone_number" value="{{ __('Phone Number') }}" />
+                            <x-text-input id="phone_number" class="block w-full mt-1" type="number" name="phone_number"
+                            value="{{ old('phone_number')}}" required autofocus />
+                            <x-input-error for="phone_number" class="mt-2"  :messages="$errors->get('phone_number')" />
+
                         </div>
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                            {{-- <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                             <input type="password" name="password" id="password" placeholder="Password"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                required>
+                                required> --}}
+                                <x-input-label for="password" value="{{ __('Password') }}" />
+                                <x-text-input id="password" class="block w-full mt-1" type="password" name="password"
+                                     required autofocus />
+                                <x-input-error class="mt-2"  :messages="$errors->get('password')" />
                         </div>
                         <div>
-                            <label for="confirm" class="block mb-2 text-sm font-medium text-gray-900">Confirm
+                            {{-- <label for="confirm" class="block mb-2 text-sm font-medium text-gray-900">Confirm
                                 Password</label>
                             <input type="password" name="password_confirmation" id="confirm"
                                 placeholder="Confirm Password"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                required>
+                                required> --}}
+                                <x-input-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                                <x-text-input id="password_confirmation" class="block w-full mt-1" type="password" name="password_confirmation"
+                                     required autofocus />
+                                <x-input-error  class="mt-2"  :messages="$errors->get('password_confirmation')" />
                         </div>
                         <div class="flex justify-between">
                             <button data-modal-hide="popup-modal" type="button"

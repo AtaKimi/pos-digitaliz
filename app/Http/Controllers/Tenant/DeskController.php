@@ -39,7 +39,7 @@ class DeskController extends Controller
             $desk = Desk::create($validated);
 
             DB::commit();
-
+            toast('Desk created successfully', 'success');
             return redirect()->route('tenant-desk-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
@@ -64,6 +64,7 @@ class DeskController extends Controller
             DB::beginTransaction();
             $desk->update($validated);
             DB::commit();
+            toast('Desk updated successfully', 'success');
             return redirect()->route('tenant-desk-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
@@ -86,6 +87,7 @@ class DeskController extends Controller
             DB::beginTransaction();
             $desk->delete();
             DB::commit();
+            toast('Desk deleted successfully', 'success');
             return redirect()->route('tenant-desk-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();

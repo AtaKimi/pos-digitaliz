@@ -57,11 +57,12 @@ class WaiterController extends Controller
             );
 
             DB::commit();
-
-            return redirect()->route('tenant-waiter-index', $tenant->id)->with('message', 'Sukses menambahkan waiter');
+            toast('Waiter created successfully', 'success');
+            // return redirect()->route('tenant-waiter-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create waiter.']);
+            toast('Waiter created successfully', 'error');
+            // return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create waiter.']);
         }
     }
 
@@ -83,8 +84,8 @@ class WaiterController extends Controller
             $waiter->save();
 
             DB::commit();
+            return response()->with(['success' => true, 'message' => 'Tenant status updated successfully']);
 
-            return response()->json(['success' => true, 'message' => 'Tenant status updated successfully']);
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(['failed' => false, 'message' => 'Failed to update tenant status.']);

@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
+
 class TenantController extends Controller
 {
     /**
@@ -47,7 +48,7 @@ class TenantController extends Controller
             }
         }
 
-        $orderData = $this->chartTotalOrderRevenue($desks,$formatDate, $startDate, $endDate, true);
+        $orderData = $this->chartTotalOrderRevenue($desks, $formatDate, $startDate, $endDate, true);
 
         $categories = Category::where('tenant_id', $tenant->id)->with('products')->get();
         $categories_name = $categories->pluck('name');
@@ -68,22 +69,26 @@ class TenantController extends Controller
     public function updateSetting(Request $request, Tenant $tenant)
     {
         $validated = $request->validate([
-            'name'=>'required|string',
-            'tenant-user'=>'required|string',
-            'phone-number'=>'required|string',
-            'email'=>'required|string',
-            'address'=>'required|string',
-            'description'=>'required|string',
+            'name' => 'required|string',
+            'tenant-user' => 'required|string',
+            'phone-number' => 'required|string',
+            'email' => 'required|string',
+            'address' => 'required|string',
+            'description' => 'required|string',
         ]);
+
+        $user = $tenant->user;
 
         try {
             DB::beginTransaction();
 
             $tenant->update($validated);
+            $user->name = $validated['tenant-user'];
+            $user->save();
 
             DB::commit();
-
-            return redirect()->route('tenant-setting', $tenant->id);
+            toast('Your Profile as been updated!', 'success');
+            return redirect()->back();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
@@ -98,11 +103,12 @@ class TenantController extends Controller
 
         try {
             DB::beginTransaction();
-            if($request->hasFile('image')){
+            if ($request->hasFile('image')) {
                 $tenant->clearMediaCollection('default');
             };
             $tenant->addMediaFromRequest('image')->toMediaCollection('default');
             DB::commit();
+            toast('Your Profile Photo as been updated!', 'success');
             return redirect()->route('tenant-setting', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
@@ -129,5 +135,4 @@ class TenantController extends Controller
         ksort($orders_sum);
         return $orders_sum;
     }
-
 }
