@@ -253,7 +253,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$tenants->links('vendor.pagination.admin')}}
+            {{$tenants->links('pagination.admin')}}
         </div>
 
     </div>

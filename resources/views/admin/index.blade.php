@@ -373,7 +373,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{ $tenant_service_payments->links('vendor.pagination.admin')}}
+            {{ $tenant_service_payments->links('pagination.admin')}}
         </div>
 
         {{-- end table --}}
