@@ -35,31 +35,37 @@
                         <x-input-label for="name" value="{{ __('Nama Tenant') }}" />
                         <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
                             :value="$tenant->name" required autofocus />
+                        <x-input-error for="name" class="mt-2"  :messages="$errors->get('name')" />
                     </div>
                     <div>
                         <x-input-label for="tenant-user" value="{{ __('User Tenant') }}" />
-                        <x-text-input id="tenant-user" class="block w-full mt-1 bg-white-400" type="text" name="tenant-user"
-                            :value="$tenant->user->name" disabled readonly />
+                        <x-text-input id="tenant-user" class="block w-full mt-1" type="text" name="tenant-user"
+                            :value="$tenant->user->name" required autofocus />
+                        <x-input-error for="tenant-user" class="mt-2" :messages="$errors->get('tenant-user')" />
                     </div>
                     <div>
                         <x-input-label for="phone-number" value="{{ __('Phone Number') }}" />
                         <x-text-input id="phone-number" class="block w-full mt-1" type="text" name="phone-number"
                             :value="$tenant->user->phone_number" required autofocus />
+                        <x-input-error for="phone-number" class="mt-2" :messages="$errors->get('phone-number')" />
                     </div>
                     <div>
                         <x-input-label for="email" value="{{ __('Email Address') }}" />
                         <x-text-input id="email" class="block w-full mt-1" type="text" name="email"
                             :value="$tenant->user->email" required autofocus />
+                        <x-input-error for="email" class="mt-2" :messages="$errors->get('email')" />
                     </div>
                     <div class="sm:col-span-2">
                         <x-input-label for="address" value="{{ __('Address') }}" />
                         <x-text-input id="address" class="block w-full mt-1" type="text" name="address"
                             :value="$tenant->address" required autofocus />
+                        <x-input-error for="address" class="mt-2" :messages="$errors->get('address')" />
                     </div>
                     <div class="sm:col-span-2">
                         <x-input-label for="description" value="{{ __('Description') }}" />
                         <x-textarea-input id="description" class="block w-full mt-1" type="text" name="description"
                             :value="$tenant->description" required autofocus />
+                        <x-input-error for="description" class="mt-2" :messages="$errors->get('description')" />
                     </div>
                 </div>
                 <div class="flex justify-end pt-5">

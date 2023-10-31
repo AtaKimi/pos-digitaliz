@@ -50,7 +50,7 @@ class CategoryController extends Controller
             ]);
 
             DB::commit();
-
+            toast('Category created successfully', 'success');
             return redirect()->route('tenant-category-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
@@ -81,7 +81,7 @@ class CategoryController extends Controller
             ]);
 
             DB::commit();
-
+            toast('Category updated successfully', 'success');
             return redirect()->route('tenant-category-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
@@ -110,8 +110,8 @@ class CategoryController extends Controller
 
 
             DB::commit();
-
-            return redirect()->route('tenant-category-index', $tenant->id)->with('success', 'Tenant has been deleted successfully');
+            toast('Category deleted successfully', 'success');
+            return redirect()->route('tenant-category-index', $tenant->id);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete category.']);

@@ -65,11 +65,11 @@ class WaiterController extends Controller
             $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
 
             DB::commit();
-
-            return back()->with('message', 'success');
+            toast('Order status updated to'.$order_status , 'success');
+            return back();
         } catch (\Exception $e) {
             DB::rollback();
-            return back()->with('message', 'failed');
+            return back()->with('error', 'failed');
         }
 
 
@@ -91,11 +91,11 @@ class WaiterController extends Controller
             $order->update(['status' => OrderStatus::CANCELED]);
 
             DB::commit();
-
-            return back()->with('message', 'success');
+            toast('Order was canceled successfully', 'success');
+            return back();
         } catch (\Exception $e) {
             DB::rollback();
-            return back()->with('message', 'failed');
+            return back()->with('error', 'failed');
         }
     }
 
@@ -123,7 +123,8 @@ class WaiterController extends Controller
             DB::beginTransaction();
             $request->user()->update($validated);
             DB::commit();
-            return back()->with('status', 'profile-updated');
+            toast('Your profile as been updated!', 'success');
+            return back();
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error', 'An error occurred while updating the profile.');
@@ -143,7 +144,8 @@ class WaiterController extends Controller
                 'password' => Hash::make($validated['password']),
             ]);
             DB::commit();
-            return back()->with('status', 'password-updated');
+            toast('Your password as been updated!', 'success');
+            return back();
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error', 'An error occurred while updating the password.');
@@ -163,7 +165,8 @@ class WaiterController extends Controller
             };
             $request->user()->addMediaFromRequest('image')->toMediaCollection('default');
             DB::commit();
-            return redirect()->back()->with('status', 'profile-photo-updated');
+            toast('Your Profile Photo as been updated!', 'success');
+            return redirect()->back();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);

@@ -41,7 +41,12 @@ class ProductController extends Controller
             'status' => 'in:in_stock,soldout,disabled',
         ]);
 
-        $product->update($validated);
-        return $product;
+        try {
+            $product->update($validated);
+            toast('Product status updated successfully', 'success');
+            return $product;
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed to update product status.'], 500);
+        }
     }
 }
