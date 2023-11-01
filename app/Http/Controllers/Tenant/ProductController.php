@@ -151,7 +151,7 @@ class ProductController extends Controller
             }
 
             DB::commit();
-            toast($product->name.'has been updated!', 'success');
+            toast($product->name.' has been updated!', 'success');
             return redirect()->route('tenant-product-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();

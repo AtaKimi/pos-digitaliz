@@ -1,7 +1,6 @@
 {
   "private": true,
-  "type": "module",
-  "scripts": {
+ "scripts": {
     "dev": "vite",
     "watch:tailwind": "npx tailwindcss -i ./resources/css/app.css -o ./resources/css/output.css --watch",
     "build": "vite build"
