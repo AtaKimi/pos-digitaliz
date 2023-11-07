@@ -81,7 +81,7 @@ class ProductController extends Controller
 
             DB::commit();
 
-            toast($product->name.' has been created!', 'success');
+            toast($product->name . ' has been created!', 'success');
             return redirect()->route('tenant-product-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
@@ -151,7 +151,7 @@ class ProductController extends Controller
             }
 
             DB::commit();
-            toast($product->name.' has been updated!', 'success');
+            toast($product->name . ' has been updated!', 'success');
             return redirect()->route('tenant-product-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
@@ -183,7 +183,7 @@ class ProductController extends Controller
             $product->delete();
 
             DB::commit();
-            toast($product->name.' has been deleted!', 'success');
+            toast($product->name . ' has been deleted!', 'success');
             return redirect()->route('tenant-product-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
@@ -207,7 +207,7 @@ class ProductController extends Controller
             $product->update($validated);
 
             DB::commit();
-            toast($product->name.' status has been updated!', 'success');
+            toast($product->name . ' status has been updated!', 'success');
             return back();
         } catch (\Exception $e) {
             DB::rollback();
