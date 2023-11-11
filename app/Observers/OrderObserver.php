@@ -3,9 +3,11 @@
 namespace App\Observers;
 
 use App\Enums\OrderStatus;
+use App\Events\OrderCreated;
 use App\Events\OrderVerified;
 use App\Models\Tax;
 use App\Models\Order;
+use Illuminate\Console\Scheduling\Event;
 
 class OrderObserver
 {
@@ -21,6 +23,7 @@ class OrderObserver
             $percentage = $order->desk->tenant->taxes->first()->percentage;
             $order->tax()->save(Tax::create(['percentage' => $percentage]));
         } 
+        event(new OrderCreated($order));
     }
 
     public function updated(Order $order){

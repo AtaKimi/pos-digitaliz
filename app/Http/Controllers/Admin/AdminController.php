@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin;
+use Carbon\Carbon;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
-use App\Models\TenantServicePayment;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\TenantServicePayment;
 use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
@@ -18,47 +19,23 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-
-        if (!empty($request->get('totalTenantFilter'))) {
-            $totalTenantFilter = $request->get('totalTenantFilter');
-        } else {
-            $totalTenantFilter = 'Monthly';
-        }
-
-        // Daftar bulan yang tetap ditampilkan
-        $months = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-        // Mengambil data jumlah tenant untuk setiap bulan
-        $monthlyData = Tenant::selectRaw("DATE_FORMAT(created_at, '%b') as month, COUNT(*) as count")
-            ->groupBy("month")
-            ->get();
-
-        // Mengisi nilai tenant dengan 0 untuk bulan yang tidak ada data
-        $filledData = [];
-
-        foreach ($months as $month) {
-            $found = false;
-            foreach ($monthlyData as $data) {
-                if ($data->month == $month) {
-                    $filledData[] = [
-                        'month' => $data->month,
-                        'count' => $data->count,
-                    ];
-                    $found = true;
-                    break;
-                }
+        $params = request()->query();
+        $startDate = now()->startOfWeek();
+        $endDate = now()->endOfWeek();
+        $formatDate = 'd';
+        if (@$params['TotalTenantFilter']) {
+            if ($params['TotalTenantFilter'] == 'monthly') {
+                $startDate = now()->startOfYear();
+                $endDate = now()->endOfYear();
+                $formatDate = 'm';
+            } else if ($params['TotalTenantFilter'] == 'annually') {
+                $startDate = now()->startOfDecade();
+                $endDate = now()->endOfDecade();
+                $formatDate = 'y';
             }
+        } 
 
-
-
-            if (!$found) {
-                $filledData[] = [
-                    'month' => $month,
-                    'count' => 0,
-                ];
-            }
-        }
-
+        $filledData = $this->chartTotalTenant($formatDate, $startDate, $endDate);
         $all_tenants = Tenant::all();
         // $service_data = $all_tenants->getService()
         $tenants = Tenant::latest()->paginate(11);
@@ -67,7 +44,7 @@ class AdminController extends Controller
         $total_service_all = $total_service_paid_all = $total_service_paid_all = 0;
         foreach ($all_tenants as $tenant) {
             $desk_ids = Desk::where('tenant_id', $tenant->id)->pluck('id');
-            $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
+            $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', '>', OrderStatus::PENDING)->get();
             $tenant_service_total = 0;
             foreach ($tenant_orders as $tenant_order) {
                 $service = $tenant_order->getService();
@@ -79,8 +56,7 @@ class AdminController extends Controller
         $total_service_unpaid_all = $total_service_all - $total_service_paid_all;
         Paginator::useTailwind();
 
-        // dd($$filledData);
-        return view('admin.index', compact('totalTenantFilter',  'filledData',  'tenants', 'all_tenants', 'tenant_counter', 'tenant_service_payments', 'total_service_paid_all', 'total_service_unpaid_all'));
+        return view('admin.index', compact('filledData',  'tenants', 'all_tenants', 'tenant_counter', 'tenant_service_payments', 'total_service_paid_all', 'total_service_unpaid_all'));
     }
     public function tenantManagement()
     {
@@ -93,51 +69,21 @@ class AdminController extends Controller
         return view('admin.tenant-detail');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy()
-    {
-        //
+    private function chartTotalTenant(
+        $groupBy = "w",
+        $startDate,
+        $endDate
+    ) {
+        $tenants = Tenant::whereBetween('created_at', [$startDate, $endDate])
+            ->get()
+            ->groupBy(function ($date) use ($groupBy) {
+                return Carbon::parse($date->created_at)->format($groupBy);
+            });
+        $tenants_sum = [];
+        foreach ($tenants as $key => $tenant) {
+            $tenants_sum[strval($key)]= strval(count($tenant));
+        }
+        ksort($tenants_sum);
+        return $tenants_sum;
     }
 }

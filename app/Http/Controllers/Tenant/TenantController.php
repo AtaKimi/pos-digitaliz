@@ -99,7 +99,6 @@ class TenantController extends Controller
         $groupBy = "w",
         $startDate,
         $endDate,
-        $sort = false
     ) {
         $orders = Order::whereIn('desk_id', $desks)->whereBetween('created_at', [$startDate, $endDate])
             ->get()

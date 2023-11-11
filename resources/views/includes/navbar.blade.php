@@ -1,14 +1,13 @@
-<nav class="flex justify-between w-full mb-8">
+<nav class="flex justify-between w-full mb-8 items-center">
     <div class="flex items-center">
         <button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
             aria-controls="separator-sidebar" type="button"
-            class=" p-2 mt-2 mr-2 text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            class=" p-2 mt-2 mr-2 text-sm text-gray-500 border border-white-50 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
             <span class="sr-only">Open sidebar</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path clip-rule="evenodd" fill-rule="evenodd"
-                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                </path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-white-50"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
         </button>
         <div class="sm:block hidden @if (request()->routeIs('tenant-*')) text-white-50 @endif">
@@ -34,9 +33,9 @@
                 class="flex align-middle items-center gap-2 focus:ring-4 focus:outline-none focus:ring-blue-300 "
                 type="button">
                 <span class="my-auto mr-2 font-medium @if (request()->routeIs('tenant-*')) text-white-50 @endif">
-                    {{Auth::user()->name}}
+                    {{ Auth::user()->name }}
                 </span>
-                <img class="rounded-full w-10 h-10" src="{{Auth()->user()->getFirstMediaUrl()}}" alt="">
+                <img class="rounded-full w-10 h-10" src="{{ Auth()->user()->getFirstMediaUrl() }}" alt="">
                 <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="@if (request()->routeIs('tenant-*')) fill-white-50 @else fill-black-400 @endif">
                     <path fill-rule="evenodd" clip-rule="evenodd"

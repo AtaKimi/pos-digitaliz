@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Enums\OrderStatus;
+use Carbon\Carbon;
 use App\Models\Desk;
 use App\Models\Order;
-use App\Models\Product;
 use App\Models\Tenant;
-use App\Models\TenantServicePayment;
+use App\Models\Waiter;
+use App\Models\Product;
+use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use App\Models\TenantServicePayment;
 
 class TenantController extends Controller
 {
-    public function index () {
+    public function index()
+    {
         $tenants = Tenant::paginate(5);
         $tenants->each(function ($tenant) {
             // Get payments for the current month
@@ -29,9 +33,12 @@ class TenantController extends Controller
         return view('admin.tenant-management', compact('tenants'));
     }
 
-    public function show ($id) {
+    public function show($id)
+    {
         $tenants = Tenant::findOrFail($id);
-        $waiters = $tenants->waiter;
+        // $waiters = $tenants->waiter;
+        $waiters = Waiter::where('tenant_id', $tenants->id)->paginate(10);
+        $service = $tenants->services->first();
 
         //get total product 
         $category = Category::where('tenant_id', $id)->pluck('id');
@@ -39,14 +46,14 @@ class TenantController extends Controller
 
         //card total tagihan
         $desk_ids = Desk::with('order')->where('tenant_id', $id)->pluck('id');
-        $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', 'done')->get();
+        $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', '>', OrderStatus::PENDING)->get();
         $totalTagihan = 0;
         foreach ($tenant_orders as $order) {
-            $totalTagihan += $order->total;
+            $totalTagihan += $order->getService()->price;
         }
         $formatTotalTagihan = 'Rp ' . number_format($totalTagihan, 0, ',', '.');
 
-          // Calculate the total payment for the tenant
+        // Calculate the total payment for the tenant
         $totalPayment = $tenants->tenant_service_payment->sum('total');
         // Format the total payment as "Rp 460.000"
         $formatTotalPayment = 'Rp ' . number_format($totalPayment, 0, ',', '.');
@@ -60,8 +67,10 @@ class TenantController extends Controller
             return $payment->transfer_at;
         });
 
+        $paymentPerMonth = TenantServicePayment::where('tenant_id', $tenants->id)->paginate(5);
+
         // $tenantServicePaymentTotal = TenantServicePayment::where('tenant_id', 1)->sum('total');
-        
+
         // $this->comment($unpaid_service_total);
 
 
@@ -70,6 +79,7 @@ class TenantController extends Controller
             'tenants' => $tenants,
             'waiters' => $waiters,
             'product' => $product,
+            'service' => $service,
             'paymentPerMonth' => $paymentPerMonth,
             'formatTotalTagihan' => $formatTotalTagihan,
             'formatUnpaidPayment' => $formatUnpaidPayment
@@ -77,24 +87,17 @@ class TenantController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+
         $validate = request()->validate(
             [
                 'tenant_id' => 'required',
                 'user_id' => 'required',
-                'transfer_at' => 'required|date',
-                'total'=> 'required|numeric',
+                'transfer_at' => 'required',
+                'total' => 'required|numeric',
                 'image' => 'required|file|mimes:jpg,jpeg,png'
             ]
         );
@@ -107,41 +110,9 @@ class TenantController extends Controller
 
         $create = TenantServicePayment::create($validate);
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $create->addMediaFromRequest('image')->toMediaCollection('buktiTf');
+            $create->addMediaFromRequest('image')->toMediaCollection('default');
         }
-        if ($create) {
-            return back()->with('sukses', "ahay");
-        }
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-        $tenantId = $request->input('tenant_id');
-        $isActive = $request->input('is_active');
-
-        $tenant = Tenant::find($tenantId);
-
-        if (!$tenant) {
-            return response()->json(['success' => false, 'message' => 'Tenant not found']);
-        }
-
-        $tenant->is_active = $isActive;
-        $tenant->save();
-
-        return response()->json(['success' => true, 'message' => 'Tenant status updated successfully']);
-
+        return back()->with('sukses', "ahay");
     }
 
     /**

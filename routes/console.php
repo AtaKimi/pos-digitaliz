@@ -38,8 +38,8 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = Order::factory()->create();
-    event(new OrderCreated($order));
+    $order = Order::find(1)->orderDetail;
+    dd($order);
 });
 
 Artisan::command('rholand', function () {

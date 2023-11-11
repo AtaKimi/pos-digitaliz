@@ -90,7 +90,8 @@ class UserSeeder extends Seeder
                 'address' => fake()->address(),
                 'description' => fake()->paragraph(5),
                 'user_id' => $i,
-                'is_tax' => fake()->boolean(),
+                'is_tax' => true,
+                'created_at' => fake()->dateTimeBetween('-1 years'),
             ]);
             $tenant->taxes()->save(\App\Models\Tax::factory()->create());
             $tenant->services()->save(\App\Models\Service::factory()->create());

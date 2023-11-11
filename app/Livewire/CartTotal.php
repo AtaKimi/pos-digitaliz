@@ -62,8 +62,7 @@ class CartTotal extends Component
         }
 
         $order->getPrice();
-        dd([$order, $order_details]);
-
+        redirect()->route('customer-verify', [$this->tenant->id, $this->desk->id, $order->id]);
     }
 
     protected function getPrice() {

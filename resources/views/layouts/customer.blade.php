@@ -9,8 +9,8 @@
     <script src="https://unpkg.com/@glidejs/glide@3.2.3/dist/glide.min.js"></script>
 </head>
 
-<body class="bg-slate-200">
-    <div class="w-[375px] bg-white-50 mx-auto flex flex-col h-screen">
+<body class="bg-slate-200 ">
+    <div class="w-[375px] h-screen bg-white-50 mx-auto flex flex-col">
         <div class="h-fit bg-[url('/public/assets/img/bg-layout.png')] p-5 bg-cover border-b-4">
             <div class="relative flex justify-center items-center">
                 <div class="absolute left-0 p-3 bg-white-100 rounded-full shadow-xl">

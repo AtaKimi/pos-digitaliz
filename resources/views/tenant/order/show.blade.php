@@ -16,12 +16,11 @@
         </div>
     </x-card>
 
-    <x-card class="mb-5">
+    <x-card class="mb-5 overflow-x-auto">
         <h1 class="text-lg font-bold mb-6">Progress status order</h1>
-        <div class="relative mb-24">
+        <div class="relative mb-24 " style="width: 600px">
             <div class="absolute -top-3 w-full">
                 <div class="flex justify-between">
-
                     {{-- item 1 --}}
                     <div class="flex flex-col items-center gap-2">
                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
@@ -235,7 +234,7 @@
                 @csrf
                 @method('PUT')
                 <button
-                    class="flex  py-3 px-4 rounded-xl items-center 
+                    class="flex  py-3 px-4 rounded-xl items-center
                 @if ($order->status == App\Enums\OrderStatus::CANCELED || $order->status == App\Enums\OrderStatus::DONE) bg-grey-200 text-grey-700 
                 @else
                     border border-red-500 text-red-500 @endif">
@@ -251,8 +250,8 @@
     </x-card>
 
     <x-card>
-        <div class="flex justify-between bg-grey-100 p-4 rounded-xl mb-6">
-            <div>
+        <div class="flex flex-col sm:flex-row justify-between bg-grey-100 p-4 rounded-xl mb-6">
+            <div class="mb-2">
                 <div class="w-32 h-32 mb-6">
                     <img src="{{ asset('assets/img/logo_detail_order.png') }}" alt="">
                 </div>
@@ -261,8 +260,8 @@
                     <h1 class="text-xl font-semibold tracking-wide">{{ $order->desk->name }}</h1>
                 </div>
             </div>
-            <div class="text-end">
-                <div class="mb-14">
+            <div class="text-start sm:text-end">
+                <div class="mb-2 sm:mb-14">
                     <p class="text-xs text-gray-600">UUID</p>
                     <h1 class="text-lg font-bold ">{{ $order->code }}</h1>
                 </div>
@@ -329,7 +328,7 @@
                     Subtotal
                 </td>
                 <td class="px-6 py-4 border-b">
-                    Rp. {{ number_format($order->getSubTotal(), 2)}}
+                    Rp. {{ number_format($order->sub_total, 2)}}
                 </td>
             </tr>
             @if ($order->tax != null)
@@ -341,7 +340,7 @@
                         Tax ({{$order->tax->percentage}}%) 
                     </td>
                     <td class="px-6 py-4 border-b">
-                        Rp. {{ number_format($order->tax->tax_total, 2)}}
+                        Rp. {{ number_format($order->tax_total, 2)}}
                     </td>
                 </tr>
             @endif
@@ -353,7 +352,7 @@
                     Service Change
                 </td>
                 <td class="px-6 py-4 border-b">
-                    Rp. {{ number_format($order->getService()->price, 2)}}
+                    Rp. {{ number_format($order->service_total, 2)}}
                 </td>
             </tr>
             <tr class=" font-semibold">
