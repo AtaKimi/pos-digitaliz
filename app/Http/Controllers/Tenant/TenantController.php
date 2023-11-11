@@ -10,7 +10,9 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+
 
 class TenantController extends Controller
 {
@@ -44,9 +46,9 @@ class TenantController extends Controller
                 $endDate = now()->endOfDecade();
                 $formatDate = 'y';
             }
-        } 
+        }
 
-        $orderData = $this->chartTotalOrderRevenue($desks,$formatDate, $startDate, $endDate, true);
+        $orderData = $this->chartTotalOrderRevenue($desks, $formatDate, $startDate, $endDate, true);
 
         $categories = Category::where('tenant_id', $tenant->id)->with('products')->get();
         $categories_name = $categories->pluck('name');
@@ -67,31 +69,51 @@ class TenantController extends Controller
     public function updateSetting(Request $request, Tenant $tenant)
     {
         $validated = $request->validate([
-            'name'=>'required|string',
-            'tenant-user'=>'required|string',
-            'phone-number'=>'required|string',
-            'email'=>'required|string',
-            'address'=>'required|string',
-            'description'=>'required|string',
+            'name' => 'required|string',
+            'tenant-user' => 'required|string',
+            'phone-number' => 'required|string',
+            'email' => 'required|string',
+            'address' => 'required|string',
+            'description' => 'required|string',
         ]);
-        $tenant->update($validated);
 
-        return redirect()->route('tenant-setting', $tenant->id);
+        $user = $tenant->user;
+
+        try {
+            DB::beginTransaction();
+
+            $tenant->update($validated);
+            $user->name = $validated['tenant-user'];
+            $user->save();
+
+            DB::commit();
+            toast('Your Profile as been updated!', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
+        }
     }
-    
-    public function updateProfilePhoto(Request $request, Tenant $tenant)
+
+    public function updateProfilePhoto(Request $request, Tenant $tenant, User $user)
     {
         $request->validate([
             'image' => 'mimes:jpg,jpeg,png,bmp,gif|max:1024',
         ]);
 
-        if($request->hasFile('image')){
-            $tenant->clearMediaCollection('default');
-        };
-
-        $tenant->addMediaFromRequest('image')->toMediaCollection('default');
-
-        return back()->with('message', 'success');
+        try {
+            DB::beginTransaction();
+            if ($request->hasFile('image')) {
+                $tenant->clearMediaCollection('default');
+            };
+            $tenant->addMediaFromRequest('image')->toMediaCollection('default');
+            DB::commit();
+            toast('Your Profile Photo as been updated!', 'success');
+            return redirect()->route('tenant-setting', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
+        }
     }
 
     private function chartTotalOrderRevenue(
@@ -112,5 +134,4 @@ class TenantController extends Controller
         ksort($orders_sum);
         return $orders_sum;
     }
-
 }

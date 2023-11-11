@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Tenant;
 use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
@@ -42,12 +43,24 @@ class OrderController extends Controller
             abort(403);
         }
 
-        $order_status = intval($order->status);
-        if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
+        try {
+            DB::beginTransaction();
+
+            $order_status = intval($order->status);
+            if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
+                return back()->with('message', 'failed');
+            }
+            $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
+
+            DB::commit();
+            toast('Order status updated successfully', 'success');
+            return back()->with('message', 'success');
+        } catch (\Exception $e) {
+            DB::rollback();
             return back()->with('message', 'failed');
         }
-        $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
-        return back()->with('message', 'success');
+
+
     }
 
     public function cancel(Tenant $tenant, Order $order)
@@ -56,11 +69,21 @@ class OrderController extends Controller
             abort(403);
         }
 
-        $order_status = intval($order->status);
-        if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
+        try {
+            DB::beginTransaction();
+
+            $order_status = intval($order->status);
+            if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
+                return back()->with('message', 'failed');
+            }
+            $order->update(['status' => OrderStatus::CANCELED]);
+
+            DB::commit();
+
+            return back()->with('message', 'success');
+        } catch (\Exception $e) {
+            DB::rollback();
             return back()->with('message', 'failed');
         }
-        $order->update(['status' => OrderStatus::CANCELED]);
-        return back()->with('message', 'success');
     }
 }

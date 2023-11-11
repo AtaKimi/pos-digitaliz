@@ -107,9 +107,9 @@
             {{ $desk->onEachSide(1)->links('pagination.tenant') }}
         </x-card>
 
-        <x-modal id="modal-edit-desk">
-            <x-slot:title>Edit Meja</x-slot:title>
-            <form method="POST" action="{{ route('tenant-desk-update', [$tenant->id]) }}" class="flex flex-col gap-4">
+        <form method="POST" action="{{ route('tenant-desk-update', [$tenant->id]) }}" class="flex flex-col gap-4">
+            <x-modal id="modal-edit-desk">
+                <x-slot:title>Edit Meja</x-slot:title>
                 @csrf
                 @method('PUT')
                 <input type="number" class="hidden" name="id" x-bind:value="desk_id">
@@ -120,12 +120,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                         placeholder="Nama Meja" required>
                 </div>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
 
-        <x-modal id="modal-create-desk">
-            <x-slot:title>Tambah Meja</x-slot:title>
-            <form method="POST" action="{{ route('tenant-desk-store', $tenant) }}">
+        <form method="POST" action="{{ route('tenant-desk-store', $tenant) }}">
+            <x-modal id="modal-create-desk">
+                <x-slot:title>Tambah Meja</x-slot:title>
                 @csrf
                 <div class="flex flex-col">
                     <label for="text" class="block mb-2 text-sm font-medium">
@@ -134,12 +134,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                         placeholder="Nama Meja" required>
                 </div>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
 
-        <x-modal id="modal-delete-desk">
-            <x-slot:title>Hapus Meja</x-slot:title>
-            <form action="{{ route('tenant-desk-destroy', [$tenant->id]) }}" method="POST" class="flex flex-col gap-4">
+        <form action="{{ route('tenant-desk-destroy', [$tenant->id]) }}" method="POST" class="flex flex-col gap-4">
+            <x-modal id="modal-delete-desk">
+                <x-slot:title>Hapus Meja</x-slot:title>
                 @csrf
                 @method('DELETE')
                 <input type="number" class="hidden" x-bind:value="desk_id" name="id">
@@ -151,7 +151,7 @@
                         fill="white" />
                 </svg>
                 <p class="text-center text-gray-500">Apakah Anda yakin ingin menghapus meja ini?</p>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
     </div>
 @endsection

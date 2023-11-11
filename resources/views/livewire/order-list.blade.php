@@ -1,3 +1,4 @@
+
 <x-card>
     <x-card.header>
         <x-table.table-title>
@@ -36,7 +37,7 @@
                 <x-table.td>
                     <button disabled
                         class="flex justify-center align-middle w-full py-1 rounded-full
-                        @if ($order->status == App\Enums\OrderStatus::PENDING) bg-yellow-300 text-yellow-950                          
+                        @if ($order->status == App\Enums\OrderStatus::PENDING) bg-yellow-300 text-yellow-950
                         @elseif($order->status == App\Enums\OrderStatus::COOKING) bg-blue-200 text-blue-950
                         @elseif($order->status == App\Enums\OrderStatus::SERVING) bg-purple-200 text-purple-950
                         @elseif($order->status == App\Enums\OrderStatus::DONE)  bg-green-400 text-green-950
@@ -45,7 +46,7 @@
                     </button>
                 </x-table.td>
                 <x-table.td class="flex justify-center">
-                    <a href="{{ route('tenant-order-show', ['tenant' => $tenant, 'order' => $order]) }}"
+                    <a href="{{ route($url, ['tenant' => $tenant, 'order' => $order]) }}"
                         class="block w-fit focus:outline-none text-white bord border border-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

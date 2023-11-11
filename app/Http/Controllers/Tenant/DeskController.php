@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Models\Desk;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class DeskController extends Controller
@@ -32,8 +33,18 @@ class DeskController extends Controller
             "name" => 'required|string|max:255'
         ]);
         $validated['tenant_id'] = $tenant->id;
-        $desk = Desk::create($validated);
-        return redirect()->route('tenant-desk-index', $tenant->id);
+        try {
+            DB::beginTransaction();
+
+            $desk = Desk::create($validated);
+
+            DB::commit();
+            toast('Desk created successfully', 'success');
+            return redirect()->route('tenant-desk-index', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create desk.']);
+        }
     }
 
     /**
@@ -48,8 +59,17 @@ class DeskController extends Controller
         ]);
 
         $desk = Desk::find($validated['id']);
-        $desk->update($validated);
-        return redirect()->route('tenant-desk-index', $tenant->id);
+
+        try {
+            DB::beginTransaction();
+            $desk->update($validated);
+            DB::commit();
+            toast('Desk updated successfully', 'success');
+            return redirect()->route('tenant-desk-index', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update desk.']);
+        }
     }
 
     /**
@@ -62,7 +82,16 @@ class DeskController extends Controller
         ]);
 
         $desk = Desk::find($validated['id']);
-        $desk->delete();
-        return redirect()->route('tenant-desk-index', $tenant->id);
+
+        try {
+            DB::beginTransaction();
+            $desk->delete();
+            DB::commit();
+            toast('Desk deleted successfully', 'success');
+            return redirect()->route('tenant-desk-index', $tenant->id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete desk.']);
+        }
     }
 }

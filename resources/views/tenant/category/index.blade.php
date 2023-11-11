@@ -87,9 +87,9 @@
             {{ $categories->links('pagination.tenant') }}
         </x-card>
 
-        <x-modal id="modal-edit-category">
-            <x-slot:title>Edit Kategory</x-slot:title>
-            <form action="{{ route('tenant-category-edit', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+        <form action="{{ route('tenant-category-edit', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+            <x-modal id="modal-edit-category">
+                <x-slot:title>Edit Kategory</x-slot:title>
                 @csrf
                 <input type="number" class="hidden" name="id" x-bind:value="category_id">
                 <div class="flex flex-col">
@@ -99,12 +99,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
                         placeholder="Nama Kategori" required x-bind:value="category_name">
                 </div>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
 
-        <x-modal id="modal-delete-category">
-            <x-slot:title>Hapus Kategori</x-slot:title>
-            <form action="{{ route('tenant-category-destroy', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+        <form action="{{ route('tenant-category-destroy', $tenant->id) }}" method="POST" class="flex flex-col gap-4">
+            <x-modal id="modal-delete-category">
+                <x-slot:title>Hapus Kategori</x-slot:title>
                 @method('DELETE')
                 @csrf
                 <input type="number" x-bind:value="category_id" class="hidden" name="id">
@@ -120,12 +120,11 @@
                 </div>
                 <p class="text-start text-md font-medium">Apakah Anda yakin ingin menghapus kategori
                     ini?</p>
-            </form>
-        </x-modal>
-
-        <x-modal id="modal-create-category">
-            <x-slot:title>Tambah Kategori</x-slot:title>
-            <form action="{{ route('tenant-category-store', $tenant) }}" method="POST">
+            </x-modal>
+        </form>
+        <form action="{{ route('tenant-category-store', $tenant) }}" method="POST">
+            <x-modal id="modal-create-category">
+                <x-slot:title>Tambah Kategori</x-slot:title>
                 @csrf
                 <div class="flex flex-col">
                     <label for="text" class="block mb-2 text-sm font-medium">
@@ -134,8 +133,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                         placeholder="Nama Kategori" required>
                 </div>
-            </form>
-        </x-modal>
+            </x-modal>
+        </form>
+
     </div>
     {{-- MODAL-create CATEGORY --}}
 @endsection
