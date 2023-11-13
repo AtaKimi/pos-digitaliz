@@ -6,6 +6,7 @@ use App\Policies\TenantPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -45,10 +46,6 @@ class Tenant extends Model implements HasMedia
     {
         return $this->hasMany(Order::class);
     }
-    public function service()
-    {
-        return $this->hasMany(Service::class);
-    }
     public function cart()
     {
         return $this->hasMany(Cart::class);
@@ -62,9 +59,9 @@ class Tenant extends Model implements HasMedia
     {
         return $this->morphMany(Tax::class, 'taxable');
     }
-    public function services(): MorphMany
+    public function service(): MorphOne
     {
-        return $this->morphMany(service::class, 'serviceable');
+        return $this->MorphOne(service::class, 'serviceable');
     }
 
     public function user()

@@ -138,7 +138,7 @@
                             <p class="font-semibold"> Rp. {{ number_format($service->price, 2, ',', '.') }}</p>
                         </div>
                         <div>
-                            <button
+                            <button data-modal-target="modal-update-service" data-modal-toggle="modal-update-service"
                                 class="bg-yellow-500 rounded-lg border text-white-50 font-bold tracking-wide text-center py-2 px-4">Edit</button>
                         </div>
                     </div>
@@ -398,5 +398,24 @@
                 <img class="border rounded-xl aspect-square w-[350px]" x-bind:src="bukti_transfer_img" alt="">
             </div>
         </x-modal>
+
+        <form action="{{route('admin-tenant-update-service', $tenants->id)}}" method="POST">
+            @csrf
+            <x-modal id="modal-update-service">
+                <x-slot:title>
+                    <p class="font-bold text-2xl mb-4">Edit Service</p>
+                </x-slot:title>
+                <div class="flex flex-col">
+                    <label for="price" class="block mb-2 font-medium">
+                        Service price</label>
+                    <input type="number" id="number" name="price"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        placeholder="Price" required>
+                    @error('price')
+                        <p>{{$message}}</p>
+                    @enderror
+                </div>
+            </x-modal>
+        </form>
     </div>
 @endsection

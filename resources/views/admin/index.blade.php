@@ -110,11 +110,12 @@
                             <select name="TotalTenantFilter" onchange="this.closest('form').submit()"
                                 class="border border-gray-600 rounded-full py-2 px-4">
                                 @isset(request()->query()['TotalTenantFilter'])
-                                    <option value="weekly" @if (request()->query()['TotalTenantFilter'] == 'weekly') selected @endif>Weekly</option>
+                                    <option value="weekly" @if (request()->query()['TotalTenantFilter'] == 'weekly') selected @endif>Last 10 days
+                                    </option>
                                     <option value="monthly" @if (request()->query()['TotalTenantFilter'] == 'monthly') selected @endif>Monthly</option>
                                     <option value="anually" @if (request()->query()['TotalTenantFilter'] == 'anually') selected @endif>Anually</option>
                                 @else
-                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="last_10_days" selected>Last 10 days</option>
                                     <option value="monthly">Monthly</option>
                                     <option value="anually">Anually</option>
                                 @endisset
@@ -122,31 +123,6 @@
                         </div>
                     </div>
                     <div id="column-chart"></div>
-                </x-card>
-
-                <x-card>
-                    <div class="flex flex-col items-center justify-between mb-5 md:flex-row gap-7">
-                        <div class="flex flex-col items-center md:flex-row gap-7">
-                            <div>
-                                <h5 class="inline-flex items-center mb-2 text-xs font-normal leading-none text-gray-500">
-                                    Total Pendapatan Service
-                                </h5>
-                                <p class="text-xl font-bold leading-none text-gray-900">
-                                    RP.{{ number_format($total_service_paid_all, 0, '', '.') }}</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between gap-0 p-1 border rounded-2xl h-15"
-                            x-data="{ value: '' }">
-                            <input type="text" name="TotalPendapatanService" x-bind:value="value" class="hidden">
-                            <button type="submit" x-on:click="value = 'weekly';"
-                                class="p-2 text-xs font-medium text-center text-gray-900 bg-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Weekly</button>
-                            <button type="submit" x-on:click="value = 'monthly';"
-                                class="p-2 text-xs font-medium text-center text-gray-900 bg-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Monthly</button>
-                            <button type="submit" x-on:click="value = 'anually';"
-                                class="p-2 text-xs font-medium text-center bg-gray-900 text-white-50 hover:bg-gray-900 hover:text-white-50 rounded-xl">Anually</button>
-                        </div>
-                    </div>
-                    <div id="area-chart"></div>
                 </x-card>
             </div>
             {{-- charts end --}}
@@ -361,83 +337,6 @@
 
             if (document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
                 const chart = new ApexCharts(document.getElementById("column-chart"), options);
-                chart.render();
-            }
-        });
-    </script>
-
-    <script>
-        // ApexCharts options and config
-        window.addEventListener("load", function() {
-            let options = {
-                chart: {
-                    height: "70%",
-                    type: "area",
-                    fontFamily: "Inter, sans-serif",
-                    dropShadow: {
-                        enabled: false,
-                    },
-                    toolbar: {
-                        show: false,
-                    },
-                },
-                tooltip: {
-                    enabled: true,
-                    x: {
-                        show: false,
-                    },
-                },
-                fill: {
-                    type: "gradient",
-                    gradient: {
-                        opacityFrom: 0.55,
-                        opacityTo: 0,
-                        shade: "#1C64F2",
-                        gradientToColors: ["#1C64F2"],
-                    },
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                stroke: {
-                    width: 3,
-                },
-                grid: {
-                    show: true,
-                    strokeDashArray: 4,
-                    padding: {
-                        left: 2,
-                        right: 2,
-                        top: 0
-                    },
-                },
-                series: [{
-                    name: "Services",
-                    data: [17, 18, 16, 17, 20, 18, 19, 18, 19, 18, 17, 16, 20],
-                    color: "#1A56DB",
-                }, ],
-                xaxis: {
-                    categories: ['JAN', 'FEB', 'MAR', 'APR', 'MEI', 'JUN', 'JUL', 'AGU', 'SEP', 'OKT', 'NOV',
-                        'DES',
-                    ],
-                    labels: {
-                        show: true,
-                    },
-                    axisBorder: {
-                        show: false,
-                    },
-                    axisTicks: {
-                        show: false,
-                    },
-                },
-                yaxis: {
-                    show: true,
-                    opposite: true,
-                },
-            }
-
-            if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-                const chart = new ApexCharts(document.getElementById("area-chart"), options);
                 chart.render();
             }
         });

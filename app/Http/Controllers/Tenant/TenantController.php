@@ -26,7 +26,7 @@ class TenantController extends Controller
     public function index(Tenant $tenant)
     {
         $desks = Desk::where('tenant_id', $tenant->id)->pluck('id');
-        $lastTenOrders = Order::whereIn('desk_id', $desks)->where('status', 'pending')->with('desk')->latest()->limit(10)->get();
+        $lastTenOrders = Order::whereIn('desk_id', $desks)->with('desk')->latest()->limit(10)->get();
 
         $categories_id = Category::where('tenant_id', $tenant->id)->pluck('id');
         $totalCategory = $categories_id->count();

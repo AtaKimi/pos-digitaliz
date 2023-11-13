@@ -19,25 +19,27 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
+        //for total tenant chart
         $params = request()->query();
-        $startDate = now()->startOfWeek();
-        $endDate = now()->endOfWeek();
+        $startDate = now()->addDays(-10);
+        $endDate = now();
         $formatDate = 'd';
         if (@$params['TotalTenantFilter']) {
             if ($params['TotalTenantFilter'] == 'monthly') {
                 $startDate = now()->startOfYear();
                 $endDate = now()->endOfYear();
                 $formatDate = 'm';
-            } else if ($params['TotalTenantFilter'] == 'annually') {
+            } else if ($params['TotalTenantFilter'] == 'anually') {
                 $startDate = now()->startOfDecade();
                 $endDate = now()->endOfDecade();
                 $formatDate = 'y';
             }
         } 
-
         $filledData = $this->chartTotalTenant($formatDate, $startDate, $endDate);
+
+        //for total service chart
+
         $all_tenants = Tenant::all();
-        // $service_data = $all_tenants->getService()
         $tenants = Tenant::latest()->paginate(11);
         $tenant_counter = Tenant::all()->count();
         $tenant_service_payments = TenantServicePayment::has('tenant')->latest()->paginate(10);
@@ -47,15 +49,13 @@ class AdminController extends Controller
             $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', '>', OrderStatus::PENDING)->get();
             $tenant_service_total = 0;
             foreach ($tenant_orders as $tenant_order) {
-                $service = $tenant_order->getService();
+                $service = $tenant_order->service;
                 $tenant_service_total = $tenant_service_total + $service->price;
             }
             $total_service_all = $total_service_all + $tenant_service_total;
         }
         $total_service_paid_all = TenantServicePayment::all()->sum('total');
         $total_service_unpaid_all = $total_service_all - $total_service_paid_all;
-        Paginator::useTailwind();
-
         return view('admin.index', compact('filledData',  'tenants', 'all_tenants', 'tenant_counter', 'tenant_service_payments', 'total_service_paid_all', 'total_service_unpaid_all'));
     }
     public function tenantManagement()

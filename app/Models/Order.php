@@ -36,9 +36,8 @@ class Order extends Model
         return $this->morphOne(Tax::class, 'taxable');
     }
 
-    public function getService()
-    {
-        return $this->desk->tenant->services()->first();
+    public function service() {
+        return $this->morphOne(Service::class, 'serviceable');
     }
 
     public function getPrice()
@@ -51,7 +50,7 @@ class Order extends Model
         if (($this->tax != null)) {
             $this->tax_total = $this->sub_total * $this->tax->percentage / 100;
         }
-        $this->service_total = $this->getService()->price;
+        $this->service_total = $this->service->price;
         $this->total = $this->sub_total + $this->service_total + $this->tax_total;
         $this->save();
     }

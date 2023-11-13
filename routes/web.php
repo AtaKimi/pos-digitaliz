@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
                 'update' => 'admin-tenant-update',
                 'destroy' => 'admin-tenant-destroy',
             ]);
+            Route::controller(AdminTenantController::class)->group(function () {
+                Route::post('{tenant}/update-service', 'updateService')->name('admin-tenant-update-service');
+            });
         });
     });
 

@@ -38,7 +38,7 @@ class TenantController extends Controller
         $tenants = Tenant::findOrFail($id);
         // $waiters = $tenants->waiter;
         $waiters = Waiter::where('tenant_id', $tenants->id)->paginate(10);
-        $service = $tenants->services->first();
+        $service = $tenants->service;
 
         //get total product 
         $category = Category::where('tenant_id', $id)->pluck('id');
@@ -49,7 +49,7 @@ class TenantController extends Controller
         $tenant_orders = Order::whereIn('desk_id', $desk_ids)->where('status', '>', OrderStatus::PENDING)->get();
         $totalTagihan = 0;
         foreach ($tenant_orders as $order) {
-            $totalTagihan += $order->getService()->price;
+            $totalTagihan += $order->service->price;
         }
         $formatTotalTagihan = 'Rp ' . number_format($totalTagihan, 0, ',', '.');
 
@@ -132,5 +132,17 @@ class TenantController extends Controller
         $tenant->user()->delete();
 
         return redirect()->route('admin-tenant-index')->with('success', 'Tenant has been deleted successfully');
+    }
+
+    public function updateService(Tenant $tenant)
+    {
+        $validated = request()->validate(
+            [
+                'price' => 'integer|required',
+            ]
+        );
+        $tenant->service->delete();
+        $tenant->service()->save(Service::create($validated));
+        return back();
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained('tenants');
             $table->string('name');
-            $table->string('qrcode')->nullable();
+            $table->string('url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

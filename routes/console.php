@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Tenant;
 use App\Models\Waiter;
 use App\Models\Product;
+use App\Models\Service;
 use App\Enums\MonthName;
 use App\Models\Category;
 use App\Enums\OrderStatus;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TenantServicePayment;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Resources\Tenant\ProductResource;
 use App\Listeners\SendOrderCreatedNontification;
 
@@ -38,8 +41,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    $order = Order::find(1)->orderDetail;
-    dd($order);
+    Storage::put('file.jpg', QrCode::format('png')->generate('Make me into a QrCode!'));
 });
 
 Artisan::command('rholand', function () {
