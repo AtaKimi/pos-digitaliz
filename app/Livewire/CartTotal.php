@@ -84,7 +84,7 @@ class CartTotal extends Component
     }
 
     private function getService() {
-        $service = $this->tenant->services->first();
+        $service = $this->tenant->service;
         $this->service_total = $service->price;
     }
 

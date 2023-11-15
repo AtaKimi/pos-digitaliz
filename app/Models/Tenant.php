@@ -59,7 +59,7 @@ class Tenant extends Model implements HasMedia
     }
     public function service(): MorphOne
     {
-        return $this->MorphOne(service::class, 'serviceable');
+        return $this->MorphOne(Service::class, 'serviceable');
     }
 
     public function user()

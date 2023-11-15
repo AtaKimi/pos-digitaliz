@@ -18,7 +18,7 @@
 
     <x-card class="mb-5 overflow-x-auto">
         <h1 class="text-lg font-bold mb-6">Progress status order</h1>
-        <div class="relative mb-24 " style="width: 600px">
+        <div class="relative mb-24 " >
             <div class="absolute -top-3 w-full">
                 <div class="flex justify-between">
                     {{-- item 1 --}}
