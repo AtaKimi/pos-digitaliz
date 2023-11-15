@@ -37,6 +37,7 @@ class TenantController extends Controller
     {
         $tenants = Tenant::findOrFail($id);
         // $waiters = $tenants->waiter;
+        $params = request()->query();
         $waiters = Waiter::where('tenant_id', $tenants->id)->paginate(10);
         $service = $tenants->service;
 

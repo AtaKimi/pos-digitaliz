@@ -12,7 +12,7 @@
         </button>
     </div>
     <div class="sm:block hidden @if (request()->routeIs('tenant-*')) text-white-50 @endif">
-        <p class="text-lg font-semibold">Dashboard</p>
+        <p class="text-lg font-semibold">Digitaliz</p>
     </div>
     <div class="flex align-middle">
 

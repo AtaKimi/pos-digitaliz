@@ -67,7 +67,7 @@ return [
             'url'    => env('APP_URL').'/media/user_profile',
         ],
         'media_tenant_profile' => [
-            'driver' => 'local',
+        'driver' => 'local',
             'root'   => public_path('media/tenant_profile'),
             'url'    => env('APP_URL').'/media/tenant_profile',
         ],
@@ -80,6 +80,11 @@ return [
             'driver' => 'local',
             'root'   => public_path('media/payment_image'),
             'url'    => env('APP_URL').'/media/payment_image',
+        ],
+        'media_qrcode' => [
+            'driver' => 'local',
+            'root'   => public_path('media/qrcode'),
+            'url'    => env('APP_URL').'/media/qrcode',
         ],
     ],
 

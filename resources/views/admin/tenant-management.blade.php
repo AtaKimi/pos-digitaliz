@@ -71,6 +71,7 @@
                     placeholder="Search">
             </div>
         </div>
+        
         <x-card>
             <x-table>
                 <x-slot:header>

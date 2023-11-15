@@ -70,7 +70,7 @@
                             {{ $item->name }}
                         </x-table.td>
                         <x-table.td class="text-start">
-                            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($item->url)) !!} ">
+                            <img src="{{ $item->getFirstMediaUrl('default') }}">
                         </x-table.td>
                         <x-table.td>
                             <div class="flex items-center gap-2">

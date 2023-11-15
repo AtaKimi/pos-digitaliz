@@ -5,7 +5,7 @@
     <x-card class="relative w-full max-w-md max-h-full bg-white-50">
         <div class="relative">
             <p class="text-2xl font-bold text-red-500 mb-4">{{ $title }}</p>
-            <button data-modal-hide="{{$id}}" class="absolute right-0 top-0 border border-black-900 rounded-lg">
+            <button data-modal-hide="{{$id}}" class="absolute right-0 top-0 border border-black-900 rounded-lg hover:text-white hover:bg-black-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                   </svg>

@@ -41,7 +41,12 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('zaidan', function () {
-    Storage::put('file.jpg', QrCode::format('png')->generate('Make me into a QrCode!'));
+    Storage::put('file.png', QrCode::format('png')->generate('Make me into a QrCode!'));
+    $desk = Desk::find(1);
+    $desk->addMediaFromDisk('file.png', 'local')
+        ->toMediaCollection();
+
+    dd($desk->getMedia('default'));
 });
 
 Artisan::command('rholand', function () {

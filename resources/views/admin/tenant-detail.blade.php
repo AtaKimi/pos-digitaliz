@@ -175,21 +175,21 @@
         </x-card>
 
         <x-card class="mb-5">
-            <x-card.header class="flex items-center justify-between mb-5">
+            <x-card.header class="flex items-center justify-end sm:justify-between mb-5">
                 <x-table.table-title>
                     <x-slot:sub_title> Show the tenant service records </x-slot:sub_title>
                     <x-slot:title> Tenant's Service Payment Records </x-slot:title>
                 </x-table.table-title>
                 <div class="flex gap-2">
-                    <x-filter bg="bg-yellow-500" />
-                    <button class="flex items-center p-3 bg-yellow-500 rounded-lg gap-2" data-modal-target="modal-bill"
-                        data-modal-toggle="modal-bill">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                    <button type="button"
+                        class="flex items-center gap-1 h-9 md:h-10 lg:h-12 px-1.5 md:px-2 lg:px-3 bg-yellow-500 rounded-lg"
+                        data-modal-target="modal-bill" data-modal-toggle="modal-bill">
+                        <svg width="24" height="24" viewBox="0 0 18 18" fill="none" class="lg:hidden"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 4.5V13.5M13.5 9H4.5" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        <p class=" font-semibold text-white-50">Tagihan Baru</p>
+                        <p class="font-bold text-white-50 hidden lg:block">Tagihan Baru</p>
                     </button>
                 </div>
             </x-card.header>
@@ -257,7 +257,7 @@
         </x-card>
 
         <x-card>
-            <x-card.header class="flex items-center justify-between mb-5">
+            <x-card.header class="flex items-center justify-end sm:justify-between mb-5">
                 <x-table.table-title>
                     <x-slot:sub_title> Show the tenant waiter list </x-slot:sub_title>
                     <x-slot:title> Tenant's Waiters </x-slot:title>
@@ -399,7 +399,7 @@
             </div>
         </x-modal>
 
-        <form action="{{route('admin-tenant-update-service', $tenants->id)}}" method="POST">
+        <form action="{{ route('admin-tenant-update-service', $tenants->id) }}" method="POST">
             @csrf
             <x-modal id="modal-update-service">
                 <x-slot:title>
@@ -412,7 +412,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                         placeholder="Price" required>
                     @error('price')
-                        <p>{{$message}}</p>
+                        <p>{{ $message }}</p>
                     @enderror
                 </div>
             </x-modal>
