@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use App\traits\HasFilter;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\OrderDetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -15,7 +16,6 @@ class Order extends Model
     protected $fillable =
     [
         'desk_id',
-        'total',
         'status',
         'is_paid',
         'code',
@@ -26,40 +26,32 @@ class Order extends Model
         return $this->belongsTo(Desk::class);
     }
 
-
     public function orderDetail()
     {
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function tax(): MorphOne {
+    public function tax(): MorphOne
+    {
         return $this->morphOne(Tax::class, 'taxable');
     }
 
-    public function getSubTotal(){
-        $subtotal = 0;
-        foreach ($this->orderDetail as $order_detail) {
-            $subtotal = $subtotal + $order_detail->price;
-        }
-        return $subtotal;
-    }
-
-    public function getService(){
-        return $this->desk->tenant->services()->first();
+    public function service() {
+        return $this->morphOne(Service::class, 'serviceable');
     }
 
     public function getPrice()
     {
-        //get the total price of every order detail
-        $this->total = $this->getSubTotal();
-        //get the price of the tax of the detail
-        if(($this->tax != null)){
-            $this->tax->update(['tax_total' => ($this->total * $this->tax->percentage/100)]);
-            $this->total = $this->tax->tax_total + $this->total;
+        $this->sub_total = 0;
+        foreach ($this->orderDetail as $order_detail) {
+            $this->sub_total = $this->sub_total + $order_detail->price;
         }
 
-        $this->total = $this->total + $this->getService()->price;
-
+        if (($this->tax != null)) {
+            $this->tax_total = $this->sub_total * $this->tax->percentage / 100;
+        }
+        $this->service_total = $this->service->price;
+        $this->total = $this->sub_total + $this->service_total + $this->tax_total;
         $this->save();
     }
 }

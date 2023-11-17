@@ -19,7 +19,6 @@ class DeskFactory extends Factory
         return [
             'tenant_id' => 1,
             'name' => "Table " . fake()->word() . fake()->numerify('-#####'),
-            'qrcode' => fake()->url(),
         ];
     }
 }

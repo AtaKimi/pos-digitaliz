@@ -2,10 +2,12 @@
 
 namespace App\Observers;
 
-use App\Enums\OrderStatus;
-use App\Events\OrderVerified;
 use App\Models\Tax;
 use App\Models\Order;
+use App\Models\Service;
+use App\Enums\OrderStatus;
+use App\Events\OrderCreated;
+use App\Events\OrderVerified;
 
 class OrderObserver
 {
@@ -21,6 +23,10 @@ class OrderObserver
             $percentage = $order->desk->tenant->taxes->first()->percentage;
             $order->tax()->save(Tax::create(['percentage' => $percentage]));
         } 
+
+        $price = $order->desk->tenant->service->price;
+        $order->service()->save(Service::create(['price' => $price]));
+        event(new OrderCreated($order));
     }
 
     public function updated(Order $order){

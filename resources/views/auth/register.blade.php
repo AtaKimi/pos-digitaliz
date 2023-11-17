@@ -113,7 +113,7 @@
                             <input type="password" id="password_confirmation" name="password_confirmation"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-4"
                                 placeholder="confirm password" required>
-                            @error('password_confirmation')
+                            @error('kkkk')
                                 <p class="text-red-500 text-sm mt-2">
                                     {{ $message }}
                                 </p>

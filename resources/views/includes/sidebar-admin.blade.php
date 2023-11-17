@@ -1,7 +1,7 @@
 <aside id="separator-sidebar"
-    class="fixed top-0 left-0 z-40 h-screen p-8 w-fit transition-transform -translate-x-full lg:translate-x-0"
+    class="fixed top-0 left-0 z-40 h-screen p-8 transition-transform -translate-x-full lg:translate-x-0"
     aria-label="Sidebar">
-    <div class="bg-white-50 rounded-3xl mr-10 h-full">
+    <div class="bg-white-50 rounded-3xl h-full">
         <div class="flex justify-center mb-2 pt-3">
             <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
         </div>
@@ -27,7 +27,7 @@
         </a>
         <a href="{{ route('admin-tenant-index') }}">
             <div
-                class="flex px-5 py-4 mx-5 @if (request()->route()->named('admin-tenant-index')) bg-yellow-500 @endif rounded-xl align-middle">
+                class="flex px-5 py-4 mx-5 @if (request()->route()->named('admin-tenant-*')) bg-yellow-500 @endif rounded-xl align-middle">
                 <div class="my-auto mr-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                         fill="none">

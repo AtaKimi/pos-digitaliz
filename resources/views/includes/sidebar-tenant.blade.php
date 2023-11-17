@@ -1,9 +1,17 @@
 <aside id="separator-sidebar"
-    class="fixed top-0 left-0 z-40 w-fit p-8 h-screen transition-transform -translate-x-full xl:translate-x-0"
+    class="fixed top-0 left-0 z-50 w-fit p-8 h-screen transition-transform -translate-x-full xl:translate-x-0"
     aria-label="Sidebar">
-    <div class="bg-white-50 rounded-3xl h-full mr-10">
-        <div class="flex justify-center mb-2 pt-3">
+    <div class=" bg-white-50 rounded-3xl h-full mr-10">
+        <div class="relative flex justify-center items-center mb-2 pt-3">
             <img src="{{ asset('/assets/img/logo.svg') }}" alt="">
+            <button class="absolute right-4 flex justify-center items-center rounded-xl hover:bg-red-500 hover:fill-white fill-red-500 xl:hidden"
+                data-drawer-hide="separator-sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
         </div>
         <hr>
         <div class="px-4 py-2">
@@ -11,7 +19,7 @@
         </div>
         <a href="{{ route('tenant-index', Auth::user()->tenant->id) }}">
             <div
-                class="flex px-5 py-4 mx-5  @if (request()->route()->named('tenant-index')) bg-red-500 text-white-50 @endif rounded-xl align-middle w-64">
+                class="flex px-5 py-4 mx-5  @if (request()->route()->named('tenant-index')) bg-red-500 text-white @endif rounded-xl align-middle w-64">
                 <div class="my-auto mr-5">
                     <svg width="16" height="16" viewBox="0 0 16 16"
                         class="@if (request()->route()->named('tenant-index')) fill-white-50 @endif"
@@ -22,7 +30,7 @@
                         </g>
                     </svg>
                 </div>
-                <p class="my-auto text-lg text-white">Dashboard</p>
+                <p class="my-auto text-lg">Dashboard</p>
             </div>
         </a>
         <a href="{{ route('tenant-order-index', Auth::user()->tenant->id) }}">

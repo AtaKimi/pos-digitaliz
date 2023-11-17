@@ -17,8 +17,11 @@ return new class extends Migration
             $table->foreignId('desk_id')->constrained('desks');
             $table->string('code')->unique()->nullable();
             $table->enum('status', OrderStatus::getValues())->default(OrderStatus::PENDING);
-            $table->integer('total')->default(0);
             $table->boolean('is_paid')->default(false);
+            $table->integer('sub_total')->default(0);
+            $table->integer('tax_total')->default(0);
+            $table->integer('service_total')->default(0);
+            $table->integer('total')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

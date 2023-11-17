@@ -70,7 +70,7 @@
                             {{ $item->name }}
                         </x-table.td>
                         <x-table.td class="text-start">
-                            {{ $item->qrcode }}
+                            <img src="{{ $item->getFirstMediaUrl('default') }}">
                         </x-table.td>
                         <x-table.td>
                             <div class="flex items-center gap-2">

@@ -3,12 +3,18 @@
 module.exports = {
     content: [
         "./resources/views/**/*.blade.php",
+        "./resources/views/tenant/**/*.blade.php",
+        "./resources/views/components/**/*.blade.php",
+        "./resources/views/livewire/**/*.blade.php",
+        "./resources/views/profile/**/*.blade.php",
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
-        "./resources/**/*.vue",
         "./node_modules/flowbite/**/*.js",
     ],
     theme: {
+        colors: {
+            'white': '#FFFFFF',
+          },
         extend: {
             colors: {
                 black: {
@@ -55,6 +61,7 @@ module.exports = {
                     900: "#001D4C",
                 },
                 white: {
+                    DEFAULT: "#FFFFFF",
                     50: "#F9F9F9",
                     100: "#FCFCFC",
                     200: "#F7F7F7",

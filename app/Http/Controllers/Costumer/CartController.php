@@ -14,7 +14,7 @@ class CartController extends Controller
         if (Cart::where('desk_id', $desk->id)->exists()) {
             redirect()->route('customer-menu', [$tenant->id, $desk->id]);
         }
-        $carts = Cart::where('desk_id', $desk->id)->get();
+        $carts = Cart::with('desk')->where('desk_id', $desk->id)->get();
         return view('customer.cart', compact('carts', 'tenant', 'desk'));
     }
 }

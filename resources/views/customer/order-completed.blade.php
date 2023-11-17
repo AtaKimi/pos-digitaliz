@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="flex flex-col gap-5 items-center justify-center pb-5 py-5 px-8">
-        <h1 class="text-3xl font-bold">Order Completed</h1>
+        <h1 class="text-3xl font-bold">Order Verified</h1>
         <div class="flex items-center justify-center w-32 h-32 border border-red-500 rounded-full bg-gray-50">
             <svg width="82" height="60" viewBox="0 0 90 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
