@@ -17,8 +17,8 @@ class DeskObserver
         $url = strval(route('customer-menu', [$tenant->id, $desk->id]));
         $desk->update(['url' => $url]);
 
-        Storage::put('qrcode.png', QrCode::format('png')->generate($url));
-        $desk->addMediaFromDisk('qrcode.png', 'local')
+        Storage::put('qrcode.svg', QrCode::generate($url));
+        $desk->addMediaFromDisk('qrcode.svg', 'local')
             ->toMediaCollection('default', 'media_qrcode');
     }
 }

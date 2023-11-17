@@ -53,9 +53,9 @@ class Tenant extends Model implements HasMedia
         return $this->hasMany(TenantServicePayment::class);
     }
 
-    public function taxes(): MorphMany
+    public function tax(): MorphOne
     {
-        return $this->morphMany(Tax::class, 'taxable');
+        return $this->morphOne(Tax::class, 'taxable');
     }
     public function service(): MorphOne
     {

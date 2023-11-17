@@ -19,6 +19,28 @@
             </div>
         </div>
 
+        <x-card class="mb-5">
+            <x-table.table-title>
+                <x-slot:sub_title>
+                    Set your tenant tax setting
+                </x-slot:sub_title>
+                <x-slot:title>
+                    Tax Setting
+                </x-slot:title>
+            </x-table.table-title>
+            <hr class="mb-4">
+            <div class="flex gap-5 items-center mb-4">
+                <P class="font-semibold">Tenant Tax Percentage: <span>{{ $tenant->tax->percentage ?? '0' }}%</span></P>
+                <button class="bg-red-500 text-white px-4 py-2 rounded-xl font-medium tracking-wide"
+                    data-modal-target="modal-update-tax" data-modal-toggle="modal-update-tax">
+                    Edit
+                </button>
+            </div>
+            <div class="flex items-center gap-5">
+                <x-input-label for="is_tax" value="{{ __('Use Tax') }}" />
+                <livewire:tax-status :$tenant>
+            </div>
+        </x-card>
         <x-card>
             <form action="{{ route('tenant-update-profile-photo', $tenant->id) }}" method="POST"
                 enctype="multipart/form-data">
@@ -28,14 +50,14 @@
 
             <form action="{{ route('tenant-setting-update', $tenant->id) }}" method="POST" enctype="multipart/form-data"
                 class="bg-white-50 rounded-2xl p-5 mb-8">
-                <h3 class="text-xl font-semibold mb-4">USER INFORMATION</h3>
+                <h3 class="text-xl font-bold mb-4 tracking-wide">USER INFORMATION</h3>
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div>
                         <x-input-label for="name" value="{{ __('Nama Tenant') }}" />
                         <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
                             :value="$tenant->name" required autofocus />
-                        <x-input-error for="name" class="mt-2"  :messages="$errors->get('name')" />
+                        <x-input-error for="name" class="mt-2" :messages="$errors->get('name')" />
                     </div>
                     <div>
                         <x-input-label for="tenant-user" value="{{ __('User Tenant') }}" />
@@ -74,4 +96,23 @@
             </form>
         </x-card>
     </div>
+
+    <form action="{{ route('tenant-update-tax', $tenant->id) }}" method="POST">
+        @csrf
+        <x-modal id="modal-update-tax">
+            <x-slot:title>
+                <p class="font-bold text-2xl mb-4">Edit Tax</p>
+            </x-slot:title>
+            <div class="flex flex-col">
+                <label for="percentage" class="block mb-2 font-medium">
+                    Tax percentage</label>
+                <input type="number" id="number" name="percentage"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                    placeholder="percentage" required>
+                @error('percentage')
+                    <p>{{ $message }}</p>
+                @enderror
+            </div>
+        </x-modal>
+    </form>
 @endsection
