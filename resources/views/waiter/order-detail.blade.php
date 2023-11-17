@@ -348,7 +348,7 @@
                         {{ $detail->product->price }}
                     </td>
                     <td class="px-6 py-6">
-                        Rp. {{ number_format($detail->price, 2) }}
+                        Rp. {{ number_format($detail->price, 2)}}
                     </td>
                 </tr>
             @empty
@@ -361,7 +361,7 @@
                     Subtotal
                 </td>
                 <td class="px-6 py-4 border-b">
-                    Rp. {{ number_format($order->getSubTotal(), 2) }}
+                    Rp. {{ number_format($order->sub_total, 2)}}
                 </td>
             </tr>
             @if ($order->tax != null)
@@ -370,10 +370,10 @@
 
                     </td>
                     <td class="px-6 py-4 border-b">
-                        Tax ({{ $order->tax->percentage }}%)
+                        Tax ({{$order->tax->percentage}}%) 
                     </td>
                     <td class="px-6 py-4 border-b">
-                        Rp. {{ number_format($order->tax->tax_total, 2) }}
+                        Rp. {{ number_format($order->tax_total, 2)}}
                     </td>
                 </tr>
             @endif
@@ -385,7 +385,7 @@
                     Service Change
                 </td>
                 <td class="px-6 py-4 border-b">
-                    Rp. {{ number_format($order->getService()->price, 2) }}
+                    Rp. {{ number_format($order->service_total, 2)}}
                 </td>
             </tr>
             <tr class=" font-semibold">
@@ -396,7 +396,7 @@
                     TOTAL
                 </td>
                 <td class="px-6 py-4 border-b font-extrabold">
-                    Rp. {{ number_format($order->total, 2) }}
+                    Rp. {{ number_format($order->total, 2)}}
                 </td>
             </tr>
         </x-table>

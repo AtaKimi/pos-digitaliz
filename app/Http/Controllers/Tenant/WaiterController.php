@@ -58,11 +58,11 @@ class WaiterController extends Controller
 
             DB::commit();
             toast('Waiter created successfully', 'success');
-            // return redirect()->route('tenant-waiter-index', $tenant->id);
+            return redirect()->back();
         } catch (\Exception $e) {
             DB::rollback();
             toast('Waiter created successfully', 'error');
-            // return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create waiter.']);
+            return redirect()->back();
         }
     }
 

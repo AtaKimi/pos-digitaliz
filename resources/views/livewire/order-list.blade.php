@@ -7,7 +7,6 @@
         </x-table.table-title>
         <div class="flex gap-2 items-center">
             <x-filter />
-            <x-filter.reset-button />
         </div>
     </x-card.header>
     <x-table>

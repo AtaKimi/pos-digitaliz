@@ -31,7 +31,6 @@
                 </x-table.table-title>
                 <div class="flex gap-2 items-center">
                     <x-filter />
-                    <x-filter.reset-button />
                     <x-tenant.button.create modal_id="modal-create-category">Kategori Baru</x-tenant.button.create>
                 </div>
             </x-card.header>

@@ -14,16 +14,8 @@ class WaiterPolicy
      */
     public function viewAny(User $user, Waiter $waiter): Response
     {
-        return $waiter->tenant->user_id === $user->id
+        return $waiter->tenant->user_id === $user->id && $waiter->is_active
             ? Response::allow()
-            : Response::deny();
-        ;
-    }
-
-    public function accessTenantWaiter(User $user, Tenant $tenant): Response
-    {
-        return $user->waiter->id === $tenant->user_id
-            ? Response::allow('success', 201)
             : Response::deny();
         ;
     }

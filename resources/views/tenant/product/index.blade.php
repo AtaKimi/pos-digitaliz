@@ -41,7 +41,6 @@
                     </select>
                 </form>
                 <x-filter />
-                <x-filter.reset-button />
                 <x-tenant.button.create route="{{ route('tenant-product-create', $tenant->id) }}">Add
                     Product</x-tenant.button.create>
             </x-card.header>

@@ -1,5 +1,7 @@
+@props(['bg' => 'bg-red-500'])
+
 <a href="{{ request()->url() }}" type="button"
-    class="w-9 h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-red-500 border rounded-xl flex justify-center items-center
+    class="w-9 h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 {{$bg}} border rounded-xl flex justify-center items-center
     @if (request()->query() == null) hidden @endif">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="fill-white-50" 
         viewBox="0 0 16 16">
