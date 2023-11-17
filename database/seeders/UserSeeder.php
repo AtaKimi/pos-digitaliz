@@ -80,12 +80,7 @@ class UserSeeder extends Seeder
 
         // user with id from 4 - 14 is tenant
         for ($i = 4; $i <= 14; $i++) {
-            $code = Str::random(5);
-            while(Tenant::where('code', $code)->exists()){
-                $code = Str::random(5);
-            }
             $tenant = \App\Models\Tenant::factory()->create([
-                'code' => $code,
                 'name' => fake()->company(),
                 'address' => fake()->address(),
                 'description' => fake()->paragraph(5),
@@ -93,8 +88,7 @@ class UserSeeder extends Seeder
                 'is_tax' => true,
                 'created_at' => fake()->dateTimeBetween('-1 weeks'),
             ]);
-            $tenant->taxes()->save(\App\Models\Tax::factory()->create());
-            $tenant->service()->save(\App\Models\Service::factory()->create());
+            $tenant->tax()->save(\App\Models\Tax::factory()->create());
         }
 
         // user with id from 15 - 35 is waiters, the tenant which is belong is random from 1 - 11 

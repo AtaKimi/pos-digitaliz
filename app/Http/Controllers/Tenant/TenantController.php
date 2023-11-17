@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenant;
 
+use App\Models\Tax;
 use App\Models\Desk;
 use App\Models\User;
 use App\Models\Order;
@@ -114,6 +115,30 @@ class TenantController extends Controller
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);
         }
+    }
+
+    public function updateTax(Tenant $tenant)
+    {
+        $validated = request()->validate([
+            'percentage' => 'integer|required'
+        ]);
+
+        try {
+            DB::beginTransaction();
+            if ($tenant->tax ?? false) {
+                $tenant->tax->delete();
+            }
+            $tenant->tax()->save(Tax::create($validated));
+            DB::commit();
+            toast('Tax Succesfully Updated!', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            toast('Failed to update Tax!', 'error');
+            return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update Tax.']);
+        }
+
+        return redirect()->back();
     }
 
     private function chartTotalOrderRevenue(

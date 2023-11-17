@@ -140,6 +140,12 @@
 
         {{-- Table Order Start --}}
         <x-card class="mb-5">
+            <x-card.header>
+                <x-table.table-title>
+                    <x-slot:sub_title> Last 10 Orders are shown here </x-slot:sub_title>
+                    <x-slot:title> Last 10 Orders</x-slot:title>
+                </x-table.table-title>
+            </x-card.header>
             <hr class="mb-5">
             <x-table>
                 <x-slot:header>

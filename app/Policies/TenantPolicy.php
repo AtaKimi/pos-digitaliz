@@ -13,7 +13,7 @@ class TenantPolicy
      */
     public function viewAny(User $user, Tenant $tenant): Response
     {
-        return $tenant->user_id === $user->id
+        return $tenant->user_id === $user->id && $tenant->is_active
             ? Response::allow('success', 201)
             : Response::deny();
         ;
@@ -21,7 +21,7 @@ class TenantPolicy
 
     public function accessTenantWaiter(User $user, Tenant $tenant): Response
     {
-        return $user->waiter->tenant_id === $tenant->id
+        return $user->waiter->tenant_id === $tenant->id && $user->waiter->is_active
             ? Response::allow('success', 201)
             : Response::deny();
         ;

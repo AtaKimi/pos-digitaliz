@@ -87,7 +87,7 @@
                         </p>
                     </x-table.td>
                     <x-table.td>
-                        <livewire:tenant.waiter-status :waiter="$user->waiter" />
+                        <livewire:tenant.waiter-status :waiter="$user->waiter" :$tenant/>
                     </x-table.td>
                 </x-table.tr>
             @empty

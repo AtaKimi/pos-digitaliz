@@ -37,7 +37,7 @@ class CartTotal extends Component
             abort(404);
         }
         
-        $this->tax = $this->tenant->taxes->first();
+        $this->tax = $this->tenant->tax;
         $this->$carts = $carts;
         $this->getPrice();
     }

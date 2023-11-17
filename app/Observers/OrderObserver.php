@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Tax;
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Service;
 use App\Enums\OrderStatus;
@@ -20,7 +21,7 @@ class OrderObserver
         $order->update(['code' => $code]);
 
         if ($order->desk->tenant->is_tax) {
-            $percentage = $order->desk->tenant->taxes->first()->percentage;
+            $percentage = $order->desk->tenant->tax->percentage;
             $order->tax()->save(Tax::create(['percentage' => $percentage]));
         } 
 
@@ -33,6 +34,10 @@ class OrderObserver
         $order = Order::find($order->id);
         if(intval($order->status) == OrderStatus::COOKING){
             event(new OrderVerified($order));
+        }
+
+        if(intval($order->status) == OrderStatus::SERVING){
+            Cart::where('desk_id', $order->desk_id)->delete();
         }
     }
 }

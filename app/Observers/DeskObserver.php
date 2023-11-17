@@ -14,10 +14,11 @@ class DeskObserver
     public function created(Desk $desk): void
     {
         $tenant = $desk->tenant;
-        $desk->update(['url' => strval(route('customer-menu', [$tenant->id, $desk->id]))]);
+        $url = strval(route('customer-menu', [$tenant->id, $desk->id]));
+        $desk->update(['url' => $url]);
 
-        Storage::put('qrcode.png', QrCode::format('png')->generate($desk->url));
-        $desk->addMediaFromDisk('qrcode.png', 'local')
+        Storage::put('qrcode.svg', QrCode::generate($url));
+        $desk->addMediaFromDisk('qrcode.svg', 'local')
             ->toMediaCollection('default', 'media_qrcode');
     }
 }

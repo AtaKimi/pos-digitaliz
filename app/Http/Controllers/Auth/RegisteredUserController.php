@@ -8,13 +8,14 @@ use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -41,28 +42,36 @@ class RegisteredUserController extends Controller
             'tenant_name' => ['required', 'string', 'max:255'],
             'tenant_address' => ['required', 'string', 'max:255'],
             'tenant_description' => ['required', 'string'],
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'password' => Hash::make($request->password),
-        ]);
 
-        $tenant = Tenant::create([
-            'code' => Str::random(5) . "TN" . fake()->numerify('-########'),
-            'name' => $request->tenant_name,
-            'address' => $request->tenant_address,
-            'description' => $request->tenant_description,
-            'user_id' => $user->id,
-        ]);
 
-        $role = $user->assignRole('tenant');
-        //left the error alone if it's error on hasPermissionTo() as it's a function that is form spatie laravel permission
+        try {
+            DB::beginTransaction();
 
-        $user->sendEmailVerificationNotification();
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'password' => Hash::make($request->password),
+            ]);
 
-        return redirect()->route('login')->with('message', 'Check your email inbox to verify your account first!');
+            $tenant = Tenant::create([
+                'name' => $request->tenant_name,
+                'address' => $request->tenant_address,
+                'description' => $request->tenant_description,
+                'user_id' => $user->id,
+            ]);
+
+            $role = $user->assignRole('tenant');
+
+            DB::commit();
+            toast('User Created Succesfully', 'success');
+            return redirect()->route('login');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('message', 'Failed to create an user');
+        }
     }
 }

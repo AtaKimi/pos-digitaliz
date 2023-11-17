@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('{tenant}/setting', 'setting')->name('tenant-setting');
                 Route::post('{tenant}/setting/update', 'updateSetting')->name('tenant-setting-update');
                 Route::post('{tenant}/setting/update-profile-photo', 'updateProfilePhoto')->name('tenant-update-profile-photo');
+                Route::post('{tenant}/setting/update-tax', 'updateTax')->name('tenant-update-tax');
             });
 
             Route::controller(TenantCategoryController::class)->group(function () {

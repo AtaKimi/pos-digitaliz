@@ -136,7 +136,6 @@
                     <x-slot:sub_title> Show yours tenant payment records </x-slot:sub_title>
                     <x-slot:title> Tenant Service Payment Records </x-slot:title>
                 </x-table.table-title>
-                <x-filter bg="bg-yellow-500" />
             </x-card.header>
 
             <x-table>
