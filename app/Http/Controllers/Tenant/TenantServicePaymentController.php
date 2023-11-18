@@ -19,7 +19,7 @@ class TenantServicePaymentController extends Controller
     public function index(Tenant $tenant)
     {
         $params = request()->query();
-        $payments = TenantServicePayment::where('tenant_id', $tenant->id)
+        $payments = TenantServicePayment::where('tenant_id', $tenant)
         ->latest()
             ->filterById($params)
             ->orderBy('transfer_at', 'desc')

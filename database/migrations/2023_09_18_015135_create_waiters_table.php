@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->unique()->constrained('users');
             $table->foreignId('tenant_id')->constrained('tenants');
+            $table->string('code')->nullable();
             $table->boolean('is_active')->default(false);
             $table->softDeletes();
             $table->timestamps();

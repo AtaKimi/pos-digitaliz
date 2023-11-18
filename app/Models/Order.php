@@ -40,6 +40,10 @@ class Order extends Model
         return $this->morphOne(Service::class, 'serviceable');
     }
 
+    public function tenant() {
+        return $this->belongsTo(Tenant::class);
+    }
+
     public function getPrice()
     {
         $this->sub_total = 0;

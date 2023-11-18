@@ -110,7 +110,7 @@ class TenantController extends Controller
             $tenant->addMediaFromRequest('image')->toMediaCollection('default');
             DB::commit();
             toast('Your Profile Photo as been updated!', 'success');
-            return redirect()->route('tenant-setting', $tenant->id);
+            return redirect()->route('tenant-setting', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update tenant.']);

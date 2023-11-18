@@ -11,7 +11,7 @@
     @yield('file-header')
 </head>
 
-<body class="bg-white-300 text-xs sm:text-sm md:text-md lg:text-base mx-auto">
+<body class="bg-white-300 text-sm md:text-md lg:text-base mx-auto">
     <div class="bg-red-500 h-80 w-full p-8 flex">
         {{-- -------------------------------- side bar start ----------------------------------------------- --}}
         @include('includes.sidebar-tenant')

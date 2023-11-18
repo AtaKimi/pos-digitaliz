@@ -31,14 +31,14 @@ class AuthenticatedSessionController extends Controller
         $token = request()->user()->createToken('token-name', ['server:update'])->plainTextToken;
         $user = Auth::user();
 
-        $session_testing = session()->put('token', $token);
+        session()->put('token', $token);
 
         if ($user->hasPermissionTo('tenant-access')) {
-            return redirect()->route('tenant-index', $user->tenant->id);
+            return redirect()->route('tenant-index', $user->tenant);
         } else  if ($user->hasPermissionTo('admin-access')) {
             return redirect()->route('admin-index');
         } else if ($user->hasPermissionTo('waiter-access')) {
-            return redirect()->route('waiter-index', $user->waiter->tenant->id);
+            return redirect()->route('waiter-index', $user->waiter->tenant);
         }
         return redirect()->intended(RouteServiceProvider::HOME);
     }

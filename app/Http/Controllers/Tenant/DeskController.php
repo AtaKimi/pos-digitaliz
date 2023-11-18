@@ -40,7 +40,7 @@ class DeskController extends Controller
 
             DB::commit();
             toast('Desk created successfully', 'success');
-            return redirect()->route('tenant-desk-index', $tenant->id);
+            return redirect()->route('tenant-desk-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create desk.']);
@@ -65,7 +65,7 @@ class DeskController extends Controller
             $desk->update($validated);
             DB::commit();
             toast('Desk updated successfully', 'success');
-            return redirect()->route('tenant-desk-index', $tenant->id);
+            return redirect()->route('tenant-desk-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update desk.']);
@@ -88,7 +88,7 @@ class DeskController extends Controller
             $desk->delete();
             DB::commit();
             toast('Desk deleted successfully', 'success');
-            return redirect()->route('tenant-desk-index', $tenant->id);
+            return redirect()->route('tenant-desk-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete desk.']);

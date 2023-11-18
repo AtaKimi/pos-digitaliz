@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Models\Desk;
 use App\Models\Order;
 use App\Models\Tenant;
+use App\Models\Waiter;
 use App\Models\OrderDetail;
 use App\Observers\DeskObserver;
 use App\Observers\OrderObserver;
 use App\Observers\TenantObserver;
+use App\Observers\WaiterObserver;
 use App\Observers\OrderDetailObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -36,6 +38,7 @@ class EventServiceProvider extends ServiceProvider
         OrderDetail::observe(OrderDetailObserver::class);
         Desk::observe(DeskObserver::class);
         Tenant::observe(TenantObserver::class);
+        Waiter::observe(WaiterObserver::class);
     }
 
     /**

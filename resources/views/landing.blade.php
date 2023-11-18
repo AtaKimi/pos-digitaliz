@@ -52,7 +52,7 @@
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit"
-                            class="hidden md:block text-white-900 bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                            class="hidden md:block text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
                             Logout
                         </button>
                     </form>
@@ -103,11 +103,11 @@
                             class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Support</a>
                     </li>
                     <li>
-                        <a href="#start"
+                        <a href="{{route('login')}}"
                             class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Masuk</a>
                     </li>
                     <li>
-                        <a href="#start"
+                        <a href="route('register')"
                             class="block md:hidden py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:bg-transparent">Get
                             Started</a>
                     </li>
@@ -767,10 +767,10 @@
                 keuntungan tambahan.
                 Daftar Sekarang!
             </p>
-            <button
+            <a href="{{route('register')}}"
                 class="text-sm md:text-base bg-red-500 text-white-100 hover:bg-red-700 py-3 px-10 md:px-16 rounded-lg font-semibold">
                 Daftar
-            </button>
+            </a>
         </div>
     </div>
     {{-- faq end --}}
