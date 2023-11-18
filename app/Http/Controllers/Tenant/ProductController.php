@@ -74,7 +74,7 @@ class ProductController extends Controller
             );
 
             $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-                $fileAdder->toMediaCollection('default');
+                $fileAdder->toMediaCollection('default', 'media_product_image');
             });
 
             event(new ProductCreated($product));
@@ -146,7 +146,7 @@ class ProductController extends Controller
 
             if (array_key_exists('images', $validated)) {
                 $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-                    $fileAdder->toMediaCollection('default');
+                $fileAdder->toMediaCollection('default', 'media_product_image');
                 });
             }
 
