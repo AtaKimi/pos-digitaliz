@@ -1,7 +1,10 @@
 @extends('layouts.auth')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {!! RecaptchaV3::initJs() !!}
 
 @section('side-img')
-    <img src="{{ asset('assets/img/auth/side_img_register.png') }}" class="hidden lg:block h-full w-full" alt="" srcset="">
+    <img src="{{ asset('assets/img/auth/side_img_register.png') }}" class="hidden lg:block h-full w-full" alt=""
+        srcset="">
 @endsection
 
 @section('content')
@@ -161,6 +164,16 @@
                                 </p>
                             @enderror
                         </div>
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                {!! RecaptchaV3::field('register') !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -170,4 +183,5 @@
                 </div>
         </form>
     </div>
+    
 @endsection

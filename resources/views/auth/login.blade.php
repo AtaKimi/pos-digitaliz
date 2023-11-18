@@ -1,4 +1,6 @@
 @extends('layouts.auth')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {!! RecaptchaV3::initJs() !!}
 
 @section('side-img')
     <img src="{{ asset('assets/img/login-hero.png') }}" class="hidden lg:block w-full" alt="" srcset="">
@@ -7,7 +9,7 @@
 @section('content')
     <div class="lg:px-7 flex flex-col items-center ">
         <img src="{{ asset('assets/img/logo.svg') }}" width="120px" height="110px" alt="Login Hero">
-        <div class="py-6">
+        <div class="py-6 w-full">
             <h1 class="font-bold text-3xl">Sign In</h1>
             <p class="text-base font-medium py-6">Enter your email and password for login</p>
             <form action="{{ route('login') }}" method="post">
@@ -32,8 +34,13 @@
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-6">
-                    <img src="{{ asset('assets/img/captcha-contoh.png') }}" alt="">
+                <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                    {!! RecaptchaV3::field('register') !!}
+                    @if ($errors->has('g-recaptcha-response'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <button class="flex w-full justify-center items-center p-3 bg-red-500 rounded-lg gap-2">

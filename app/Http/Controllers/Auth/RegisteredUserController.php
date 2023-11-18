@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             'tenant_name' => ['required', 'string', 'max:255'],
             'tenant_address' => ['required', 'string', 'max:255'],
             'tenant_description' => ['required', 'string'],
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
         ]);
 
 
