@@ -87,6 +87,7 @@ class UserSeeder extends Seeder
                 'user_id' => $i,
                 'is_tax' => true,
                 'created_at' => fake()->dateTimeBetween('-1 weeks'),
+                'is_active' => true,
             ]);
             $tenant->tax()->save(\App\Models\Tax::factory()->create());
         }

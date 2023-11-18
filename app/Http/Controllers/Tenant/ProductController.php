@@ -24,7 +24,7 @@ class ProductController extends Controller
 
         $params = request()->query();
         $category_ids = Category::where('tenant_id', $tenant->id)->pluck('id');
-        $products = Product::whereIn('category_id', $category_ids)->filterByName($params)->filterByCategory($params)->with('category')
+        $products = Product::whereIn('category_id', $category_ids)->latest()->filterByName($params)->filterByCategory($params)->with('category')
             ->get();
         request()->flashOnly(['search', 'category']);
         return view('tenant.product.index', compact('products', 'tenant'));
@@ -169,13 +169,11 @@ class ProductController extends Controller
                 'product_id' => 'exists:products,id',
             ]
         );
-
         $product = Product::find($validated['product_id']);
 
         if (!Gate::allows('viewAny', $product)) {
             abort(403);
         }
-
         try {
             DB::beginTransaction();
 

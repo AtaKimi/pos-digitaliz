@@ -46,14 +46,15 @@ Route::middleware('auth')->group(function () {
             Route::controller(AdminController::class)->group(function () {
                 Route::get('/', 'index')->name('admin-index');
             });
-            Route::resource('tenant', AdminTenantController::class)->names([
-                'index' => 'admin-tenant-index',
-                'show' => 'admin-tenant-show',
-                'update' => 'admin-tenant-update',
-                'destroy' => 'admin-tenant-destroy',
-            ]);
-            Route::controller(AdminTenantController::class)->group(function () {
-                Route::post('{tenant}/update-service', 'updateService')->name('admin-tenant-update-service');
+            Route::prefix('tenant')->group(function () {
+                Route::controller(AdminTenantController::class)->group(function () {
+                    Route::get('/', 'index')->name('admin-tenant-index');
+                    Route::post('', 'tenantServiceStore')->name('admin-tenant-service-store');
+                    Route::delete('delete', 'destroy')->name('admin-tenant-destroy');
+                    Route::get('{tenant}', 'show')->name('admin-tenant-show');
+                    Route::put('{tenant}', 'update')->name('admin-tenant-update');
+                    Route::post('{tenant}/update-service', 'updateService')->name('admin-tenant-update-service');
+                });
             });
         });
     });
@@ -123,7 +124,6 @@ Route::prefix('waiter')->middleware('can:waiter-access')->group(function () {
         Route::put('{tenant}/profile/update', 'update')->name('waiter-profile-update');
         Route::post('{tenant}/profile/update-photo', 'updatePhoto')->name('waiter-profile-update-photo');
         Route::put('{tenant}/profile/change-password', 'changePassword')->name('waiter-profile-change-password');
-
     });
 });
 

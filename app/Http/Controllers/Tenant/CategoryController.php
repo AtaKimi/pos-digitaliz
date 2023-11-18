@@ -20,7 +20,7 @@ class CategoryController extends Controller
             abort(403);
         }
         $params = request()->query();
-        $categories = Category::where('tenant_id', $tenant->id)->filterByName($params)->paginate(3);
+        $categories = Category::where('tenant_id', $tenant->id)->latest()->filterByName($params)->paginate(3);
 
         return view('tenant.category.index', compact('categories', 'tenant'));
     }

@@ -21,7 +21,7 @@
         </div>
     </x-card>
 
-    <x-card>
+    <x-card x-data="{'product_id': ''}">
         <x-card.header>
             <x-table.table-title>
                 <x-slot:sub_title> Show yours products </x-slot:sub_title>
@@ -86,7 +86,7 @@
                                 </a>
                                 <div class="h-8 border"></div>
 
-                                <button type="button" onclick="putProductId({{ $product->id }})"
+                                <button type="button" x-on:click="product_id = {{$product->id}}"
                                     class="w-full justify-center text-danger-500 border border-red-500 hover:bg-danger-800 hover:text-white-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2"
                                     data-modal-target="modal-delete-category" data-modal-toggle="modal-delete-category">
                                     <svg width="15" height="14" class="sm:mr-3" viewBox="0 0 15 14" fill="none"
@@ -137,7 +137,7 @@
                 <form action="{{ route('tenant-product-destroy', $tenant) }}" method="POST">
                     @csrf
                     <div class="flex flex-col gap-10 relative bg-white-50 rounded-xl shadow p-10 w-[500px]">
-                        <input type="number" class="hidden" id="deleteInputId" name="product_id">
+                        <input type="number" class="hidden" id="deleteInputId" name="product_id" x-bind:value="product_id">
                         <div class="flex items-center justify-between">
                             <div class=""></div>
                             <p class="text-2xl font-bold">Hapus Produk</p>
