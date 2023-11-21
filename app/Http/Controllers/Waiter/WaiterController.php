@@ -160,7 +160,7 @@ class WaiterController extends Controller
             if ($request->hasFile('image')) {
                 $request->user()->clearMediaCollection('default');
             };
-            $request->user()->addMediaFromRequest('image')->toMediaCollection('default');
+            $request->user()->addMediaFromRequest('image')->toMediaCollection('default', 'media_user_profile');
             DB::commit();
             toast('Your Profile Photo as been updated!', 'success');
             return redirect()->back();

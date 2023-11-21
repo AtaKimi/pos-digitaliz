@@ -109,7 +109,7 @@ class TenantController extends Controller
 
             $create = TenantServicePayment::create($validate);
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $create->addMediaFromRequest('image')->toMediaCollection('default');
+                $create->addMediaFromRequest('image')->toMediaCollection('default', 'media_payment_image');
             }
             DB::commit();
             toast('Tenant service payment created!', 'success');
