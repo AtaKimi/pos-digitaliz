@@ -22,7 +22,7 @@ class WaiterController extends Controller
     public function index(Tenant $tenant)
     {
         $params = request()->query();
-        $waiter_ids = Waiter::where('tenant_id', 1)->pluck('user_id');
+        $waiter_ids = Waiter::where('tenant_id', $tenant->id)->pluck('user_id');
         $users = User::whereIn('id', $waiter_ids)->filterByName($params)->with('waiter')->paginate(10);
         // Paginator::useAdminPagination();
 
