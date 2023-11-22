@@ -23,8 +23,11 @@ class OrdersOrderDetailSeeder extends Seeder
                 ]
             )->create();
 
+            
+
             for ($o = 0; $o < fake()->numberBetween(1, 7); $o++) {
                 \App\Models\OrderDetail::factory()->for($order)->create();
+                // $order->orderDetail()->save(\App\Models\OrderDetail::factory()->create());
             }
 
             $order->getPrice();
