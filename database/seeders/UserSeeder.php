@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password
                 'remember_token' => Str::random(10),
-                'phone_number' => fake()->numerify('+62 ####-####-####'),
+                'phone_number' => fake()->numerify('############'),
             ],
         );
 
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password
                 'remember_token' => Str::random(10),
-                'phone_number' => fake()->numerify('+62 ####-####-####'),
+                'phone_number' => fake()->numerify('############'),
             ],
         );
 
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password
                 'remember_token' => Str::random(10),
-                'phone_number' => fake()->numerify('+62 ####-####-####'),
+                'phone_number' => fake()->numerify('############'),
             ],
         );
 
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234'), // password
                 'remember_token' => Str::random(10),
-                'phone_number' => fake()->numerify('+62 ####-####-####'),
+                'phone_number' => fake()->numerify('############'),
             ],
         );
 
@@ -87,6 +87,7 @@ class UserSeeder extends Seeder
                 'user_id' => $i,
                 'is_tax' => true,
                 'created_at' => fake()->dateTimeBetween('-1 weeks'),
+                'is_active' => true,
             ]);
             $tenant->tax()->save(\App\Models\Tax::factory()->create());
         }

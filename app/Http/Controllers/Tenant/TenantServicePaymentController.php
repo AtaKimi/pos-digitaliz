@@ -20,10 +20,9 @@ class TenantServicePaymentController extends Controller
     {
         $params = request()->query();
         $payments = TenantServicePayment::where('tenant_id', $tenant->id)
+            ->latest()
             ->filterById($params)
-            ->orderBy('transfer_at', 'desc')
-            ->paginate(5);
-
+            ->paginate(15);
         return view('tenant.service-payment.index', compact('payments'));
     }
 }

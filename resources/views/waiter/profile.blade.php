@@ -28,8 +28,8 @@
                     </div>
                     <div>
                         <x-input-label for="email" value="{{ __('Email Address') }}" />
-                        <x-text-input id="email" class="block w-full mt-1" type="text" name="email"
-                            :value="$user->email" required autofocus />
+                        <x-text-input id="email" class="block w-full mt-1 bg-grey-200"  name="email"
+                            :value="$user->email" required autofocus disabled/>
                     </div>
                     <div>
                         <x-input-label for="phone-number" value="{{ __('Phone Number') }}" />

@@ -138,7 +138,7 @@
                     <p class="text-white-50 font-bold block md:hidden">Dashboard</p>
                 </div>
         </a>
-        <a href="{{ route('waiter-profile', Auth::user()->waiter->tenant_id) }}">
+        <a href="{{ route('waiter-profile', Auth::user()->waiter->tenant) }}">
                 <div class="flex items-center gap-3 ">
                     <svg width="30" height="31" viewBox="0 0 30 31"
                     class="rounded-full h-fit w-fit p-2 @if (request()->routeIs('waiter-profile*')) bg-white-50 fill-red-500 @else fill-white-50 @endif"
@@ -160,10 +160,10 @@
             <div id="dropdown" class="z-10 hidden bg-white-50 divide-y divide-gray-100 rounded-lg shadow w-44">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                     <li>
-                        <a href="{{ route('waiter-index', Auth::user()->waiter->tenant_id) }}" class="block px-4 py-2 hover:bg-gray-100">Order</a>
+                        <a href="{{ route('waiter-index', Auth::user()->waiter->tenant) }}" class="block px-4 py-2 hover:bg-gray-100">Order</a>
                     </li>
                     <li>
-                        <a href="{{ route('waiter-profile', Auth::user()->waiter->tenant_id) }}" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                        <a href="{{ route('waiter-profile', Auth::user()->waiter->tenant) }}" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
                     </li>
                     <li>
                         <form action="{{ route('logout') }}" method="post"

@@ -1,7 +1,7 @@
 @extends('layouts.waiter')
 
 @section('content')
-    <a href="{{ route('waiter-index', Auth::user()->waiter->tenant_id) }}">
+    <a href="{{ route('waiter-index', Auth::user()->waiter->tenant) }}">
         <x-back-button class="mb-5">Kembali</x-back-button>
     </a>
     <div class="w-full bg-white-200 rounded-xl p-8 mb-8">

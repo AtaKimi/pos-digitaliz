@@ -324,7 +324,7 @@
         {{-- MODAL TAGIHAN --}}
 
 
-        <form action="{{ route('tenant.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin-tenant-service-store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <x-modal id="modal-bill" :with_button="true">
                 <x-slot:title>

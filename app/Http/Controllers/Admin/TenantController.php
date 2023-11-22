@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\OrderStatus;
 use Carbon\Carbon;
 use App\Models\Desk;
 use App\Models\Order;
@@ -11,7 +10,9 @@ use App\Models\Waiter;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\Category;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\TenantServicePayment;
 
@@ -19,7 +20,8 @@ class TenantController extends Controller
 {
     public function index()
     {
-        $tenants = Tenant::paginate(5);
+        $params = request()->query();
+        $tenants = Tenant::latest()->filterByName($params)->paginate(20);
         $tenants->each(function ($tenant) {
             // Get payments for the current month
             $currentMonthPayments = $tenant->tenant_service_payment->filter(function ($payment) {
@@ -38,7 +40,7 @@ class TenantController extends Controller
         $tenants = Tenant::findOrFail($id);
         // $waiters = $tenants->waiter;
         $params = request()->query();
-        $waiters = Waiter::where('tenant_id', $tenants->id)->paginate(10);
+        $waiters = Waiter::where('tenant_id', $tenants->id)->latest()->paginate(10);
         $service = $tenants->service;
 
         //get total product 
@@ -63,12 +65,7 @@ class TenantController extends Controller
         $unpaid_service_total = $totalTagihan - $totalPayment;
         $formatUnpaidPayment = 'Rp ' . number_format($unpaid_service_total, 0, ',', '.');
 
-        //payment list
-        $paymentPerMonth = $tenants->tenant_service_payment->sortByDesc(function ($payment) {
-            return $payment->transfer_at;
-        });
-
-        $paymentPerMonth = TenantServicePayment::where('tenant_id', $tenants->id)->paginate(5);
+        $paymentPerMonth = TenantServicePayment::where('tenant_id', $tenants->id)->latest()->paginate(15);
 
         // $tenantServicePaymentTotal = TenantServicePayment::where('tenant_id', 1)->sum('total');
 
@@ -90,9 +87,8 @@ class TenantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function tenantServiceStore(Request $request)
     {
-
         $validate = request()->validate(
             [
                 'tenant_id' => 'required',
@@ -103,36 +99,51 @@ class TenantController extends Controller
             ]
         );
 
-        // Parse the "transfer_at" date to the "Y-m-d" format
-        $parsedDate = \Carbon\Carbon::parse($validate['transfer_at'])->format('Y-m-d');
+        try {
+            DB::beginTransaction();
+            // Parse the "transfer_at" date to the "Y-m-d" format
+            $parsedDate = \Carbon\Carbon::parse($validate['transfer_at'])->format('Y-m-d');
 
-        // Update the "transfer_at" field with the parsed date
-        $validate['transfer_at'] = $parsedDate;
+            // Update the "transfer_at" field with the parsed date
+            $validate['transfer_at'] = $parsedDate;
 
-        $create = TenantServicePayment::create($validate);
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $create->addMediaFromRequest('image')->toMediaCollection('default');
+            $create = TenantServicePayment::create($validate);
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $create->addMediaFromRequest('image')->toMediaCollection('default', 'media_payment_image');
+            }
+            DB::commit();
+            toast('Tenant service payment created!', 'success');
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            toast('Tenant service payment failed to create!', 'error');
+            return redirect()->back();
         }
-        return back()->with('sukses', "ahay");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy()
     {
         // Find the tenant by ID
-        $tenant = Tenant::find($id);
-        // Check if the tenant exists
-        if (!$tenant) {
-            return redirect()->back()->with('error', 'Tenant not found');
+        $validated = request()->validate([
+            'tenant_id' => 'required|exists:tenants,id'
+        ]);
+        try {
+            DB::beginTransaction();
+            $tenant = Tenant::findOrFail($validated['tenant_id']);
+            $tenant->delete();
+            $tenant->user()->delete();
+            DB::commit();
+            toast('Tenant deleted!', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            toast('Tenant failed to be deleted!', 'error');
+            return redirect()->back();
         }
-        // Delete the tenant
-        $tenant->delete();
-        // delete related users
-        $tenant->user()->delete();
-
-        return redirect()->route('admin-tenant-index')->with('success', 'Tenant has been deleted successfully');
     }
 
     public function updateService(Tenant $tenant)
@@ -142,8 +153,18 @@ class TenantController extends Controller
                 'price' => 'integer|required',
             ]
         );
-        $tenant->service->delete();
-        $tenant->service()->save(Service::create($validated));
-        return back();
+
+        try {
+            DB::beginTransaction();
+            $tenant->service->delete();
+            $tenant->service()->save(Service::create($validated));
+            DB::commit();
+            toast('Tenant service updated!', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            toast('Tenant service failed to be updated!', 'error');
+            return redirect()->back();
+        }
     }
 }

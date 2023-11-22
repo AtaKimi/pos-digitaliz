@@ -23,7 +23,7 @@ class WaiterController extends Controller
     {
         $params = request()->query();
         $waiter_ids = Waiter::where('tenant_id', $tenant->id)->pluck('user_id');
-        $users = User::whereIn('id', $waiter_ids)->filterByName($params)->with('waiter')->paginate(10);
+        $users = User::whereIn('id', $waiter_ids)->latest()->filterByName($params)->with('waiter')->paginate(10);
         // Paginator::useAdminPagination();
 
         return view('tenant.waiter.index', compact('users', 'tenant'));
@@ -65,32 +65,4 @@ class WaiterController extends Controller
             return redirect()->back();
         }
     }
-
-    public function update(Request $request, Tenant $tenant)
-    {
-        $waiterId = $request->input('id');
-        $isActive = $request->input('is_active');
-
-        $waiter = Waiter::findOrFail($waiterId);
-
-        if (!$waiter) {
-            return response()->json(['failed' => false, 'message' => 'waiter$waiter not found']);
-        }
-
-        try {
-            DB::beginTransaction();
-
-            $waiter->is_active = $isActive;
-            $waiter->save();
-
-            DB::commit();
-            return response()->with(['success' => true, 'message' => 'Tenant status updated successfully']);
-
-        } catch (\Exception $e) {
-            DB::rollback();
-            return response()->json(['failed' => false, 'message' => 'Failed to update tenant status.']);
-        }
-    }
-
-
 }

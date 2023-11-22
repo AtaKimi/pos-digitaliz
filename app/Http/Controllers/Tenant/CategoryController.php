@@ -20,7 +20,7 @@ class CategoryController extends Controller
             abort(403);
         }
         $params = request()->query();
-        $categories = Category::where('tenant_id', $tenant->id)->filterByName($params)->paginate(3);
+        $categories = Category::where('tenant_id', $tenant->id)->latest()->filterByName($params)->paginate(3);
 
         return view('tenant.category.index', compact('categories', 'tenant'));
     }
@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
             DB::commit();
             toast('Category created successfully', 'success');
-            return redirect()->route('tenant-category-index', $tenant->id);
+            return redirect()->route('tenant-category-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create category.']);
@@ -82,7 +82,7 @@ class CategoryController extends Controller
 
             DB::commit();
             toast('Category updated successfully', 'success');
-            return redirect()->route('tenant-category-index', $tenant->id);
+            return redirect()->route('tenant-category-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to update category.']);
@@ -111,7 +111,7 @@ class CategoryController extends Controller
 
             DB::commit();
             toast('Category deleted successfully', 'success');
-            return redirect()->route('tenant-category-index', $tenant->id);
+            return redirect()->route('tenant-category-index', $tenant);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to delete category.']);

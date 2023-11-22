@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\traits\HasFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -12,7 +14,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Tenant extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, SoftDeletes;
+    use HasFactory, InteractsWithMedia, SoftDeletes, HasFilter;
     protected $fillable = [
         'code',
         'name',
@@ -40,10 +42,7 @@ class Tenant extends Model implements HasMedia
     {
         return $this->hasMany(Desk::class);
     }
-    public function order()
-    {
-        return $this->hasMany(Order::class);
-    }
+
     public function cart()
     {
         return $this->hasMany(Cart::class);

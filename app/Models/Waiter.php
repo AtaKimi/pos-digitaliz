@@ -12,7 +12,7 @@ class Waiter extends Model
 {
     use HasFactory, SoftDeletes, HasFilter;
     protected $fillable =
-    [
+    [   
         'user_id',
         'tenant_id',
         'is_active',

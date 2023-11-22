@@ -59,20 +59,18 @@ class WaiterController extends Controller
             DB::beginTransaction();
 
             $order_status = intval($order->status);
-            if($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE){
+            if ($order_status == OrderStatus::CANCELED || $order_status == OrderStatus::DONE) {
                 return back()->with('message', 'failed');
             }
             $order->update(['status' => OrderStatus::fromValue(intval($order->status) + 1)]);
 
             DB::commit();
-            toast('Order status updated to'.$order_status , 'success');
+            toast('Order status updated to' . $order_status, 'success');
             return back();
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error', 'failed');
         }
-
-
     }
 
     public function cancel(Tenant $tenant, Order $order)
@@ -85,7 +83,7 @@ class WaiterController extends Controller
             DB::beginTransaction();
 
             $order_status = intval($order->status);
-            if($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING){
+            if ($order_status == OrderStatus::CANCELED || $order_status >= OrderStatus::SERVING) {
                 return back()->with('message', 'failed');
             }
             $order->update(['status' => OrderStatus::CANCELED]);
@@ -114,9 +112,8 @@ class WaiterController extends Controller
     {
 
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required ',
+            'name' => 'required|string',
+            'phone_number' => 'required|numeric|unique:users,phone_number',
         ]);
 
         try {
@@ -160,10 +157,10 @@ class WaiterController extends Controller
 
         try {
             DB::beginTransaction();
-            if($request->hasFile('image')){
+            if ($request->hasFile('image')) {
                 $request->user()->clearMediaCollection('default');
             };
-            $request->user()->addMediaFromRequest('image')->toMediaCollection('default');
+            $request->user()->addMediaFromRequest('image')->toMediaCollection('default', 'media_user_profile');
             DB::commit();
             toast('Your Profile Photo as been updated!', 'success');
             return redirect()->back();
