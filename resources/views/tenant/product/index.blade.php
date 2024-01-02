@@ -55,7 +55,7 @@
                             @csrf
                             @method('PUT')
                             <div class="flex gap-x-6">
-                                <img src="https://wiratech.co.id/wp-content/uploads/2019/02/bumbu-sate-madura.jpg"
+                                <img src="{{ $product->getFirstMediaUrl() }}"
                                     alt="" class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg mb-4">
                                 <div class="text-gray-500 grow">
                                     <p class="text-base md:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
