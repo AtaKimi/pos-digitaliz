@@ -6,7 +6,6 @@ use App\Models\Tenant;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Events\ProductCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
@@ -76,8 +75,6 @@ class ProductController extends Controller
             $product->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
                 $fileAdder->toMediaCollection('default', 'media_product_image');
             });
-
-            event(new ProductCreated($product));
 
             DB::commit();
 

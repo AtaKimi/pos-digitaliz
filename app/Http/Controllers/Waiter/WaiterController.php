@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Waiter;
 
-use App\Models\User;
 use App\Models\Order;
 use App\Models\Tenant;
-use App\Models\Waiter;
 use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +12,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
-use App\Http\Requests\ProfileUpdateRequest;
 
 class WaiterController extends Controller
 {
@@ -54,7 +50,6 @@ class WaiterController extends Controller
         if (!Gate::allows('waiterView', $order)) {
             abort(403);
         }
-
         try {
             DB::beginTransaction();
 
