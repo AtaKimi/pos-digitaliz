@@ -70,7 +70,7 @@
                                 fill="white" />
                         </svg>
                     </span>
-                    <span class="font-medium text-md text-black">Total Pendapatan Order</span>
+                    <span class="font-medium text-md text-black">Total Sudah dibayar</span>
                 </div>
                 <div>
                     <p class="text-2xl font-bold text-gray-900 pl-3">

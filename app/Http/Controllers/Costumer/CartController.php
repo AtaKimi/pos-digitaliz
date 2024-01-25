@@ -15,6 +15,7 @@ class CartController extends Controller
             redirect()->route('customer-menu', [$tenant->id, $desk->id]);
         }
         $carts = Cart::with('desk')->where('desk_id', $desk->id)->get();
-        return view('customer.cart', compact('carts', 'tenant', 'desk'));
+        $is_tax = $tenant->is_tax;
+        return view('customer.cart', compact('carts', 'tenant', 'desk', 'is_tax'));
     }
 }

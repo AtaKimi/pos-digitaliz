@@ -125,7 +125,7 @@
                     fill="white" />
             </svg>
             <div class="flex flex-col gap-3 items-center">
-        <a href="{{ route('waiter-index', Auth::user()->waiter->tenant_id) }}">
+        <a href="{{ route('waiter-index', Auth::user()->waiter->tenant) }}">
 
                 <div class="flex items-center gap-3">
                     <svg width="30" height="31" viewBox="-2 0 34 34" fill="none"

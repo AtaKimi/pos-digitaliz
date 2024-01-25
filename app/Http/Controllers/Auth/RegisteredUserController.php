@@ -72,7 +72,7 @@ class RegisteredUserController extends Controller
             toast('User Created Succesfully', 'success');
             return redirect()->route('login');
         } catch (\Exception $e) {
-            toast('User failed to be created!', 'error');
+            toast('User failed to be created!' . $e->getMessage(), 'error');
             DB::rollback();
             return back()->with('message', 'Failed to create an user');
         }

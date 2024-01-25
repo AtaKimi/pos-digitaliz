@@ -18,6 +18,6 @@
                 </div>
             @endforeach
         </div>
-        <livewire:cart-total :$carts :$tenant :$desk/>
+        <livewire:cart-total :$carts :$tenant :$desk :$is_tax/>
     </div>
 @endsection

@@ -4,8 +4,10 @@
         style="background-image: url('/assets/img/bg-cart.png')">
         <p class="text-sm">Sub-total</p>
         <p class="text-end text-sm">Rp {{ number_format($sub_total, 0, ',', '.') }}</p>
-        <p class="text-sm">Tax ({{ $tax->percentage }}%)</p>
-        <p class="text-end text-sm">Rp {{ number_format($tax_total, 0, ',', '.') }}</p>
+        @if ($is_tax)
+            <p class="text-sm">Tax ({{ $tax->percentage }}%)</p>
+            <p class="text-end text-sm">Rp {{ number_format($tax_total, 0, ',', '.') }}</p>
+        @endif
         <p class="text-sm ">Service Charge</p>
         <p class="text-end text-sm ">Rp {{ number_format($service_total, 0, ',', '.') }}</p>
         <p class="font-bold">Total</p>

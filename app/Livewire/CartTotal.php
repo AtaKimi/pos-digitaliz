@@ -21,6 +21,7 @@ class CartTotal extends Component
     public $service_total = 0;
     public $total = 0;
     public $tax;
+    public $is_tax;
 
     #[On('cart-created')] 
     public function rerender() {
@@ -37,7 +38,7 @@ class CartTotal extends Component
             abort(404);
         }
         
-        $this->tax = $this->tenant->tax;
+        $this->tax = $this->is_tax ? $this->tenant->tax : 0;
         $this->$carts = $carts;
         $this->getPrice();
     }
@@ -80,7 +81,7 @@ class CartTotal extends Component
     }
 
     private function getTax(){
-        $this->tax_total = $this->tax->percentage * $this->sub_total / 100;
+        $this->tax_total = $this->is_tax != 0 ? $this->tax->percentage * $this->sub_total / 100 : 0;
     }
 
     private function getService() {
